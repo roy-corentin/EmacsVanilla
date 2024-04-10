@@ -85,6 +85,7 @@
 
 (use-package olivetti
   :ensure t
+  :defer t
   :bind ("C-c o" . olivetti-mode)
   :custom
   (olivetti-body-width 120)
