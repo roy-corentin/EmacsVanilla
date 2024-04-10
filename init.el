@@ -14,6 +14,7 @@
 (require 'cr-completion)
 (require 'cr-undo)
 (require 'cr-treesit)
+(require 'cr-eglot)
 (require 'cr-org)
 (require 'cr-treemacs)
 
