@@ -15,23 +15,33 @@
 (require 'cr-completion)
 (require 'cr-undo)
 (require 'cr-treesit)
+(require 'cr-org)
 
 (use-package gcmh
   :defer t
   :config
   (gcmh-mode 1))
 
-(use-package org
-  :ensure nil
-  :init
-  (setq org-directory "~/Dropbox/Org/"
-        org-agenda-files (list org-directory)
-        org-log-done 'time
-        org-log-into-drawer t
-        org-startup-indented t
-        org-image-actual-width nil
-        org-startup-with-inline-images t
-        org-startup-with-latex-preview t))
+(use-package treemacs
+  :ensure t
+  :defer t
+  :config
+  ;; Add ignored files and file extensions
+  (setq treemacs-file-ignore-extensions '("o" "gcna" "gcdo" "vscode" "idea")
+        treemacs-file-ignore-globs nil)
+  (defun my-treemacs-ignore-filter (file full-path)
+    "Ignore files specified by `treemacs-file-ignore-extensions' and globs."
+    (or (member (file-name-extension file) treemacs-file-ignore-extensions)
+        (cl-loop for glob in treemacs-file-ignore-globs
+                 thereis (file-name-match-glob glob full-path))))
+  (add-to-list 'treemacs-ignored-file-predicates #'my-treemacs-ignore-filter)
+
+  ;; Enable follow mode
+  (treemacs-follow-mode t)
+  (lsp-treemacs-sync-mode t)
+
+  ;; Set treemacs theme
+  (setq doom-themes-treemacs-theme "doom-colors"))
 
 (use-package which-key
   :ensure t
