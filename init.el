@@ -85,16 +85,4 @@
   :defer t
   :hook (prog-mode))
 
-(use-package vi-tilde-fringe
-  :ensure t
-  :defer t
-  :init
-  (global-vi-tilde-fringe-mode))
-
-(use-package git-gutter
-  :ensure t
-  :defer t
-  :init
-  (global-git-gutter-mode))
-
 (provide 'init)
