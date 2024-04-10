@@ -22,6 +22,8 @@
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
+;; (use-package hide-line-mode :ensure t)
+
 (use-package doom-modeline
   :ensure t
   :hook (after-init . doom-modeline-mode)
@@ -40,12 +42,12 @@
 
   :config
   (add-hook 'doom-load-theme-hook #'doom-modeline-refresh-bars)
-  (add-hook 'magit-mode-hook
-            (defun +modeline-hide-in-non-status-buffer-h ()
-              "Show minimal modeline in magit-status buffer, no modeline elsewhere."
-              (if (eq major-mode 'magit-status-mode)
-                  (doom-modeline-set-modeline 'magit)
-                (hide-mode-line-mode))))
+  ;; (add-hook 'magit-mode-hook
+  ;;           (defun +modeline-hide-in-non-status-buffer-h ()
+  ;;             "Show minimal modeline in magit-status buffer, no modeline elsewhere."
+  ;;             (if (eq major-mode 'magit-status-mode)
+  ;;                 (doom-modeline-set-modeline 'magit)
+  ;;               (hide-mode-line-mode))))
 
   ;;; Extensions
   (use-package anzu
