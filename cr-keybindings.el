@@ -64,9 +64,13 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
   (cr/leader-keys
     "w" '(:ignore t :which-key "window")
     "w h" '(evil-window-left :which-key "Move left")
+    "w H" '(evil-window-move-far-left :which-key "Move window left")
     "w j" '(evil-window-down :which-key "Move down")
+    "w J" '(evil-window-move-very-bottom :which-key "Move window down")
     "w k" '(evil-window-up :which-key "Move up")
+    "w K" '(evil-window-move-very-top :which-key "Move window up")
     "w l" '(evil-window-right :which-key "Move right")
+    "w L" '(evil-window-move-far-right :which-key "Move window right")
     "w w" '(evil-window-next :which-key "Move to next window")
     "w d" '(evil-window-delete :which-key "Delete window")
     "w s" '(evil-window-split :which-key "Split window")
