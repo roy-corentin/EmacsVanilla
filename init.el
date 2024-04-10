@@ -91,4 +91,9 @@
   (olivetti-body-width 120)
   :hook (text-mode magit-mode))
 
+(use-package rainbow-delimiters
+  :ensure t
+  :defer t
+  :hook (prog-mode text-mode))
+
 (provide 'init)
