@@ -6,6 +6,7 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 08, 2024
 
+;; From Doom
 (defun +evil/window-split-and-follow ()
   "Split current window horizontally, then focus new window.
 If `evil-split-window-below' is non-nil, the new window isn't focused."
@@ -13,6 +14,7 @@ If `evil-split-window-below' is non-nil, the new window isn't focused."
   (let ((evil-split-window-below (not evil-split-window-below)))
     (call-interactively #'evil-window-split)))
 
+;; From Doom
 (defun +evil/window-vsplit-and-follow ()
   "Split current window vertically, then focus new window.
 If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
@@ -26,8 +28,11 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
   (unless (file-readable-p dir)
     (error "Directory %S isn't readable" dir))
   (let ((default-directory (file-truename (expand-file-name dir))))
-    (call-interactively #'find-file))
-  )
+    (call-interactively #'find-file)))
+
+(defun cr/find-config-file ()
+  (interactive)
+  (cr/find-file-in-dir "~/.config/emacs_vanilla/"))
 
 (defun cr/find-note ()
   (interactive)
@@ -51,18 +56,18 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
     "." '(find-file :which-key "Find file")
     "SPC" '(project-find-file :which-key "Find file in project"))
   (cr/leader-keys
-    "b" '(:ignore t :which-key "buffer")
+    "b" '(:ignore t :which-key "Buffer")
     "b b" '(project-switch-to-buffer :which-key "Switch project buffer")
     "b B" '(switch-to-buffer :which-key "Switch all buffer")
     "b i" '(ibuffer :which-key "Ibuffer")
     "b k" '(kill-current-buffer :which-key "Kill current buffer"))
   (cr/leader-keys
-    "f" '(:ignore t :which-key "file")
+    "f" '(:ignore t :which-key "File")
     "f f" '(find-file :which-key "Find file")
     "f r" '(recentf-open-files :which-key "Recent files")
     "f s" '(save-buffer :which-key "Save file"))
   (cr/leader-keys
-    "w" '(:ignore t :which-key "window")
+    "w" '(:ignore t :which-key "Window")
     "w h" '(evil-window-left :which-key "Move left")
     "w H" '(evil-window-move-far-left :which-key "Move window left")
     "w j" '(evil-window-down :which-key "Move down")
@@ -88,7 +93,8 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
     "p e" '(project-eshell :which-key "Eshell project"))
   (cr/leader-keys
     "f" '(:ignore t :which-key "File")
-    "f r" '(recentf :which-key "Recent files"))
+    "f r" '(recentf :which-key "Recent files")
+    "f p" '(cr/find-config-file :which-key "Recent files"))
   (cr/leader-keys
     "n" '(:ignore t :which-key "Note")
     "n f" '(cr/find-note :which-key "Find note")
@@ -96,9 +102,32 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
     "n r f" '(org-roam-node-find :which-key "Find roam note"))
   (cr/leader-keys
     "t" '(:ignore t :which-key "Toggle")
+    "t TAB" '(toggle-tab-bar-mode-from-frame :which-key "Tab")
     "t t" '(treemacs :which-key "Treemacs")
     "t o" '(olivetti-mode :which-key "Olivetti"))
+  (cr/leader-keys
+    "TAB" '(:ignore t :which-key "Tab")
+    "TAB TAB" '(tab-list :which-key "List tabs")
+    "TAB n" '(tab-new :which-key "New tab")
+    "TAB l" '(tab-next :which-key "Next tab")
+    "TAB h" '(tab-previous :which-key "Previous tab")
+    "TAB r" '(tab-rename :which-key "Rename tab"))
+  (cr/leader-keys
+    "h" '(:ignore t :which-key "Help")
+    "h f" '(describe-function :which-key "Describe function")
+    "h F" '(describe-face :which-key "Describe face")
+    "h v" '(describe-variable :which-key "Describe variable")
+    "h m" '(describe-map :which-key "Describe map")
+    "h k" '(describe-key :which-key "Describe key")
+    "h K" '(describe-keymap :which-key "Describe keymap")
+    "h o" '(describe-font :which-key "Describe font")
+    "h c" '(describe-char :which-key "Describe char"))
   )
+
+(use-package drag-stuff
+  :ensure t
+  :bind (("C-M-k" . drag-stuff-up)
+         ("C-M-j" . drag-stuff-down)))
 
 (provide 'cr-keybindings)
 ;;; cr-keybindings.el ends here
