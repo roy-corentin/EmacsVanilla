@@ -6,6 +6,20 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 08, 2024
 
+(defun +evil/window-split-and-follow ()
+  "Split current window horizontally, then focus new window.
+If `evil-split-window-below' is non-nil, the new window isn't focused."
+  (interactive)
+  (let ((evil-split-window-below (not evil-split-window-below)))
+    (call-interactively #'evil-window-split)))
+
+(defun +evil/window-vsplit-and-follow ()
+  "Split current window vertically, then focus new window.
+If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
+  (interactive)
+  (let ((evil-vsplit-window-right (not evil-vsplit-window-right)))
+    (call-interactively #'evil-window-vsplit)))
+
 (use-package general
   :ensure t
   :defer t
@@ -19,13 +33,14 @@
     :global-prefix "M-SPC") ;; access leader in insert mode
 
   (cr/leader-keys
-   "." '(find-file :which-key "find file")
-   "SPC" '(project-find-file :which-key "M-x"))
+   "." '(find-file :which-key "Find file")
+   "SPC" '(project-find-file :which-key "Find file in project"))
   (cr/leader-keys
    "b" '(:ignore t :which-key "buffer")
    "b b" '(project-switch-to-buffer :which-key "Switch project buffer")
+   "b B" '(switch-to-buffer :which-key "Switch all buffer")
    "b i" '(ibuffer :which-key "Ibuffer")
-   "b B" '(switch-to-buffer :which-key "Switch all buffer"))
+   "b k" '(kill-current-buffer :which-key "Kill current buffer"))
   (cr/leader-keys
    "f" '(:ignore t :which-key "file")
    "f f" '(find-file :which-key "Find file")
@@ -40,8 +55,13 @@
    "w w" '(evil-window-next :which-key "Move to next window")
    "w d" '(evil-window-delete :which-key "Delete window")
    "w s" '(evil-window-split :which-key "Split window")
+   "w S" '(+evil/window-split-and-follow :which-key "Split window and follow")
    "w v" '(evil-window-vsplit :which-key "Vsplit window")
+   "w V" '(+evil/window-vsplit-and-follow :which-key "Vsplit window and follow")
    "w m" '(delete-other-windows :which-key "Maximize window"))
+  (cr/leader-keys
+   "g" '(:ignore t :which-key "Git")
+   "g g" '(magit-status :which-key "Magit Status"))
   )
 
 
