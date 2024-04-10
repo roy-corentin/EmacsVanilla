@@ -90,6 +90,9 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
     "n f" '(cr/find-note :which-key "Find note")
     "n r" '(:ignore t :which-key "Roam")
     "n r f" '(org-roam-node-find :which-key "Find roam note"))
+  (cr/leader-keys
+    "t" '(:ignore t :which-key "Toggle")
+    "t t" '(treemacs :which-key "Treemacs"))
   )
 
 (provide 'cr-keybindings)
