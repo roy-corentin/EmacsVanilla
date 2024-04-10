@@ -41,6 +41,11 @@
         evil-escape-delay 0.15)
   (evil-escape-mode 1))
 
+(use-package evil-collection-magit
+  :defer t
+  :init (defvar evil-collection-magit-use-z-for-folds t)
+  :config
+  (evil-defined-key* 'normal magit-status-mode-map [escape] nil))
 
 (provide 'cr-evil)
 ;;; cr-evil.el ends here
