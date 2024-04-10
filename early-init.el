@@ -35,8 +35,9 @@
   (scroll-bar-mode -1)
   (delete-selection-mode 1)
   (global-hl-line-mode 1)
-  (global-display-line-numbers-mode 1)
   (defalias 'yes-or-no-p 'y-or-n-p)
+  (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+  (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
   :custom
   (make-backup-files nil)
   (auto-save-default nil)
@@ -55,7 +56,6 @@
   (max-mini-window-height 0.35)
   (tab-always-indent 'complete)
   (read-extended-command-predicate #'command-completion-default-include-p)
-  (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
   :custom-face
   (default ((t :family "JetBrains Mono Nerd Font" :height 105 )))
   :bind
