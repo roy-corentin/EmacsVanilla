@@ -5,7 +5,6 @@
 ;; Author: Corentin Roy <corentin.roy02@laposte.net>
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 
-
 (require 'eglot)
 (require 'cr-project)
 (require 'cr-theme)
@@ -28,7 +27,7 @@
   :config
   (setq which-key-show-early-on-C-h t)
   (setq which-key-idle-secondary-delay 0.05)
-  (setq which-key-popup-type 'minibuffer)
+  (setq which-key-popup-type 'side-window)
   (which-key-mode))
 
 (use-package magit

@@ -53,7 +53,6 @@
   (display-line-numbers-current-absolute t)
   (display-line-numbers-width-start t)
   (indent-tabs-mode nil)
-  (max-mini-window-height 0.35)
   (tab-always-indent 'complete)
   (read-extended-command-predicate #'command-completion-default-include-p)
   :custom-face
