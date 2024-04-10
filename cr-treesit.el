@@ -59,6 +59,7 @@
 (add-hook 'elixir-ts-mode-hook 'eglot-ensure)
 
 (add-to-list 'eglot-server-programs '(elixir-ts-mode "~/Applications/ex-ls/releases/language_server.sh"))
+(add-to-list 'eglot-server-programs '((ruby-mode ruby-ts-mode) "ruby-lsp"))
 
 (provide 'cr-treesit)
 ;;; cr-treesit.el ends here
