@@ -43,9 +43,7 @@
 
 (use-package evil-collection-magit
   :defer t
-  :init (defvar evil-collection-magit-use-z-for-folds t)
-  :config
-  (evil-defined-key* 'normal magit-status-mode-map [escape] nil))
+  :init (defvar evil-collection-magit-use-z-for-folds t))
 
 (provide 'cr-evil)
 ;;; cr-evil.el ends here
