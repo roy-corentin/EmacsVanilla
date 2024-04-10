@@ -62,8 +62,15 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
   (cr/leader-keys
    "g" '(:ignore t :which-key "Git")
    "g g" '(magit-status :which-key "Magit Status"))
+  (cr/leader-keys
+   "p" '(:ignore t :which-key "Project")
+   "p p" '(project-switch-project :which-key "Switch project")
+   "p d" '(project-dired :which-key "Dired project")
+   "p e" '(project-eshell :which-key "Eshell project"))
+  (cr/leader-keys
+   "f" '(:ignore t :which-key "File")
+   "f r" '(recentf :which-key "Recent files"))
   )
-
 
 (provide 'cr-keybindings)
 ;;; cr-keybindings.el ends here
