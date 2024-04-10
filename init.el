@@ -104,6 +104,6 @@
 (use-package rainbow-delimiters
   :ensure t
   :defer t
-  :hook (prog-mode text-mode))
+  :hook (prog-mode))
 
 (provide 'init)
