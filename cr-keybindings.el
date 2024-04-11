@@ -128,6 +128,9 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
   (cr/leader-keys
     "s" '(:ignore t :which-key "Search")
     "s i" '(imenu :which "IMenu"))
+  (cr/leader-keys
+    "d" '(:ignore t :which-key "Dired")
+    "d d" '(dired-jump :which-key "Dired here"))
   )
 
 (use-package drag-stuff
