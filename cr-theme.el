@@ -68,7 +68,10 @@
   :ensure t
   :defer t
   :init
-  (global-git-gutter-mode))
+  (global-git-gutter-mode)
+  :config
+  (fringe-mode '8)
+  (setq-default fringes-outside-margins t))
 
 (use-package hl-todo
   :ensure t
