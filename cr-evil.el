@@ -45,13 +45,5 @@
   :defer t
   :init (defvar evil-collection-magit-use-z-for-folds t))
 
-(use-package evil-org
-  :ensure t
-  :after org
-  :hook (org-mode . (lambda () evil-org-mode))
-  :config
-  (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys))
-
 (provide 'cr-evil)
 ;;; cr-evil.el ends here
