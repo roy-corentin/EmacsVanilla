@@ -19,17 +19,6 @@
   (vertico-mode)
   (setq vertico-cycle t))
 
-;; Optionally use the `orderless' completion style.
-(use-package orderless
-  :ensure t
-  :init
-  ;; Configure a custom style dispatcher (see the Consult wiki)
-  ;; (setq orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch)
-  ;;       orderless-component-separator #'orderless-escapable-split-on-space)
-  (setq completion-styles '(orderless basic)
-        completion-category-defaults nil
-        completion-category-overrides '((file (styles partial-completion)))))
-
 ;; Enable rich annotations using the Marginalia package
 (use-package marginalia
   :ensure t
@@ -73,6 +62,7 @@
   (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   (corfu-auto t)                 ;; Enable auto completion
   (corfu-separator ?\s)          ;; Orderless field separator
+  (corfu-auto-prefix 2)
   ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
   ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
   ;; (corfu-preview-current nil)    ;; Disable current candidate preview
@@ -92,6 +82,27 @@
   (add-hook 'eshell-mode-hook (lambda () (setq-local corfu-auto nil) (corfu-mode)))
   (add-hook 'minibuffer-setup-hook #'corfu-enable-in-minibuffer)
   (global-corfu-mode))
+
+(use-package cape
+  :ensure t
+  :bind (("C-c p f" . cape-file)
+         ("C-c p t" . complete-tag)        ;; etags
+         ("C-c p d" . cape-dabbrev))
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-elisp-block))
+
+;; Optionally use the `orderless' completion style.
+(use-package orderless
+  :ensure t
+  :init
+  ;; Configure a custom style dispatcher (see the Consult wiki)
+  ;; (setq orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch)
+  ;;       orderless-component-separator #'orderless-escapable-split-on-space)
+  (setq completion-styles '(orderless basic)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles partial-completion)))))
 
 (load "~/.config/doom/corfu-icons.el")
 
