@@ -6,7 +6,7 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 
 ;; Defer package initialization
-(setq package-enable-at-startup t)
+(setq package-enable-at-startup t) ;; TODO set to nil and move rest config in init.el
 
 ;; Load the package manager and initialize MELPA
 (require 'package)
@@ -18,7 +18,6 @@
 (add-to-list 'load-path "~/.config/emacs_vanilla/")
 
 ;; Ensure that use-package is installed
-
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
@@ -35,11 +34,14 @@
   (scroll-bar-mode -1)
   (delete-selection-mode 1)
   (global-hl-line-mode 1)
+  (tab-bar-mode 1)
+  (desktop-save-mode 1)
   (defalias 'yes-or-no-p 'y-or-n-p)
   (add-hook 'prog-mode-hook 'display-line-numbers-mode)
   (add-hook 'org-mode-hook 'display-line-numbers-mode)
   (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
   :custom
+  (tab-bar-show nil)
   (make-backup-files nil)
   (auto-save-default nil)
   (create-lockfiles nil)
@@ -57,7 +59,9 @@
   (tab-always-indent 'complete)
   (read-extended-command-predicate #'command-completion-default-include-p)
   :custom-face
-  (default ((t :family "JetBrains Mono Nerd Font" :height 105 )))
+  (default ((t :family "JetBrains Mono Nerd Font" :height 105)))
+  (fixed-pitch ((t :family "JetBrains Mono Nerd Font" :height 105)))
+  (variable-pitch ((t :family "C059" :height 115)))
   :bind
   ("C-=" . text-scale-increase)
   ("C--" . text-scale-decrease)
