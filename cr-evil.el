@@ -12,8 +12,8 @@
 (use-package evil
   :ensure t
   :init
+  (setq evil-want-keybinding nil)
   (setq evil-want-Y-yank-to-eol t
-        evil-want-keybinding nil
         evil-want-C-u-scroll t
         evil-undo-system 'undo-fu
         evil-move-beyond-eol t
