@@ -28,7 +28,6 @@
   :config
   (evil-collection-init))
 
-
 (use-package evil-surround
   :ensure t
   :config
@@ -44,6 +43,14 @@
 (use-package evil-collection-magit
   :defer t
   :init (defvar evil-collection-magit-use-z-for-folds t))
+
+(use-package evil-org
+  :ensure t
+  :after org
+  :hook (org-mode . evil-org-mode)
+  :config
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
 
 (provide 'cr-evil)
 ;;; cr-evil.el ends here

@@ -48,7 +48,8 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
 
   ;; set up 'SPC' as the global leader key
   (general-create-definer cr/leader-keys
-    :keymaps '(normal insert visual emacs)
+    :states '(normal insert visual emacs)
+    :keymaps 'override
     :prefix "SPC" ;; set leader
     :global-prefix "M-SPC") ;; access leader in insert mode
 
