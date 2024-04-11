@@ -6,6 +6,10 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 10, 2024
 
+(use-package mixed-pitch
+  :ensure t
+  :hook (text-mode . mixed-pitch-mode))
+
 (use-package org
   :ensure nil
   :init
@@ -16,7 +20,20 @@
         org-startup-indented t
         org-image-actual-width nil
         org-startup-with-inline-images t
-        org-startup-with-latex-preview t))
+        org-startup-with-latex-preview t
+        mixed-pitch-mode t))
+
+(use-package toc-org
+  :ensure t
+  :after org
+  :hook (org-mode . toc-org-enable))
+
+(use-package org-bullets
+  :ensure t
+  :after org
+  :hook (org-mode . org-bullets-mode)
+  :custom
+  (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
 (use-package org-roam
   :ensure t
