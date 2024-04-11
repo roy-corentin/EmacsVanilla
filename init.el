@@ -5,19 +5,6 @@
 ;; Author: Corentin Roy <corentin.roy02@laposte.net>
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 
-(require 'eglot)
-(require 'cr-project)
-(require 'cr-theme)
-(require 'cr-dashboard)
-(require 'cr-evil)
-(require 'cr-keybindings)
-(require 'cr-completion)
-(require 'cr-undo)
-(require 'cr-treesit)
-(require 'cr-eglot)
-(require 'cr-org)
-(require 'cr-treemacs)
-
 (use-package gcmh
   :defer t
   :config
@@ -54,15 +41,6 @@
   :ensure smartparens
   :hook (prog-mode text-mode))
 
-(with-eval-after-load 'dired
-  (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
-  (evil-define-key 'normal dired-mode-map (kbd "l") 'dired-find-file)) ; use dired-open-file or dired-find-file instead if not using dired-open package
-
-(use-package nerd-icons-dired
-  :ensure t
-  :hook
-  (dired-mode . nerd-icons-dired-mode))
-
 (use-package ace-window
   :ensure t
   :defer t
@@ -86,9 +64,18 @@
   :defer t
   :hook (prog-mode))
 
-(use-package diredfl
-  :ensure t
-  :init
-  (diredfl-global-mode))
+(require 'eglot)
+(require 'cr-project)
+(require 'cr-theme)
+(require 'cr-dashboard)
+(require 'cr-keybindings)
+(require 'cr-completion)
+(require 'cr-undo)
+(require 'cr-treesit)
+(require 'cr-eglot)
+(require 'cr-org)
+(require 'cr-treemacs)
+(require 'cr-evil)
+(require 'cr-dired)
 
 (provide 'init)
