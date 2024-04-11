@@ -54,9 +54,21 @@
   (nerd-icons-completion-mode)
   (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup))
 
+(defun corfu-enable-in-minibuffer ()
+  "Enable Corfu in the minibuffer."
+  (when (local-variable-p 'completion-at-point-functions)
+    ;; (setq-local corfu-auto nil) ;; Enable/disable auto completion
+    (setq-local corfu-echo-delay nil ;; Disable automatic echo and popup
+                corfu-popupinfo-delay nil)
+    (corfu-mode 1)))
+
 (use-package corfu
   :ensure t
   ;; Optional customizations
+  :bind (:map corfu-map
+              ("C-SPC" . corfu-insert-separator)
+              ("C-j" . corfu-next)
+              ("C-k" . corfu-previous))
   :custom
   (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   (corfu-auto t)                 ;; Enable auto completion
@@ -77,6 +89,8 @@
   ;; be used globally (M-/).  See also the customization variable
   ;; `global-corfu-modes' to exclude certain modes.
   :init
+  (add-hook 'eshell-mode-hook (lambda () (setq-local corfu-auto nil) (corfu-mode)))
+  (add-hook 'minibuffer-setup-hook #'corfu-enable-in-minibuffer)
   (global-corfu-mode))
 
 (load "~/.config/doom/corfu-icons.el")
