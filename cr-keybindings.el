@@ -120,11 +120,14 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
     "h f" '(describe-function :which-key "Describe function")
     "h F" '(describe-face :which-key "Describe face")
     "h v" '(describe-variable :which-key "Describe variable")
-    "h m" '(describe-map :which-key "Describe map")
+    "h m" '(describe-mode :which-key "Describe mode")
     "h k" '(describe-key :which-key "Describe key")
     "h K" '(describe-keymap :which-key "Describe keymap")
     "h o" '(describe-font :which-key "Describe font")
     "h c" '(describe-char :which-key "Describe char"))
+  (cr/leader-keys
+    "s" '(:ignore t :which-key "Search")
+    "s i" '(imenu :which "IMenu"))
   )
 
 (use-package drag-stuff
