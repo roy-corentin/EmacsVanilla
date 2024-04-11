@@ -86,4 +86,9 @@
   :defer t
   :hook (prog-mode))
 
+(use-package diredfl
+  :ensure t
+  :init
+  (diredfl-global-mode))
+
 (provide 'init)
