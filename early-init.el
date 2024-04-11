@@ -42,7 +42,7 @@
   (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
   :custom
   (tab-bar-show nil)
-  (setq tab-bar-new-tab-choice "*dashboard*")
+  (tab-bar-new-tab-choice "*dashboard*")
   (make-backup-files nil)
   (auto-save-default nil)
   (create-lockfiles nil)
