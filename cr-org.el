@@ -63,12 +63,64 @@
         org-image-actual-width nil
         org-startup-with-inline-images t
         org-startup-with-latex-preview t
-        mixed-pitch-mode t))
+        org-enforce-todo-dependencies t
+        org-fontify-quote-and-verse-blocks t
+        org-fontify-whole-heading-line t
+        org-tags-column 0
+        org-M-RET-may-split-line nil
+        org-insert-heading-respect-content t
+        org-priority-faces '((?A . error)
+                             (?B . warning)
+                             (?C . success))
+        mixed-pitch-mode t)
+  (setq org-todo-keywords
+        '((sequence
+           "TODO(t)"             ; A task that is ready to be tackled
+           "IN-PROGRESS(i)"      ; A task that is in progress
+           "HOLD(h)"             ; Something is holding up this task
+           "|"                   ; The pipe necessary to separate "active" states and "inactive" states
+           "DONE(d)"             ; Task has been completed
+           "CANCELED(c)" )      ; Task has been canceled
+          (sequence
+           "🚩TODO(f)"           ; A task that is ready to be tackled
+           "👷🏻IN-PROGRESS(w)"    ; A task that is in progress
+           "🔒HOLD(l)"           ; Something is holding up this task
+           "|"                   ; The pipe necessary to separate "active" states and "inactive" states
+           "✔DONE(e)"           ; Task has been completed
+           "❌CANCELED(x)" )
+          (sequence
+           "[ ](T)"               ; A task that is ready tobe tackled
+           "[-](I)"               ; A task that is already started
+           "[?](H)"               ; A task that is holding up by a reason ?
+           "|"                    ; The pipe necessary to separate "active" states and "inactive" states
+           "[X](D)" )))
+  )
 
 (use-package toc-org
   :ensure t
   :after org
   :hook (org-mode . toc-org-enable))
+
+(use-package org-clock
+  :ensure nil
+  :config
+  (setq org-clock-persist 'history
+        ;; Resume when clocking into task with open clock
+        org-clock-in-resume t
+        ;; Remove log if task was clocked for 0:00 (accidental clocking)
+        org-clock-out-remove-zero-time-clocks t
+        ;; The default value (5) is too conservative.
+        org-clock-history-length 20)
+  (add-hook 'kill-emacs-hook #'org-clock-save))
+
+;; (use-package org-eldoc
+;;   :ensure nil
+;;   :hook (org-mode . org-eldoc-load)
+;;   :init (setq org-eldoc-breadcrumb-separator " → ")
+;;   :config
+;;   ;; HACK Fix infinite recursion when eldoc kicks in 'org' or 'python'
+;;   ;;   src blocks.
+;;   (puthash "org" #'ignore org-eldoc-local-functions-cache))
 
 (use-package org-bullets
   :ensure t
