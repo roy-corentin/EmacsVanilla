@@ -50,7 +50,9 @@
   :hook (org-mode . evil-org-mode)
   :config
   (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys))
+  (evil-org-agenda-set-keys)
+  (evil-define-key 'normal 'evil-org-mode
+    (kbd "C-<return>") 'my-org-insert-heading-respect-content-and-prepend-todo))
 
 (provide 'cr-evil)
 ;;; cr-evil.el ends here

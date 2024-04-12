@@ -8,6 +8,16 @@
 
 (defvar variable-pitch-font "C059")
 (defvar fixed-pitch-font "JetBrains Mono Nerd Font")
+(defun my-org-insert-heading-respect-content-and-prepend-todo ()
+  (interactive)
+  (let ((entry-is-todo (or (org-entry-is-todo-p)
+                           (org-entry-is-done-p))))
+    (evil-insert-state)
+    (org-insert-heading-respect-content)
+    (when entry-is-todo
+      (just-one-space)
+      (insert "TODO")
+      (just-one-space))))
 
 (use-package mixed-pitch
   :ensure t
