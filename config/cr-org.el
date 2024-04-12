@@ -77,7 +77,7 @@
         org-fontify-whole-heading-line t
         org-tags-column 0
         org-M-RET-may-split-line nil
-        org-insert-heading-respect-content t
+        org-insert-heading-respect-content nil
         org-default-priority 67
         org-hide-emphasis-markers t
         org-hierarchical-todo-statistics nil

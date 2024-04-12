@@ -30,24 +30,19 @@
   :hook (doom-modeline-mode . size-indication-mode) ; filesize in modeline
   :hook (doom-modeline-mode . column-number-mode)   ; cursor column in modeline
   :init
-  (setq projectile-dynamic-mode-line nil)
   (setq doom-modeline-bar-width 3
         doom-modeline-github nil
         doom-modeline-mu4e nil
         doom-modeline-persp-name nil
+        doom-modeline-position-column-line-format '("%l:%c")
         doom-modeline-minor-modes nil
         doom-modeline-major-mode-icon nil
+        doom-modeline-buffer-file-name-style 'truncate-upto-project
         doom-modeline-buffer-encoding 'nondefault)
   (doom-modeline-mode 1)
 
   :config
   (add-hook 'doom-load-theme-hook #'doom-modeline-refresh-bars)
-  ;; (add-hook 'magit-mode-hook
-  ;;           (defun +modeline-hide-in-non-status-buffer-h ()
-  ;;             "Show minimal modeline in magit-status buffer, no modeline elsewhere."
-  ;;             (if (eq major-mode 'magit-status-mode)
-  ;;                 (doom-modeline-set-modeline 'magit)
-  ;;               (hide-mode-line-mode))))
 
   ;;; Extensions
   (use-package anzu
@@ -66,7 +61,6 @@
 
 (use-package git-gutter
   :ensure t
-  :defer t
   :init
   (global-git-gutter-mode)
   :config
