@@ -18,7 +18,8 @@
         evil-undo-system 'undo-fu
         evil-move-beyond-eol t
         evil-move-cursor-back nil
-        evil-kill-on-visual-paste nil)
+        evil-kill-on-visual-paste nil
+        evil-symbol-word-search t)
   :config
   (evil-mode 1))
 
