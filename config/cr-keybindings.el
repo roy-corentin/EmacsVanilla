@@ -105,9 +105,11 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
     "n r f" '(org-roam-node-find :which-key "Find roam note"))
   (cr/leader-keys
     "t" '(:ignore t :which-key "Toggle")
-    "t TAB" '(toggle-frame-tab-bar :which-key "Tab")
-    "t t" '(treemacs :which-key "Treemacs")
+    "t t" '(toggle-frame-tab-bar :which-key "Tab")
     "t o" '(olivetti-mode :which-key "Olivetti"))
+  (cr/leader-keys
+    "o" '(:ignore t :which-key "Open")
+    "o p" '(treemacs :which-key "Treemacs"))
   (cr/leader-keys
     "TAB" '(:ignore t :which-key "Tab")
     "TAB TAB" '(tab-list :which-key "List tabs")
@@ -131,6 +133,7 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
     "h t" '(consult-theme :which-key "Load theme"))
   (cr/leader-keys
     "s" '(:ignore t :which-key "Search")
+    "s s" '(consult-line :which-key "Search in file")
     "s i" '(consult-imenu :which "IMenu")
     "s p" '(consult-ripgrep :wich "Search in Project")
     "s e" '(consult-flymake :which "Search Erros"))
