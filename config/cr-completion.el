@@ -113,5 +113,9 @@
   (add-to-list 'corfu-margin-formatters 'nerd-icons-corfu-formatter)
   (setq nerd-icons-corfu-mapping my-corfu-icons))
 
+(use-package consult
+  :ensure t
+  :defer t)
+
 (provide 'cr-completion)
 ;;; cr-completion.el ends here
