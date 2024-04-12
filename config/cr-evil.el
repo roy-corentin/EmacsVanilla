@@ -53,7 +53,8 @@
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys)
   (evil-define-key 'normal 'evil-org-mode
-    (kbd "C-<return>") 'my-org-insert-heading-respect-content-and-prepend-todo))
+    (kbd "C-<return>") 'my-org-insert-heading-respect-content-and-prepend-todo
+    (kbd "<return>") 'org-open-at-point))
 
 (provide 'cr-evil)
 ;;; cr-evil.el ends here
