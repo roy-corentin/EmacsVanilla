@@ -40,6 +40,13 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
     (require 'org))
   (cr/find-file-in-dir org-directory))
 
+;; Create a new tab, switch to the project and rename the tab with project name
+(defun cr/switch-project-in-new-tab ()
+  (interactive)
+  (tab-new)
+  (call-interactively #'project-switch-project)
+  (tab-rename (project-name (project-current))))
+
 (use-package general
   :ensure t
   :defer t
@@ -90,7 +97,7 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
     "g g" '(magit-status :which-key "Magit Status"))
   (cr/leader-keys
     "p" '(:ignore t :which-key "Project")
-    "p p" '(project-switch-project :which-key "Switch project")
+    "p p" '(cr/switch-project-in-new-tab :which-key "Switch project")
     "p d" '(project-dired :which-key "Dired project")
     "p e" '(project-eshell :which-key "Eshell project")
     "p c" '(project-compile :which-key "Compile project"))
