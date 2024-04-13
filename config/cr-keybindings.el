@@ -22,6 +22,18 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
   (let ((evil-vsplit-window-right (not evil-vsplit-window-right)))
     (call-interactively #'evil-window-vsplit)))
 
+;; From Doom
+(defun +vertico/embark-preview ()
+  "Previews candidate in vertico buffer, unless it's a consult command"
+  (interactive)
+  (unless (bound-and-true-p consult--preview-function)
+    (if (fboundp 'embark-dwim)
+        (save-selected-window
+          (let (embark-quit-after-action)
+            (embark-dwim)))
+      (user-error "Embark not installed, aborting..."))))
+
+
 (defun cr/find-file-in-dir(dir)
   (unless (file-directory-p dir)
     (error "Directory %S does not exist" dir))
@@ -63,21 +75,18 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
 
   (cr/leader-keys
     "." '(find-file :which-key "Find file")
-    "SPC" '(project-find-file :which-key "Find file in project"))
-  (cr/leader-keys
+    "SPC" '(project-find-file :which-key "Find file in project")
     "b" '(:ignore t :which-key "Buffer")
     "b b" '(consult-project-buffer :which-key "Switch project buffer")
     "b B" '(consult-buffer :which-key "Switch all buffer")
     "b i" '(ibuffer :which-key "Ibuffer")
     "b k" '(kill-current-buffer :which-key "Kill current buffer")
-    "b r" '(rename-buffer :which-key "Rename current buffer"))
-  (cr/leader-keys
+    "b r" '(rename-buffer :which-key "Rename current buffer")
     "f" '(:ignore t :which-key "File")
     "f f" '(find-file :which-key "Find file")
     "f r" '(recentf-open-files :which-key "Recentf")
     "f R" '(consult-recent-file :which-key "Recent files")
-    "f s" '(save-buffer :which-key "Save file"))
-  (cr/leader-keys
+    "f s" '(save-buffer :which-key "Save file")
     "w" '(:ignore t :which-key "Window")
     "w h" '(evil-window-left :which-key "Move left")
     "w H" '(evil-window-move-far-left :which-key "Move window left")
@@ -93,34 +102,28 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
     "w S" '(+evil/window-split-and-follow :which-key "Split window and follow")
     "w v" '(evil-window-vsplit :which-key "Vsplit window")
     "w V" '(+evil/window-vsplit-and-follow :which-key "Vsplit window and follow")
-    "w m" '(delete-other-windows :which-key "Maximize window"))
-  (cr/leader-keys
+    "w m" '(delete-other-windows :which-key "Maximize window")
     "g" '(:ignore t :which-key "Git")
-    "g g" '(magit-status :which-key "Magit Status"))
-  (cr/leader-keys
+    "g g" '(magit-status :which-key "Magit Status")
     "p" '(:ignore t :which-key "Project")
     "p p" '(cr/switch-project-in-new-tab :which-key "Switch project")
     "p d" '(project-dired :which-key "Dired project")
     "p e" '(project-eshell :which-key "Eshell project")
-    "p c" '(project-compile :which-key "Compile project"))
-  (cr/leader-keys
-    "f" '(:ignore t :which-key "File")
+    "p c" '(project-compile :which-key "Compile project")
+    "f" '(:ignore t :which-key "Find")
     "f r" '(recentf :which-key "Recent files")
-    "f p" '(cr/find-config-file :which-key "Recent files"))
-  (cr/leader-keys
+    "f p" '(cr/find-config-file :which-key "Recent files")
+    "f t" '(tab-bar-select-tab-by-name :which-key "Tab")
     "n" '(:ignore t :which-key "Note")
     "n f" '(cr/find-note :which-key "Find note")
     "n r" '(:ignore t :which-key "Roam")
-    "n r f" '(org-roam-node-find :which-key "Find roam note"))
-  (cr/leader-keys
+    "n r f" '(org-roam-node-find :which-key "Find roam note")
     "t" '(:ignore t :which-key "Toggle")
     "t t" '(toggle-frame-tab-bar :which-key "Tab")
-    "t o" '(olivetti-mode :which-key "Olivetti"))
-  (cr/leader-keys
+    "t o" '(olivetti-mode :which-key "Olivetti")
     "o" '(:ignore t :which-key "Open")
     "o p" '(treemacs :which-key "Treemacs")
-    "o A" '(org-agenda :which-key "Org-Agenda"))
-  (cr/leader-keys
+    "o A" '(org-agenda :which-key "Org-Agenda")
     "TAB" '(:ignore t :which-key "Tab")
     "TAB TAB" '(tab-list :which-key "List tabs")
     "TAB n" '(tab-new :which-key "New tab")
@@ -129,8 +132,7 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
     "TAB d" '(tab-close :which-key "Close tab")
     "TAB D" '(tab-close-other :which-key "Close other tabs")
     "TAB r" '(tab-rename :which-key "Rename tab")
-    "TAB s" '(tab-switch :which-key "Switch tab"))
-  (cr/leader-keys
+    "TAB s" '(tab-switch :which-key "Switch tab")
     "h" '(:ignore t :which-key "Help")
     "h f" '(describe-function :which-key "Describe function")
     "h F" '(describe-face :which-key "Describe face")
@@ -140,19 +142,20 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
     "h K" '(describe-keymap :which-key "Describe keymap")
     "h o" '(describe-font :which-key "Describe font")
     "h c" '(describe-char :which-key "Describe char")
-    "h t" '(consult-theme :which-key "Load theme"))
-  (cr/leader-keys
+    "h t" '(consult-theme :which-key "Load theme")
     "s" '(:ignore t :which-key "Search")
     "s s" '(consult-line :which-key "Search in file")
     "s i" '(consult-imenu :which "IMenu")
     "s p" '(consult-ripgrep :wich "Search in Project")
-    "s e" '(consult-flymake :which "Search Erros"))
-  (cr/leader-keys
+    "s e" '(consult-flymake :which "Search Erros")
     "d" '(:ignore t :which-key "Dired")
-    "d d" '(dired-jump :which-key "Dired here"))
-  (cr/leader-keys
+    "d d" '(dired-jump :which-key "Dired here")
     "i" '(:ignore t :which-key "Insert")
-    "i y" '(consult-yank-pop :which-key "Yanks"))
+    "i y" '(consult-yank-pop :which-key "Yanks")
+    "c" '(:ignore t :which-key "Code")
+    "c d" '(evil-goto-definition :which-key "Go to definition")
+    "c D" '(xref-find-references :which-key "Find References"))
+  "c r" '(eglot-rename :which-key "Eglot rename")
   ;; evil-multiedit
   (general-define-key
    :states 'normal
