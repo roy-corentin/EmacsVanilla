@@ -134,7 +134,6 @@
 (require 'cr-project)
 (require 'cr-theme)
 (require 'cr-dashboard)
-(require 'cr-keybindings)
 (require 'cr-completion)
 (require 'cr-undo)
 (require 'cr-treesit)
@@ -143,6 +142,7 @@
 (require 'cr-treemacs)
 (require 'cr-evil)
 (require 'cr-dired)
+(require 'cr-keybindings)
 
 ;; Key set at the end to avoid conflicts with iedit
 (global-set-key (kbd "C-,") 'previous-buffer)

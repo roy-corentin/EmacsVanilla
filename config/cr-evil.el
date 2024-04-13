@@ -11,7 +11,6 @@
 ;; Use evil mode for vim-like keybindings
 (use-package evil
   :ensure t
-  :general
   :init
   (setq evil-want-keybinding nil)
   (setq evil-want-integration t)
@@ -67,29 +66,7 @@
   ;; other faces such as `diff-added` will be used for other actions
   (evil-goggles-use-diff-faces))
 
-(use-package evil-multiedit
-  :ensure t
-  :config
-  (general-define-key
-   :states 'normal
-   "M-d" 'evil-multiedit-match-symbol-and-next
-   "M-D" 'evil-multiedit-match-symbol-and-prev)
-  (general-define-key
-   :states 'visual
-   "R" 'evil-multiedit-match-all
-   "M-d" 'evil-multiedit-match-and-next
-   "M-D" 'evil-multiedit-match-and-prev)
-  (general-define-key
-   :states '(visual normal)
-   "C-M-d" 'evil-multiedit-restore)
-  (general-define-key
-   :states '(normal insert)
-   :kemaps '(evil-multiedit-state-map)
-   "M-d" 'evil-multiedit-match-and-next
-   "M-S-d" 'evil-multiedit-match-and-prev
-   "RET" 'evil-multiedit-toggle-or-restrict-region
-   "C-n" 'evil-multiedit-next
-   "C-p" 'evil-multiedit-prev))
+(use-package evil-multiedit :ensure t)
 
 (use-package evil-mc
   :ensure t

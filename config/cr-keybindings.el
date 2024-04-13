@@ -49,9 +49,10 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
 
 (use-package general
   :ensure t
-  :defer t
   :config
   (general-evil-setup)
+  
+  (add-hook 'org-agenda-mode-hook #'general-override-local-mode)
 
   ;; set up 'SPC' as the global leader key
   (general-create-definer cr/leader-keys
@@ -152,6 +153,27 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
   (cr/leader-keys
     "i" '(:ignore t :which-key "Insert")
     "i y" '(consult-yank-pop :which-key "Yanks"))
+  ;; evil-multiedit
+  (general-define-key
+   :states 'normal
+   "M-d" 'evil-multiedit-match-symbol-and-next
+   "M-D" 'evil-multiedit-match-symbol-and-prev)
+  (general-define-key
+   :states 'visual
+   "R" 'evil-multiedit-match-all
+   "M-d" 'evil-multiedit-match-and-next
+   "M-D" 'evil-multiedit-match-and-prev)
+  (general-define-key
+   :states '(visual normal)
+   "C-M-d" 'evil-multiedit-restore)
+  (general-define-key
+   :states '(normal insert)
+   :kemaps '(evil-multiedit-state-map)
+   "M-d" 'evil-multiedit-match-and-next
+   "M-S-d" 'evil-multiedit-match-and-prev
+   "RET" 'evil-multiedit-toggle-or-restrict-region
+   "C-n" 'evil-multiedit-next
+   "C-p" 'evil-multiedit-prev) 
   )
 
 (use-package drag-stuff
