@@ -75,6 +75,7 @@
   (setq which-key-show-early-on-C-h t)
   (setq which-key-idle-secondary-delay 0.05)
   (setq which-key-popup-type 'side-window)
+  (push '(("" ."\\`+?evil[-:]?\\(?:a-\\)?\\(.*\\)") . (nil .  "◂\\1")) which-key-replacement-alist)
   (which-key-mode))
 
 (use-package magit
