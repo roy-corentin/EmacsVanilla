@@ -61,9 +61,7 @@
   :bind
   ("C-=" . text-scale-increase)
   ("C--" . text-scale-decrease)
-  ("C-0" . (lambda () (interactive) (text-scale-set 0)))
-  ("C-," . #'previous-buffer)
-  ("C-;" . #'next-buffer)
+  ("C-+" . (lambda () (interactive) (text-scale-set 0)))
   )
 
 (use-package gcmh
@@ -139,3 +137,6 @@
 (require 'cr-evil)
 (require 'cr-dired)
 
+;; Key set at the end to avoid conflicts with iedit
+(global-set-key (kbd "C-,") 'previous-buffer)
+(global-set-key (kbd "C-;") 'next-buffer)
