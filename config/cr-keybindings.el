@@ -68,7 +68,8 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
     "b b" '(consult-project-buffer :which-key "Switch project buffer")
     "b B" '(consult-buffer :which-key "Switch all buffer")
     "b i" '(ibuffer :which-key "Ibuffer")
-    "b k" '(kill-current-buffer :which-key "Kill current buffer"))
+    "b k" '(kill-current-buffer :which-key "Kill current buffer")
+    "b r" '(rename-buffer :which-key "Rename current buffer"))
   (cr/leader-keys
     "f" '(:ignore t :which-key "File")
     "f f" '(find-file :which-key "Find file")
@@ -116,7 +117,8 @@ If `evil-vsplit-window-right' is non-nil, the new window isn't focused."
     "t o" '(olivetti-mode :which-key "Olivetti"))
   (cr/leader-keys
     "o" '(:ignore t :which-key "Open")
-    "o p" '(treemacs :which-key "Treemacs"))
+    "o p" '(treemacs :which-key "Treemacs")
+    "o A" '(org-agenda :which-key "Org-Agenda"))
   (cr/leader-keys
     "TAB" '(:ignore t :which-key "Tab")
     "TAB TAB" '(tab-list :which-key "List tabs")
