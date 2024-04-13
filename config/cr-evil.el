@@ -11,8 +11,10 @@
 ;; Use evil mode for vim-like keybindings
 (use-package evil
   :ensure t
+  :general
   :init
   (setq evil-want-keybinding nil)
+  (setq evil-want-integration t)
   (setq evil-want-Y-yank-to-eol t
         evil-want-C-u-scroll t
         evil-undo-system 'undo-fu
@@ -26,8 +28,8 @@
   (evil-mode 1))
 
 (use-package evil-collection
-  :after evil
   :ensure t
+  :after evil
   :config
   (defvar evil-collection-magit-use-z-for-folds t)
   (evil-collection-init))
@@ -46,7 +48,7 @@
 
 (use-package evil-org
   :ensure t
-  :after org
+  :after evil org
   :hook (org-mode . evil-org-mode)
   :config
   (require 'evil-org-agenda)
