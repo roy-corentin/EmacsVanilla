@@ -88,5 +88,11 @@
    "RET" 'evil-multiedit-toggle-or-restrict-region
    "C-n" 'evil-multiedit-next
    "C-p" 'evil-multiedit-prev))
+
+(use-package evil-mc
+  :ensure t
+  :config
+  (global-evil-mc-mode 1))
+
 (provide 'cr-evil)
 ;;; cr-evil.el ends here
