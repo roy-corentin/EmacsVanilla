@@ -12,7 +12,8 @@
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-moonlight t)
+  ;; (load-theme 'doom-moonlight t)
+  (load-theme 'modus-vivendi t)
 
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
@@ -62,7 +63,7 @@
 (use-package git-gutter
   :ensure t
   :init
-  (global-git-gutter-mode)
+  (global-git-gutter-mode t)
   :config
   (fringe-mode '8)
   (setq-default fringes-outside-margins t))
