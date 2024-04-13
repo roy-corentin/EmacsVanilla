@@ -20,6 +20,8 @@
         evil-move-cursor-back nil
         evil-kill-on-visual-paste nil
         evil-symbol-word-search t)
+  :bind (:map evil-normal-state-map
+              ("TAB" . evil-jump-item))
   :config
   (evil-mode 1))
 
