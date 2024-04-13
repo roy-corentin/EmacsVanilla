@@ -130,6 +130,12 @@
   :defer t
   :hook (prog-mode))
 
+(use-package csv
+  :ensure t)
+
+(use-package csv-mode
+  :ensure t)
+
 (require 'eglot)
 (require 'cr-project)
 (require 'cr-theme)
