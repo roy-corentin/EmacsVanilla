@@ -29,6 +29,7 @@
   :after evil
   :ensure t
   :config
+  (defvar evil-collection-magit-use-z-for-folds t)
   (evil-collection-init))
 
 (use-package evil-surround
@@ -42,10 +43,6 @@
   (setq evil-escape-key-sequence "jk"
         evil-escape-delay 0.15)
   (evil-escape-mode 1))
-
-(use-package evil-collection-magit
-  :defer t
-  :init (defvar evil-collection-magit-use-z-for-folds t))
 
 (use-package evil-org
   :ensure t
