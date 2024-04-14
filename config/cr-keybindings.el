@@ -8,6 +8,15 @@
 
 (require 'doom-methods)
 
+(defun +default/search-cwd (&optional arg)
+  "Conduct a text search in files under the current folder.
+If prefix ARG is set, prompt for a directory to search from."
+  (interactive "P")
+  (let ((default-directory
+         (if arg
+             (read-directory-name "Search directory: ")
+           default-directory)))
+    (call-interactively #'consult-ripgrep)))
 
 (defun cr/find-file-in-dir(dir)
   (unless (file-directory-p dir)
@@ -99,6 +108,7 @@
     "o" '(:ignore t :which-key "Open")
     "o p" '(treemacs :which-key "Treemacs")
     "o A" '(org-agenda :which-key "Org-Agenda")
+    "o T" '(vterm :which-key "Open Vterm here")
     "TAB" '(:ignore t :which-key "Tab")
     "TAB TAB" '(tab-list :which-key "List tabs")
     "TAB n" '(tab-new :which-key "New tab")
@@ -123,6 +133,7 @@
     "s i" '(consult-imenu :which "IMenu")
     "s p" '(consult-ripgrep :wich "Search in Project")
     "s e" '(consult-flymake :which "Search Erros")
+    "s d" '(+default/search-cwd :which "Search in current dir")
     "d" '(:ignore t :which-key "Dired")
     "d d" '(dired-jump :which-key "Dired here")
     "i" '(:ignore t :which-key "Insert")

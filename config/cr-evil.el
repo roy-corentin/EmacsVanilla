@@ -5,8 +5,6 @@
 ;; Author: Corentin Roy <corentin.roy02@laposte.net>
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 07, 2024
-;; Modified: avril 07, 2024
-;;;
 
 ;; Use evil mode for vim-like keybindings
 (use-package evil
@@ -30,8 +28,22 @@
   :ensure t
   :after evil
   :config
-  (defvar evil-collection-magit-use-z-for-folds t)
   (evil-collection-init))
+
+(use-package evil-collection-magit
+  :defer t
+  :init (defvar evil-collection-magit-use-z-for-folds t)
+  :config
+  ;; Some extra vim-isms I thought were missing from upstream
+  (evil-define-key* '(normal visual) magit-mode-map
+    "*"  #'magit-worktree
+    "zt" #'evil-scroll-line-to-top
+    "zz" #'evil-scroll-line-to-center
+    "zb" #'evil-scroll-line-to-bottom
+    "g=" #'magit-diff-default-context
+    "gi" #'forge-jump-to-issues
+    "gm" #'forge-jump-to-pullreqs)
+  )
 
 (use-package evil-surround
   :ensure t
@@ -41,9 +53,17 @@
 (use-package evil-escape
   :ensure t
   :init
-  (setq evil-escape-key-sequence "jk"
+  (setq evil-escape-excluded-states '(normal visual multiedit emacs motion)
+        evil-escape-excluded-major-modes '(magit-mode treemacs-mode)
+        evil-escape-key-sequence "jk"
         evil-escape-delay 0.15)
+  (evil-define-key* '(insert replace visual operator) 'global "\C-g" #'evil-escape)
   (evil-escape-mode 1))
+
+(use-package evil-lion
+  :ensure t
+  :config
+  (evil-lion-mode))
 
 (use-package evil-org
   :ensure t

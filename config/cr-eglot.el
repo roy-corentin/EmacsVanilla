@@ -19,8 +19,13 @@
   :hook (yaml-ts-mode . eglot-ensure)
   :hook (toml-ts-mode . eglot-ensure)
   :hook (elixir-ts-mode . eglot-ensure)
-  :init
+  :config
   (add-to-list 'eglot-server-programs '(elixir-ts-mode "~/Applications/ex-ls/releases/language_server.sh"))
   (add-to-list 'eglot-server-programs '((ruby-mode ruby-ts-mode) "ruby-lsp")))
+
+(use-package eglot-booster
+  :after eglot
+  :config (eglot-booster-mode))
+
 
 (provide 'cr-eglot)

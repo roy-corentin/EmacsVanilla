@@ -84,20 +84,6 @@
   (push '(("" ."\\`+?evil[-:]?\\(?:a-\\)?\\(.*\\)") . (nil .  "◂\\1")) which-key-replacement-alist)
   (which-key-mode))
 
-(use-package magit
-  :ensure t
-  :bind ("C-x g" . magit-status)
-  :config
-  (setq transient-default-level 5
-        magit-diff-refine-hunk t ; show granular diffs in selected hunk
-        ;; Don't autosave repo buffers. This is too magical, and saving can
-        ;; trigger a bunch of unwanted side-effects, like save hooks and
-        ;; formatters. Trust the user to know what they're doing.
-        magit-save-repository-buffers nil
-        ;; Don't display parent/related refs in commit buffers; they are rarely
-        ;; helpful and only add to runtime costs.
-        magit-revision-insert-related-refs nil))
-
 (use-package apheleia
   :ensure t
   :config
@@ -136,14 +122,30 @@
 (use-package csv-mode
   :ensure t)
 
-(require 'eglot)
+(use-package markdown-mode
+  :ensure t)
+
+(use-package docker
+  :ensure t)
+
+(use-package casual
+  :ensure t
+  :bind (:map calc-mode-map ("C-o" . 'casual-main-menu)))
+
+(use-package restclient
+  :ensure t)
+
+(use-package vterm
+  :ensure t)
+
+(require 'cr-magit)
+(require 'cr-eglot)
 (require 'cr-project)
 (require 'cr-theme)
 (require 'cr-dashboard)
 (require 'cr-completion)
 (require 'cr-undo)
 (require 'cr-treesit)
-(require 'cr-eglot)
 (require 'cr-org)
 (require 'cr-treemacs)
 (require 'cr-evil)
@@ -153,3 +155,25 @@
 ;; Key set at the end to avoid conflicts with iedit
 (global-set-key (kbd "C-,") 'previous-buffer)
 (global-set-key (kbd "C-;") 'next-buffer)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(magit-todos eglot-booster docker markdown-mode wgrep org-roam-ui websocket csv-mode csv evil-goggles evil-mc evil-multiedit evil-org which-key vundo vi-tilde-fringe vertico undo-fu-session undo-fu treesit-auto treemacs-nerd-icons treemacs-magit treemacs-evil toc-org smartparens rainbow-delimiters org-roam org-bullets orderless olivetti nerd-icons-dired nerd-icons-corfu nerd-icons-completion mixed-pitch marginalia hl-todo git-gutter general evil-surround evil-escape evil-collection evil-anzu embark-consult elixir-ts-mode drag-stuff doom-themes doom-modeline diredfl dashboard corfu cape apheleia))
+ '(package-vc-selected-packages
+   '((eglot-booster :vc-backend Git :url "https://github.com/jdtsmith/eglot-booster"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(evil-goggles-change-face ((t (:inherit diff-removed))))
+ '(evil-goggles-delete-face ((t (:inherit diff-removed))))
+ '(evil-goggles-paste-face ((t (:inherit diff-added))))
+ '(evil-goggles-undo-redo-add-face ((t (:inherit diff-added))))
+ '(evil-goggles-undo-redo-change-face ((t (:inherit diff-changed))))
+ '(evil-goggles-undo-redo-remove-face ((t (:inherit diff-removed))))
+ '(evil-goggles-yank-face ((t (:inherit diff-changed)))))
