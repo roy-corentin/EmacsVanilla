@@ -137,7 +137,10 @@
   :ensure t)
 
 (use-package vterm
-  :ensure t)
+  :ensure t
+  :config
+  (setq vterm-kill-buffer-on-exit t)
+  (setq vterm-max-scrollback 5000))
 
 (require 'cr-magit)
 (require 'cr-yasnippet)
