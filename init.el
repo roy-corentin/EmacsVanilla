@@ -140,6 +140,7 @@
   :ensure t)
 
 (require 'cr-magit)
+(require 'cr-yasnippet)
 (require 'cr-eglot)
 (require 'cr-project)
 (require 'cr-theme)
@@ -163,9 +164,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(magit-todos eglot-booster docker markdown-mode wgrep org-roam-ui websocket csv-mode csv evil-goggles evil-mc evil-multiedit evil-org which-key vundo vi-tilde-fringe vertico undo-fu-session undo-fu treesit-auto treemacs-nerd-icons treemacs-magit treemacs-evil toc-org smartparens rainbow-delimiters org-roam org-bullets orderless olivetti nerd-icons-dired nerd-icons-corfu nerd-icons-completion mixed-pitch marginalia hl-todo git-gutter general evil-surround evil-escape evil-collection evil-anzu embark-consult elixir-ts-mode drag-stuff doom-themes doom-modeline diredfl dashboard corfu cape apheleia))
+   '(auto-yasnippet snippets magit-todos eglot-booster docker markdown-mode wgrep org-roam-ui websocket csv-mode csv evil-goggles evil-mc evil-multiedit evil-org which-key vundo vi-tilde-fringe vertico undo-fu-session undo-fu treesit-auto treemacs-nerd-icons treemacs-magit treemacs-evil toc-org smartparens rainbow-delimiters org-roam org-bullets orderless olivetti nerd-icons-dired nerd-icons-corfu nerd-icons-completion mixed-pitch marginalia hl-todo git-gutter general evil-surround evil-escape evil-collection evil-anzu embark-consult elixir-ts-mode drag-stuff doom-themes doom-modeline diredfl dashboard corfu cape apheleia))
  '(package-vc-selected-packages
-   '((eglot-booster :vc-backend Git :url "https://github.com/jdtsmith/eglot-booster"))))
+   '((snippets :vc-backend Git :url "https://github.com/doomemacs/snippets")
+     (eglot-booster :vc-backend Git :url "https://github.com/jdtsmith/eglot-booster"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
