@@ -8,6 +8,15 @@
 
 (require 'doom-methods)
 
+(defun cr/vterm-in-project (arg)
+  "Open a terminal buffer in the current window at project root.
+If prefix ARG is non-nil, cd into `default-directory' instead of project root.
+Returns the vterm buffer."
+  (interactive "P")
+  (let ((default-directory (if arg default-directory (project-root (project-current t)))))
+    (setenv "PROOT" default-directory)
+    (vterm vterm-buffer-name)))
+
 (defun +default/search-cwd (&optional arg)
   "Conduct a text search in files under the current folder.
 If prefix ARG is set, prompt for a directory to search from."
@@ -106,7 +115,7 @@ If prefix ARG is set, prompt for a directory to search from."
     "o" '(:ignore t :which-key "Open")
     "o p" '(treemacs :which-key "Treemacs")
     "o A" '(org-agenda :which-key "Org-Agenda")
-    "o T" '(vterm :which-key "Open Vterm here")
+    "o T" '(cr/vterm-in-project :which-key "Open Vterm here")
     "TAB" '(:ignore t :which-key "Tab")
     "TAB TAB" '(tab-list :which-key "List tabs")
     "TAB n" '(tab-new :which-key "New tab")
