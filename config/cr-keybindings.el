@@ -52,7 +52,7 @@ If prefix ARG is set, prompt for a directory to search from."
 
   ;; set up 'SPC' as the global leader key
   (general-create-definer cr/leader-keys
-    :states '(normal insert visual emacs)
+    :states '(normal insert visual motion emacs)
     :keymaps 'override
     :prefix "SPC" ;; set leader
     :global-prefix "M-SPC") ;; access leader in insert mode
