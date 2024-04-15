@@ -47,16 +47,13 @@ If prefix ARG is set, prompt for a directory to search from."
   :ensure t
   :config
   (general-evil-setup)
-  
   (add-hook 'org-agenda-mode-hook #'general-override-local-mode)
-
   ;; set up 'SPC' as the global leader key
   (general-create-definer cr/leader-keys
     :states '(normal insert visual motion emacs)
     :keymaps 'override
     :prefix "SPC" ;; set leader
     :global-prefix "M-SPC") ;; access leader in insert mode
-
   (cr/leader-keys
     "." '(find-file :which-key "Find file")
     "SPC" '(project-find-file :which-key "Find file in project")
@@ -68,8 +65,8 @@ If prefix ARG is set, prompt for a directory to search from."
     "b r" '(rename-buffer :which-key "Rename current buffer")
     "f" '(:ignore t :which-key "File")
     "f f" '(find-file :which-key "Find file")
-    "f r" '(recentf-open-files :which-key "Recentf")
-    "f R" '(consult-recent-file :which-key "Recent files")
+    "f r" '(consult-recent-file :which-key "Recentf")
+    "f R" '(rename-file :which-key "Recent files")
     "f s" '(save-buffer :which-key "Save file")
     "w" '(:ignore t :which-key "Window")
     "w h" '(evil-window-left :which-key "Move left")
@@ -103,7 +100,8 @@ If prefix ARG is set, prompt for a directory to search from."
     "n r" '(:ignore t :which-key "Roam")
     "n r f" '(org-roam-node-find :which-key "Find roam note")
     "t" '(:ignore t :which-key "Toggle")
-    "t t" '(toggle-frame-tab-bar :which-key "Tab")
+    "t t" '(global-tab-line-mode :which-key "Tab Line")
+    "t w" '(toggle-frame-tab-bar :which-key "Tab Bar")
     "t o" '(olivetti-mode :which-key "Olivetti")
     "o" '(:ignore t :which-key "Open")
     "o p" '(treemacs :which-key "Treemacs")
@@ -134,13 +132,15 @@ If prefix ARG is set, prompt for a directory to search from."
     "s p" '(consult-ripgrep :wich "Search in Project")
     "s e" '(consult-flymake :which "Search Erros")
     "s d" '(+default/search-cwd :which "Search in current dir")
+    "s u" '(vundo :which "Vundo")
     "d" '(:ignore t :which-key "Dired")
     "d d" '(dired-jump :which-key "Dired here")
     "i" '(:ignore t :which-key "Insert")
     "i y" '(consult-yank-pop :which-key "Yanks")
     "c" '(:ignore t :which-key "Code")
     "c d" '(evil-goto-definition :which-key "Go to definition")
-    "c D" '(xref-find-references :which-key "Find References"))
+    "c D" '(xref-find-references :which-key "Find References")
+    "c a" '(eglot-code-actions :which-key "Find References"))
   "c r" '(eglot-rename :which-key "Eglot rename")
   ;; evil-multiedit
   (general-define-key
@@ -157,7 +157,7 @@ If prefix ARG is set, prompt for a directory to search from."
    "C-M-d" 'evil-multiedit-restore)
   (general-define-key
    :states '(normal insert)
-   :kemaps '(evil-multiedit-state-map)
+   :keymaps 'evil-multiedit-state-map
    "M-d" 'evil-multiedit-match-and-next
    "M-S-d" 'evil-multiedit-match-and-prev
    "RET" 'evil-multiedit-toggle-or-restrict-region
