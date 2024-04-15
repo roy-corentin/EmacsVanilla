@@ -6,7 +6,6 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 13, 2024
 
-
 (use-package magit
   :ensure t
   :bind ("C-x g" . magit-status)
