@@ -35,6 +35,7 @@
   (desktop-save-mode 1)
   (defalias 'yes-or-no-p 'y-or-n-p)
   (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+  (add-hook 'yaml-mode 'display-line-numbers-mode)
   (add-hook 'org-mode-hook 'display-line-numbers-mode)
   (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
   :custom
