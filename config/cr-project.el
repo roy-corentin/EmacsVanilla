@@ -22,45 +22,8 @@
      "mix.exs"
      "go.mod"
      "Cargo.toml"
-     "project.clj"
-     "pom.xml"
      "package.json"
-     "Makefile"
-     "README.org"
-     "README.md"))
+     "Makefile"))
   )
-
-;; (defvar project-root-markers
-;;   '("package.json"
-;;     "tsconfig.json"
-;;     "jsconfig.json"
-;;     "elm.json"
-;;     "mix.exs"
-;;     "*.sln")
-;;   "Files or directories that indicate the root of a project.")
-
-;; ;; Probably better in .dir-locals.el.
-;; (setq project-vc-ignores
-;;       '("node_modules"
-;;         "target"
-;;         "build"
-;;         "_build"
-;;         "package-lock.json"
-;;         "elm-stuff"))
-
-;; (defun project-find-nomono (dir)
-;;   (let ((root
-;;          (locate-dominating-file
-;;           dir
-;;           (lambda (d)
-;;             (let ((default-directory d))
-;;               (seq-some #'file-expand-wildcards
-;;                         project-root-markers))))))
-;;     (when (and root
-;;                (ignore-errors
-;;                  (vc-responsible-backend root)))
-;;       (cons 'vc root))))
-
-;; (add-hook 'project-find-functions #'project-find-nomono)
 
 (provide 'cr-project)
