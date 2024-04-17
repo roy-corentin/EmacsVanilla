@@ -151,7 +151,10 @@ If prefix ARG is set, prompt for a directory to search from."
     "c d" '(evil-goto-definition :which-key "Go to definition")
     "c D" '(xref-find-references :which-key "Find References")
     "c a" '(eglot-code-actions :which-key "Find References")
-    "c r" '(eglot-rename :which-key "Eglot rename"))
+    "c r" '(eglot-rename :which-key "Eglot rename")
+    "q" '(:ignore t :which-key "Quit")
+    "q q" '(kill-emacs :which-key "Quit Emacs")
+    "q f" '(delete-frame :which-key "Delete Frame"))
   ;; evil-multiedit
   (general-define-key
    :states 'normal
