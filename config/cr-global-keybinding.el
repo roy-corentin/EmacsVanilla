@@ -1,4 +1,4 @@
-;;; cr-keybindings.el --- Description -*- lexical-binding: t; -*-
+;;; cr-global-keybindings.el --- Description -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2024 Corentin Roy
 ;;
@@ -72,6 +72,7 @@ If prefix ARG is set, prompt for a directory to search from."
     "b i" '(ibuffer :which-key "Ibuffer")
     "b k" '(kill-current-buffer :which-key "Kill current buffer")
     "b r" '(rename-buffer :which-key "Rename current buffer")
+    "b n" '(evil-buffer-new :which-key "Open new buffer")
     "f" '(:ignore t :which-key "File")
     "f f" '(find-file :which-key "Find file")
     "f r" '(consult-recent-file :which-key "Recentf")
@@ -179,5 +180,5 @@ If prefix ARG is set, prompt for a directory to search from."
   :bind (("C-M-k" . drag-stuff-up)
          ("C-M-j" . drag-stuff-down)))
 
-(provide 'cr-keybindings)
+(provide 'cr-global-keybindings)
 ;;; cr-keybindings.el ends here

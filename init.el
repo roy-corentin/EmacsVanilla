@@ -158,7 +158,7 @@
 (require 'cr-treemacs)
 (require 'cr-evil)
 (require 'cr-dired)
-(require 'cr-keybindings)
+(require 'cr-global-keybindings)
 
 ;; Key set at the end to avoid conflicts with iedit
 (global-set-key (kbd "C-,") 'previous-buffer)
