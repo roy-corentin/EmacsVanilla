@@ -1,4 +1,4 @@
-#+title Emacs Vanilla Config
+#+title: Emacs Vanilla Config
 
 * Intro
 Coming from Doom Emacs (config [[https://github.com/roy-corentin/my-Doom-emacs-config][here]]) I want to try an Emacs config from vanilla to improve performance and make customization easier.
