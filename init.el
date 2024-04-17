@@ -142,6 +142,9 @@
   (setq vterm-kill-buffer-on-exit t)
   (setq vterm-max-scrollback 5000))
 
+(use-package pdf-tools
+  :ensure t)
+
 (require 'cr-magit)
 (require 'cr-yasnippet)
 (require 'cr-eglot)
