@@ -145,6 +145,12 @@
 (use-package pdf-tools
   :ensure t)
 
+;; accept completion from copilot and fallback to company
+(use-package copilot
+  :bind (:map copilot-completion-map
+              ("C-<tab>" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion)))
+
 (require 'cr-magit)
 (require 'cr-yasnippet)
 (require 'cr-eglot)
