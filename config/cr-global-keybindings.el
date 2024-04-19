@@ -144,6 +144,8 @@ If prefix ARG is set, prompt for a directory to search from."
     "s e" '(consult-flymake :which-key "Search Erros")
     "s d" '(+default/search-cwd :which-key "Search in current dir")
     "s u" '(vundo :which-key "Vundo")
+    "s c" '(evil-avy-goto-char-2 :which-key "Goto char2")
+    "s w" '(evil-avy-goto-word-1 :which-key "Goto word")
     "d" '(:ignore t :which-key "Dired")
     "d d" '(dired-jump :which-key "Dired here")
     "i" '(:ignore t :which-key "Insert")
@@ -153,9 +155,33 @@ If prefix ARG is set, prompt for a directory to search from."
     "c D" '(xref-find-references :which-key "Find References")
     "c a" '(eglot-code-actions :which-key "Find References")
     "c r" '(eglot-rename :which-key "Eglot rename")
+    "c f" '(apheleia-format-buffer :which-key "Apheleia Format Buffer")
     "q" '(:ignore t :which-key "Quit")
     "q q" '(kill-emacs :which-key "Quit Emacs")
-    "q f" '(delete-frame :which-key "Delete Frame"))
+    "q f" '(delete-frame :which-key "Delete Frame")
+    "m" '(:ignore t :which-key "Local"))
+  (general-define-key
+   :states 'normal
+   :keymaps 'ruby-ts-mode-map
+   :prefix "SPC m"
+   :global-prefix "M-SPC m"
+   "{" '(ruby-toggle-block :which-key "Toggle block")
+   "'" '(ruby-toggle-string-quotes :which-key "Toggle string quotes")
+   "b" '(:ignore t :which-key "Block")
+   "b b" '(ruby-beginning-of-block :which-key "Beginning of block")
+   "b e" '(ruby-end-of-block :which-key "End of block")
+   "f" '(:ignore t :which-key "Function")
+   "f b" '(ruby-beginning-of-defun :which-key "Beginning of function")
+   "f e" '(ruby-end-of-defun :which-key "End of function"))
+  (general-define-key
+   :states 'normal
+   :keymaps 'org-mode-map
+   :prefix "SPC m"
+   :global-prefix "M-SPC m"
+   "c" '(:ignore t :which-key "Org Clock")
+   "c i" '(org-clock-in :which-key "Clock in")
+   "c o" '(org-clock-out :which-key "Clock out")
+   "c g" '(org-clock-goto :which-key "Clock goto"))
   ;; evil-multiedit
   (general-define-key
    :states 'normal
@@ -176,7 +202,13 @@ If prefix ARG is set, prompt for a directory to search from."
    "M-S-d" 'evil-multiedit-match-and-prev
    "RET" 'evil-multiedit-toggle-or-restrict-region
    "C-n" 'evil-multiedit-next
-   "C-p" 'evil-multiedit-prev) 
+   "C-p" 'evil-multiedit-prev)
+  ;; VTerm
+  (general-define-key
+   :states 'insert
+   :keymaps 'vterm-mode-map
+   "C-k" '((lambda () (interactive) (vterm-send "<up>")))
+   "C-j" '((lambda () (interactive) (vterm-send "<down>"))))
   )
 
 (use-package drag-stuff
