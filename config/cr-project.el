@@ -18,12 +18,7 @@
    project-vc-ignores
    '("target/" "bin/" "obj/" "node_modules/" "_build/")
    project-vc-extra-root-markers
-   '(".project"
-     "mix.exs"
-     "go.mod"
-     "Cargo.toml"
-     "package.json"
-     "Makefile"))
+   '(".project"))
   )
 
 (provide 'cr-project)
