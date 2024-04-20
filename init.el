@@ -151,6 +151,9 @@
               ("C-<tab>" . 'copilot-accept-completion)
               ("C-TAB" . 'copilot-accept-completion)))
 
+(use-package keycast
+  :ensure t)
+
 (require 'cr-buffer)
 (require 'cr-magit)
 (require 'cr-yasnippet)
