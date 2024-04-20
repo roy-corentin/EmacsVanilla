@@ -151,6 +151,7 @@
               ("C-<tab>" . 'copilot-accept-completion)
               ("C-TAB" . 'copilot-accept-completion)))
 
+(require 'cr-buffer)
 (require 'cr-magit)
 (require 'cr-yasnippet)
 (require 'cr-eglot)
