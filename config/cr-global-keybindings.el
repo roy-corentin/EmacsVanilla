@@ -7,50 +7,7 @@
 ;; Created: avril 08, 2024
 
 (require 'doom-methods)
-
-(defun cr/vterm-in-project (arg)
-  "Open a terminal buffer in the current window at project root.
-If prefix ARG is non-nil, cd into `default-directory' instead of project root.
-Returns the vterm buffer."
-  (interactive "P")
-  (let ((default-directory (if arg default-directory (project-root (project-current t)))))
-    (setenv "PROOT" default-directory)
-    (vterm vterm-buffer-name)))
-
-(defun +default/search-cwd (&optional arg)
-  "Conduct a text search in files under the current folder.
-If prefix ARG is set, prompt for a directory to search from."
-  (interactive "P")
-  (let ((default-directory
-         (if arg
-             (read-directory-name "Search directory: ")
-           default-directory)))
-    (call-interactively #'consult-ripgrep)))
-
-(defun cr/find-file-in-dir(dir)
-  (unless (file-directory-p dir)
-    (error "Directory %S does not exist" dir))
-  (unless (file-readable-p dir)
-    (error "Directory %S isn't readable" dir))
-  (let ((default-directory (file-truename (expand-file-name dir))))
-    (call-interactively #'find-file)))
-
-(defun cr/find-config-file ()
-  (interactive)
-  (cr/find-file-in-dir "~/.config/emacs_vanilla/config/"))
-
-(defun cr/find-note ()
-  (interactive)
-  (unless(bound-and-true-p org-directory)
-    (require 'org))
-  (cr/find-file-in-dir org-directory))
-
-;; Create a new tab, switch to the project and rename the tab with project name
-(defun cr/switch-project-in-new-tab ()
-  (interactive)
-  (tab-new)
-  (call-interactively #'project-switch-project)
-  (tab-rename (project-name (project-current))))
+(require 'cr-methods)
 
 (use-package general
   :ensure t
@@ -79,20 +36,19 @@ If prefix ARG is set, prompt for a directory to search from."
     "f R" '(rename-file :which-key "Recent files")
     "f s" '(save-buffer :which-key "Save file")
     "w" '(:ignore t :which-key "Window")
-    "w h" '(evil-window-left :which-key "Move left")
-    "w H" '(evil-window-move-far-left :which-key "Move window left")
-    "w j" '(evil-window-down :which-key "Move down")
-    "w J" '(evil-window-move-very-bottom :which-key "Move window down")
-    "w k" '(evil-window-up :which-key "Move up")
-    "w K" '(evil-window-move-very-top :which-key "Move window up")
-    "w l" '(evil-window-right :which-key "Move right")
-    "w L" '(evil-window-move-far-right :which-key "Move window right")
-    "w w" '(evil-window-next :which-key "Move to next window")
-    "w d" '(evil-window-delete :which-key "Delete window")
-    "w s" '(evil-window-split :which-key "Split window")
-    "w S" '(+evil/window-split-and-follow :which-key "Split window and follow")
-    "w v" '(evil-window-vsplit :which-key "Vsplit window")
-    "w V" '(+evil/window-vsplit-and-follow :which-key "Vsplit window and follow")
+    "w h" '(windmove-left :which-key "Move left")
+    "w H" '(windmove-swap-states-left :which-key "Move window left")
+    "w j" '(windmove-down :which-key "Move down")
+    "w J" '(windmove-swap-states-down :which-key "Move window down")
+    "w k" '(windmove-up :which-key "Move up")
+    "w K" '(windmove-swap-states-up :which-key "Move window up")
+    "w l" '(windmove-right :which-key "Move right")
+    "w L" '(windmove-swap-states-right :which-key "Move window right")
+    "w d" '(delete-window :which-key "Delete window")
+    "w s" '(split-window-below :which-key "Split window")
+    "w S" '(cr/split-window-below-and-follow :which-key "Split window and follow")
+    "w v" '(split-window-right :which-key "Vsplit window")
+    "w V" '(cr/split-window-right-and-follow :which-key "Vsplit window and follow")
     "w m" '(delete-other-windows :which-key "Maximize window")
     "g" '(:ignore t :which-key "Git")
     "g g" '(magit-status :which-key "Magit Status")
