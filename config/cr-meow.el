@@ -102,10 +102,4 @@
   (meow-setup)
   (meow-global-mode 1))
 
-(use-package 'emacs-surround
-  :ensure t
-  :after meow
-  :config
-  (global-set-key (kdb "C-s") 'emacs-surround))
-
 (provide 'cr-meow)
