@@ -8,7 +8,8 @@
 
 (setq display-buffer-alist
       '(
-        ((derived-mode . help-mode)
+        ((or . ((derived-mode . help-mode)
+                "\\*eldoc\\*"))
          ;; List display function
          (display-buffer-in-side-window)
          ;; Parameter
@@ -17,7 +18,6 @@
          (body-function . (lambda (window) (select-window window)))
          (slot . 0)
          (window-parameters . ((mode-line-format . none))))
-        )
-      )
+        ))
 
 (provide 'cr-buffer)
