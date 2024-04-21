@@ -20,4 +20,4 @@
         )
       )
 
-(provide 'cr/buffer)
+(provide 'cr-buffer)
