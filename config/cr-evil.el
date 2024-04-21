@@ -19,8 +19,11 @@
         evil-move-cursor-back nil
         evil-kill-on-visual-paste nil
         evil-symbol-word-search t)
-  :bind (:map evil-normal-state-map
-              ("TAB" . evil-jump-item))
+  :bind
+  (:map evil-normal-state-map
+        ("TAB" . evil-jump-item))
+  (:map evil-visual-state-map
+        ("TAB" . evil-jump-item))
   :config
   (evil-mode 1))
 
@@ -92,6 +95,8 @@
   :ensure t
   :config
   (global-evil-mc-mode 1))
+
+(require 'cr-global-keybindings)
 
 (provide 'cr-evil)
 ;;; cr-evil.el ends here
