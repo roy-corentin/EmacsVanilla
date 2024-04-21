@@ -166,33 +166,10 @@
 (require 'cr-treesit)
 (require 'cr-org)
 (require 'cr-treemacs)
+(require 'cr-meow)
 (require 'cr-evil)
 (require 'cr-dired)
-(require 'cr-global-keybindings)
 
 ;; Key set at the end to avoid conflicts with iedit
 (global-set-key (kbd "C-,") 'previous-buffer)
 (global-set-key (kbd "C-;") 'next-buffer)
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(auto-yasnippet snippets magit-todos eglot-booster docker markdown-mode wgrep org-roam-ui websocket csv-mode csv evil-goggles evil-mc evil-multiedit evil-org which-key vundo vi-tilde-fringe vertico undo-fu-session undo-fu treesit-auto treemacs-nerd-icons treemacs-magit treemacs-evil toc-org smartparens rainbow-delimiters org-roam org-bullets orderless olivetti nerd-icons-dired nerd-icons-corfu nerd-icons-completion mixed-pitch marginalia hl-todo git-gutter general evil-surround evil-escape evil-collection evil-anzu embark-consult elixir-ts-mode drag-stuff doom-themes doom-modeline diredfl dashboard corfu cape apheleia))
- '(package-vc-selected-packages
-   '((snippets :vc-backend Git :url "https://github.com/doomemacs/snippets")
-     (eglot-booster :vc-backend Git :url "https://github.com/jdtsmith/eglot-booster"))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(evil-goggles-change-face ((t (:inherit diff-removed))))
- '(evil-goggles-delete-face ((t (:inherit diff-removed))))
- '(evil-goggles-paste-face ((t (:inherit diff-added))))
- '(evil-goggles-undo-redo-add-face ((t (:inherit diff-added))))
- '(evil-goggles-undo-redo-change-face ((t (:inherit diff-changed))))
- '(evil-goggles-undo-redo-remove-face ((t (:inherit diff-removed))))
- '(evil-goggles-yank-face ((t (:inherit diff-changed)))))
