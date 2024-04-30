@@ -98,8 +98,6 @@
   :custom
   (meow-use-cursor-position-hack t) ;; Make 'a' as evil
   :config
-  (keymap-set global-map "C-x C-p" project-prefix-map)
-  (meow-setup)
-  (meow-global-mode 1))
+  (meow-setup))
 
 (provide 'cr-meow)
