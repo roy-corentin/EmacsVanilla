@@ -27,7 +27,7 @@ If prefix ARG is set, prompt for a directory to search from."
 
 (defun cr/find-config-file ()
   (interactive)
-  (cr/find-file-in-dir "~/.config/emacs_vanilla/config/"))
+  (cr/find-file-in-dir (concat user-emacs-directory "config/")))
 
 (defun cr/find-note ()
   (interactive)
