@@ -7,6 +7,7 @@
 
 ;; Load the package manager and initialize MELPA
 
+(require 'cr-methods)
 
 (use-package which-key
   :ensure t
@@ -79,7 +80,6 @@
 (use-package pdf-tools
   :ensure t)
 
-;; accept completion from copilot and fallback to company
 (use-package copilot
   :bind (:map copilot-completion-map
               ("C-<tab>" . 'copilot-accept-completion)
@@ -101,6 +101,9 @@
   :ensure t
   :init
   (solaire-global-mode t))
+
+(add-hook 'window-configuration-change-hook 'cr/olivetti-on-single-prog-window)
+
 (use-package load-env-vars
   :ensure t
   :config

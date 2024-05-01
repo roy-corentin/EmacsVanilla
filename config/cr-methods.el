@@ -57,4 +57,8 @@ If prefix ARG is set, prompt for a directory to search from."
     (select-window new-window))
   )
 
+(defun cr/olivetti-on-single-prog-window ()
+  (when (and (one-window-p) (derived-mode-p 'prog-mode))
+    (olivetti-mode)))
+
 (provide 'cr-methods)
