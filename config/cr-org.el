@@ -89,8 +89,9 @@
         org-M-RET-may-split-line nil
         org-insert-heading-respect-content nil
         org-default-priority 67
-        org-hide-emphasis-markers t
+        org-list-allow-alphabetical t
         org-hierarchical-todo-statistics nil
+        mixed-pitch-mode t
         org-priority-faces '((?A . error)
                              (?B . warning)
                              (?C . success))
@@ -105,7 +106,6 @@
           ("[ ]" . (:foreground "#82b66a" :weight bold)) ("[-]" . (:foreground "#b7a1f5" :weight bold ))
           ("[?]" . org-warning)
           ("👷🏻IN-PROGRESS" . (:foreground "#b7a1f5")) ("🔒HOLD" . org-warning))
-        mixed-pitch-mode t
         org-todo-keywords
         '((sequence
            "TODO(t)"             ; A task that is ready to be tackled
@@ -174,41 +174,42 @@
         )
   )
 
-(add-hook 'org-mode-hook (lambda ()
-                           "Beautify Org Checkbox Symbol"
-                           (push '("[ ]" .  "☐") prettify-symbols-alist)
-                           (push '("[X]" . "☑" ) prettify-symbols-alist)
-                           (push '("[-]" . "❍" ) prettify-symbols-alist)
-                           (push '("#+BEGIN_SRC" . "↦" ) prettify-symbols-alist)
-                           (push '("#+END_SRC" . "⇤" ) prettify-symbols-alist)
-                           (push '("#+begin_src" . "↦" ) prettify-symbols-alist)
-                           (push '("#+end_src" . "⇤" ) prettify-symbols-alist)
-                           (push '("#+BEGIN_EXAMPLE" . "↦" ) prettify-symbols-alist)
-                           (push '("#+END_EXAMPLE" . "⇤" ) prettify-symbols-alist)
-                           (push '("#+begin_example" . "↦" ) prettify-symbols-alist)
-                           (push '("#+end_example" . "⇤" ) prettify-symbols-alist)
-                           (push '("#+BEGIN_QUOTE" . "↦" ) prettify-symbols-alist)
-                           (push '("#+END_QUOTE" . "⇤" ) prettify-symbols-alist)
-                           (push '("#+begin_quote" . "󱆧" ) prettify-symbols-alist)
-                           (push '("#+end_quote" . "󱆨⇤" ) prettify-symbols-alist)
-                           (push '("#+TITLE:" . "") prettify-symbols-alist)
-                           (push '("#+title:" . "") prettify-symbols-alist)
-                           (push '("#+DESCRIPTION:" . "󰦨") prettify-symbols-alist)
-                           (push '("#+ID:" . "") prettify-symbols-alist)
-                           (push '("#+FILETAGS:" . "") prettify-symbols-alist)
-                           (push '("#+filetags:" . "") prettify-symbols-alist)
-                           (push '("#+STARTUP:" . "󰈈") prettify-symbols-alist)
-                           (push '("#+startup:" . "󰈈") prettify-symbols-alist)
-                           (push '("#+ACTIVE:" . "") prettify-symbols-alist)
-                           (push '("#+START_SPOILER" . "") prettify-symbols-alist)
-                           (push '("#+CLOSE_SPOILER" . "") prettify-symbols-alist)
-                           (push '("#+BEGIN_HIDDEN" . "󰘓") prettify-symbols-alist)
-                           (push '("#+END_HIDDEN" . "󰘓") prettify-symbols-alist)
-                           (push '("#+author" . "") prettify-symbols-alist)
-                           (push '("#+AUTHOR" . "") prettify-symbols-alist)
-                           (push '("#+property:" . "") prettify-symbols-alist)
-                           (push '("#+PROPERTY:" . "") prettify-symbols-alist)
-                           (prettify-symbols-mode)))
+(add-hook 'org-mode-hook
+          (lambda ()
+            "Beautify Org Checkbox Symbol"
+            (push '("[ ]" .  "☐") prettify-symbols-alist)
+            (push '("[X]" . "☑" ) prettify-symbols-alist)
+            (push '("[-]" . "❍" ) prettify-symbols-alist)
+            (push '("#+BEGIN_SRC" . "↦" ) prettify-symbols-alist)
+            (push '("#+END_SRC" . "⇤" ) prettify-symbols-alist)
+            (push '("#+begin_src" . "↦" ) prettify-symbols-alist)
+            (push '("#+end_src" . "⇤" ) prettify-symbols-alist)
+            (push '("#+BEGIN_EXAMPLE" . "↦" ) prettify-symbols-alist)
+            (push '("#+END_EXAMPLE" . "⇤" ) prettify-symbols-alist)
+            (push '("#+begin_example" . "↦" ) prettify-symbols-alist)
+            (push '("#+end_example" . "⇤" ) prettify-symbols-alist)
+            (push '("#+BEGIN_QUOTE" . "↦" ) prettify-symbols-alist)
+            (push '("#+END_QUOTE" . "⇤" ) prettify-symbols-alist)
+            (push '("#+begin_quote" . "󱆧" ) prettify-symbols-alist)
+            (push '("#+end_quote" . "󱆨⇤" ) prettify-symbols-alist)
+            (push '("#+TITLE:" . "") prettify-symbols-alist)
+            (push '("#+title:" . "") prettify-symbols-alist)
+            (push '("#+DESCRIPTION:" . "󰦨") prettify-symbols-alist)
+            (push '("#+ID:" . "") prettify-symbols-alist)
+            (push '("#+FILETAGS:" . "") prettify-symbols-alist)
+            (push '("#+filetags:" . "") prettify-symbols-alist)
+            (push '("#+STARTUP:" . "󰈈") prettify-symbols-alist)
+            (push '("#+startup:" . "󰈈") prettify-symbols-alist)
+            (push '("#+ACTIVE:" . "") prettify-symbols-alist)
+            (push '("#+START_SPOILER" . "") prettify-symbols-alist)
+            (push '("#+CLOSE_SPOILER" . "") prettify-symbols-alist)
+            (push '("#+BEGIN_HIDDEN" . "󰘓") prettify-symbols-alist)
+            (push '("#+END_HIDDEN" . "󰘓") prettify-symbols-alist)
+            (push '("#+author" . "") prettify-symbols-alist)
+            (push '("#+AUTHOR" . "") prettify-symbols-alist)
+            (push '("#+property:" . "") prettify-symbols-alist)
+            (push '("#+PROPERTY:" . "") prettify-symbols-alist)
+            (prettify-symbols-mode)))
 
 (use-package toc-org
   :ensure t
