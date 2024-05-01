@@ -88,6 +88,24 @@
 (use-package keycast
   :ensure t)
 
+(use-package zig-mode
+  :ensure t)
+
+(use-package crystal-mode
+  :ensure t)
+
+(use-package verb
+  :ensure t)
+
+(use-package solaire-mode
+  :ensure t
+  :init
+  (solaire-global-mode t))
+(use-package load-env-vars
+  :ensure t
+  :config
+  (load-env-vars (concat user-emacs-directory ".env")))
+
 (require 'cr-buffer)
 (require 'cr-magit)
 (require 'cr-yasnippet)
