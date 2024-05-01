@@ -63,6 +63,7 @@
 
 (use-package casual
   :ensure t
+  :defer t
   :bind (:map calc-mode-map ("C-o" . 'casual-main-menu)))
 
 (use-package restclient
@@ -70,6 +71,7 @@
 
 (use-package vterm
   :ensure t
+  :defer t
   :config
   (setq vterm-kill-buffer-on-exit t)
   (setq vterm-max-scrollback 5000))
