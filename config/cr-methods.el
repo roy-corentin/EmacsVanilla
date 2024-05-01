@@ -15,7 +15,7 @@ If prefix ARG is set, prompt for a directory to search from."
          (if arg
              (read-directory-name "Search directory: ")
            default-directory)))
-    (call-interactively #'consult-ripgrep)))
+    (consult-ripgrep default-directory)))
 
 (defun cr/find-file-in-dir(dir)
   (unless (file-directory-p dir)
