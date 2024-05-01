@@ -81,6 +81,8 @@
 
 (use-package evil-goggles
   :ensure t
+  :custom
+  (evil-goggles-duration 0.100)
   :config
   (evil-goggles-mode)
   ;; optionally use diff-mode's faces; as a result, deleted text
