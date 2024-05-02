@@ -117,6 +117,8 @@
     "q" '(:ignore t :which-key "Quit")
     "q q" '(kill-emacs :which-key "Quit Emacs")
     "q f" '(delete-frame :which-key "Delete Frame")
+    "e" '(:ignore t :which-key "Eval")
+    "e r" '(eval-region :which-key "Eval Region")
     "m" '(:ignore t :which-key "Local"))
   (general-define-key
    :states 'normal
