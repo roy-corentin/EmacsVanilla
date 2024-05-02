@@ -70,7 +70,7 @@
     "t t" '(global-tab-line-mode :which-key "Tab Line")
     "t w" '(toggle-frame-tab-bar :which-key "Tab Bar")
     "t o" '(olivetti-mode :which-key "Olivetti")
-    "t g" '(copilot-mode :which-key "Copilot")
+    "t g" '(global-copilot-mode :which-key "Global Copilot")
     "o" '(:ignore t :which-key "Open")
     "o p" '(treemacs :which-key "Treemacs")
     "o A" '(org-agenda :which-key "Org-Agenda")
