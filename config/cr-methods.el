@@ -1,11 +1,30 @@
-(defun cr/vterm-in-project (arg)
+(defun cr/vterm--configure-in-project-root (arg display-fn)
   "Open a terminal buffer in the current window at project root.
 If prefix ARG is non-nil, cd into `default-directory' instead of project root.
 Returns the vterm buffer."
-  (interactive "P")
   (let ((default-directory (if arg default-directory (project-root (project-current t)))))
     (setenv "PROOT" default-directory)
-    (vterm vterm-buffer-name)))
+    (funcall display-fn)))
+
+(defun cr/toggle-vterm-popup (arg)
+  (interactive "P")
+  (cr/vterm--configure-in-project-root
+   arg
+   (lambda ()
+     (let ((buffer-name (format "*vterm-popup-%s*" (project-name (project-current t))))
+           confirm-kill-processes)
+       (let ((buffer (get-buffer buffer-name)))
+         (if (buffer-live-p buffer)
+             (kill-buffer buffer)
+           (vterm buffer-name)))))))
+
+(defun cr/vterm-buffer (arg)
+  (interactive "P")
+  (cr/vterm--configure-in-project-root
+   arg
+   (lambda ()
+     (let ((buffer-name (format "*vterm-%s*" (project-name (project-current t)))))
+       (vterm buffer-name)))))
 
 (defun +default/search-cwd (&optional arg)
   "Conduct a text search in files under the current folder.

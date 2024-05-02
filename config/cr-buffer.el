@@ -9,7 +9,7 @@
 (setq display-buffer-alist
       '(
         ((or . ((derived-mode . help-mode)
-                "\\*eldoc\\*"))
+                "\\*\\(eldoc\\|vterm-popup-.*\\)\\*"))
          ;; List display function
          (display-buffer-in-side-window)
          ;; Parameter
