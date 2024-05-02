@@ -32,6 +32,7 @@
     "b n" '(evil-buffer-new :which-key "Open new buffer")
     "f" '(:ignore t :which-key "File")
     "f f" '(find-file :which-key "Find file")
+    "f F" '(find-file-other-window :which-key "Find file in other window")
     "f r" '(consult-recent-file :which-key "Recentf")
     "f R" '(rename-file :which-key "Recent files")
     "f s" '(save-buffer :which-key "Save file")
