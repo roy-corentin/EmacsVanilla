@@ -88,12 +88,6 @@
 (use-package keycast
   :ensure t)
 
-(use-package zig-mode
-  :ensure t)
-
-(use-package crystal-mode
-  :ensure t)
-
 (use-package verb
   :ensure t)
 
@@ -109,6 +103,7 @@
   :config
   (load-env-vars (concat user-emacs-directory ".env")))
 
+(require 'cr-language)
 (require 'cr-buffer)
 (require 'cr-magit)
 (require 'cr-yasnippet)
