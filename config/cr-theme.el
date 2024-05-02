@@ -38,7 +38,8 @@
         doom-modeline-position-column-line-format '("%l:%c")
         doom-modeline-minor-modes nil
         doom-modeline-major-mode-icon nil
-        doom-modeline-buffer-file-name-style 'truncate-upto-project
+        doom-modeline-workspace-name nil
+        doom-modeline-buffer-file-name-style 'relative-from-project
         doom-modeline-buffer-encoding 'nondefault)
   (doom-modeline-mode 1)
 
