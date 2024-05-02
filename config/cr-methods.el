@@ -82,4 +82,9 @@ If prefix ARG is set, prompt for a directory to search from."
         (olivetti-mode t)
       (olivetti-mode 0))))
 
+(defun cr/close-tabs-and-project-buffers ()
+  (interactive)
+  (project-kill-buffers)
+  (tab-close))
+
 (provide 'cr-methods)
