@@ -2,7 +2,7 @@
   "Open a terminal buffer in the current window at project root.
 If prefix ARG is non-nil, cd into `default-directory' instead of project root.
 Returns the vterm buffer."
-  (let ((default-directory (if arg default-directory (project-root (project-current t)))))
+  (let ((default-directory (if (or arg (not (project-current))) default-directory (project-root (project-current)))))
     (setenv "PROOT" default-directory)
     (funcall display-fn)))
 
@@ -11,7 +11,9 @@ Returns the vterm buffer."
   (cr/vterm--configure-in-project-root
    arg
    (lambda ()
-     (let ((buffer-name (format "*vterm-popup-%s*" (project-name (project-current t))))
+     (let ((buffer-name (format "*vterm-popup-%s*" (if (project-current)
+                                                       (project-name (project-current))
+                                                     "main")))
            confirm-kill-processes)
        (let ((buffer (get-buffer buffer-name)))
          (if (buffer-live-p buffer)
@@ -23,7 +25,9 @@ Returns the vterm buffer."
   (cr/vterm--configure-in-project-root
    arg
    (lambda ()
-     (let ((buffer-name (format "*vterm-%s*" (project-name (project-current t)))))
+     (let ((buffer-name (format "*vterm-%s*" (if (project-current)
+                                                 (project-name (project-current))
+                                               "main"))))
        (vterm buffer-name)))))
 
 (defun +default/search-cwd (&optional arg)
@@ -84,7 +88,8 @@ If prefix ARG is set, prompt for a directory to search from."
 
 (defun cr/close-tabs-and-project-buffers ()
   (interactive)
-  (project-kill-buffers)
+  (when (project-current)
+    (project-kill-buffers))
   (tab-close))
 
 (provide 'cr-methods)
