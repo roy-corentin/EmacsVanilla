@@ -6,6 +6,8 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 21, 2024
 
+(require 'cr-methods)
+
 (setq display-buffer-alist
       '(
         ((or . ((derived-mode . help-mode)
@@ -19,5 +21,9 @@
          (slot . 0)
          (window-parameters . ((mode-line-format . none))))
         ))
+
+(advice-add #'delete-window :after #'cr/olivetti-on-single-prog-window)
+(advice-add #'split-window :after #'cr/olivetti-on-single-prog-window)
+(advice-add #'find-file :after #'cr/olivetti-on-single-prog-window)
 
 (provide 'cr-buffer)
