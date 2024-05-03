@@ -78,11 +78,12 @@ If prefix ARG is set, prompt for a directory to search from."
   (let ((new-window (split-window-below)))
     (select-window new-window)))
 
-(defun cr/olivetti-on-single-prog-window ()
+(defun cr/olivetti-on-single-prog-window (&rest args)
   (when (derived-mode-p 'prog-mode)
     (if (one-window-p)
         (olivetti-mode t)
-      (olivetti-mode 0))))
+      (when (bound-and-true-p olivetti-mode)
+        (olivetti-mode 0)))))
 
 (defun cr/try-kill-project-buffers (&rest args)
   (when (project-current)
