@@ -8,9 +8,8 @@
 ;; Modified: avril 07, 2024
 ;;;
 
-(require 'project)
-
 (use-package project
+  :ensure nil
   :custom
   (project-vc-ignores '("target/" "bin/" "obj/" "node_modules/" "_build/"))
   (project-vc-extra-root-markers '(".project"))
