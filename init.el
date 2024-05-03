@@ -7,8 +7,6 @@
 
 ;; Load the package manager and initialize MELPA
 
-(require 'cr-methods)
-
 (use-package which-key
   :ensure t
   :config
@@ -95,8 +93,6 @@
   :ensure t
   :init
   (solaire-global-mode t))
-
-(add-hook 'window-configuration-change-hook 'cr/olivetti-on-single-prog-window)
 
 (use-package load-env-vars
   :ensure t
