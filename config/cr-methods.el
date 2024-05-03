@@ -70,15 +70,13 @@ If prefix ARG is set, prompt for a directory to search from."
   "Split current window in the right and focus the new window"
   (interactive)
   (let ((new-window (split-window-right)))
-    (select-window new-window))
-  )
+    (select-window new-window)))
 
 (defun cr/split-window-below-and-follow ()
   "Split current window below and focus the new window"
   (interactive)
   (let ((new-window (split-window-below)))
-    (select-window new-window))
-  )
+    (select-window new-window)))
 
 (defun cr/olivetti-on-single-prog-window ()
   (when (derived-mode-p 'prog-mode)
