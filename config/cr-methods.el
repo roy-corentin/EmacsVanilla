@@ -86,10 +86,10 @@ If prefix ARG is set, prompt for a directory to search from."
         (olivetti-mode t)
       (olivetti-mode 0))))
 
-(defun cr/close-tabs-and-project-buffers ()
-  (interactive)
+(defun cr/try-kill-project-buffers (&rest args)
   (when (project-current)
-    (project-kill-buffers))
-  (tab-close))
+    (project-kill-buffers)))
+(advice-add #'tab-close :before #'cr/try-kill-project-buffers)
+(advice-add #'tab-switcher-execute :before #'cr/try-kill-project-buffers)
 
 (provide 'cr-methods)

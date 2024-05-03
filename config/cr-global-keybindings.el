@@ -83,7 +83,7 @@
     "TAB n" '(tab-new :which-key "New tab")
     "TAB l" '(tab-next :which-key "Next tab")
     "TAB h" '(tab-previous :which-key "Previous tab")
-    "TAB d" '(cr/close-tabs-and-project-buffers :which-key "Close tab")
+    "TAB d" '(tab-close :which-key "Close tab")
     "TAB D" '(tab-close-other :which-key "Close other tabs")
     "TAB r" '(tab-rename :which-key "Rename tab")
     "TAB s" '(tab-switch :which-key "Switch tab")
