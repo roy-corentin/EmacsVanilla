@@ -83,6 +83,12 @@
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-elisp-block))
 
+(use-package yasnippet-capf
+  :ensure t
+  :after cape
+  :init
+  (add-to-list 'completion-at-point-functions #'yasnippet-capf))
+
 ;; Optionally use the `orderless' completion style.
 (use-package orderless
   :ensure t
