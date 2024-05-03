@@ -14,7 +14,6 @@
 
 (use-package ruby-end
   :ensure t
-  :defer t
-  :hook (ruby-ts-mode . ruby-end-mode))
+  :defer t)
 
 (provide 'cr-language)
