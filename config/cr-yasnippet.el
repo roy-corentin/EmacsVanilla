@@ -13,7 +13,7 @@
   (defvar yas-verbosity 3)
   :config
   (add-to-list 'yas-snippet-dirs (concat user-emacs-directory "elpa/snippets/"))
-  (yas-global-mode +1))
+  (yas-global-mode 1))
 
 (use-package auto-yasnippet 
   :ensure t
@@ -32,5 +32,10 @@ swaps `yas-global-mode' with `yas-minor-mode'."
 (use-package doom-snippets 
   :ensure nil
   :defer t) ;; TODO  use :vc when jump to Emacs30
+
+(use-package autoinsert
+  :ensure nil
+  :config
+  (add-hook 'find-file-hook 'auto-insert))
 
 (provide 'cr-yasnippet)
