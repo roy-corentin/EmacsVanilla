@@ -8,11 +8,22 @@
 ;; Modified: avril 07, 2024
 ;;;
 
+(defun cr/change-dir-and-magit ()
+  (interactive)
+  (let ((default-directory (project-root (project-current))))
+    (magit-status)
+    (delete-other-windows)))
+
 (use-package project
   :ensure nil
   :custom
-  (project-vc-ignores '("target/" "bin/" "obj/" "node_modules/" "_build/"))
+  (project-vc-ignores '("target/" "obj/" "node_modules/" "_build/"))
   (project-vc-extra-root-markers '(".project"))
-  (project-known-project-roots))
+  (project-known-project-roots)
+  (project-switch-commands '((project-find-file "Find file" ?f)
+                             (project-find-regexp "Find regexp" ?r)
+                             (project-find-dir "Find directory" ?d)
+                             (cr/vterm-buffer "Vterm" ?v)
+                             (cr/change-dir-and-magit "Magit" ?m))))
 
 (provide 'cr-project)
