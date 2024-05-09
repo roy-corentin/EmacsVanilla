@@ -1,3 +1,11 @@
+;;; cr-methods.el --- Description -*- lexical-binding: t; -*-
+;;
+;; Copyright (C) 2024 Corentin Roy
+;;
+;; Author: Corentin Roy <corentin.roy02@laposte.net>
+;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
+;; Created: avril 13, 2024
+
 (defun cr/vterm--configure-in-project-root (arg display-fn)
   "Open a terminal buffer in the current window at project root.
 If prefix ARG is non-nil, cd into `default-directory' instead of project root.
@@ -29,6 +37,13 @@ Returns the vterm buffer."
                                                  (project-name (project-current))
                                                "main"))))
        (vterm buffer-name)))))
+
+(defun cr/smart-vterm-buffer (arg)
+  (interactive "P")
+  (when (one-window-p)
+    (let ((new-window (split-window-right)))
+      (select-window new-window)))
+  (cr/vterm-buffer arg))
 
 (defun +default/search-cwd (&optional arg)
   "Conduct a text search in files under the current folder.
@@ -77,6 +92,17 @@ If prefix ARG is set, prompt for a directory to search from."
   (interactive)
   (let ((new-window (split-window-below)))
     (select-window new-window)))
+
+(defun cr/move-window-right ()
+  "Move the current window to the right"
+  (interactive)
+  (let ((buffer (current-buffer)))
+    (delete-window (selected-window))
+    (let ((new-window (split-window-right)))
+      (select-window new-window)
+      (switch-to-buffer (buffer)))
+    )
+  )
 
 (defun cr/olivetti-on-single-prog-window (&rest args)
   (when (derived-mode-p 'prog-mode)

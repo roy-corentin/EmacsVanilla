@@ -77,7 +77,7 @@
     "o p" '(treemacs :which-key "Treemacs")
     "o A" '(org-agenda :which-key "Org-Agenda")
     "o t" '(cr/toggle-vterm-popup :which-key "Open Vterm in popup")
-    "o T" '(cr/vterm-buffer :which-key "Open Vterm in buffer")
+    "o T" '(cr/smart-vterm-buffer :which-key "Open Vterm in buffer")
     "TAB" '(:ignore t :which-key "Tab")
     "TAB TAB" '(tab-list :which-key "List tabs")
     "TAB n" '(tab-new :which-key "New tab")
@@ -143,7 +143,8 @@
    "c" '(:ignore t :which-key "Org Clock")
    "c i" '(org-clock-in :which-key "Clock in")
    "c o" '(org-clock-out :which-key "Clock out")
-   "c g" '(org-clock-goto :which-key "Clock goto"))
+   "c g" '(org-clock-goto :which-key "Clock goto")
+   "t" '(org-todo :which-key "Org todo"))
   ;; evil-multiedit
   (general-define-key
    :states 'normal
@@ -159,7 +160,7 @@
    "C-M-d" 'evil-multiedit-restore)
   (general-define-key
    :states '(normal insert)
-   :keymaps 'evil-multiedit-state-map
+   :keymaps 'evil-multiedit-mode-map
    "M-d" 'evil-multiedit-match-and-next
    "M-S-d" 'evil-multiedit-match-and-prev
    "RET" 'evil-multiedit-toggle-or-restrict-region
@@ -169,8 +170,8 @@
   (general-define-key
    :states 'insert
    :keymaps 'vterm-mode-map
-   "C-k" '((lambda () (interactive) (vterm-send "<up>")))
-   "C-j" '((lambda () (interactive) (vterm-send "<down>"))))
+   "C-k" '(lambda () (interactive) (vterm-send "<up>"))
+   "C-j" '(lambda () (interactive) (vterm-send "<down>")))
   )
 
 (use-package drag-stuff
