@@ -8,16 +8,6 @@
 
 (defvar variable-pitch-font "C059")
 (defvar fixed-pitch-font "JetBrains Mono Nerd Font")
-(defun my-org-insert-heading-respect-content-and-prepend-todo ()
-  (interactive)
-  (let ((entry-is-todo (or (org-entry-is-todo-p)
-                           (org-entry-is-done-p))))
-    (evil-insert-state)
-    (org-insert-heading-respect-content)
-    (when entry-is-todo
-      (just-one-space)
-      (org-todo "TODO")
-      (just-one-space))))
 
 (use-package mixed-pitch
   :ensure t
@@ -282,6 +272,77 @@
         org-roam-ui-follow t
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start nil))
+
+(defun svg-progress-percent (value)
+  (svg-image (svg-lib-concat
+              (svg-lib-progress-bar (/ (string-to-number value) 100.0)
+                                    nil :margin 0 :stroke 2 :radius 3 :padding 2 :width 11)
+              (svg-lib-tag (concat value "%")
+                           nil :stroke 0 :margin 0)) :ascent 'center))
+
+(defun svg-progress-count (value)
+  (let* ((seq (mapcar #'string-to-number (split-string value "/")))
+         (count (float (car seq)))
+         (total (float (cadr seq))))
+    (svg-image (svg-lib-concat
+                (svg-lib-progress-bar (/ count total) nil
+                                      :margin 0 :stroke 2 :radius 3 :padding 2 :width 11)
+                (svg-lib-tag value nil
+                             :stroke 0 :margin 0)) :ascent 'center)))
+
+(use-package svg-tag-mode
+  :ensure t
+  :hook org-mode
+  :config
+  (plist-put svg-lib-style-default :font-family "JetBrainsMono Nerd Font")
+  (plist-put svg-lib-style-default :height 1.2)
+  (plist-put svg-lib-style-default :padding 2)
+  (plist-put svg-lib-style-default :font-size 10)
+  (setq svg-tag-tags
+        '(
+          ;; Org tags
+          ("\\(:[A-Z_]+:\\)" . ((lambda (tag)
+                                  (svg-tag-make tag :beg 1 :end -1 :margin 1.5))))
+          ("\\(:[A-Z_]+:\\)$" . ((lambda (tag)
+                                   (svg-tag-make tag :beg 1 :end -1 :margin 1.5))))
+          ;; TODOS/DONES
+          ("\\(TODO\\)" . ((lambda (tag)
+                             (svg-tag-make tag :inverse t :face 'org-todo))))
+          ("\\(DONE\\)" . ((lambda (tag)
+                             (svg-tag-make tag :inverse t :face 'org-done))))
+          ("\\(IN-PROGRESS\\)" . ((lambda (tag)
+                                    (svg-tag-make tag :inverse t :face '+org-todo-active))))
+          ("\\(HOLD\\)" . ((lambda (tag)
+                             (svg-tag-make tag :inverse t :face '+org-todo-onhold))))
+          ("\\(CANCELED\\)" . ((lambda (tag)
+                                 (svg-tag-make tag :inverse t :face '+org-todo-cancel))))
+          ;; Progress
+          ("\\(\\[[0-9]\\{1,3\\}%\\]\\)" . ((lambda (tag)
+                                              (svg-progress-percent (substring tag 1 -2)))))
+          ("\\(\\[[0-9]+/[0-9]+\\]\\)" . ((lambda (tag)
+                                            (svg-progress-count (substring tag 1 -1)))))
+          ;; Active date (with or without day name, with or without time)
+          ("\\(<[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}>\\)"
+           . ((lambda (tag)
+                (svg-tag-make tag :beg 1 :end -1 :margin 0))))
+          ("\\(<[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\} \\)\\([A-Za-z]\\{3\\}\\.?\\)? ?\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)?>"
+           . ((lambda (tag)
+                (svg-tag-make tag :beg 1 :inverse nil :crop-right t :margin 0))))
+          ("<[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\} \\(\\([A-Za-z]\\{3\\}\\.?\\)? ?\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)?>\\)"
+           . ((lambda (tag)
+                (svg-tag-make tag :end -1 :inverse t :crop-left t :margin 0))))
+          ;; Inactive date  (with or without day name, with or without time)
+          ("\\(\\[[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}\\]\\)"
+           . ((lambda (tag)
+                (svg-tag-make tag :beg 1 :end -1 :margin 0 :face 'org-date))))
+          ("\\(\\[[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\} \\)\\([A-Za-z]\\{3\\}\\.?\\)? ?\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)?\\]"
+           . ((lambda (tag)
+                (svg-tag-make tag :beg 1 :inverse nil :crop-right t :margin 0 :face 'org-date))))
+          ("\\[[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\} \\(\\([A-Za-z]\\{3\\}\\.?\\)? ?\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)?\\]\\)"
+           . ((lambda               (tag)
+                (svg-tag-make tag :end -1 :inverse t :crop-left t :margin 0 :face 'org-date))))
+          )))
+
 
 (provide 'cr-org)
 ;;; cr-org.el ends here
