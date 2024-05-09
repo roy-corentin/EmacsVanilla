@@ -6,12 +6,14 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 07, 2024
 
+(require 'doom-methods)
+
 ;; Use evil mode for vim-like keybindings
 (use-package evil
   :ensure t
   :init
-  (setq evil-want-keybinding nil)
   (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
   (setq evil-want-Y-yank-to-eol t
         evil-want-C-u-scroll t
         evil-undo-system 'undo-fu
@@ -70,14 +72,19 @@
 
 (use-package evil-org
   :ensure t
-  :after evil org
   :hook (org-mode . evil-org-mode)
+  :hook (org-capture-mode . evil-insert-state)
+  :init
+  (defvar evil-org-retain-visual-state-on-shift t)
+  (defvar evil-org-special-o/O '(table-row))
+  (defvar evil-org-use-additional-insert t)
   :config
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys)
   (evil-define-key 'normal 'evil-org-mode
-    (kbd "C-<return>") 'my-org-insert-heading-respect-content-and-prepend-todo
-    (kbd "<return>") 'org-open-at-point))
+    (kbd "C-<return>") '+org/insert-item-below
+    (kbd "<return>") '+org/dwim-at-point
+    (kbd "zi") 'org-toggle-inline-images))
 
 (use-package evil-goggles
   :ensure t
