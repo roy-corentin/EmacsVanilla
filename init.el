@@ -79,6 +79,7 @@
   :ensure t)
 
 (use-package copilot
+  :defer t
   :bind (:map copilot-completion-map
               ("C-<tab>" . 'copilot-accept-completion)
               ("C-TAB" . 'copilot-accept-completion)))
