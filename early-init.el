@@ -32,6 +32,7 @@
   (global-hl-line-mode 1)
   (tab-bar-mode 1)
   (desktop-save-mode 1)
+  (set-default 'truncate-lines t)
   (defalias 'yes-or-no-p 'y-or-n-p)
   (add-hook 'prog-mode-hook 'display-line-numbers-mode)
   (add-hook 'yaml-ts-mode-hook 'display-line-numbers-mode)
