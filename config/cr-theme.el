@@ -70,7 +70,7 @@
   (setq-default fringes-outside-margins t))
 
 (use-package hl-todo
-  :ensure t
+  :ensure nil
   :hook (prog-mode . hl-todo-mode)
   :hook (yaml-mode . hl-todo-mode)
   :config

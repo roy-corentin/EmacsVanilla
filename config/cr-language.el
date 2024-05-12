@@ -16,4 +16,16 @@
   :ensure t
   :defer t)
 
+(use-package csv
+  :ensure t)
+
+(use-package csv-mode
+  :ensure t)
+
+(use-package markdown-mode
+  :ensure t)
+
+(use-package docker
+  :ensure t)
+
 (provide 'cr-language)
