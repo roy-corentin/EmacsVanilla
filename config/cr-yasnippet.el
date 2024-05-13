@@ -13,6 +13,7 @@
   (defvar yas-verbosity 3)
   :config
   (add-to-list 'yas-snippet-dirs (concat user-emacs-directory "elpa/snippets/"))
+  (add-to-list 'yas-snippet-dirs (concat user-emacs-directory "elpaca/repos/doom-snippets/"))
   (yas-global-mode 1))
 
 (use-package auto-yasnippet 
@@ -30,8 +31,8 @@ swaps `yas-global-mode' with `yas-minor-mode'."
                      (apply fn args))))
 
 (use-package doom-snippets 
-  :ensure nil
-  :defer t) ;; TODO  use :vc when jump to Emacs30
+  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "doomemacs/snippets" :files (:defaults))
+  :defer t)
 
 (use-package autoinsert
   :ensure nil
