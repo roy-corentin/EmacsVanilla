@@ -97,4 +97,9 @@
           ("BUG" error bold)
           ("XXX" font-lock-constant-face bold))))
 
+(use-package rainbow-delimiters
+  :ensure t
+  :defer t
+  :hook (prog-mode))
+
 (provide 'cr-theme)

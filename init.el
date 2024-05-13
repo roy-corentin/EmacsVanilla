@@ -43,11 +43,6 @@
   (olivetti-body-width 120)
   :hook (text-mode magit-mode))
 
-(use-package rainbow-delimiters
-  :ensure t
-  :defer t
-  :hook (prog-mode))
-
 (use-package casual
   :ensure t
   :defer t
