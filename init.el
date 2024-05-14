@@ -52,9 +52,6 @@
   :defer t
   :bind (:map calc-mode-map ("C-o" . 'casual-main-menu)))
 
-(use-package restclient
-  :ensure t)
-
 (use-package vterm
   :ensure t
   :defer t
