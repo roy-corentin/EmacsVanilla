@@ -23,8 +23,6 @@
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
-;; (use-package hide-line-mode :ensure t)
-
 (use-package doom-modeline
   :ensure t
   :hook (after-init . doom-modeline-mode)
@@ -42,15 +40,12 @@
         doom-modeline-buffer-file-name-style 'relative-from-project
         doom-modeline-buffer-encoding 'nondefault)
   (doom-modeline-mode 1)
-
   :config
   (add-hook 'doom-load-theme-hook #'doom-modeline-refresh-bars)
-
   ;;; Extensions
   (use-package anzu
     :ensure t
     :after isearch)
-
   (use-package evil-anzu
     :after evil
     :ensure t
