@@ -43,23 +43,6 @@
   (olivetti-body-width 120)
   :hook (text-mode magit-mode))
 
-(use-package rainbow-delimiters
-  :ensure t
-  :defer t
-  :hook (prog-mode))
-
-(use-package csv
-  :ensure t)
-
-(use-package csv-mode
-  :ensure t)
-
-(use-package markdown-mode
-  :ensure t)
-
-(use-package docker
-  :ensure t)
-
 (use-package casual
   :ensure t
   :defer t
@@ -76,9 +59,11 @@
   (setq vterm-max-scrollback 5000))
 
 (use-package pdf-tools
+  :after evil
   :ensure t)
 
 (use-package copilot
+  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "copilot-emacs/copilot.el" :files (:defaults))
   :defer t
   :bind (:map copilot-completion-map
               ("C-<tab>" . 'copilot-accept-completion)
@@ -100,13 +85,15 @@
   :config
   (load-env-vars (concat user-emacs-directory ".env")))
 
-(require 'cr-language)
+(use-package transient
+  :ensure t)
+
 (require 'cr-buffer)
 (require 'cr-magit)
+(require 'cr-theme)
 (require 'cr-yasnippet)
 (require 'cr-eglot)
 (require 'cr-project)
-(require 'cr-theme)
 (require 'cr-dashboard)
 (require 'cr-completion)
 (require 'cr-undo)
@@ -116,7 +103,29 @@
 (require 'cr-meow)
 (require 'cr-evil)
 (require 'cr-dired)
+(require 'cr-language)
 
 ;; Key set at the end to avoid conflicts with iedit
 (global-set-key (kbd "C-,") 'previous-buffer)
 (global-set-key (kbd "C-;") 'next-buffer)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("8d3ef5ff6273f2a552152c7febc40eabca26bae05bd12bc85062e2dc224cde9a" default))
+ '(package-selected-packages
+   '(svg-tag-mode yasnippet-capf ruby-end load-env-vars crystal-mode solaire-mode verb verb-mode zig-mode emacs-surround which-key wgrep vundo vterm vi-tilde-fringe vertico undo-fu-session undo-fu treesit-auto treemacs-nerd-icons treemacs-magit treemacs-evil toc-org snippets smartparens restclient rainbow-delimiters pdf-tools org-roam-ui org-bullets orderless olivetti nerd-icons-dired nerd-icons-corfu nerd-icons-completion mixed-pitch meow markdown-mode marginalia magit-todos keycast git-gutter general evil-surround evil-org evil-multiedit evil-mc evil-lion evil-goggles evil-escape evil-collection evil-anzu embark-consult elixir-ts-mode eglot-booster eglot editorconfig drag-stuff doom-themes doom-modeline docker diredfl dashboard csv-mode csv corfu copilot casual cape auto-yasnippet apheleia)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(evil-goggles-change-face ((t (:inherit diff-removed))))
+ '(evil-goggles-delete-face ((t (:inherit diff-removed))))
+ '(evil-goggles-paste-face ((t (:inherit diff-added))))
+ '(evil-goggles-undo-redo-add-face ((t (:inherit diff-added))))
+ '(evil-goggles-undo-redo-change-face ((t (:inherit diff-changed))))
+ '(evil-goggles-undo-redo-remove-face ((t (:inherit diff-removed))))
+ '(evil-goggles-yank-face ((t (:inherit diff-changed)))))

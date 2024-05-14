@@ -25,8 +25,8 @@
   (add-to-list 'eglot-server-programs '(crystal-mode "crystalline")))
 
 (use-package eglot-booster
+  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "jdtsmith/eglot-booster" :files (:defaults))
   :after eglot
   :config (eglot-booster-mode))
-
 
 (provide 'cr-eglot)
