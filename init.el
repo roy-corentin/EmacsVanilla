@@ -89,6 +89,9 @@
 (use-package transient
   :ensure t)
 
+(use-package posframe
+  :ensure t)
+
 (require 'cr-buffer)
 (require 'cr-magit)
 (require 'cr-theme)
