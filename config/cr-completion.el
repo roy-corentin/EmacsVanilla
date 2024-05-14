@@ -19,6 +19,14 @@
   (vertico-mode)
   (setq vertico-cycle t))
 
+(use-package vertico-posframe
+  :ensure t
+  :after vertico posframe
+  :custom
+  (vertico-posframe-poshandler #'posframe-poshandler-frame-top-center)
+  :config
+  (vertico-posframe-mode t))
+
 ;; Enable rich annotations using the Marginalia package
 (use-package marginalia
   :ensure t
@@ -85,7 +93,7 @@
 (use-package cape
   :ensure t
   :bind (("C-c p f" . cape-file)
-         ("C-c p t" . complete-tag)        ;; etags
+         ("C-c p t" . complete-tag) ;; etags
          ("C-c p d" . cape-dabbrev))
   :init
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
@@ -94,8 +102,8 @@
 
 (use-package yasnippet-capf
   :ensure t
-  :after cape
-  :init
+  :defer t
+  :config
   (add-to-list 'completion-at-point-functions #'yasnippet-capf))
 
 ;; Optionally use the `orderless' completion style.
