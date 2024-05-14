@@ -108,6 +108,7 @@
 (require 'cr-evil)
 (require 'cr-dired)
 (require 'cr-language)
+(require 'cr-debugger)
 
 ;; Key set at the end to avoid conflicts with iedit
 (global-set-key (kbd "C-,") 'previous-buffer)
