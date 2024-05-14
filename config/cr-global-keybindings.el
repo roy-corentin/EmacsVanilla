@@ -55,6 +55,7 @@
     "g" '(:ignore t :which-key "Git")
     "g g" '(magit-status :which-key "Magit Status")
     "p" '(:ignore t :which-key "Project")
+    "p a" '(project-remember-projects-under :which-key "Add project")
     "p p" '(cr/switch-project-in-new-tab :which-key "Switch project")
     "p d" '(project-dired :which-key "Dired project")
     "p e" '(project-eshell :which-key "Eshell project")
