@@ -20,6 +20,8 @@
   :hook (toml-ts-mode . eglot-ensure)
   :hook (elixir-ts-mode . eglot-ensure)
   :hook (javascript-ts-mode . eglot-ensure)
+  :custom
+  (eglot-events-buffer 0)
   :config
   (add-to-list 'eglot-server-programs '(elixir-ts-mode "~/Applications/ex-ls/releases/language_server.sh"))
   (add-to-list 'eglot-server-programs '((ruby-mode ruby-ts-mode) "ruby-lsp"))
