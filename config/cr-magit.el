@@ -32,6 +32,7 @@
   :after magit
   :config
   (setq magit-todos-keyword-suffix "\\(?:([^)]+)\\)?:?") ; make colon optional
-  (define-key magit-todos-section-map "j" nil))
+  (define-key magit-todos-section-map "j" nil)
+  (magit-todos-mode 1))
 
 (provide 'cr-magit)
