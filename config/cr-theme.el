@@ -65,7 +65,7 @@
   (setq-default fringes-outside-margins t))
 
 (use-package hl-todo
-  :ensure nil
+  :ensure t
   :hook (prog-mode . hl-todo-mode)
   :hook (yaml-mode . hl-todo-mode)
   :config
@@ -91,6 +91,9 @@
           ("NOTE" success bold)
           ("BUG" error bold)
           ("XXX" font-lock-constant-face bold))))
+
+(use-package catppuccin-theme
+  :ensure t)
 
 (use-package rainbow-delimiters
   :ensure t
