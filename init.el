@@ -23,7 +23,11 @@
 
 (use-package smartparens-mode
   :ensure smartparens
-  :hook (prog-mode text-mode))
+  :hook (prog-mode text-mode)
+  :config
+  (require 'smartparens-config)
+  (sp-local-pair 'minibuffer-mode "'" nil :actions nil)
+  (sp-local-pair 'elisp-mode "'" nil :actions nil))
 
 (use-package ace-window
   :ensure t
