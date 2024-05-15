@@ -20,6 +20,7 @@
   :hook (toml-ts-mode . eglot-ensure)
   :hook (elixir-ts-mode . eglot-ensure)
   :hook (javascript-ts-mode . eglot-ensure)
+  :hook (json-ts-mode . eglot-ensure)
   :custom
   (eglot-events-buffer 0)
   :config
