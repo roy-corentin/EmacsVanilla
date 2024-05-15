@@ -310,9 +310,9 @@
           ("\\(DONE\\)" . ((lambda (tag)
                              (svg-tag-make tag :inverse t :face 'org-done))))
           ("\\(IN-PROGRESS\\)" . ((lambda (tag)
-                                    (svg-tag-make tag :inverse t :face '+org-todo-active))))
+                                    (svg-tag-make tag :inverse t :face 'org-macro))))
           ("\\(HOLD\\)" . ((lambda (tag)
-                             (svg-tag-make tag :inverse t :face '+org-todo-onhold))))
+                             (svg-tag-make tag :inverse t :face 'org-warning))))
           ("\\(CANCELED\\)" . ((lambda (tag)
                                  (svg-tag-make tag :inverse t :face '+org-todo-cancel))))
           ;; Progress
