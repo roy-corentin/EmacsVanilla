@@ -58,11 +58,13 @@
 
 (use-package git-gutter
   :ensure t
+  :hook (prog-mode text-mode)
+  :custom
+  (fringes-outside-margins t)
   :init
   (global-git-gutter-mode t)
   :config
-  (fringe-mode '8)
-  (setq-default fringes-outside-margins t))
+  (fringe-mode '8))
 
 (use-package hl-todo
   :ensure t
