@@ -24,6 +24,8 @@
 (use-package smartparens-mode
   :ensure smartparens
   :hook (prog-mode text-mode)
+  :custom
+  (sp-highlight-pair-overlay nil)
   :config
   (require 'smartparens-config)
   (sp-local-pair 'minibuffer-mode "'" nil :actions nil)
