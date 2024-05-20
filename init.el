@@ -46,7 +46,7 @@
   :defer t
   :bind ("C-c o" . olivetti-mode)
   :custom
-  (olivetti-body-width 120)
+  (olivetti-body-width 130)
   :hook (text-mode magit-mode))
 
 (use-package casual
