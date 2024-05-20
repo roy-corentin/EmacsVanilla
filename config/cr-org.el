@@ -314,7 +314,7 @@
           ("\\(HOLD\\)" . ((lambda (tag)
                              (svg-tag-make tag :inverse t :face 'org-warning))))
           ("\\(CANCELED\\)" . ((lambda (tag)
-                                 (svg-tag-make tag :inverse t :face '+org-todo-cancel))))
+                                 (svg-tag-make tag :inverse t :face 'org-date))))
           ;; Progress
           ("\\(\\[[0-9]\\{1,3\\}%\\]\\)" . ((lambda (tag)
                                               (svg-progress-percent (substring tag 1 -2)))))
