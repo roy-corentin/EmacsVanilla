@@ -65,16 +65,16 @@
               ("C-j" . corfu-next)
               ("C-k" . corfu-previous))
   :custom
-  (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   (corfu-auto t)                 ;; Enable auto completion
-  (corfu-separator ?\s)          ;; Orderless field separator
+  (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   (corfu-auto-prefix 2)
   (corfu-auto-delay 0.1)
   ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
-  ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
+  (corfu-separator ?\s)          ;; Orderless field separator
+  (corfu-quit-no-match 'separator)
   ;; (corfu-preview-current nil)    ;; Disable current candidate preview
   (corfu-preselect 'prompt)      ;; Preselect the prompt
-  ;; (corfu-on-exact-match nil)     ;; Configure handling of exact matches
+  (corfu-on-exact-match 'insert)     ;; Configure handling of exact matches
   ;; (corfu-scroll-margin 5)        ;; Use scroll margin
   :init
   (add-hook 'eshell-mode-hook (lambda () (corfu-mode)))
@@ -102,11 +102,10 @@
 
 (use-package yasnippet-capf
   :ensure t
-  :defer t
+  :after cape
   :config
   (add-to-list 'completion-at-point-functions #'yasnippet-capf))
 
-;; Optionally use the `orderless' completion style.
 (use-package orderless
   :ensure t
   :init
