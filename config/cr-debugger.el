@@ -6,6 +6,9 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: mai 13, 2024
 
+(use-package jsonrpc
+  :ensure t)
+
 (use-package dape
   :ensure t
   :preface
