@@ -69,9 +69,6 @@
   (add-hook 'yaml-ts-mode-hook 'display-line-numbers-mode)
   (add-hook 'org-mode-hook 'display-line-numbers-mode)
   (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
-  (push 'bun-test compilation-error-regexp-alist)
-  (push '(bun-test "\sat\s\\([a-zA-Z0-9/\\._-]+\\):\\([0-9]+\\):\\([0-9]+\\)" 1 2 3)
-        compilation-error-regexp-alist-alist)
   :custom
   (tab-bar-show nil)
   (tab-bar-new-button-show nil)
@@ -94,6 +91,7 @@
   (display-line-numbers-current-absolute t)
   (indent-tabs-mode nil)
   (tab-always-indent 'complete)
+  (text-mode-ispell-word-completion nil)
   (read-extended-command-predicate #'command-completion-default-include-p)
   :custom-face
   (default ((t :family "JetBrains Mono Nerd Font" :height 105)))
