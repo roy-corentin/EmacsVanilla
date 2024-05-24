@@ -29,7 +29,7 @@
   :config
   (require 'smartparens-config)
   (sp-local-pair 'minibuffer-mode "'" nil :actions nil)
-  (sp-local-pair 'elisp-mode "'" nil :actions nil))
+  (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil))
 
 (use-package ace-window
   :ensure t
