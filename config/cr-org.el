@@ -141,6 +141,7 @@
                         (org-agenda-log-mode-items '(closed clock state))
                         (org-agenda-overriding-header "Today")))
             (agenda "" ((org-agenda-prefix-format "%-15T\t%s [X] ")
+                        (org-agenda-todo-keyword-format "")
                         (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'scheduled 'deadline))
                         (org-agenda-log-mode-items '(closed clock state))
                         (org-agenda-archives-mode t)
