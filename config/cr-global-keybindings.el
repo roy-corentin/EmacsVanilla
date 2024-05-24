@@ -172,7 +172,7 @@
    "C-p" 'evil-multiedit-prev)
   ;; VTerm
   (general-define-key
-   :states 'insert
+   :states '(normal insert)
    :keymaps 'vterm-mode-map
    "C-k" '(lambda () (interactive) (vterm-send "<up>"))
    "C-j" '(lambda () (interactive) (vterm-send "<down>")))
@@ -180,6 +180,7 @@
 
 (use-package drag-stuff
   :ensure t
+  :defer t
   :bind (("C-M-k" . drag-stuff-up)
          ("C-M-j" . drag-stuff-down)))
 
