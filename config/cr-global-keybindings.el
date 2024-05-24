@@ -37,6 +37,7 @@
     "f R" '(rename-file :which-key "Recent files")
     "f s" '(save-buffer :which-key "Save file")
     "w" '(:ignore t :which-key "Window")
+    "w a" '(ace-window :which-key "Ace-window")
     "w h" '(windmove-left :which-key "Move left")
     "w H" '(windmove-swap-states-left :which-key "Move window left")
     "w j" '(windmove-down :which-key "Move down")
