@@ -29,4 +29,8 @@
 (advice-add #'next-buffer :after #'cr/olivetti-on-single-prog-window)
 (advice-add #'previous-buffer :after #'cr/olivetti-on-single-prog-window)
 
+(use-package nerd-icons-ibuffer
+  :ensure t
+  :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
+
 (provide 'cr-buffer)
