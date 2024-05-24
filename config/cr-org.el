@@ -91,30 +91,30 @@
                              ("~" org-code)
                              ("+" (:strike-through t)))
         org-todo-keyword-faces
-        '(("IN-PROGRESS" . (:foreground "#b7a1f5")) ("HOLD" . org-warning)
+        '(("WIP" . (:foreground "#b7a1f5")) ("HOLD" . org-warning)
           ("[ ]" . (:foreground "#82b66a" :weight bold)) ("[-]" . (:foreground "#b7a1f5" :weight bold ))
           ("[?]" . org-warning)
-          ("👷🏻IN-PROGRESS" . (:foreground "#b7a1f5")) ("🔒HOLD" . org-warning))
+          ("👷🏻WIP" . (:foreground "#b7a1f5")) ("🔒HOLD" . org-warning))
         org-todo-keywords
         '((sequence
-           "TODO(t)"             ; A task that is ready to be tackled
-           "IN-PROGRESS(i)"      ; A task that is in progress
-           "HOLD(h)"             ; Something is holding up this task
-           "|"                   ; The pipe necessary to separate "active" states and "inactive" states
-           "DONE(d)"             ; Task has been completed
-           "CANCELED(c)" )      ; Task has been canceled
+           "TODO(t)"       ; A task that is ready to be tackled
+           "WIP(i)"        ; A task that is in progress
+           "HOLD(h)"       ; Something is holding up this task
+           "|"             ; The pipe necessary to separate "active" states and "inactive" states
+           "DONE(d)"       ; Task has been completed
+           "CANCELED(c)" ) ; Task has been canceled
           (sequence
-           "🚩TODO(f)"           ; A task that is ready to be tackled
-           "👷🏻IN-PROGRESS(w)"    ; A task that is in progress
-           "🔒HOLD(l)"           ; Something is holding up this task
-           "|"                   ; The pipe necessary to separate "active" states and "inactive" states
-           "✔DONE(e)"           ; Task has been completed
+           "🚩TODO(f)"     ; A task that is ready to be tackled
+           "👷🏻WIP(w)"      ; A task that is in progress
+           "🔒HOLD(l)"     ; Something is holding up this task
+           "|"             ; The pipe necessary to separate "active" states and "inactive" states
+           "✔DONE(e)"      ; Task has been completed
            "❌CANCELED(x)" )
           (sequence
-           "[ ](T)"               ; A task that is ready tobe tackled
-           "[-](I)"               ; A task that is already started
-           "[?](H)"               ; A task that is holding up by a reason ?
-           "|"                    ; The pipe necessary to separate "active" states and "inactive" states
+           "[ ](T)"        ; A task that is ready tobe tackled
+           "[-](I)"        ; A task that is already started
+           "[?](H)"        ; A task that is holding up by a reason ?
+           "|"             ; The pipe necessary to separate "active" states and "inactive" states
            "[X](D)" ))
         org-agenda-custom-commands
         '(("c" "Simple agenda view"
@@ -309,8 +309,8 @@
                              (svg-tag-make tag :inverse t :face 'org-todo))))
           ("\\(DONE\\)" . ((lambda (tag)
                              (svg-tag-make tag :inverse t :face 'org-done))))
-          ("\\(IN-PROGRESS\\)" . ((lambda (tag)
-                                    (svg-tag-make tag :inverse t :face 'org-macro))))
+          ("\\(WIP\\)" . ((lambda (tag)
+                            (svg-tag-make tag :inverse t :face 'org-macro))))
           ("\\(HOLD\\)" . ((lambda (tag)
                              (svg-tag-make tag :inverse t :face 'org-warning))))
           ("\\(CANCELED\\)" . ((lambda (tag)
