@@ -41,15 +41,7 @@
         doom-modeline-buffer-encoding 'nondefault)
   (doom-modeline-mode 1)
   :config
-  (add-hook 'doom-load-theme-hook #'doom-modeline-refresh-bars)
-  ;;; Extensions
-  (use-package anzu
-    :ensure t
-    :after isearch)
-  (use-package evil-anzu
-    :after evil
-    :ensure t
-    :config (global-anzu-mode +1)))
+  (add-hook 'doom-load-theme-hook #'doom-modeline-refresh-bars))
 
 (use-package vi-tilde-fringe
   :ensure t
@@ -67,7 +59,7 @@
   (fringe-mode '8))
 
 (use-package hl-todo
-  :ensure t
+  :ensure (:protocol https :depth 1 :inherit t  :fetcher github :repo "tarsius/hl-todo" :version (lambda (_) "3.6.0" ) :files (:defaults))
   :hook (prog-mode . hl-todo-mode)
   :hook (yaml-mode . hl-todo-mode)
   :config
