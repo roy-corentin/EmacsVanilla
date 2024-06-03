@@ -37,6 +37,7 @@
 
 (use-package magit-file-icons
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "gekoke/magit-file-icons" :files (:defaults))
+  :after evil
   :init
   (magit-file-icons-mode 1)
   :custom
