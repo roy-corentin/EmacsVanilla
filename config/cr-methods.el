@@ -105,7 +105,7 @@ If prefix ARG is set, prompt for a directory to search from."
   )
 
 (defun cr/olivetti-on-single-prog-window (&rest args)
-  (when (derived-mode-p 'prog-mode)
+  (when (or (derived-mode-p 'prog-mode) (derived-mode-p 'dired-mode))
     (if (one-window-p)
         (olivetti-mode t)
       (when (bound-and-true-p olivetti-mode)

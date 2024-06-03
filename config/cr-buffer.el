@@ -28,6 +28,7 @@
 (advice-add #'switch-to-buffer :after #'cr/olivetti-on-single-prog-window)
 (advice-add #'next-buffer :after #'cr/olivetti-on-single-prog-window)
 (advice-add #'previous-buffer :after #'cr/olivetti-on-single-prog-window)
+(advice-add #'dired :after #'cr/olivetti-on-single-prog-window)
 
 (use-package nerd-icons-ibuffer
   :ensure t
