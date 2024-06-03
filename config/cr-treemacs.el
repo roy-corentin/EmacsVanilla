@@ -12,7 +12,7 @@
   :defer t
   :init
   (setq treemacs-follow-after-init t
-        treemacs-is-never-other-window t
+        treemacs-is-never-other-window nil
         treemacs-sorting 'alphabetic-case-insensitive-asc)
   :config
   ;; Add ignored files and file extensions
