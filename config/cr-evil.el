@@ -26,6 +26,8 @@
         ("TAB" . evil-jump-item))
   (:map evil-visual-state-map
         ("TAB" . evil-jump-item))
+  (:map evil-normal-state-map
+        ("C-i" . evil-jump-forward))
   :config
   (evil-mode 1))
 
@@ -104,6 +106,14 @@
   :ensure t
   :config
   (global-evil-mc-mode 1))
+
+(use-package anzu
+  :ensure t
+  :after isearch)
+(use-package evil-anzu
+  :after evil
+  :ensure t
+  :config (global-anzu-mode +1))
 
 (require 'cr-global-keybindings)
 
