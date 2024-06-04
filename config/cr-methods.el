@@ -41,7 +41,7 @@ Returns the vterm buffer."
 (defun cr/smart-vterm-buffer (arg)
   (interactive "P")
   (when (one-window-p)
-    (let ((new-window (split-window-right)))
+    (let ((new-window (split-window-sensibly)))
       (select-window new-window)))
   (cr/vterm-buffer arg))
 
