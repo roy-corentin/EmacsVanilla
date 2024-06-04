@@ -20,5 +20,8 @@
   :init
   (diredfl-global-mode))
 
+(use-package dired-open-with
+  :ensure t)
+
 (provide 'cr-dired)
 ;;; cr-dired.el ends here
