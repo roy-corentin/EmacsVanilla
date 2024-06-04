@@ -47,6 +47,7 @@
     "w l" '(windmove-right :which-key "Move right")
     "w L" '(windmove-swap-states-right :which-key "Move window right")
     "w d" '(delete-window :which-key "Delete window")
+    "w D" '(delete-other-windows :which-key "Delete other windows")
     "w s" '(split-window-below :which-key "Split window")
     "w S" '(cr/split-window-below-and-follow :which-key "Split window and follow")
     "w v" '(split-window-right :which-key "Vsplit window")
