@@ -117,4 +117,9 @@ If prefix ARG is set, prompt for a directory to search from."
 (advice-add #'tab-close :before #'cr/try-kill-project-buffers)
 (advice-add #'tab-switcher-execute :before #'cr/try-kill-project-buffers)
 
+(defun cr/project-open-file-other-window (&rest args)
+  (interactive)
+  (other-window-prefix)
+  (project-find-file args))
+
 (provide 'cr-methods)
