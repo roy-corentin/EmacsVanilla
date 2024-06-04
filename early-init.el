@@ -64,6 +64,8 @@
   (tab-bar-mode 1)
   (desktop-save-mode 1)
   (set-default 'truncate-lines t)
+  (pixel-scroll-mode t)
+  (pixel-scroll-precision-mode t)
   (defalias 'yes-or-no-p 'y-or-n-p)
   (add-hook 'prog-mode-hook 'display-line-numbers-mode)
   (add-hook 'yaml-ts-mode-hook 'display-line-numbers-mode)
