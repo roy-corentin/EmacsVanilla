@@ -46,4 +46,8 @@
   (magit-file-icons-enable-untracked-icons t)
   (magit-file-icons-enable-diffstat-icons t))
 
+(use-package forge
+  :ensure t
+  :after magit)
+
 (provide 'cr-magit)
