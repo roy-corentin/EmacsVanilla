@@ -33,9 +33,6 @@ swaps `yas-global-mode' with `yas-minor-mode'."
                       (yas-global-mode yas-minor-mode))
                      (apply fn args))))
 
-(use-package doom-snippets 
-  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "doomemacs/snippets" :files (:defaults))
-  :defer t)
 
 (use-package autoinsert
   :ensure nil
