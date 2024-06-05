@@ -107,10 +107,9 @@ If prefix ARG is set, prompt for a directory to search from."
 
 (defun cr/olivetti-on-single-prog-window (&rest args)
   (when (or (derived-mode-p 'prog-mode) (derived-mode-p 'dired-mode))
-    (if (>= (window-width) 130)
-        (olivetti-mode t)
-      (when (bound-and-true-p olivetti-mode)
-        (olivetti-mode 0)))))
+    (olivetti-mode 0)
+    (if (>= (window-width) (floor (frame-width) 2))
+        (olivetti-mode t))))
 
 (defun cr/try-kill-project-buffers (&rest args)
   (when (project-current)
