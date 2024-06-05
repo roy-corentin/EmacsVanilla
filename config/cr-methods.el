@@ -41,8 +41,9 @@ Returns the vterm buffer."
 (defun cr/smart-vterm-buffer (arg)
   (interactive "P")
   (when (one-window-p)
-    (let ((new-window (split-window-sensibly)))
-      (select-window new-window)))
+    (let ((split-width-threshold 130))
+      (let ((new-window (split-window-sensibly)))
+        (select-window new-window))))
   (cr/vterm-buffer arg))
 
 (defun +default/search-cwd (&optional arg)

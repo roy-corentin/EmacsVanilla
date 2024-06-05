@@ -95,7 +95,6 @@
   (tab-always-indent 'complete)
   (text-mode-ispell-word-completion nil)
   (read-extended-command-predicate #'command-completion-default-include-p)
-  (split-width-threshold 130)
   :custom-face
   (default ((t :family "JetBrains Mono Nerd Font" :height 105)))
   (fixed-pitch ((t :family "JetBrains Mono Nerd Font" :height 105)))
