@@ -41,13 +41,6 @@
   (set-face-attribute 'org-checkbox-statistics-todo nil :family fixed-pitch-font)
   (set-face-attribute 'org-checkbox-statistics-done nil :family fixed-pitch-font))
 
-(defun cr/org-summary-todo (n-done n-not-done)
-  "Switch entry to DONE when all subentries of a TODO are done, to TODO otherwise."
-  (let ((org-log-done org-todo-log-states)
-        (todo-state (org-get-todo-state)))   ; turn off logging
-    (when (member todo-state org-todo-keywords-1)
-      (org-todo (if (= n-not-done 0) "DONE" "TODO")))))
-
 (defface my-org-emphasis-bold
   '((default :inherit bold)
     (((class color) (min-colors 88) (background light))
