@@ -81,6 +81,9 @@
   (add-hook 'minibuffer-setup-hook #'corfu-enable-in-minibuffer)
   (global-corfu-mode))
 
+(use-package corfu-terminal
+  :ensure t)
+
 (load "~/.config/doom/corfu-icons.el")
 
 (use-package nerd-icons-corfu
