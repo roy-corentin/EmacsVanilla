@@ -294,10 +294,11 @@
   :ensure t
   :hook org-mode
   :config
-  (plist-put svg-lib-style-default :font-family "JetBrainsMono Nerd Font")
-  (plist-put svg-lib-style-default :height 1.2)
-  (plist-put svg-lib-style-default :padding 2)
-  (plist-put svg-lib-style-default :font-size 10)
+  (setq svg-lib-style-default '(
+                                :background "#000000" :foreground "#ffffff" :padding 2 :margin 0 :stroke 2
+                                :radius 3 :alignment 0.5 :width 20 :height 1.2 :scale 0.75 :ascent center
+                                :crop-left nil :crop-right nil :collection "material"
+                                :font-family "JetBrainsMono Nerd Font" :font-size 10 :font-weight regular))
   (setq svg-tag-tags
         '(
           ;; Org tags
