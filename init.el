@@ -26,10 +26,8 @@
   :hook (prog-mode text-mode)
   :custom
   (sp-highlight-pair-overlay nil)
-  :config
-  (require 'smartparens-config)
-  (sp-local-pair 'minibuffer-mode "'" nil :actions nil)
-  (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil))
+  :init
+  (require 'smartparens-config))
 
 (use-package ace-window
   :ensure t
