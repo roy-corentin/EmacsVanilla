@@ -180,12 +180,7 @@
    "RET" 'evil-multiedit-toggle-or-restrict-region
    "C-n" 'evil-multiedit-next
    "C-p" 'evil-multiedit-prev)
-  ;; VTerm
   (general-define-key
-   :states '(normal insert)
-   :keymaps 'vterm-mode-map
-   "C-k" '(lambda () (interactive) (vterm-send "<up>"))
-   "C-j" '(lambda () (interactive) (vterm-send "<down>")))
   )
 
 (use-package drag-stuff
