@@ -88,7 +88,7 @@
   (initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
   ;; (show-trailing-whitespace t)
   (column-number-mode t)
-  (display-line-numbers-type 'visual)
+  (display-line-numbers-type 'relative)
   (display-line-numbers-width 3)
   (display-line-numbers-current-absolute t)
   (indent-tabs-mode nil)

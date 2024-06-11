@@ -14,6 +14,7 @@
   :hook (org-mode . mixed-pitch-mode))
 
 (defun cr/org-font-setup ()
+  (setq-local display-line-numbers-type 'visual)
   ;; Set faces for heading levels
   (dolist (face '((org-level-1 . 1.3)
                   (org-level-2 . 1.2)
