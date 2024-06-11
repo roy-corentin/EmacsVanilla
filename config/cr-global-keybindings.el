@@ -146,6 +146,8 @@
    :keymaps 'org-mode-map
    :prefix "SPC m"
    :global-prefix "M-SPC m"
+   :which-key "Org Local"
+   "e" '(org-export-dispatch :which-key "Org Export")
    "c" '(:ignore t :which-key "Org Clock")
    "c i" '(org-clock-in :which-key "Clock in")
    "c o" '(org-clock-out :which-key "Clock out")
@@ -181,6 +183,11 @@
    "C-n" 'evil-multiedit-next
    "C-p" 'evil-multiedit-prev)
   (general-define-key
+   :states '(normal visual)
+   :keymaps 'override
+   "g" '(:ignore t)
+   "g =" '(org-increase-number-at-point :which-key "Increase at point")
+   "g -" '(org-decrease-number-at-point :which-key "Decrease at point"))
   )
 
 (use-package drag-stuff
