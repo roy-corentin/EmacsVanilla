@@ -60,8 +60,7 @@
 
 (use-package hl-todo
   :ensure (:protocol https :depth 1 :inherit t  :fetcher github :repo "tarsius/hl-todo" :version (lambda (_) "3.6.0" ) :files (:defaults))
-  :hook (prog-mode . hl-todo-mode)
-  :hook (yaml-mode . hl-todo-mode)
+  :hook (prog-mode yaml-mode)
   :config
   (setq hl-todo-highlight-punctuation ":"
         hl-todo-keyword-faces
