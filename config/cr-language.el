@@ -12,10 +12,6 @@
 (use-package crystal-mode
   :ensure t)
 
-(use-package ruby-end
-  :ensure t
-  :defer t)
-
 (use-package csv
   :ensure t)
 
