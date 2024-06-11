@@ -13,7 +13,7 @@
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
   ;; (load-theme 'doom-moonlight t)
-  (load-theme 'modus-vivendi t)
+  (load-theme 'modus-vivendi-tinted t)
 
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
