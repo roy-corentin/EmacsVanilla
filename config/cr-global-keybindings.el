@@ -151,6 +151,14 @@
    "c o" '(org-clock-out :which-key "Clock out")
    "c g" '(org-clock-goto :which-key "Clock goto")
    "t" '(org-todo :which-key "Org todo"))
+  (general-define-key
+   :states 'normal
+   :keymaps 'csv-mode-map
+   :prefix "SPC m"
+   :global-prefix "M-SPC m"
+   "a" '(csv-align-fields :which-key "Align fields")
+   "u" '(csv-unalign-fields :which-key "Unalign fields")
+   "t" '(csv-transpose :which-key "Transpose"))
   ;; evil-multiedit
   (general-define-key
    :states 'normal
