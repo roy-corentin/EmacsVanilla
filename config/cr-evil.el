@@ -86,7 +86,9 @@
   (evil-define-key 'normal 'evil-org-mode
     (kbd "C-<return>") '+org/insert-item-below
     (kbd "<return>") '+org/dwim-at-point
-    (kbd "zi") 'org-toggle-inline-images))
+    (kbd "zi") 'org-toggle-inline-images)
+  (evil-define-key 'insert 'evil-org-mode
+    (kbd "C-<return>") '+org/insert-item-below))
 
 (use-package evil-goggles
   :ensure t
