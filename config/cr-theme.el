@@ -93,4 +93,7 @@
   :defer t
   :hook (prog-mode))
 
+(use-package rainbow-mode
+  :ensure t)
+
 (provide 'cr-theme)
