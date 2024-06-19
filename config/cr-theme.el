@@ -96,4 +96,9 @@
 (use-package rainbow-mode
   :ensure t)
 
+(use-package vim-tab-bar
+  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "jamescherti/vim-tab-bar.el" :files (:defaults))
+  :config
+  (add-hook 'after-init-hook #'vim-tab-bar-mode))
+
 (provide 'cr-theme)
