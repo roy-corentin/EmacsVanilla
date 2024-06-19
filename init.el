@@ -71,7 +71,8 @@
               ("C-TAB" . 'copilot-accept-completion)))
 
 (use-package keycast
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package verb
   :ensure t)
