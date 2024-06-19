@@ -23,5 +23,10 @@
 (use-package dired-open-with
   :ensure t)
 
+(use-package casual-dired
+  :ensure t
+  :after dired
+  :bind (:map dired-mode-map ("C-o" . #'casual-dired-tmenu)))
+
 (provide 'cr-dired)
 ;;; cr-dired.el ends here
