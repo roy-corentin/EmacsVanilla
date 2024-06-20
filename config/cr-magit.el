@@ -9,6 +9,8 @@
 (use-package magit
   :ensure t
   :bind ("C-x g" . magit-status)
+  :custom
+  (magit-blame-echo-style 'headings)
   :config
   (setq magit-auto-revert-mode nil)
   (setq magit-refresh-status-buffer nil)

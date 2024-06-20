@@ -56,6 +56,8 @@
     "w =" '(balance-windows :which-key "Balance window")
     "g" '(:ignore t :which-key "Git")
     "g g" '(magit-status :which-key "Magit Status")
+    "g c" '(magit-clone :which-key "Magit Clone")
+    "g b" '(magit-blame :which-key "Magit Blame")
     "p" '(:ignore t :which-key "Project")
     "p a" '(project-remember-projects-under :which-key "Add project")
     "p p" '(cr/switch-project-in-new-tab :which-key "Switch project")
