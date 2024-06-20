@@ -7,6 +7,7 @@
 ;; Created: avril 08, 2024
 
 (require 'doom-methods)
+(require 'cr-methods)
 
 (use-package general
   :ensure t

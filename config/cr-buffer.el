@@ -22,14 +22,6 @@
          (window-parameters . ((mode-line-format . none))))
         ))
 
-(advice-add #'delete-window :after #'cr/olivetti-on-single-prog-window)
-(advice-add #'split-window :after #'cr/olivetti-on-single-prog-window)
-(advice-add #'find-file :after #'cr/olivetti-on-single-prog-window)
-(advice-add #'switch-to-buffer :after #'cr/olivetti-on-single-prog-window)
-(advice-add #'next-buffer :after #'cr/olivetti-on-single-prog-window)
-(advice-add #'previous-buffer :after #'cr/olivetti-on-single-prog-window)
-(advice-add #'dired :after #'cr/olivetti-on-single-prog-window)
-
 (use-package nerd-icons-ibuffer
   :ensure t
   :hook (ibuffer-mode . nerd-icons-ibuffer-mode))

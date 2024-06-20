@@ -53,6 +53,8 @@
   ;; Enable use-package :ensure support for Elpaca.
   (elpaca-use-package-mode))
 
+(require 'cr-olivetti)
+
 (use-package emacs
   :ensure nil
   :config
@@ -66,6 +68,7 @@
   (set-default 'truncate-lines t)
   (pixel-scroll-mode t)
   (pixel-scroll-precision-mode t)
+  (cr/olivetti-on-single-prog-window-mode t)
   (defalias 'yes-or-no-p 'y-or-n-p)
   (add-hook 'prog-mode-hook 'display-line-numbers-mode)
   (add-hook 'yaml-ts-mode-hook 'display-line-numbers-mode)
@@ -73,28 +76,28 @@
   (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
   :custom
   (tab-bar-show nil)
-  (tab-bar-new-button-show nil)
-  (tab-bar-close-button-show nil)
-  (tab-bar-new-tab-to 'rightmost)
-  (tab-bar-new-tab-choice "*dashboard*")
-  (tab-bar-auto-width nil)
-  (tab-bar-separator (propertize "|"))
-  (tab-bar-format '(tab-bar-format-tabs (lambda () " ")))
   (make-backup-files nil)
   (auto-save-default nil)
   (create-lockfiles nil)
   (fill-column 80)
   (inhibit-startup-screen t)
   (initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
-  ;; (show-trailing-whitespace t)
+  (show-trailing-whitespace t)
   (column-number-mode t)
   (display-line-numbers-type 'relative)
   (display-line-numbers-width 3)
   (display-line-numbers-current-absolute t)
   (indent-tabs-mode nil)
   (tab-always-indent 'complete)
-  (text-mode-ispell-word-completion nil)
-  (read-extended-command-predicate #'command-completion-default-include-p)
+
+  ;; Emacs 30 and newer: Disable Ispell completion function. As an alternative,
+  ;; try `cape-dict'.
+  (setq text-mode-ispell-word-completion nil)
+
+  ;; Emacs 28 and newer: Hide commands in M-x which do not apply to the current
+  ;; mode.  Corfu commands are hidden, since they are not used via M-x. This
+  ;; setting is useful beyond Corfu.
+  (setq read-extended-command-predicate #'command-completion-default-include-p)
   :custom-face
   (default ((t :family "JetBrains Mono Nerd Font" :height 105)))
   (fixed-pitch ((t :family "JetBrains Mono Nerd Font" :height 105)))
