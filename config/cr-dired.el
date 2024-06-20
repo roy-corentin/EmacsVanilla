@@ -25,8 +25,7 @@
 
 (use-package casual-dired
   :ensure t
-  :after dired
-  :bind (:map dired-mode-map ("C-o" . #'casual-dired-tmenu)))
+  :after dired)
 
 (provide 'cr-dired)
 ;;; cr-dired.el ends here

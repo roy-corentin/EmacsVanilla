@@ -7,7 +7,6 @@
 ;; Created: avril 08, 2024
 
 (require 'doom-methods)
-(require 'cr-methods)
 
 (use-package general
   :ensure t
@@ -188,6 +187,10 @@
    "g" '(:ignore t)
    "g =" '(org-increase-number-at-point :which-key "Increase at point")
    "g -" '(org-decrease-number-at-point :which-key "Decrease at point"))
+  (general-define-key
+   :states '(normal visual)
+   :keympas 'dired-mode-map
+   "?" 'casual-dired-tmenu)
   )
 
 (use-package drag-stuff
