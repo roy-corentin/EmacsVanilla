@@ -84,7 +84,7 @@
 (use-package corfu-terminal
   :ensure t)
 
-(load "~/.config/doom/corfu-icons.el")
+(load (concat user-emacs-directory"/corfu-icons.el"))
 
 (use-package nerd-icons-corfu
   :ensure t
