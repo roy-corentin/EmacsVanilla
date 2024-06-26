@@ -8,7 +8,7 @@
 ;; Load the package manager and initialize MELPA
 
 (use-package which-key
-  :ensure t
+  :ensure nil
   :config
   (setq which-key-show-early-on-C-h t)
   (setq which-key-idle-secondary-delay 0.05)
@@ -47,15 +47,17 @@
   (olivetti-body-width 130)
   :hook (text-mode magit-mode))
 
-(use-package casual
-  :ensure t
-  :defer t
-  :bind (:map calc-mode-map ("C-o" . 'casual-main-menu)))
+;; TODO decomment when package on MELPA
+;; (use-package casual-calc
+;;   :ensure t
+;;   :defer t
+;;   :bind (:map calc-mode-map ("C-o" . 'casual-main-menu)))
 
 (use-package vterm
   :ensure t
   :defer t
   :config
+  (add-hook 'vterm-mode-hook (lambda () (setq-local show-trailing-whitespace nil)))
   (setq vterm-kill-buffer-on-exit t)
   (setq vterm-max-scrollback 5000))
 

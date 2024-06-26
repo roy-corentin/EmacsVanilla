@@ -43,11 +43,6 @@
   :config
   (add-hook 'doom-load-theme-hook #'doom-modeline-refresh-bars))
 
-(use-package vi-tilde-fringe
-  :ensure t
-  :defer t
-  :hook (prog-mode . vi-tilde-fringe-mode))
-
 (use-package git-gutter
   :ensure t
   :hook (prog-mode text-mode)
@@ -98,7 +93,7 @@
 
 (use-package vim-tab-bar
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "jamescherti/vim-tab-bar.el" :files (:defaults))
-  :config
+  :init
   (add-hook 'after-init-hook #'vim-tab-bar-mode))
 
 (provide 'cr-theme)
