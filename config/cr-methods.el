@@ -108,7 +108,7 @@ If prefix ARG is set, prompt for a directory to search from."
 (defun cr/olivetti-on-single-prog-window (&rest args)
   "Toggle Olivetti mode based on the window configuration"
   (message "CROLIVETTISPW")
-  (when (or (derived-mode-p 'prog-mode) (derived-mode-p 'dired-mode))
+  (when (or (derived-mode-p 'prog-mode) (derived-mode-p 'dired-mode) (derived-mode-p 'conf-mode))
     (olivetti-mode 0)
     (if (>= (window-width) (floor (frame-width) 2))
         (olivetti-mode t))))
