@@ -62,6 +62,7 @@
     "p a" '(project-remember-projects-under :which-key "Add project")
     "p p" '(cr/switch-project-in-new-tab :which-key "Switch project")
     "p d" '(project-dired :which-key "Dired project")
+    "p f" '(project-forget-projects-under :which-key "Forget projects")
     "p e" '(project-eshell :which-key "Eshell project")
     "p c" '(project-compile :which-key "Compile project")
     "p r" '(project-recompile :which-key "Recompile project")
@@ -155,7 +156,9 @@
    "c i" '(org-clock-in :which-key "Clock in")
    "c o" '(org-clock-out :which-key "Clock out")
    "c g" '(org-clock-goto :which-key "Clock goto")
-   "t" '(org-todo :which-key "Org todo"))
+   "t" '(org-todo :which-key "Org todo")
+   "l" '(:ignore t :which-key "Org link")
+   "l l" '(org-insert-link :which-key "Insert link"))
   (general-define-key
    :states 'normal
    :keymaps 'csv-mode-map
