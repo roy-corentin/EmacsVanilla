@@ -6,7 +6,7 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 10, 2024
 
-(defvar variable-pitch-font "C059")
+(defvar variable-pitch-font "FreeSerif")
 (defvar fixed-pitch-font "JetBrains Mono Nerd Font")
 
 (use-package mixed-pitch

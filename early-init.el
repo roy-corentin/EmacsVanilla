@@ -99,11 +99,12 @@
   :custom-face
   (default ((t :family "JetBrains Mono Nerd Font" :height 105)))
   (fixed-pitch ((t :family "JetBrains Mono Nerd Font" :height 105)))
-  (variable-pitch ((t :family "C059" :height 115)))
+  (variable-pitch ((t :family "FreeSerif" :height 115)))
   :bind
   ("C-=" . text-scale-increase)
   ("C--" . text-scale-decrease)
-  ("C-+" . (lambda () (interactive) (text-scale-set 0))))
+  ("C-+" . (lambda () (interactive) (text-scale-set 0)))
+  ("C-M-=" . global-text-scale-adjust))
 
 (use-package gcmh
   :ensure t
