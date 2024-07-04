@@ -26,4 +26,6 @@
   :ensure t
   :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
 
+(advice-add #'tab-new :after #'dashboard-open)
+
 (provide 'cr-buffer)
