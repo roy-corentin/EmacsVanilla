@@ -47,11 +47,10 @@
   (olivetti-body-width 130)
   :hook (text-mode magit-mode))
 
-;; TODO decomment when package on MELPA
-;; (use-package casual-calc
-;;   :ensure t
-;;   :defer t
-;;   :bind (:map calc-mode-map ("C-o" . 'casual-main-menu)))
+(use-package casual-calc
+  :ensure t
+  :defer t
+  :bind (:map calc-mode-map ("C-o" . 'casual-main-menu)))
 
 (use-package vterm
   :ensure t

@@ -23,9 +23,9 @@
 (use-package dired-open-with
   :ensure t)
 
-;;(use-package casual-dired
-;;  :ensure t
-;;  :after dired)
+(use-package casual-dired
+  :ensure t
+  :after dired)
 
 (provide 'cr-dired)
 ;;; cr-dired.el ends here
