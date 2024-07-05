@@ -78,11 +78,6 @@
 (use-package verb
   :ensure t)
 
-(use-package solaire-mode
-  :ensure t
-  :init
-  (solaire-global-mode t))
-
 (use-package load-env-vars
   :ensure t
   :config

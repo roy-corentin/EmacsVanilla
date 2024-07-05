@@ -23,6 +23,11 @@
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
+(use-package solaire-mode
+  :ensure t
+  :init
+  (solaire-global-mode t))
+
 (use-package doom-modeline
   :ensure t
   :hook (after-init . doom-modeline-mode)
