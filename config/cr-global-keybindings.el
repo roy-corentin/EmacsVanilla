@@ -196,7 +196,7 @@
    "g -" '(org-decrease-number-at-point :which-key "Decrease at point"))
   (general-define-key
    :states '(normal visual)
-   :keympas 'dired-mode-map
+   :keymaps 'dired-mode-map
    "?" 'casual-dired-tmenu)
   )
 
