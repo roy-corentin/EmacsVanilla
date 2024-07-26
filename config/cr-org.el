@@ -290,7 +290,7 @@
   :config
   (setq svg-lib-style-default '(
                                 :background "#000000" :foreground "#ffffff" :padding 2 :margin 0 :stroke 2
-                                :radius 3 :alignment 0.5 :width 20 :height 1.2 :scale 0.75 :ascent center
+                                :radius 3 :alignment 0.5 :width 20 :height 1 :scale 1 :ascent center
                                 :crop-left nil :crop-right nil :collection "material"
                                 :font-family "JetBrainsMono Nerd Font" :font-size 10 :font-weight regular))
   (setq svg-tag-tags
