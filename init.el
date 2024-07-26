@@ -96,6 +96,11 @@
   (push '(bun-test "\sat\s\\([a-zA-Z0-9/\\._-]+\\):\\([0-9]+\\):\\([0-9]+\\)" 1 2 3)
         compilation-error-regexp-alist-alist))
 
+(use-package ws-butler
+  :ensure t
+  :init
+  (ws-butler-global-mode))
+
 (require 'cr-buffer)
 (require 'cr-magit)
 (require 'cr-theme)
