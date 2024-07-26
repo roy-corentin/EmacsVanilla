@@ -62,7 +62,7 @@
     "p a" '(project-remember-projects-under :which-key "Add project")
     "p p" '(cr/switch-project-in-new-tab :which-key "Switch project")
     "p d" '(project-dired :which-key "Dired project")
-    "p f" '(project-forget-projects-under :which-key "Forget projects")
+    "p f" '(project-forget-project :which-key "Forget projects")
     "p e" '(project-eshell :which-key "Eshell project")
     "p c" '(project-compile :which-key "Compile project")
     "p r" '(project-recompile :which-key "Recompile project")
@@ -146,7 +146,7 @@
    "f b" '(ruby-beginning-of-defun :which-key "Beginning of function")
    "f e" '(ruby-end-of-defun :which-key "End of function"))
   (general-define-key
-   :states 'normal
+   :states '(visual normal)
    :keymaps 'org-mode-map
    :prefix "SPC m"
    :global-prefix "M-SPC m"
