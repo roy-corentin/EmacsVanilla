@@ -99,7 +99,7 @@
   :custom-face
   (default ((t :family "JetBrains Mono Nerd Font" :height 105)))
   (fixed-pitch ((t :family "JetBrains Mono Nerd Font" :height 105)))
-  (variable-pitch ((t :family "FreeSerif" :height 115)))
+  (variable-pitch ((t :family "Noto Serif" :height 115)))
   :bind
   ("C-=" . text-scale-increase)
   ("C--" . text-scale-decrease)
