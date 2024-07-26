@@ -56,7 +56,7 @@
   (add-hook 'org-mode-hook #'cr/org-font-setup)
   (add-hook 'org-after-todo-statistics-hook #'cr/org-summary-todo)
   (setq org-directory "~/Dropbox/Org/"
-        org-agenda-files (list org-directory)
+        org-agenda-files (list org-directory (concat org-roam-directory "/" org-roam-dailies-directory))
         org-agenda-start-with-log-mode t
         org-log-done 'time
         org-ellipsis " ▼ "
