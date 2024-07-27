@@ -89,14 +89,15 @@
   (display-line-numbers-width 3)
   (display-line-numbers-current-absolute t)
   (indent-tabs-mode nil)
+  (enable-recursive-minibuffers t)
   (tab-always-indent 'complete)
   ;; Emacs 30 and newer: Disable Ispell completion function. As an alternative,
   ;; try `cape-dict'.
-  (setq text-mode-ispell-word-completion nil)
+  (text-mode-ispell-word-completion nil)
   ;; Emacs 28 and newer: Hide commands in M-x which do not apply to the current
   ;; mode.  Corfu commands are hidden, since they are not used via M-x. This
   ;; setting is useful beyond Corfu.
-  (setq read-extended-command-predicate #'command-completion-default-include-p)
+  (read-extended-command-predicate #'command-completion-default-include-p)
   :custom-face
   (default ((t :family "JetBrains Mono Nerd Font" :height 105)))
   (fixed-pitch ((t :family "JetBrains Mono Nerd Font" :height 105)))
