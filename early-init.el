@@ -77,6 +77,7 @@
   (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
   :custom
   (tab-bar-show nil)
+  (native-comp-async-report-warnings-errors nil)
   (make-backup-files nil)
   (auto-save-default nil)
   (create-lockfiles nil)
