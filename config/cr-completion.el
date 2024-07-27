@@ -69,7 +69,8 @@
   (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   (corfu-auto-prefix 2)
   (corfu-auto-delay 0.1)
-  ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
+  (corfu-popupinfo-delay '(1.0 . 1.0))
+  ;;(corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
   (corfu-separator ?\s)          ;; Orderless field separator
   (corfu-quit-no-match 'separator)
   ;; (corfu-preview-current nil)    ;; Disable current candidate preview
@@ -79,6 +80,8 @@
   :init
   (add-hook 'eshell-mode-hook (lambda () (corfu-mode)))
   (add-hook 'minibuffer-setup-hook #'corfu-enable-in-minibuffer)
+  (corfu-echo-mode)
+  (corfu-popupinfo-mode)
   (global-corfu-mode))
 
 (use-package corfu-terminal
