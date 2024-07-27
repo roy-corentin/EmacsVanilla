@@ -52,6 +52,7 @@
 
 (use-package org
   :ensure nil
+  :after org-roam
   :init
   (add-hook 'org-mode-hook #'cr/org-font-setup)
   (add-hook 'org-after-todo-statistics-hook #'cr/org-summary-todo)
