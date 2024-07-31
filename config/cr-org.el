@@ -8,6 +8,7 @@
 
 (defvar variable-pitch-font "Noto Serif")
 (defvar fixed-pitch-font "JetBrains Mono Nerd Font")
+(defvar custom-org-roam-daily-directory "~/Dropbox/RoamNotes/daily")
 
 (use-package mixed-pitch
   :ensure t
@@ -57,7 +58,7 @@
   (add-hook 'org-mode-hook #'cr/org-font-setup)
   (add-hook 'org-after-todo-statistics-hook #'cr/org-summary-todo)
   (setq org-directory "~/Dropbox/Org/"
-        org-agenda-files (list org-directory (concat org-roam-directory "/" org-roam-dailies-directory))
+        org-agenda-files (list org-directory custom-org-roam-daily-directory)
         org-agenda-start-with-log-mode t
         org-log-done 'time
         org-ellipsis " ▼ "
@@ -232,7 +233,7 @@
 (use-package org-roam
   :ensure t
   :custom
-  (org-roam-directory "~/Dropbox/RoamNotes")
+  (org-roam-directory  "~/Dropbox/RoamNotes/")
   (org-roam-index-file "~/Dropbox/RoamNotes/index.org")
   (org-roam-capture-templates
    `(("d" " Default" plain
@@ -249,7 +250,9 @@
       "A =${title}= [[id:92421051-83c3-4117-9c25-7f4f9ecf2c0a][Data Structure]] is %?"
       :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
                          "#+title: ${title}\n#+filetags: :DATASTRUCTURE:\n")
-      :unnarrowed t))))
+      :unnarrowed t)))
+  :config
+  (org-roam-db-autosync-enable))
 
 (use-package websocket
   :ensure t
