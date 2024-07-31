@@ -6,7 +6,13 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: Juin 20, 2024
 
-(require 'cr-methods)
+(defun cr/olivetti-on-single-prog-window (&rest args)
+  "Toggle Olivetti mode based on the window configuration"
+  (message "CROLIVETTISPW")
+  (when (or (derived-mode-p 'prog-mode) (derived-mode-p 'dired-mode) (derived-mode-p 'conf-mode))
+    (olivetti-mode 0)
+    (if (>= (window-width) (floor (frame-width) 2))
+        (olivetti-mode t))))
 
 (defvar cr/olivetti-on-single-prog-window-advice-list
   '(delete-window
