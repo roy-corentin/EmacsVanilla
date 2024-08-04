@@ -13,7 +13,7 @@
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
   ;; (load-theme 'doom-moonlight t)
-  (load-theme 'modus-vivendi-tinted t)
+  ;; (load-theme 'modus-vivendi-tinted t)
 
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
@@ -22,6 +22,17 @@
   ;; (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
+
+(use-package ewal
+  :ensure t
+  :custom
+  (ewal-use-built-in-on-failure-p t))
+
+(use-package ewal-doom-themes
+  :ensure t
+  :after ewal
+  :init
+  (load-theme 'ewal-doom-vibrant t))
 
 (use-package solaire-mode
   :ensure t
