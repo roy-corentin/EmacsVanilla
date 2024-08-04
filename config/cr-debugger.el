@@ -7,7 +7,7 @@
 ;; Created: mai 13, 2024
 
 (use-package jsonrpc
-  :ensure t)
+  :ensure nil)
 
 (use-package dape
   :ensure t
