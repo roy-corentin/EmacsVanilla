@@ -38,6 +38,7 @@
     "f s" '(save-buffer :which-key "Save file")
     "w" '(:ignore t :which-key "Window")
     "w a" '(ace-window :which-key "Ace-window")
+    "w A" '(ace-swap-window :which-key "Ace-swap-window")
     "w h" '(windmove-left :which-key "Move left")
     "w H" '(evil-window-move-far-left :which-key "Move window left")
     "w j" '(windmove-down :which-key "Move down")
