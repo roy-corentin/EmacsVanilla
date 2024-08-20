@@ -63,6 +63,7 @@
     "p a" '(project-remember-projects-under :which-key "Add project")
     "p p" '(cr/switch-project-in-new-tab :which-key "Switch project")
     "p d" '(project-dired :which-key "Dired project")
+    "p D" '(flymake-show-project-diagnostics :which-key "Flymake project diagnostics")
     "p f" '(project-forget-project :which-key "Forget projects")
     "p e" '(project-eshell :which-key "Eshell project")
     "p c" '(project-compile :which-key "Compile project")
