@@ -198,6 +198,9 @@
   (general-define-key
    :states '(normal visual)
    :keymaps 'dired-mode-map
+   "o" 'dired-find-file-other-window
+   "F" 'dired-create-empty-file
+   "q" 'nil
    "?" 'casual-dired-tmenu)
   )
 

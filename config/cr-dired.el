@@ -14,6 +14,12 @@
   :ensure t
   :hook
   (dired-mode . nerd-icons-dired-mode))
+(use-package dired
+  :ensure nil
+  :custom
+  (dired-mouse-drag-files t)
+  (mouse-drag-and-drop-region-cross-program t))
+
 
 (use-package diredfl
   :ensure t
