@@ -59,15 +59,33 @@
   :config
   (add-hook 'doom-load-theme-hook #'doom-modeline-refresh-bars))
 
-(use-package git-gutter
+;; (use-package git-gutter
+;;   :ensure t
+;;   :hook (prog-mode text-mode)
+;;   :custom
+;;   (fringes-outside-margins t)
+;;   :init
+;;   (global-git-gutter-mode t)
+;;   :config
+;;   (fringe-mode '8))
+
+(use-package diff-hl
   :ensure t
-  :hook (prog-mode text-mode)
+  :hook (dired-mode . diff-hl-dired-mode)
   :custom
-  (fringes-outside-margins t)
+  (diff-hl-disable-on-remote t)
+  (vc-git-diff-switches '("--histogram"))
+  ;; PERF: Slightly more conservative delay before updating the diff
+  (diff-hl-flydiff-delay 0.5)  ; default: 0.3
+  ;; PERF: don't block Emacs when updating vc gutter
+  (diff-hl-update-async t)
+  ;; UX: get realtime feedback in diffs after staging/unstaging hunks.
+  (diff-hl-show-staged-changes nil)
   :init
-  (global-git-gutter-mode t)
+  (global-diff-hl-mode t)
   :config
-  (fringe-mode '8))
+  (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
 
 (use-package hl-todo
   :ensure (:protocol https :depth 1 :inherit t  :fetcher github :repo "tarsius/hl-todo" :version (lambda (_) "3.8.1" ) :files (:defaults))
