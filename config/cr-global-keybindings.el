@@ -203,6 +203,12 @@
    "F" 'dired-create-empty-file
    "q" 'nil
    "?" 'casual-dired-tmenu)
+  (general-define-key
+   :states '(normal visual)
+   :keympas 'dirvish-mode-map
+   "TAB" 'dirvish-subtree-toggle
+   "s" 'dirvish-layout-switch
+   "q" 'dirvish-quit)
   )
 
 (use-package drag-stuff
