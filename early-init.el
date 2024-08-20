@@ -75,6 +75,7 @@
   (add-hook 'yaml-ts-mode-hook 'display-line-numbers-mode)
   (add-hook 'org-mode-hook 'display-line-numbers-mode)
   (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
+  (set-fringe-style '(4 . 4))
   :custom
   (tab-bar-show nil)
   (native-comp-async-report-warnings-errors nil)
