@@ -18,11 +18,11 @@ This is not an exhaustive list of package but only here to show important choice
   - Global: =General=
   - Motion: =Evil=
 - Completion:
-  - MiniBuffer: =Vetico= (helm is too fat and slow)
-  - In Buffer: =Corfu= (company is slow and fat too)
+  - MiniBuffer: =Vetico= /(helm is too fat and slow)/
+  - In Buffer: =Corfu= /(company is slow and fat too)/
   - Search Algo: =Orderless=
   - Backend: =Cape=
-- Git: =Magit= (of course)
+- Git: =Magit= /(of course)/
 - Major Modes: =Tree-Sitter= /(when available ,best perf)/
 
 * Compilation
