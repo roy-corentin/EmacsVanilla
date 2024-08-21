@@ -19,7 +19,7 @@
   (add-to-list 'yas-snippet-dirs (concat user-emacs-directory "elpaca/repos/snippets/"))
   (yas-global-mode 1))
 
-(use-package auto-yasnippet 
+(use-package auto-yasnippet
   :ensure t
   :after yasnippet
   :config
