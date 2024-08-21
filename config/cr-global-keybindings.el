@@ -79,6 +79,7 @@
     "n r i" '(org-roam-node-insert :which-key "Insert roam note")
     "t" '(:ignore t :which-key "Toggle")
     "t a" '(apheleia-mode :which-key "Apheleia")
+    "t d" '(diff-hl-mode :which-key "Diff Highlights")
     "t t" '(global-tab-line-mode :which-key "Tab Line")
     "t w" '(toggle-frame-tab-bar :which-key "Tab Bar")
     "t v" '(visual-line-mode :which-key "Visual line mode")
