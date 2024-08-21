@@ -37,9 +37,18 @@
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "hlissner/dirvish" :files (:defaults "extensions/*"))
   :after dired
   :custom
-  (dirvish-reuse-session nil) ; kill all session buffers on quit
+  ;; (dirvish-reuse-session nil) ; kill all session buffers on quit
+  (dirvish-use-mode-line nil)
   (dirvish-subtree-always-show-state t)
   (dirvish-attributes '(file-size collapse nerd-icons git-msg vc-state subtree-state))
+  :config
+  (dirvish-define-preview eza (file)
+    "Use `eza' to generate directory preview."
+    :require ("eza") ; tell Dirvish to check if we have the executable
+    (when (file-directory-p file) ; we only interest in directories here
+      `(shell . ("eza" "-laS" "--icons" "--color=always"
+                 "--group-directories-first", file))))
+  (add-to-list 'dirvish-preview-dispatchers 'eza)
   :init
   (dirvish-override-dired-mode))
 
