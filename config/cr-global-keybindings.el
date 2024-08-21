@@ -205,7 +205,7 @@
    "?" 'casual-dired-tmenu)
   (general-define-key
    :states '(normal visual)
-   :keympas 'dirvish-mode-map
+   :keymaps 'dirvish-mode-map
    "TAB" 'dirvish-subtree-toggle
    "s" 'dirvish-layout-switch
    "q" 'dirvish-quit)
