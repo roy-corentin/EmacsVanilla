@@ -37,9 +37,9 @@
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "hlissner/dirvish" :files (:defaults "extensions/*"))
   :after dired
   :custom
-  (dirvish-reuse-session nil)
+  (dirvish-reuse-session nil) ; kill all session buffers on quit
   (dirvish-subtree-always-show-state t)
-  (dirvish-attributes '(file-size nerd-icons subtree-state))
+  (dirvish-attributes '(file-size collapse nerd-icons git-msg vc-state subtree-state))
   :init
   (dirvish-override-dired-mode))
 
