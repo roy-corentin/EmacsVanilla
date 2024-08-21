@@ -71,7 +71,7 @@
 
 (use-package diff-hl
   :ensure t
-  :hook (dired-mode . diff-hl-dired-mode)
+  ;; :hook (dired-mode . diff-hl-dired-mode) ;; HACK uncomment if you don't use dirvish
   :custom
   (diff-hl-disable-on-remote t)
   (vc-git-diff-switches '("--histogram"))
