@@ -46,7 +46,7 @@
     "Use `eza' to generate directory preview."
     :require ("eza") ; tell Dirvish to check if we have the executable
     (when (file-directory-p file) ; we only interest in directories here
-      `(shell . ("eza" "-laS" "--icons" "--color=always"
+      `(shell . ("eza" "-laS" "--icons=always" "--color=always"
                  "--group-directories-first", file))))
   (add-to-list 'dirvish-preview-dispatchers 'eza)
   :init
