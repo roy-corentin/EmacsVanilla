@@ -9,7 +9,7 @@ To improve performance I want to try to use as maximum as possible only built-in
 I'm not a big fan of lazy loading, I prefer a slower startup but a faster application in use so there is not a lof of '=defer t=' in this config
 
 * Stack
-This is not an exhaustive list of package but only here to show important choices of important packages.
+This is not an exhaustive list of package but only here to show important choices
 
 - Lsp: =Eglot=
 - Workspace: =Tab-Bar mode=
