@@ -4,7 +4,7 @@
 Coming from Doom Emacs (config [[https://github.com/roy-corentin/my-Doom-emacs-config][here]]) I want to try an Emacs config from vanilla to improve performance and make customization easier.
 Do not be surprise to see some similarities in keybinding with Doom.
 
-To improve performance I want to try to use as maximum possible only built-in packages. And the lighest package possible (see *Stack* section for more information)
+To improve performance I want to try to use as maximum as possible only built-in packages. And the lighest package possible (see *Stack* section for more information)
 
 I'm not a big fan of lazy loading, I prefer a slower startup but a faster application in use so there is not a lof of '=defer t=' in this config
 
