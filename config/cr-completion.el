@@ -68,7 +68,7 @@
   (corfu-auto t)                 ;; Enable auto completion
   (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   (corfu-auto-prefix 2)
-  (corfu-auto-delay 0.1)
+  (corfu-auto-delay 0.18)
   (corfu-popupinfo-delay '(1.0 . 1.0))
   ;;(corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
   (corfu-separator ?\s)          ;; Orderless field separator
