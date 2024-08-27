@@ -52,14 +52,6 @@
   :defer t
   :bind (:map calc-mode-map ("C-o" . 'casual-main-menu)))
 
-(use-package vterm
-  :ensure t
-  :defer t
-  :config
-  (add-hook 'vterm-mode-hook (lambda () (setq-local show-trailing-whitespace nil)))
-  (setq vterm-kill-buffer-on-exit t)
-  (setq vterm-max-scrollback 5000))
-
 (use-package pdf-tools
   :after evil
   :ensure t)
@@ -101,6 +93,8 @@
   :init
   (ws-butler-global-mode))
 
+(require 'cr-term)
+(require 'cr-global-keybindings)
 (require 'cr-buffer)
 (require 'cr-magit)
 (require 'cr-theme)
