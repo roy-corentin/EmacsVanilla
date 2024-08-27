@@ -123,12 +123,26 @@
 (use-package anzu
   :ensure t
   :after isearch)
+
 (use-package evil-anzu
   :after evil
   :ensure t
   :config (global-anzu-mode +1))
 
-(require 'cr-global-keybindings)
+(use-package evil-textobj-tree-sitter
+  :ensure t
+  :after evil
+  :init
+  ;; bind `function.outer`(entire function block) to `f` for use in things like `vaf`, `yaf`
+  (define-key evil-outer-text-objects-map "f" (evil-textobj-tree-sitter-get-textobj "function.outer"))
+  ;; bind `function.inner`(function block without name and args) to `f` for use in things like `vif`, `yif`
+  (define-key evil-inner-text-objects-map "f" (evil-textobj-tree-sitter-get-textobj "function.inner"))
+  ;; You can also bind multiple items and we will match the first one we can find
+  (define-key evil-outer-text-objects-map "a" (evil-textobj-tree-sitter-get-textobj ("conditional.outer" "loop.outer"))))
+
+(use-package evil-terminal-cursor-changer
+  :ensure t
+  :hook (tty-setup . evil-terminal-cursor-changer-activate))
 
 (provide 'cr-evil)
 ;;; cr-evil.el ends here
