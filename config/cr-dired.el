@@ -12,6 +12,7 @@
 
 (use-package dired
   :ensure nil
+  :after evil
   :custom
   (dired-mouse-drag-files t)
   (mouse-drag-and-drop-region-cross-program t))
