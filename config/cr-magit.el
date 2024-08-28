@@ -6,8 +6,14 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 13, 2024
 
+(use-package with-editor
+  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "magit/with-editor" :files (:defaults) :branch "main"))
+
+(use-package ghub
+  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "magit/ghub" :files (:defaults) :branch "main"))
+
 (use-package magit
-  :ensure t
+  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "magit/magit" :files (:defaults) :branch "main")
   :bind ("C-x g" . magit-status)
   :custom
   (magit-blame-echo-style 'headings)
