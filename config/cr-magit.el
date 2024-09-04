@@ -12,6 +12,9 @@
 (use-package ghub
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "magit/ghub" :files (:defaults) :branch "main"))
 
+(use-package transient
+  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "magit/transient" :files (:defaults) :branch "main"))
+
 (use-package magit
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "magit/magit" :files (:defaults) :branch "main")
   :bind ("C-x g" . magit-status)
@@ -55,7 +58,7 @@
   (magit-file-icons-enable-diffstat-icons t))
 
 (use-package forge
-  :ensure t
+  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "magit/forge" :files (:defaults) :branch "main")
   :after magit)
 
 (provide 'cr-magit)
