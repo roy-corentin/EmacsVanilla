@@ -85,7 +85,8 @@
   (global-diff-hl-mode t)
   :config
   (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
-  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+  (add-hook 'diff-hl-mode-on-hook (lambda () (unless (display-graphic-p) (diff-hl-margin-local-mode)))))
 
 (use-package hl-todo
   :ensure (:protocol https :depth 1 :inherit t  :fetcher github :repo "tarsius/hl-todo" :version (lambda (_) "3.8.1" ) :files (:defaults))
