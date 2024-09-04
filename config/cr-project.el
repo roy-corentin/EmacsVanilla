@@ -8,7 +8,7 @@
 ;; Modified: avril 07, 2024
 ;;;
 
-(defun cr/change-dir-and-magit ()
+(defun cr/magit-in-project ()
   (interactive)
   (let ((default-directory (project-root (project-current))))
     (magit-status)
@@ -24,6 +24,6 @@
                              (project-find-regexp "Find regexp" ?r)
                              (project-find-dir "Find directory" ?d)
                              (cr/vterm-buffer "Vterm" ?v)
-                             (cr/change-dir-and-magit "Magit" ?m))))
+                             (cr/magit-in-project "Magit" ?m))))
 
 (provide 'cr-project)
