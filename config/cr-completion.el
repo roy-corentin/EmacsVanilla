@@ -85,7 +85,10 @@
   (global-corfu-mode))
 
 (use-package corfu-terminal
-  :ensure t)
+  :ensure t
+  :init
+  (unless (display-graphic-p)
+    (corfu-terminal-mode +1)))
 
 (load (concat user-emacs-directory "config/corfu-icons.el"))
 
