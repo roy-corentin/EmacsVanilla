@@ -75,9 +75,6 @@
   :config
   (load-env-vars (concat user-emacs-directory ".env")))
 
-(use-package transient
-  :ensure t)
-
 (use-package posframe
   :ensure t)
 
