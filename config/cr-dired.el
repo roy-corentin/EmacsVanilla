@@ -41,7 +41,8 @@
   ;; (dirvish-reuse-session nil) ; kill all session buffers on quit
   (dirvish-use-mode-line nil)
   (dirvish-subtree-always-show-state t)
-  (dirvish-attributes '(file-size collapse nerd-icons git-msg vc-state subtree-state))
+  ;; (dirvish-attributes '(file-size collapse nerd-icons git-msg vc-state subtree-state))
+  (dirvish-attributes '(file-size collapse nerd-icons vc-state subtree-state))
   :config
   (dirvish-define-preview eza (file)
     "Use `eza' to generate directory preview."
