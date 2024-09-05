@@ -36,7 +36,8 @@
         (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src"))
         (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src"))
         (yaml "https://github.com/ikatyang/tree-sitter-yaml")
-        (latex "https://github.com/latex-lsp/tree-sitter-latex")))
+        (latex "https://github.com/latex-lsp/tree-sitter-latex")
+        (c3 "https://github.com/c3lang/tree-sitter-c3")))
 
 (use-package treesit-auto
   :ensure t
@@ -45,6 +46,12 @@
   :config
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
+
+(use-package c3-ts-mode
+  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "c3lang/c3-ts-mode" :files (:defaults))
+  :custom
+  (c3-ts-mode-indent-offset 2)
+  (treesit-font-lock-level 4))
 
 (provide 'cr-treesit)
 ;;; cr-treesit.el ends here
