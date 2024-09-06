@@ -78,13 +78,6 @@
 (use-package posframe
   :ensure t)
 
-(use-package compile
-  :ensure nil
-  :config
-  (push 'bun-test compilation-error-regexp-alist)
-  (push '(bun-test "\sat\s\\([a-zA-Z0-9/\\._-]+\\):\\([0-9]+\\):\\([0-9]+\\)" 1 2 3)
-        compilation-error-regexp-alist-alist))
-
 (use-package ws-butler
   :ensure t
   :init
@@ -110,6 +103,7 @@
 (require 'cr-language)
 (require 'cr-debugger)
 (require 'cr-gnuplot)
+(require 'cr-compile)
 
 ;; Key set at the end to avoid conflicts with iedit
 (global-set-key (kbd "C-,") 'previous-buffer)
