@@ -6,13 +6,6 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 07, 2024
 
-
-(use-package elixir-ts-mode
-  :ensure t)
-
-(use-package heex-ts-mode
-  :ensure t)
-
 (setq treesit-language-source-alist
       '((bash "https://github.com/tree-sitter/tree-sitter-bash")
         (c "https://github.com/tree-sitter/tree-sitter-c")
