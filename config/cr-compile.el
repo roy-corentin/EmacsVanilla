@@ -17,8 +17,7 @@
               (set (make-local-variable 'compile-command)
                    (cond ((file-exists-p (concat (project-root(project-current)) "pnpm-lock.yaml")) "pnpm tsc")
                          ((file-exists-p (concat (project-root(project-current)) "package-lock.json")) "npm tsc")
-                         ((file-exists-p (concat (project-root(project-current)) "bun.lockb")) "bun tsc")))))
-  )
+                         ((file-exists-p (concat (project-root(project-current)) "bun.lockb")) "bun tsc"))))))
 
 (provide 'cr-compile)
 ;;; cr-compile.el ends here
