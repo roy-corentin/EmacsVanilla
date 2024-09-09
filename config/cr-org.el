@@ -111,7 +111,8 @@
            "[-](I)"        ; A task that is already started
            "[?](H)"        ; A task that is holding up by a reason ?
            "|"             ; The pipe necessary to separate "active" states and "inactive" states
-           "[X](D)" ))
+           "[X](D)"
+           "[C](C)"))
         org-agenda-custom-commands
         '(("c" "Simple agenda view"
            ((tags-todo "+PRIORITY=\"A\""
@@ -166,6 +167,7 @@
             (push '("[ ]" .  "☐") prettify-symbols-alist)
             (push '("[X]" . "☑" ) prettify-symbols-alist)
             (push '("[-]" . "❍" ) prettify-symbols-alist)
+            (push '("[C]" . "󰅘" ) prettify-symbols-alist)
             (push '("#+BEGIN_SRC" . "↦" ) prettify-symbols-alist)
             (push '("#+END_SRC" . "⇤" ) prettify-symbols-alist)
             (push '("#+begin_src" . "↦" ) prettify-symbols-alist)
