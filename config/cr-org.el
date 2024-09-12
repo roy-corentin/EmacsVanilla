@@ -54,6 +54,16 @@
 (use-package org
   :ensure nil
   :after org-roam
+  :custom
+  (org-capture-templates '(("t" "Todo" entry (file+headline "~/org/todos.org" "Tasks")
+                            "* TODO %?\n  %i\n  %a")
+                           ("j" "Journal" entry (file+olp+datetree "~/org/journal.org")
+                            "* %?\nEntered on %U\n  %i\n  %a")
+                           ("c" "Contacts" entry (file "~/org/contacts.org")
+                            "* %(org-contacts-template-name)
+:PROPERTIES:
+:EMAIL: %(org-contacts-template-email)
+:END:")))
   :init
   (add-hook 'org-mode-hook #'cr/org-font-setup)
   (add-hook 'org-after-todo-statistics-hook #'cr/org-summary-todo)
@@ -215,6 +225,11 @@
         ;; The default value (5) is too conservative.
         org-clock-history-length 20)
   (add-hook 'kill-emacs-hook #'org-clock-save))
+
+(use-package org-contacts
+  :ensure t
+  :custom
+  (org-contacts-files '("~/org/contacts.org")))
 
 ;; (use-package org-eldoc
 ;;   :ensure nil
