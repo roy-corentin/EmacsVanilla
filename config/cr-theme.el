@@ -131,4 +131,29 @@
   :init
   (add-hook 'after-init-hook #'vim-tab-bar-mode))
 
+(use-package indent-bars
+  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "https://github.com/jdtsmith/indent-bars" :files (:defaults))
+  :config
+  (require 'indent-bars-ts) ; not needed with straight
+  :custom
+  (indent-bars-treesit-support t)
+  (indent-bars-treesit-ignore-blank-lines-types '("module"))
+  (indent-bars-treesit-scope '((python function_definition class_definition for_statement
+	                               if_statement with_statement while_statement)
+                               (ruby module class method call if)
+                               (tsx export_statement interface_declaration class_declaration
+                                    method_definition function_declaration for_statement
+                                    if_statement while_statement try_statement type_alias_declaration
+                                    lexical_declaration jsx_element pair call_expression)
+                               (typescript export_statement interface_declaration class_declaration
+                                           method_definition function_declaration for_statement
+                                           if_statement while_statement try_statement type_alias_declaration
+                                           lexical_declaration pair call_expression)))
+  ;; wrap may not be needed if no-descend-list is enough
+  ;;(indent-bars-treesit-wrap '((python argument_list parameters ; for python, as an example
+  ;;				      list list_comprehension
+  ;;				      dictionary dictionary_comprehension
+  ;;				      parenthesized_expression subscript)))
+  :hook ((python-base-mode yaml-mode ruby-base-mode typescript-ts-base-mode) . indent-bars-mode))
+
 (provide 'cr-theme)
