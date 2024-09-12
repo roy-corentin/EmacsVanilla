@@ -52,6 +52,7 @@
                  "--group-directories-first", file))))
   (add-to-list 'dirvish-preview-dispatchers 'eza)
   :init
+  (dirvish-side-follow-mode)
   (dirvish-override-dired-mode))
 
 (provide 'cr-dired)
