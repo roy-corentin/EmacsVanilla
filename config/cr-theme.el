@@ -156,4 +156,10 @@
   ;;				      parenthesized_expression subscript)))
   :hook ((python-base-mode yaml-mode ruby-base-mode typescript-ts-base-mode) . indent-bars-mode))
 
+(use-package tab-line
+  :demand t
+  :custom
+  (tab-line-new-button-show nil)
+  (tab-line-close-button-show nil))
+
 (provide 'cr-theme)
