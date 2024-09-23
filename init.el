@@ -29,6 +29,15 @@
   :init
   (require 'smartparens-config))
 
+(use-package electric-pair
+  :ensure t
+  :init
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (setq-local electric-pair-inhibit-predicate
+                          `(lambda (c)
+                             (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c)))))))
+
 (use-package ace-window
   :ensure t
   :defer t
