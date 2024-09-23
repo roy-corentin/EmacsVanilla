@@ -29,8 +29,8 @@
   :init
   (require 'smartparens-config))
 
-(use-package electric-pair
-  :ensure t
+(use-package elec-pair
+  :ensure nil
   :init
   (add-hook 'org-mode-hook
             (lambda ()
