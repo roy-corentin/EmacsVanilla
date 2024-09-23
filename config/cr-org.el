@@ -168,7 +168,7 @@
                         (org-agenda-start-day "-30d")
                         (org-agenda-archives-mode t)
                         (org-agenda-start-on-weekday nil)))))))
-  (org-babel-do-load-languages 'org-babel-load-languages '((C . t)))
+  (org-babel-do-load-languages 'org-babel-load-languages '((C . t) (ruby . t)))
   (add-hook 'org-mode-hook
             (lambda ()
               "Beautify Org Checkbox Symbol"
