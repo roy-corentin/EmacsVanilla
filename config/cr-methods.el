@@ -97,13 +97,42 @@ If prefix ARG is set, prompt for a directory to search from."
 (defun cr/move-window-right ()
   "Move the current window to the right"
   (interactive)
-  (let ((buffer (current-buffer)))
-    (delete-window (selected-window))
-    (let ((new-window (split-window-right)))
-      (select-window new-window)
-      (switch-to-buffer (buffer)))
-    )
-  )
+  (condition-case nil
+      (windmove-swap-states-right)
+    (error (let ((buffer-to-swap (current-buffer)))
+             (delete-window)
+             (cr/split-window-right-and-follow)
+             (switch-to-buffer buffer-to-swap)))))
+
+(defun cr/move-window-left ()
+  "Move the current window to the left"
+  (interactive)
+  (condition-case nil
+      (windmove-swap-states-left)
+    (error (let ((buffer-to-swap (current-buffer)))
+             (delete-window)
+             (split-window-right)
+             (switch-to-buffer buffer-to-swap)))))
+
+(defun cr/move-window-down ()
+  "Move the current window to the down"
+  (interactive)
+  (condition-case nil
+      (windmove-swap-states-down)
+    (error (let ((buffer-to-swap (current-buffer)))
+             (delete-window)
+             (cr/split-window-below-and-follow)
+             (switch-to-buffer buffer-to-swap)))))
+
+(defun cr/move-window-up ()
+  "Move the current window to the up"
+  (interactive)
+  (condition-case nil
+      (windmove-swap-states-up)
+    (error (let ((buffer-to-swap (current-buffer)))
+             (delete-window)
+             (split-window-below)
+             (switch-to-buffer buffer-to-swap)))))
 
 (defun cr/try-kill-project-buffers (&rest args)
   (when (project-current)
