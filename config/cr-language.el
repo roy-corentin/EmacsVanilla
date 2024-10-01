@@ -15,9 +15,6 @@
 (use-package csv
   :ensure t)
 
-(use-package csv-mode
-  :ensure t)
-
 (use-package markdown-mode
   :ensure t)
 
