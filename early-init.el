@@ -75,6 +75,7 @@
   (add-hook 'yaml-ts-mode-hook 'display-line-numbers-mode)
   (add-hook 'org-mode-hook 'display-line-numbers-mode)
   (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
+  (add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
   (set-fringe-mode '(4 . 4))
   :custom
   (tab-bar-show nil)
@@ -85,7 +86,6 @@
   (fill-column 80)
   (inhibit-startup-screen t)
   (initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
-  (show-trailing-whitespace t)
   (column-number-mode t)
   (display-line-numbers-type 'relative)
   (display-line-numbers-width 3)
