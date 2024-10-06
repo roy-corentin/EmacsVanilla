@@ -145,7 +145,7 @@
     "e r" '(eval-region :which-key "Eval Region")
     "m" '(:ignore t :which-key "Local"))
   (general-define-key
-   :states 'normal
+   :states '(visual normal)
    :keymaps 'ruby-ts-mode-map
    :prefix "SPC m"
    :global-prefix "M-SPC m"
