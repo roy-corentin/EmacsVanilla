@@ -32,7 +32,7 @@
   :ensure t
   :after ewal
   :init
-  (load-theme 'ewal-doom-vibrant t))
+  (load-theme 'doom-molokai t))
 
 (use-package solaire-mode
   :ensure t
