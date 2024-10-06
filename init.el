@@ -23,14 +23,6 @@
   :config
   (apheleia-global-mode +1))
 
-(use-package smartparens-mode
-  :ensure smartparens
-  :hook (prog-mode text-mode)
-  :custom
-  (sp-highlight-pair-overlay nil)
-  :init
-  (require 'smartparens-config))
-
 (use-package elec-pair
   :ensure nil
   :init
