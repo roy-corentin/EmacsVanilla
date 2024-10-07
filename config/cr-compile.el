@@ -23,6 +23,8 @@
 
 (use-package compile
   :ensure nil
+  :custom
+  (compilation-scroll-output t)
   :config
   (push 'bun-test compilation-error-regexp-alist)
   (push '(bun-test "\sat\s\\([a-zA-Z0-9/\\._-]+\\):\\([0-9]+\\):\\([0-9]+\\)" 1 2 3)
