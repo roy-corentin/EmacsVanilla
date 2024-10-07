@@ -74,7 +74,6 @@
   (add-hook 'prog-mode-hook 'display-line-numbers-mode)
   (add-hook 'yaml-ts-mode-hook 'display-line-numbers-mode)
   (add-hook 'org-mode-hook 'display-line-numbers-mode)
-  (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
   (add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
   (set-fringe-mode '(4 . 4))
   :custom

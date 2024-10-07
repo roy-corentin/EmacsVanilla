@@ -26,6 +26,7 @@
   :custom
   (compilation-scroll-output t)
   :config
+  (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
   (push 'bun-test compilation-error-regexp-alist)
   (push '(bun-test "\sat\s\\([a-zA-Z0-9/\\._-]+\\):\\([0-9]+\\):\\([0-9]+\\)" 1 2 3)
         compilation-error-regexp-alist-alist)
