@@ -18,7 +18,7 @@
   (setq-local compile-command
               (concat "python3 "
                       (when buffer-file-name
-                        shell-quote-argument buffer-file-name))))
+                        (shell-quote-argument buffer-file-name)))))
 
 
 (use-package compile
