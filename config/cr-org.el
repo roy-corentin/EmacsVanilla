@@ -26,10 +26,8 @@
                   (org-level-7 . 1.0)
                   (org-level-8 . 1.0)))
     (set-face-attribute (car face) nil :font variable-pitch-font :weight 'medium :height (cdr face)))
-
   ;; Make the document title bigger
   (set-face-attribute 'org-document-title nil :family variable-pitch-font :weight 'bold :height 2.1)
-
   ;; Ensure that anything that should be fixed-pitch in Org files appears that way
   (set-face-attribute 'org-block nil :foreground 'unspecified :inherit 'fixed-pitch)
   (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
@@ -168,7 +166,7 @@
                         (org-agenda-start-day "-30d")
                         (org-agenda-archives-mode t)
                         (org-agenda-start-on-weekday nil)))))))
-  (org-babel-do-load-languages 'org-babel-load-languages '((C . t) (ruby . t)))
+  (org-babel-do-load-languages 'org-babel-load-languages '((C . t) (ruby . t) (python . t) (shell . t)))
   (add-hook 'org-mode-hook
             (lambda ()
               "Beautify Org Checkbox Symbol"
