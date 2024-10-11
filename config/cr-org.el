@@ -228,15 +228,6 @@
   :custom
   (org-contacts-files '("~/org/contacts.org")))
 
-;; (use-package org-eldoc
-;;   :ensure nil
-;;   :hook (org-mode . org-eldoc-load)
-;;   :init (setq org-eldoc-breadcrumb-separator " → ")
-;;   :config
-;;   ;; HACK Fix infinite recursion when eldoc kicks in 'org' or 'python'
-;;   ;;   src blocks.
-;;   (puthash "org" #'ignore org-eldoc-local-functions-cache))
-
 (use-package org-bullets
   :ensure t
   :after org
