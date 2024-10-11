@@ -17,6 +17,7 @@
   (dired-mouse-drag-files t)
   (mouse-drag-and-drop-region-cross-program t))
 
+;; Enable again is use of dired without dirvish
 ;; (use-package nerd-icons-dired
 ;;   :ensure t
 ;;   :hook
@@ -54,6 +55,18 @@
   :init
   (dirvish-side-follow-mode)
   (dirvish-override-dired-mode))
+
+(use-package dired-preview
+  :ensure t
+  :config
+  (defun my-dired-preview-to-the-right ()
+    "My preferred `dired-preview-display-action-alist-function'."
+    '((display-buffer-in-direction)
+      (direction . right)
+      (window . main)))
+  (setq dired-preview-display-action-alist #'my-dired-preview-to-the-right)
+  :init
+  (dired-preview-global-mode))
 
 (provide 'cr-dired)
 ;;; cr-dired.el ends here
