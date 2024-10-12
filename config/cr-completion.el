@@ -25,7 +25,8 @@
   :ensure t
   :after vertico posframe
   :custom
-  (vertico-posframe-poshandler #'posframe-poshandler-frame-top-center)
+  (vertico-posframe-poshandler #'posframe-poshandler-frame-center)
+  (vertico-posframe-height 20)
   :config
   (vertico-posframe-mode t))
 
