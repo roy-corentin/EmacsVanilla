@@ -57,10 +57,7 @@
                            ("j" "Journal" entry (file+olp+datetree "~/org/journal.org")
                             "* %?\nEntered on %U\n  %i\n  %a")
                            ("c" "Contacts" entry (file "~/org/contacts.org")
-                            "* %(org-contacts-template-name)
-:PROPERTIES:
-:EMAIL: %(org-contacts-template-email)
-:END:")))
+                            "* %(org-contacts-template-name)\n:PROPERTIES:\n:EMAIL: %(org-contacts-template-email)\n:END:")))
   :init
   (add-hook 'org-mode-hook #'cr/org-font-setup)
   (add-hook 'org-after-todo-statistics-hook #'cr/org-summary-todo)
@@ -95,9 +92,9 @@
                              ("+" (:strike-through t)))
         org-todo-keyword-faces
         '(("WIP" . (:foreground "#b7a1f5")) ("HOLD" . org-warning)
-          ("[ ]" . (:foreground "#82b66a" :weight bold)) ("[-]" . (:foreground "#b7a1f5" :weight bold ))
+          ("[ ]" . (:inherit org-todo :weight bold)) ("[-]" . (:foreground "#b7a1f5"))
           ("[?]" . org-warning)
-          ("👷🏻WIP" . (:foreground "#b7a1f5")) ("🔒HOLD" . org-warning))
+          ("👷🏻WIP" . org-table) ("🔒HOLD" . org-warning))
         org-todo-keywords
         '((sequence
            "TODO(t)"       ; A task that is ready to be tackled
