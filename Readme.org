@@ -23,7 +23,7 @@ This is not an exhaustive list of package but only here to show important choice
   - Search Algo: =Orderless=
   - Backend: =Cape=
 - Git: =Magit= /(of course)/
-- Major Modes: =Tree-Sitter= /(when available ,best perf)/
+- Major Modes: =Tree-Sitter= /(when available, best perf)/
 
 * Compilation
 I use *Emacs 30.0.90* compiled with ~./configure --with-native-compilation --with-json --with-tree-sitter --with-pgtk --without-x --with-mailutils --with-imagemagick~
