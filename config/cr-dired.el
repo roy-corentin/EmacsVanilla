@@ -66,7 +66,7 @@
       (window . main)))
   (setq dired-preview-display-action-alist #'my-dired-preview-to-the-right)
   :init
-  (dired-preview-global-mode))
+  (dired-preview-global-mode t))
 
 (provide 'cr-dired)
 ;;; cr-dired.el ends here
