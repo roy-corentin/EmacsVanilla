@@ -140,9 +140,10 @@
    ("M-;" . embark-dwim)        ;; good alternative: M-.
    ("C-h B" . embark-bindings)
    ("C-e" . embark-candidate-collectors)) ;; alternative for `describe-bindings'
-  :init
+  :custom
   ;; Optionally replace the key help with a completing-read interface
-  (setq prefix-help-command #'embark-prefix-help-command)
+  (prefix-help-command #'embark-prefix-help-command)
+  :init
   ;; Show the Embark target at point via Eldoc. You may adjust the
   ;; Eldoc strategy, if you want to see the documentation from
   ;; multiple providers. Beware that using this can be a little
