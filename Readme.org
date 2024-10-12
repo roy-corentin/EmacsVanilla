@@ -26,4 +26,4 @@ This is not an exhaustive list of package but only here to show important choice
 - Major Modes: =Tree-Sitter= /(when available, best perf)/
 
 * Compilation
-I use *Emacs 30.0.90* compiled with ~./configure --with-native-compilation --with-json --with-tree-sitter --with-pgtk --without-x --with-mailutils --with-imagemagick~
+I use *Emacs 30.0.91* compiled with ~./configure --with-native-compilation --with-json --with-tree-sitter --with-pgtk --without-x --with-mailutils --with-imagemagick~
