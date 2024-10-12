@@ -68,18 +68,18 @@
               ("C-j" . corfu-next)
               ("C-k" . corfu-previous))
   :custom
-  (corfu-auto t)                 ;; Enable auto completion
-  (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
+  (corfu-auto t)               ;; Enable auto completion
+  (corfu-cycle t)              ;; Enable cycling for `corfu-next/previous'
   (corfu-auto-prefix 2)
   (corfu-auto-delay 0.18)
   (corfu-popupinfo-delay '(1.0 . 1.0))
-  ;;(corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
-  (corfu-separator ?\s)          ;; Orderless field separator
+  ;;(corfu-quit-at-boundary nil) ;; Never quit at completion boundary
+  (corfu-separator ?\s)        ;; Orderless field separator
   (corfu-quit-no-match 'separator)
-  ;; (corfu-preview-current nil)    ;; Disable current candidate preview
-  (corfu-preselect 'prompt)      ;; Preselect the prompt
-  (corfu-on-exact-match 'insert)     ;; Configure handling of exact matches
-  ;; (corfu-scroll-margin 5)        ;; Use scroll margin
+  ;; (corfu-preview-current nil) ;; Disable current candidate preview
+  (corfu-preselect 'prompt)    ;; Preselect the prompt
+  (corfu-on-exact-match 'show) ;; Configure handling of exact matches
+  ;; (corfu-scroll-margin 5)     ;; Use scroll margin
   :init
   (add-hook 'eshell-mode-hook (lambda () (corfu-mode)))
   (add-hook 'minibuffer-setup-hook #'corfu-enable-in-minibuffer)
