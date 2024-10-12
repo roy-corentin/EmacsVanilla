@@ -273,11 +273,13 @@
         org-roam-ui-open-on-start nil))
 
 (defun svg-progress-percent (value)
-  (svg-image (svg-lib-concat
-              (svg-lib-progress-bar (/ (string-to-number value) 100.0)
-                                    nil :margin 0 :stroke 2 :radius 3 :padding 2 :width 11)
-              (svg-lib-tag (concat value "%")
-                           nil :stroke 0 :margin 0)) :ascent 'center))
+  (let* ((font (if (eql count total) 'org-done 'org-todo)))
+    (svg-image (svg-lib-concat
+                (svg-lib-progress-bar (/ (string-to-number value) 100.0)
+                                      font :margin 0 :stroke 2 :radius 3 :padding 2 :width 11)
+                (svg-lib-tag (concat value "%")
+                             font :stroke 0 :margin 0))
+               :ascent 'center)))
 
 (defun svg-progress-count (value)
   (let* ((seq (mapcar #'string-to-number (split-string value "/")))
@@ -296,11 +298,11 @@
   :ensure t
   :hook org-mode
   :config
-  (setq svg-lib-style-default '(
-                                :background "#000000" :foreground "#ffffff" :padding 2 :margin 0 :stroke 2
+  (setq svg-lib-style-default `(
+                                :background "#111111" :foreground "#ffffff" :padding 2 :margin 0 :stroke 2
                                 :radius 3 :alignment 0.5 :width 20 :height 1 :scale 1 :ascent center
                                 :crop-left nil :crop-right nil :collection "material"
-                                :font-family "JetBrainsMono Nerd Font" :font-size 10 :font-weight regular))
+                                :font-family "JetBrains Mono Nerd Font" :font-size 10 :font-weight regular))
   (setq svg-tag-tags
         '(
           ;; Org tags
@@ -314,7 +316,7 @@
           ("\\(DONE\\)" . ((lambda (tag)
                              (svg-tag-make tag :inverse t :face 'org-done))))
           ("\\(WIP\\)" . ((lambda (tag)
-                            (svg-tag-make tag :inverse t :face 'org-macro))))
+                            (svg-tag-make tag :inverse t :face 'org-table))))
           ("\\(HOLD\\)" . ((lambda (tag)
                              (svg-tag-make tag :inverse t :face 'org-warning))))
           ("\\(CANCELED\\)" . ((lambda (tag)
