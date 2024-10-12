@@ -171,7 +171,8 @@
    "c g" '(org-clock-goto :which-key "Clock goto")
    "t" '(org-todo :which-key "Org todo")
    "l" '(:ignore t :which-key "Org link")
-   "l l" '(org-insert-link :which-key "Insert link"))
+   "l l" '(org-insert-link :which-key "Insert link")
+   "s" '(svg-tag-mode :which-key "Toggle svg-tag-mode"))
   (general-define-key
    :states 'normal
    :keymaps 'csv-mode-map
