@@ -20,7 +20,12 @@
          (body-function . (lambda (window) (select-window window)))
          (slot . 0)
          (window-parameters . ((mode-line-format . none))))
-        ))
+        ("\\*Embark Actions\\*"
+         ;; List display function
+         (display-buffer-in-side-window)
+         ;; Parameter
+         (side . bottom)
+         (dedicated t))))
 
 (use-package nerd-icons-ibuffer
   :ensure t
