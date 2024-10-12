@@ -15,9 +15,11 @@
               ("C-d" . vertico-scroll-up)
               ("C-u" . vertico-scroll-down)
               ("C-v" . vertico-scroll-up))
+  :custom
+  (vertico-cycle t)
+  (vertico-count 20)
   :init
-  (vertico-mode)
-  (setq vertico-cycle t))
+  (vertico-mode))
 
 (use-package vertico-posframe
   :ensure t
