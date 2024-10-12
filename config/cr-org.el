@@ -282,12 +282,15 @@
 (defun svg-progress-count (value)
   (let* ((seq (mapcar #'string-to-number (split-string value "/")))
          (count (float (car seq)))
-         (total (float (cadr seq))))
-    (svg-image (svg-lib-concat
-                (svg-lib-progress-bar (/ count total) nil
-                                      :margin 0 :stroke 2 :radius 3 :padding 2 :width 11)
-                (svg-lib-tag value nil
-                             :stroke 0 :margin 0)) :ascent 'center)))
+         (total (float (cadr seq)))
+         (font (if (eql count total) 'org-done 'org-todo)))
+    (if (zerop total)
+        (svg-lib-tag value 'org-done :stroke 0 :margin 0)
+      (svg-image (svg-lib-concat (svg-lib-progress-bar (/ count total)
+                                                       font :margin 0 :stroke 2 :radius 3 :padding 2 :width 11)
+                                 (svg-lib-tag value
+                                              font :stroke 0 :margin 0))
+                 :ascent 'center))))
 
 (use-package svg-tag-mode
   :ensure t
