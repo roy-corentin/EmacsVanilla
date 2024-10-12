@@ -55,6 +55,9 @@
 
 (require 'cr-olivetti)
 
+(defvar variable-pitch-font "Iosevka Nerd Font")
+(defvar fixed-pitch-font "Iosevka Nerd Font Mono")
+
 (use-package emacs
   :ensure nil
   :config
@@ -101,9 +104,9 @@
   ;; setting is useful beyond Corfu.
   (read-extended-command-predicate #'command-completion-default-include-p)
   :custom-face
-  (default ((t :family "JetBrains Mono Nerd Font" :height 105)))
-  (fixed-pitch ((t :family "JetBrains Mono Nerd Font" :height 105)))
-  (variable-pitch ((t :family "Noto Serif" :height 115)))
+  (default ((t :family variable-pitch-font :height 115)))
+  (fixed-pitch ((t :family fixed-pitch-font :height 115)))
+  (variable-pitch ((t :family variable-pitch-font :height 115)))
   :bind
   ("C-=" . text-scale-increase)
   ("C--" . text-scale-decrease)
