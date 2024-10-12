@@ -273,9 +273,10 @@
         org-roam-ui-open-on-start nil))
 
 (defun svg-progress-percent (value)
-  (let* ((font (if (eql count total) 'org-done 'org-todo)))
+  (let* ((count (string-to-number value))
+         (font (if (zerop count) 'org-done 'org-todo)))
     (svg-image (svg-lib-concat
-                (svg-lib-progress-bar (/ (string-to-number value) 100.0)
+                (svg-lib-progress-bar (/ count 100.0)
                                       font :margin 0 :stroke 2 :radius 3 :padding 2 :width 11)
                 (svg-lib-tag (concat value "%")
                              font :stroke 0 :margin 0))
