@@ -299,11 +299,6 @@
   :ensure t
   :hook org-mode
   :config
-  (setq svg-lib-style-default `(
-                                :background "#111111" :foreground "#ffffff" :padding 2 :margin 0 :stroke 2
-                                :radius 3 :alignment 0.5 :width 20 :height 1 :scale 1 :ascent center
-                                :crop-left nil :crop-right nil :collection "material"
-                                :font-family "JetBrains Mono Nerd Font" :font-size 10 :font-weight regular))
   (setq svg-tag-tags
         '(
           ;; Org tags
