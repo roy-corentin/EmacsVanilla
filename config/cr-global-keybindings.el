@@ -178,9 +178,20 @@
    :keymaps 'csv-mode-map
    :prefix "SPC m"
    :global-prefix "M-SPC m"
+   :which-key "CSV Local"
    "a" '(csv-align-fields :which-key "Align fields")
    "u" '(csv-unalign-fields :which-key "Unalign fields")
    "t" '(csv-transpose :which-key "Transpose"))
+  (general-define-key
+   :states '(visual normal)
+   :keymaps 'zig-mode-map
+   :prefix "SPC m"
+   :global-prefix "M-SPC m"
+   :which-key "Zig Local"
+   "<escape>" '(keyboard-escape-quit :which-key t)
+   "b" '(zig-compile :which-key "build")
+   "r" '(zig-run :which-key "run")
+   "t" '(zig-test :which-key "test"))
   ;; evil-multiedit
   (general-define-key
    :states 'normal
