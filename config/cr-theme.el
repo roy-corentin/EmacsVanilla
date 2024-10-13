@@ -44,17 +44,17 @@
   :hook (after-init . doom-modeline-mode)
   :hook (doom-modeline-mode . size-indication-mode) ; filesize in modeline
   :hook (doom-modeline-mode . column-number-mode)   ; cursor column in modeline
-  :init
-  (setq doom-modeline-bar-width 3
-        doom-modeline-github nil
-        doom-modeline-mu4e nil
-        doom-modeline-persp-name nil
-        doom-modeline-position-column-line-format '("%l:%c")
-        doom-modeline-minor-modes nil
-        doom-modeline-major-mode-icon nil
-        doom-modeline-workspace-name nil
-        doom-modeline-buffer-file-name-style 'relative-from-project
-        doom-modeline-buffer-encoding 'nondefault)
+  :custom
+  (doom-modeline-bar-width 3)
+  (doom-modeline-github nil)
+  (doom-modeline-mu4e nil)
+  (doom-modeline-persp-name nil)
+  (doom-modeline-position-column-line-format '("%l:%c"))
+  (doom-modeline-minor-modes nil)
+  (doom-modeline-major-mode-icon nil)
+  (doom-modeline-workspace-name nil)
+  (doom-modeline-buffer-file-name-style 'relative-to-project)
+  (doom-modeline-buffer-encoding 'nondefault)
   (doom-modeline-mode 1)
   :config
   (add-hook 'doom-load-theme-hook #'doom-modeline-refresh-bars))
