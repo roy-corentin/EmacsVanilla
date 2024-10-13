@@ -58,15 +58,14 @@
 
 (use-package dired-preview
   :ensure t
+  :hook (after-init . dired-preview-global-mode)
   :config
   (defun my-dired-preview-to-the-right ()
     "My preferred `dired-preview-display-action-alist-function'."
     '((display-buffer-in-direction)
       (direction . right)
       (window . main)))
-  (setq dired-preview-display-action-alist #'my-dired-preview-to-the-right)
-  :init
-  (dired-preview-global-mode t))
+  (setq dired-preview-display-action-alist #'my-dired-preview-to-the-right))
 
 (provide 'cr-dired)
 ;;; cr-dired.el ends here
