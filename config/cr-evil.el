@@ -11,16 +11,16 @@
 ;; Use evil mode for vim-like keybindings
 (use-package evil
   :ensure t
-  :init
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
-  (setq evil-want-Y-yank-to-eol t
-        evil-want-C-u-scroll t
-        evil-undo-system 'undo-fu
-        evil-move-beyond-eol t
-        evil-move-cursor-back nil
-        evil-kill-on-visual-paste nil
-        evil-symbol-word-search t)
+  :custom
+  (evil-want-integration t)
+  (evil-want-keybinding nil)
+  (evil-want-Y-yank-to-eol t)
+  (evil-want-C-u-scroll t)
+  (evil-undo-system 'undo-fu)
+  (evil-move-beyond-eol t)
+  (evil-move-cursor-back nil)
+  (evil-kill-on-visual-paste nil)
+  (evil-symbol-word-search t)
   :bind
   (:map evil-normal-state-map
         ("TAB" . evil-jump-item))
