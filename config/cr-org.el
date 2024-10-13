@@ -7,7 +7,6 @@
 ;; Created: avril 10, 2024
 
 (defvar custom-org-roam-daily-directory "~/Dropbox/RoamNotes/daily")
-(defvar fixed-pitch-font "JetBrains Mono Nerd Font")
 
 (use-package mixed-pitch
   :ensure t
