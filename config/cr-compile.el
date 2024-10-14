@@ -10,6 +10,7 @@
   "Set the default compil-command to run the current project"
   (setq-local compile-command
               (cond ((file-exists-p (concat (project-root(project-current)) "Gemfile")) "ruby ")
+                    ((file-exists-p (concat (project-root(project-current)) "build.zig")) "zig build run")
                     ((file-exists-p (concat (project-root(project-current)) "requirements.txt"))
                      (concat "python3 "
                              (when buffer-file-name
