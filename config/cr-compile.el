@@ -8,16 +8,17 @@
 
 (defun cr/set-compile-command (&rest args)
   "Set the default compil-command to run the current project"
-  (setq-local compile-command
-              (cond ((file-exists-p (concat (project-root(project-current)) "Gemfile")) "ruby ")
-                    ((file-exists-p (concat (project-root(project-current)) "build.zig")) "zig build run")
-                    ((file-exists-p (concat (project-root(project-current)) "requirements.txt"))
-                     (concat "python3 "
-                             (when buffer-file-name
-                               (shell-quote-argument buffer-file-name))))
-                    ((file-exists-p (concat (project-root(project-current)) "pnpm-lock.yaml")) "pnpm tsc")
-                    ((file-exists-p (concat (project-root(project-current)) "package-lock.json")) "npm run tsc")
-                    ((file-exists-p (concat (project-root(project-current)) "bun.lockb")) "bun tsc"))))
+  (setq compile-command
+        (cond ((file-exists-p (concat (project-root(project-current)) "Gemfile")) "ruby ")
+              ((file-exists-p (concat (project-root(project-current)) "platformio.ini")) "platformio run -t upload")
+              ((file-exists-p (concat (project-root(project-current)) "build.zig")) "zig build run")
+              ((file-exists-p (concat (project-root(project-current)) "requirements.txt"))
+               (concat "python3 "
+                       (when buffer-file-name
+                         (shell-quote-argument buffer-file-name))))
+              ((file-exists-p (concat (project-root(project-current)) "bun.lockb")) "bun tsc")
+              ((file-exists-p (concat (project-root(project-current)) "pnpm-lock.yaml")) "pnpm tsc")
+              ((file-exists-p (concat (project-root(project-current)) "package-lock.json")) "npm run tsc"))))
 
 (use-package compile
   :ensure nil
