@@ -21,6 +21,7 @@
   (evil-move-cursor-back nil)
   (evil-kill-on-visual-paste nil)
   (evil-symbol-word-search t)
+  (evil-ex-search-vim-style-regexp t)
   :bind
   (:map evil-normal-state-map
         ("TAB" . evil-jump-item))
