@@ -10,12 +10,21 @@
   (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
   (evil-define-key 'normal dired-mode-map (kbd "l") 'dired-find-file)) ; use dired-open-file or dired-find-file instead if not using dired-open package
 
+;; Use monospaced font faces in current buffer
+(defun my-buffer-face-mode-fixed ()
+  "Sets a fixed width (monospace) font in current buffer"
+  (interactive)
+  (setq buffer-face-mode-face '(:family "Iosevka Nerd Font Mono" :height 115))
+  (buffer-face-mode))
+
 (use-package dired
   :ensure nil
   :after evil
   :custom
   (dired-mouse-drag-files t)
-  (mouse-drag-and-drop-region-cross-program t))
+  (mouse-drag-and-drop-region-cross-program t)
+  :init
+  (add-hook 'dired-mode-hook #'my-buffer-face-mode-fixed))
 
 ;; Enable again is use of dired without dirvish
 ;; (use-package nerd-icons-dired
