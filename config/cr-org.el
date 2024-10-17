@@ -90,10 +90,10 @@
                              ("~" org-code)
                              ("+" (:strike-through t)))
         org-todo-keyword-faces
-        '(("WIP" . (:foreground "#b7a1f5")) ("HOLD" . org-warning)
+        '(("WIP" . (:foreground "#b7a1f5")) ("HOLD" . org-default)
           ("[ ]" . (:inherit org-todo :weight bold)) ("[-]" . (:foreground "#b7a1f5"))
-          ("[?]" . org-warning)
-          ("👷🏻WIP" . org-table) ("🔒HOLD" . org-warning))
+          ("[?]" . org-default)
+          ("👷🏻WIP" . org-table) ("🔒HOLD" . org-default))
         org-todo-keywords
         '((sequence
            "TODO(t)"       ; A task that is ready to be tackled
@@ -313,7 +313,7 @@
           ("\\(WIP\\)" . ((lambda (tag)
                             (svg-tag-make tag :inverse t :face 'org-table))))
           ("\\(HOLD\\)" . ((lambda (tag)
-                             (svg-tag-make tag :inverse t :face 'org-warning))))
+                             (svg-tag-make tag :inverse t :face 'org-default))))
           ("\\(CANCELED\\)" . ((lambda (tag)
                                  (svg-tag-make tag :inverse t :face 'org-date))))
           ;; Progress
