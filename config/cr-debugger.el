@@ -20,12 +20,23 @@
   ;; ((kill-emacs . dape-breakpoint-save)
   ;; Load breakpoints on startup
   ;;  (after-init . dape-breakpoint-load))
-  :init
-  ;; To use window configuration like gud (gdb-mi)
-  ;; (setq dape-buffer-window-arrangement 'gud)
-  :config
+  :custom
   ;; Info buffers to the right
-  (setq dape-buffer-window-arrangement 'right)
+  (dape-buffer-window-arrangement 'right)
+  :config
+  ;; Turn on global bindings for setting breakpoints with mouse
+  ;; (dape-breakpoint-global-mode)
+  ;; Info buffers to the right
+  ;; (setq dape-buffer-window-arrangement 'right)
+  ;; Info buffers like gud (gdb-mi)
+  ;; (setq dape-buffer-window-arrangement 'gud)
+  ;; (setq dape-info-hide-mode-line nil)
+  ;; Pulse source line (performance hit)
+  ;; (add-hook 'dape-display-source-hook 'pulse-momentary-highlight-one-line)
+  ;; Showing inlay hints
+  ;; (setq dape-inlay-hints t)
+  ;; Save buffers on startup, useful for interpreted languages
+  ;; (add-hook 'dape-start-hook (lambda () (save-some-buffers t t)))
   ;; Global bindings for setting breakpoints with mouse
   ;; (dape-breakpoint-global-mode)
   ;; To not display info and/or buffers on startup
@@ -34,11 +45,10 @@
   ;; To display info and/or repl buffers on stopped
   ;; (add-hook 'dape-on-stopped-hooks 'dape-info)
   ;; (add-hook 'dape-on-stopped-hooks 'dape-repl)
-  ;; Kill compile buffer on build success
-  ;; (add-hook 'dape-compile-compile-hooks 'kill-buffer)
+  ;;Kill compile buffer on build success
+  (add-hook 'dape-compile-hook 'kill-buffer)
   ;; Save buffers on startup, useful for interpreted languages
   ;; (add-hook 'dape-on-start-hooks (lambda () (save-some-buffers t t)))
   )
 
 (provide 'cr-debugger)
-
