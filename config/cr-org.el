@@ -8,6 +8,9 @@
 
 (defvar custom-org-roam-daily-directory "~/Dropbox/RoamNotes/daily")
 
+(defvar variable-pitch-font "Iosevka Nerd Font")
+(defvar fixed-pitch-font "Iosevka Nerd Font")
+
 (use-package mixed-pitch
   :ensure t
   :hook (org-mode . mixed-pitch-mode))
@@ -93,7 +96,7 @@
         '(("WIP" . (:foreground "#b7a1f5")) ("HOLD" . org-default)
           ("[ ]" . (:inherit org-todo :weight bold)) ("[-]" . (:foreground "#b7a1f5"))
           ("[?]" . org-default)
-          ("👷🏻WIP" . org-table) ("🔒HOLD" . org-default))
+          ("👷🏻WIP" . org-tag) ("🔒HOLD" . org-default))
         org-todo-keywords
         '((sequence
            "TODO(t)"       ; A task that is ready to be tackled
@@ -311,7 +314,7 @@
           ("\\(DONE\\)" . ((lambda (tag)
                              (svg-tag-make tag :inverse t :face 'org-done))))
           ("\\(WIP\\)" . ((lambda (tag)
-                            (svg-tag-make tag :inverse t :face 'org-table))))
+                            (svg-tag-make tag :inverse t :face 'org-tag))))
           ("\\(HOLD\\)" . ((lambda (tag)
                              (svg-tag-make tag :inverse t :face 'org-default))))
           ("\\(CANCELED\\)" . ((lambda (tag)
