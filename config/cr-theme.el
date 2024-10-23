@@ -32,7 +32,8 @@
   :ensure t
   :after ewal
   :init
-  (load-theme 'catppuccin t))
+  ;;(load-theme 'doom-molokai t)
+  )
 
 (use-package solaire-mode
   :ensure t
@@ -116,7 +117,11 @@
           ("XXX" font-lock-constant-face bold))))
 
 (use-package catppuccin-theme
-  :ensure t)
+  :ensure t
+  :custom
+  (catppuccin-flavor 'mocha)
+  :init
+  (load-theme 'catppuccin t))
 
 (use-package rainbow-delimiters
   :ensure t
