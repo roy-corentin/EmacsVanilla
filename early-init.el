@@ -55,9 +55,6 @@
 
 (require 'cr-olivetti)
 
-(defvar variable-pitch-font "Iosevka Nerd Font")
-(defvar fixed-pitch-font "JetBrains Mono Nerd Font")
-
 (use-package emacs
   :ensure nil
   :config
@@ -105,7 +102,7 @@
   (read-extended-command-predicate #'command-completion-default-include-p)
   :custom-face
   (default ((t :family "Iosevka Nerd Font" :height 115)))
-  (fixed-pitch ((t :family "JetBrains Mono Nerd Font" :height 115)))
+  (fixed-pitch ((t :family "Iosevka Nerd Font" :height 115)))
   (variable-pitch ((t :family "Iosevka Nerd Font" :height 115)))
   :bind
   ("C-=" . text-scale-increase)
