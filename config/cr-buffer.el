@@ -25,6 +25,12 @@
          (display-buffer-in-side-window)
          ;; Parameter
          (side . bottom)
+         (dedicated t))
+        ("\\*compilation\\*"
+         ;; List display function
+         (display-buffer-in-previous-window)
+         ;; Parameter
+         (direction . right)
          (dedicated t))))
 
 (use-package nerd-icons-ibuffer
