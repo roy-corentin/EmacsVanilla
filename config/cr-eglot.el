@@ -36,6 +36,9 @@
 (use-package eglot-booster
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "jdtsmith/eglot-booster" :files (:defaults))
   :after eglot
+  :custom
+  (eglot-booster-no-remote-boost t)
+  (eglot-booster-io-only t)
   :config (eglot-booster-mode))
 
 (provide 'cr-eglot)
