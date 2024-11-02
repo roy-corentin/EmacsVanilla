@@ -167,4 +167,7 @@
   (tab-line-new-button-show nil)
   (tab-line-close-button-show nil))
 
+(use-package nerd-icons
+  :ensure t)
+
 (provide 'cr-theme)

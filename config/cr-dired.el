@@ -53,6 +53,13 @@
   (dirvish-subtree-always-show-state t)
   ;; (dirvish-attributes '(file-size collapse nerd-icons git-msg vc-state subtree-state))
   (dirvish-attributes '(file-size collapse nerd-icons vc-state subtree-state))
+  (delete-by-moving-to-trash t)
+  (dirvish-path-separators (list
+                            (format "  %s " (nerd-icons-codicon "nf-cod-home"))
+                            (format "  %s " (nerd-icons-codicon "nf-cod-root_folder"))
+                            (format " %s " (nerd-icons-faicon "nf-fa-angle_right"))))
+  (dired-listing-switches
+   "-l --almost-all --human-readable --group-directories-first --no-group")
   :config
   (dirvish-define-preview eza (file)
     "Use `eza' to generate directory preview."
