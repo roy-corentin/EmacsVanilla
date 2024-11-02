@@ -228,9 +228,10 @@
   (general-define-key
    :states '(normal visual)
    :keymaps 'dired-mode-map
-   "o" 'dired-find-file-other-window
-   "F" 'dired-create-empty-file
+   "o" '(dired-find-file-other-window :which-key "Find file other window")
+   "F" '(dired-create-empty-file :which-key "Create empty file")
    "q" 'nil
+   "E" '(dired-do-open :which-key "External open")
    "?" 'casual-dired-tmenu)
   (general-define-key
    :states '(normal visual)
