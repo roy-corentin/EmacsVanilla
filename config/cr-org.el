@@ -60,110 +60,110 @@
                             "* %?\nEntered on %U\n  %i\n  %a")
                            ("c" "Contacts" entry (file "~/org/contacts.org")
                             "* %(org-contacts-template-name)\n:PROPERTIES:\n:EMAIL: %(org-contacts-template-email)\n:END:")))
+  (org-directory "~/Dropbox/Org/")
+  (org-agenda-files (list org-directory custom-org-roam-daily-directory))
+  (org-agenda-start-with-log-mode t)
+  (org-log-done 'time)
+  (org-ellipsis " ▼ ")
+  (org-log-into-drawer t)
+  (org-startup-indented t)
+  (org-image-actual-width nil)
+  (org-startup-with-inline-images t)
+  (org-startup-with-latex-preview t)
+  (org-enforce-todo-dependencies t)
+  (org-fontify-quote-and-verse-blocks t)
+  (org-fontify-whole-heading-line t)
+  (org-tags-column 0)
+  (org-M-RET-may-split-line nil)
+  (org-insert-heading-respect-content nil)
+  (org-default-priority 67)
+  (org-list-allow-alphabetical t)
+  (org-hierarchical-todo-statistics nil)
+  (mixed-pitch-mode t)
+  (org-priority-faces '((?A . error)
+                        (?B . warning)
+                        (?C . success)))
+  (org-emphasis-alist '(("*" my-org-emphasis-bold)
+                        ("/" italic)
+                        ("_" underline)
+                        ("=" org-verbatim)
+                        ("~" org-code)
+                        ("+" (:strike-through t))))
+  (org-todo-keyword-faces
+   '(("WIP" . (:foreground "#b7a1f5")) ("HOLD" . org-default)
+     ("[ ]" . (:inherit org-todo :weight bold)) ("[-]" . (:foreground "#b7a1f5"))
+     ("[?]" . org-default)
+     ("👷🏻WIP" . org-tag) ("🔒HOLD" . org-default)))
+  (org-todo-keywords
+   '((sequence
+      "TODO(t)"       ; A task that is ready to be tackled
+      "WIP(i)"        ; A task that is in progress
+      "HOLD(h)"       ; Something is holding up this task
+      "|"             ; The pipe necessary to separate "active" states and "inactive" states
+      "DONE(d)"       ; Task has been completed
+      "CANCELED(c)" ) ; Task has been canceled
+     (sequence
+      "🚩TODO(f)"     ; A task that is ready to be tackled
+      "👷🏻WIP(w)"      ; A task that is in progress
+      "🔒HOLD(l)"     ; Something is holding up this task
+      "|"             ; The pipe necessary to separate "active" states and "inactive" states
+      "✔DONE(e)"      ; Task has been completed
+      "❌CANCELED(x)" )
+     (sequence
+      "[ ](T)"        ; A task that is ready tobe tackled
+      "[-](I)"        ; A task that is already started
+      "[?](H)"        ; A task that is holding up by a reason ?
+      "|"             ; The pipe necessary to separate "active" states and "inactive" states
+      "[X](D)"
+      "[C](C)")))
+  (org-agenda-custom-commands
+   '(("c" "Simple agenda view"
+      ((tags-todo "+PRIORITY=\"A\""
+                  ((org-agenda-overriding-header "High-priority unfinished tasks:")))
+       (tags-todo "+PRIORITY=\"B\""
+                  ((org-agenda-overriding-header "Priority unfinished tasks:")))
+       (agenda "" ((org-agenda-prefix-format "%-15T\t%s [ ] ")
+                   (org-agenda-todo-keyword-format "")
+                   (org-agenda-start-on-weekday nil)
+                   (org-deadline-warning-days 60)
+                   (org-agenda-start-day "0d")
+                   (org-agenda-start-with-log-mode nil)
+                   (org-agenda-skip-scheduled-if-deadline-is-shown t)
+                   (org-agenda-log-mode-items '(state))
+                   (org-agenda-overriding-header "Week Todo")))
+       (agenda "" ((org-agenda-prefix-format "%-15:T\t%?-12t [X] ")
+                   (org-agenda-todo-keyword-format "")
+                   (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'scheduled 'deadline))
+                   (org-agenda-archives-mode t)
+                   (org-agenda-start-day "0d")
+                   (org-agenda-span 1)
+                   (org-agenda-start-with-log-mode 'only)
+                   (org-agenda-log-mode-items '(closed clock state))
+                   (org-agenda-overriding-header "Today")))
+       (agenda "" ((org-agenda-prefix-format "%-15T\t%s [X] ")
+                   (org-agenda-todo-keyword-format "")
+                   (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'scheduled 'deadline))
+                   (org-agenda-log-mode-items '(closed clock state))
+                   (org-agenda-archives-mode t)
+                   (org-agenda-start-day "-8d")
+                   (org-agenda-span 8)
+                   (org-agenda-start-with-log-mode nil)
+                   (org-agenda-overriding-header "Week Done")))
+       (alltodo "")))
+     ("d" "Done of the month"
+      ((agenda "" ((org-agenda-prefix-format "%-15:T\t%t [X] ")
+                   (org-agenda-todo-keyword-format "")
+                   (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'scheduled 'deadline))
+                   (org-agenda-start-with-log-mode 'only)
+                   (org-agenda-log-mode-items '(closed clock state))
+                   (org-agenda-time-grid nil)
+                   (org-agenda-span 31)
+                   (org-agenda-start-day "-30d")
+                   (org-agenda-archives-mode t)
+                   (org-agenda-start-on-weekday nil)))))))
   :init
   (add-hook 'org-mode-hook #'cr/org-font-setup)
   (add-hook 'org-after-todo-statistics-hook #'cr/org-summary-todo)
-  (setq org-directory "~/Dropbox/Org/"
-        org-agenda-files (list org-directory custom-org-roam-daily-directory)
-        org-agenda-start-with-log-mode t
-        org-log-done 'time
-        org-ellipsis " ▼ "
-        org-log-into-drawer t
-        org-startup-indented t
-        org-image-actual-width nil
-        org-startup-with-inline-images t
-        org-startup-with-latex-preview t
-        org-enforce-todo-dependencies t
-        org-fontify-quote-and-verse-blocks t
-        org-fontify-whole-heading-line t
-        org-tags-column 0
-        org-M-RET-may-split-line nil
-        org-insert-heading-respect-content nil
-        org-default-priority 67
-        org-list-allow-alphabetical t
-        org-hierarchical-todo-statistics nil
-        mixed-pitch-mode t
-        org-priority-faces '((?A . error)
-                             (?B . warning)
-                             (?C . success))
-        org-emphasis-alist '(("*" my-org-emphasis-bold)
-                             ("/" italic)
-                             ("_" underline)
-                             ("=" org-verbatim)
-                             ("~" org-code)
-                             ("+" (:strike-through t)))
-        org-todo-keyword-faces
-        '(("WIP" . (:foreground "#b7a1f5")) ("HOLD" . org-default)
-          ("[ ]" . (:inherit org-todo :weight bold)) ("[-]" . (:foreground "#b7a1f5"))
-          ("[?]" . org-default)
-          ("👷🏻WIP" . org-tag) ("🔒HOLD" . org-default))
-        org-todo-keywords
-        '((sequence
-           "TODO(t)"       ; A task that is ready to be tackled
-           "WIP(i)"        ; A task that is in progress
-           "HOLD(h)"       ; Something is holding up this task
-           "|"             ; The pipe necessary to separate "active" states and "inactive" states
-           "DONE(d)"       ; Task has been completed
-           "CANCELED(c)" ) ; Task has been canceled
-          (sequence
-           "🚩TODO(f)"     ; A task that is ready to be tackled
-           "👷🏻WIP(w)"      ; A task that is in progress
-           "🔒HOLD(l)"     ; Something is holding up this task
-           "|"             ; The pipe necessary to separate "active" states and "inactive" states
-           "✔DONE(e)"      ; Task has been completed
-           "❌CANCELED(x)" )
-          (sequence
-           "[ ](T)"        ; A task that is ready tobe tackled
-           "[-](I)"        ; A task that is already started
-           "[?](H)"        ; A task that is holding up by a reason ?
-           "|"             ; The pipe necessary to separate "active" states and "inactive" states
-           "[X](D)"
-           "[C](C)"))
-        org-agenda-custom-commands
-        '(("c" "Simple agenda view"
-           ((tags-todo "+PRIORITY=\"A\""
-                       ((org-agenda-overriding-header "High-priority unfinished tasks:")))
-            (tags-todo "+PRIORITY=\"B\""
-                       ((org-agenda-overriding-header "Priority unfinished tasks:")))
-            (agenda "" ((org-agenda-prefix-format "%-15T\t%s [ ] ")
-                        (org-agenda-todo-keyword-format "")
-                        (org-agenda-start-on-weekday nil)
-                        (org-deadline-warning-days 60)
-                        (org-agenda-start-day "0d")
-                        (org-agenda-start-with-log-mode nil)
-                        (org-agenda-skip-scheduled-if-deadline-is-shown t)
-                        (org-agenda-log-mode-items '(state))
-                        (org-agenda-overriding-header "Week Todo")))
-            (agenda "" ((org-agenda-prefix-format "%-15:T\t%?-12t [X] ")
-                        (org-agenda-todo-keyword-format "")
-                        (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'scheduled 'deadline))
-                        (org-agenda-archives-mode t)
-                        (org-agenda-start-day "0d")
-                        (org-agenda-span 1)
-                        (org-agenda-start-with-log-mode 'only)
-                        (org-agenda-log-mode-items '(closed clock state))
-                        (org-agenda-overriding-header "Today")))
-            (agenda "" ((org-agenda-prefix-format "%-15T\t%s [X] ")
-                        (org-agenda-todo-keyword-format "")
-                        (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'scheduled 'deadline))
-                        (org-agenda-log-mode-items '(closed clock state))
-                        (org-agenda-archives-mode t)
-                        (org-agenda-start-day "-8d")
-                        (org-agenda-span 8)
-                        (org-agenda-start-with-log-mode nil)
-                        (org-agenda-overriding-header "Week Done")))
-            (alltodo "")))
-          ("d" "Done of the month"
-           ((agenda "" ((org-agenda-prefix-format "%-15:T\t%t [X] ")
-                        (org-agenda-todo-keyword-format "")
-                        (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'scheduled 'deadline))
-                        (org-agenda-start-with-log-mode 'only)
-                        (org-agenda-log-mode-items '(closed clock state))
-                        (org-agenda-time-grid nil)
-                        (org-agenda-span 31)
-                        (org-agenda-start-day "-30d")
-                        (org-agenda-archives-mode t)
-                        (org-agenda-start-on-weekday nil)))))))
   (org-babel-do-load-languages 'org-babel-load-languages '((C . t) (ruby . t) (python . t) (shell . t)))
   (add-hook 'org-mode-hook
             (lambda ()
@@ -210,14 +210,15 @@
 
 (use-package org-clock
   :ensure nil
+  :custom
+  (org-clock-persist 'history)
+  ;; Resume when clocking into task with open clock
+  (org-clock-in-resume t)
+  ;; Remove log if task was clocked for 0:00 (accidental clocking)
+  (org-clock-out-remove-zero-time-clocks t)
+  ;; The default value (5) is too conservative.
+  (org-clock-history-length 20)
   :config
-  (setq org-clock-persist 'history
-        ;; Resume when clocking into task with open clock
-        org-clock-in-resume t
-        ;; Remove log if task was clocked for 0:00 (accidental clocking)
-        org-clock-out-remove-zero-time-clocks t
-        ;; The default value (5) is too conservative.
-        org-clock-history-length 20)
   (add-hook 'kill-emacs-hook #'org-clock-save))
 
 (use-package org-contacts
@@ -268,11 +269,11 @@
   ;;         a hookable mode anymore, you're advised to pick something yourself
   ;;         if you don't care about startup time, use
   ;;  :hook (after-init . org-roam-ui-mode)
-  :config
-  (setq org-roam-ui-sync-theme t
-        org-roam-ui-follow t
-        org-roam-ui-update-on-save t
-        org-roam-ui-open-on-start nil))
+  :custom
+  (org-roam-ui-sync-theme t)
+  (org-roam-ui-follow t)
+  (org-roam-ui-update-on-save t)
+  (org-roam-ui-open-on-start nil))
 
 (defun svg-progress-percent (value)
   (let* ((count (string-to-number value))

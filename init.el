@@ -42,10 +42,10 @@
   :defer t
   :init
   (global-set-key [remap other-window] #'ace-window)
-  :config
-  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-  (setq aw-scope 'global
-        aw-background t))
+  :custom
+  (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  (aw-scope 'global
+            aw-background t))
 
 (use-package olivetti
   :ensure t
