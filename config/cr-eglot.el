@@ -30,7 +30,7 @@
   (add-to-list 'eglot-server-programs '((ruby-mode ruby-ts-mode) "ruby-lsp"))
   (add-to-list 'eglot-server-programs '(crystal-mode "crystalline"))
   (set-face-foreground 'eglot-diagnostic-tag-unnecessary-face "grey")
-  (set-face-background 'eglot-highlight-symbol-face "grey25"))
+  (set-face-background 'eglot-highlight-symbol-face (color-darken-name (face-attribute 'default :background) 20)))
 
 
 (use-package eglot-booster
@@ -39,6 +39,7 @@
   :custom
   (eglot-booster-no-remote-boost t)
   (eglot-booster-io-only t)
-  :config (eglot-booster-mode))
+  :config
+  (eglot-booster-mode))
 
 (provide 'cr-eglot)
