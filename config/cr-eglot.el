@@ -30,8 +30,11 @@
   (add-to-list 'eglot-server-programs '((ruby-mode ruby-ts-mode) "ruby-lsp"))
   (add-to-list 'eglot-server-programs '(crystal-mode "crystalline"))
   (set-face-foreground 'eglot-diagnostic-tag-unnecessary-face "grey")
-  (set-face-background 'eglot-highlight-symbol-face (color-darken-name (face-attribute 'default :background) 20)))
-
+  (set-face-background 'eglot-highlight-symbol-face
+                       (if (eql(frame-parameter nil 'background-mode) 'light)
+                           (color-darken-name (face-attribute 'hl-line :background) 20)
+                         (color-lighten-name (face-attribute 'hl-line :background) 40)
+                         )))
 
 (use-package eglot-booster
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "jdtsmith/eglot-booster" :files (:defaults))
