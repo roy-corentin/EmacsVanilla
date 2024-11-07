@@ -21,6 +21,8 @@
 (use-package apheleia
   :ensure t
   :config
+  (add-to-list 'apheleia-mode-alist '(python-mode . ruff))
+  (add-to-list 'apheleia-mode-alist '(python-ts-mode . ruff))
   (apheleia-global-mode +1))
 
 (use-package elec-pair
@@ -117,7 +119,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("11feb87b02688866cef2199e268cad5f6d473ebacaa5f06c35c3ac08894a2845"
+   '("d317d3dacbd7b00340d86dd00c3353bed527c722c4b034fed580d6cdafac0d96"
+     "11feb87b02688866cef2199e268cad5f6d473ebacaa5f06c35c3ac08894a2845"
      "8a379e7ac3a57e64de672dd744d4730b3bdb88ae328e8106f95cd81cbd44e0b6"
      "2035a16494e06636134de6d572ec47c30e26c3447eafeb6d3a9e8aee73732396" default)))
 (custom-set-faces
