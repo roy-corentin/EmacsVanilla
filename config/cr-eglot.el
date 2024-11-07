@@ -33,8 +33,7 @@
   (set-face-background 'eglot-highlight-symbol-face
                        (if (eql(frame-parameter nil 'background-mode) 'light)
                            (color-darken-name (face-attribute 'hl-line :background) 20)
-                         (color-lighten-name (face-attribute 'hl-line :background) 40)
-                         )))
+                         (color-lighten-name (face-attribute 'hl-line :background) 40))))
 
 (use-package eglot-booster
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "jdtsmith/eglot-booster" :files (:defaults))
