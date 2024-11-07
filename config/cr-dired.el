@@ -40,10 +40,6 @@
 (use-package dired-open-with
   :ensure t)
 
-(use-package casual-dired
-  :ensure t
-  :after dired)
-
 (use-package dirvish
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "hlissner/dirvish" :files (:defaults "extensions/*"))
   :after dired

@@ -55,11 +55,6 @@
   (olivetti-body-width 130)
   :hook (text-mode magit-mode))
 
-(use-package casual-calc
-  :ensure t
-  :defer t
-  :bind (:map calc-mode-map ("C-o" . 'casual-main-menu)))
-
 (use-package pdf-tools
   :after evil
   :ensure t)
