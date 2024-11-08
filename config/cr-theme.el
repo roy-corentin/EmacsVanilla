@@ -12,9 +12,6 @@
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  ;; (load-theme 'doom-moonlight t)
-  ;; (load-theme 'modus-vivendi-tinted t)
-
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
   ;; or for treemacs users
@@ -119,9 +116,7 @@
 (use-package catppuccin-theme
   :ensure t
   :custom
-  (catppuccin-flavor 'mocha)
-  :init
-  (load-theme 'catppuccin t))
+  (catppuccin-flavor 'mocha))
 
 (use-package rainbow-delimiters
   :ensure t
@@ -169,5 +164,7 @@
 
 (use-package nerd-icons
   :ensure t)
+
+(load-theme 'modus-operandi-tinted t)
 
 (provide 'cr-theme)
