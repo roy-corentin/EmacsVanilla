@@ -19,9 +19,7 @@ Returns the vterm buffer."
   (cr/vterm--configure-in-project-root
    arg
    (lambda ()
-     (let ((buffer-name (format "*vterm-popup-%s*" (if (project-current)
-                                                       (project-name (project-current))
-                                                     "main")))
+     (let ((buffer-name (format "*vterm-popup-%s*" (if (project-current) (project-name (project-current)) "main")))
            confirm-kill-processes)
        (let ((buffer (get-buffer buffer-name)))
          (if (buffer-live-p buffer)
@@ -33,9 +31,7 @@ Returns the vterm buffer."
   (cr/vterm--configure-in-project-root
    arg
    (lambda ()
-     (let ((buffer-name (format "*vterm-%s*" (if (project-current)
-                                                 (project-name (project-current))
-                                               "main"))))
+     (let ((buffer-name (format "*vterm-%s*" (if (project-current) (project-name (project-current)) "main"))))
        (vterm buffer-name)))))
 
 (defun cr/smart-vterm-buffer (arg)
