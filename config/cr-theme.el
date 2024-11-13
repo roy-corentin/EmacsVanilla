@@ -69,6 +69,7 @@
 
 (use-package diff-hl
   :ensure t
+  :after evil
   ;; :hook (dired-mode . diff-hl-dired-mode) ;; HACK uncomment if you don't use dirvish
   :custom
   (diff-hl-disable-on-remote t)
