@@ -143,8 +143,7 @@ If prefix ARG is set, prompt for a directory to search from."
 
 (defun cr/org-summary-todo (n-done n-not-done)
   "Switch entry to DONE when all subentries of a TODO are done, to TODO otherwise."
-  (let ((org-log-done org-todo-log-states)
-        (todo-state (org-get-todo-state)))   ; turn off logging
+  (let ((todo-state (org-get-todo-state)))
     (when (member todo-state org-todo-keywords-1)
       (org-todo (if (= n-not-done 0) "DONE" "TODO")))))
 
