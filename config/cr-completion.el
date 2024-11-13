@@ -27,7 +27,22 @@
   :custom
   (vertico-posframe-poshandler #'posframe-poshandler-frame-center)
   (vertico-posframe-height 20)
+  (vertico-multiform-commands
+   '((consult-ripgrep
+      posframe
+      (vertico-posframe-poshandler . posframe-poshandler-frame-bottom-center)
+      (vertico-count . 15)
+      (vertico-posframe-height . 15)
+      (vertico-posframe-fallback-mode . vertico-buffer-mode))
+     (+default/search-cwd
+      posframe
+      (vertico-posframe-poshandler . posframe-poshandler-frame-bottom-center)
+      (vertico-count . 15)
+      (vertico-posframe-height . 15)
+      (vertico-posframe-fallback-mode . vertico-buffer-mode))
+     (t posframe)))
   :config
+  (vertico-multiform-mode 1)
   (vertico-posframe-mode t))
 
 ;; Enable rich annotations using the Marginalia package
