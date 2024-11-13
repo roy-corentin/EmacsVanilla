@@ -138,8 +138,7 @@
   :bind
   (("C-!" . embark-act)         ;; pick some comfortable binding
    ("M-;" . embark-dwim)        ;; good alternative: M-.
-   ("C-h B" . embark-bindings)
-   ("C-e" . embark-candidate-collectors)) ;; alternative for `describe-bindings'
+   ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
   :custom
   ;; Optionally replace the key help with a completing-read interface
   (prefix-help-command #'embark-prefix-help-command)
