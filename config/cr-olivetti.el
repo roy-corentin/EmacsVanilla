@@ -20,7 +20,8 @@
     switch-to-buffer
     next-buffer
     previous-buffer
-    dired)
+    dired
+    magit-diff-visit-file)
   "List of functions to advice for `cr/olivetti-on-single-prog-window-mode'.")
 
 (defun cr/olivetti-on-single-prog-window-enable ()
