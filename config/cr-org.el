@@ -98,22 +98,22 @@
    '((sequence
       "TODO(t)"       ; A task that is ready to be tackled
       "WIP(i)"        ; A task that is in progress
-      "HOLD(h)"       ; Something is holding up this task
       "|"             ; The pipe necessary to separate "active" states and "inactive" states
+      "HOLD(h)"       ; Something is holding up this task
       "DONE(d)"       ; Task has been completed
       "CANCELED(c)" ) ; Task has been canceled
      (sequence
       "🚩TODO(f)"     ; A task that is ready to be tackled
       "👷🏻WIP(w)"      ; A task that is in progress
-      "🔒HOLD(l)"     ; Something is holding up this task
       "|"             ; The pipe necessary to separate "active" states and "inactive" states
+      "🔒HOLD(l)"     ; Something is holding up this task
       "✔DONE(e)"      ; Task has been completed
       "❌CANCELED(x)" )
      (sequence
       "[ ](T)"        ; A task that is ready tobe tackled
       "[-](I)"        ; A task that is already started
-      "[?](H)"        ; A task that is holding up by a reason ?
       "|"             ; The pipe necessary to separate "active" states and "inactive" states
+      "[?](H)"        ; A task that is holding up by a reason ?
       "[X](D)"
       "[C](C)")))
   (org-agenda-custom-commands
