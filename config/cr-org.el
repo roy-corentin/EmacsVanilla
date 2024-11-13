@@ -277,7 +277,7 @@
 
 (defun svg-progress-percent (value)
   (let* ((count (string-to-number value))
-         (font (if (zerop count) 'org-done 'org-todo)))
+         (font (if (or (zerop count) (eql 100 count)) 'org-done 'org-todo)))
     (svg-image (svg-lib-concat
                 (svg-lib-progress-bar (/ count 100.0)
                                       font :margin 0 :stroke 2 :radius 3 :padding 2 :width 11)
