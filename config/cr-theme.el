@@ -154,7 +154,7 @@
   ;;				      list list_comprehension
   ;;				      dictionary dictionary_comprehension
   ;;				      parenthesized_expression subscript)))
-  :hook ((python-base-mode yaml-mode ruby-base-mode typescript-ts-base-mode) . indent-bars-mode))
+  :hook ((python-base-mode yaml-mode ruby-base-mode typescript-ts-base-mode c-ts-mode) . indent-bars-mode))
 
 (use-package tab-line
   :demand t
