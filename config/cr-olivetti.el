@@ -8,7 +8,7 @@
 
 (defun cr/olivetti-on-single-prog-window (&rest args)
   "Toggle Olivetti mode based on the window configuration"
-  (when (or (derived-mode-p 'prog-mode) (derived-mode-p 'dired-mode) (derived-mode-p 'conf-mode))
+  (when (or (derived-mode-p '(prog-mode dired-mode conf-mode)))
     (olivetti-mode 0)
     (if (>= (window-width) (floor (frame-width) 2))
         (olivetti-mode t))))
