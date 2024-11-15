@@ -147,4 +147,9 @@ If prefix ARG is set, prompt for a directory to search from."
     (when (member todo-state org-todo-keywords-1)
       (org-todo (if (= n-not-done 0) "DONE" "TODO")))))
 
+(defun cr/search-symbol-at-point-in-project ()
+  "Search in project symbol at point"
+  (interactive)
+  (consult-ripgrep nil (evil-find-thing t 'symbol)))
+
 (provide 'cr-methods)
