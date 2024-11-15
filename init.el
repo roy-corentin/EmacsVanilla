@@ -109,6 +109,7 @@
 (require 'cr-debugger)
 (require 'cr-gnuplot)
 (require 'cr-compile)
+(require 'cr-flymake)
 
 ;; Key set at the end to avoid conflicts with iedit
 (global-set-key (kbd "C-,") 'previous-buffer)
