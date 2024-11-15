@@ -8,50 +8,62 @@
 
 (use-package olivetti
   :ensure t
-  :defer t
   :custom
   (olivetti-body-width (cr/--olivetti-body-width))
   :bind ("C-c o" . olivetti-mode)
-  :hook (text-mode magit-mode))
+  :hook (text-mode magit-mode)
+  :init
+  (add-hook 'magit-mode-hook (lambda () (setq-local olivetti-body-width 90))))
 
-(defun cr/olivetti-on-single-prog-window (&rest args)
-  "Toggle Olivetti mode based on the window configuration"
-  (when (or (derived-mode-p '(prog-mode dired-mode conf-mode)))
-    (olivetti-mode 0)
-    (when (cr/window--olivetti-condition)
-      (olivetti-mode t))))
+(defcustom cr/olivetti-width-factor 1.8
+  "Factor to calculate Olivetti body width."
+  :type 'float
+  :group 'olivetti)
 
-(defvar cr/olivetti-on-single-prog-window-advice-list
-  '(delete-window
-    split-window
-    find-file
-    switch-to-buffer
-    next-buffer
-    previous-buffer
-    dired
-    magit-diff-visit-file)
-  "List of functions to advice for `cr/olivetti-on-single-prog-window-mode'.")
+(defcustom cr/olivetti-min-width 110
+  "Minimum Olivetti body width."
+  :type 'integer
+  :group 'olivetti)
+
+(defcustom cr/olivetti-target-modes '(prog-mode dired-mode conf-mode)
+  "Major to activate cr/olivetti-on-single-prog-window-mode"
+  :type 'list
+  :group 'olivetti)
+
+(defun cr/--olivetti-body-width ()
+  "Calculate the optimal Olivetti body width based on frame width."
+  (max (floor (/ (frame-width) cr/olivetti-width-factor)) cr/olivetti-min-width))
 
 (defun cr/window--olivetti-condition ()
-  "Condition to trigger olivetti mode"
+  "Determine if Olivetti mode should be enabled based on window width."
   (>= (window-width) olivetti-body-width))
 
-(defun cr/olivetti-on-single-prog-window-enable ()
-  "Enable advice for `cr/olivetti-on-single-prog-window-mode'."
-  (dolist (fn cr/olivetti-on-single-prog-window-advice-list)
-    (advice-add fn :after #'cr/olivetti-on-single-prog-window)))
+(defun cr/refresh-olivetti-body-width ()
+  "Refresh Olivetti body width and toggle mode if necessary."
+  (when (derived-mode-p cr/olivetti-target-modes)
+    (setq olivetti-body-width (cr/--olivetti-body-width))
+    (cr/olivetti-on-single-prog-window)))
 
-(defun cr/olivetti-on-single-prog-window-disable ()
-  "Disable advice for `cr/olivetti-on-single-prog-window-mode'."
-  (dolist (fn cr/olivetti-on-single-prog-window-advice-list)
-    (advice-remove fn #'cr/olivetti-on-single-prog-window)))
+(defun cr/olivetti-on-single-prog-window ()
+  "Toggle Olivetti mode in specific buffers based on window configuration."
+  (when (derived-mode-p cr/olivetti-target-modes)
+    (olivetti-mode 0)
+    (when (cr/window--olivetti-condition)
+      (olivetti-mode 1))))
 
 (define-minor-mode cr/olivetti-on-single-prog-window-mode
-  "Minor mode to toggle Olivetti mode in single prog-mode or dired-mode windows."
+  "Toggle Olivetti mode for single programming or directory buffers."
   :lighter " CROlivettiSPW"
   :global t
   (if cr/olivetti-on-single-prog-window-mode
-      (cr/olivetti-on-single-prog-window-enable)
-    (cr/olivetti-on-single-prog-window-disable)))
+      (progn
+	;; (setq olivetti-body-width (cr/--olivetti-body-width))
+        (add-hook 'window-configuration-change-hook #'cr/refresh-olivetti-body-width)
+        (add-hook 'prog-mode-hook #'cr/olivetti-on-single-prog-window)
+        (add-hook 'dired-mode-hook #'cr/olivetti-on-single-prog-window))
+    (olivetti-mode 0)
+    (remove-hook 'window-configuration-change-hook #'cr/refresh-olivetti-body-width)
+    (remove-hook 'prog-mode-hook #'cr/olivetti-on-single-prog-window)
+    (remove-hook 'dired-mode-hook #'cr/olivetti-on-single-prog-window)))
 
 (provide 'cr-olivetti)
