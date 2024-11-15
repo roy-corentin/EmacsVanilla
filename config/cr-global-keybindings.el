@@ -85,6 +85,7 @@
     "t w" '(toggle-frame-tab-bar :which-key "Tab Bar")
     "t v" '(visual-line-mode :which-key "Visual line mode")
     "t o" '(olivetti-mode :which-key "Olivetti")
+    "t O" '(cr/olivetti-on-single-prog-window-mode :which-key "CR Olivetti")
     "t g" '(global-copilot-mode :which-key "Global Copilot")
     "t r" '(read-only-mode :which-key "ReadOnly mode")
     "o" '(:ignore t :which-key "Open")
