@@ -6,6 +6,14 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: Juin 20, 2024
 
+(use-package olivetti
+  :ensure t
+  :defer t
+  :custom
+  (olivetti-body-width (cr/--olivetti-body-width))
+  :bind ("C-c o" . olivetti-mode)
+  :hook (text-mode magit-mode))
+
 (defun cr/olivetti-on-single-prog-window (&rest args)
   "Toggle Olivetti mode based on the window configuration"
   (when (or (derived-mode-p '(prog-mode dired-mode conf-mode)))

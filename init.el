@@ -49,14 +49,6 @@
   (aw-scope 'global
             aw-background t))
 
-(use-package olivetti
-  :ensure t
-  :defer t
-  :bind ("C-c o" . olivetti-mode)
-  :custom
-  (olivetti-body-width 130)
-  :hook (text-mode magit-mode))
-
 (use-package pdf-tools
   :after evil
   :ensure t)
