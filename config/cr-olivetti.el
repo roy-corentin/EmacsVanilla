@@ -8,14 +8,12 @@
 
 (use-package olivetti
   :ensure t
-  :custom
-  (olivetti-body-width (cr/--olivetti-body-width))
   :bind ("C-c o" . olivetti-mode)
   :hook (text-mode magit-mode)
   :init
   (add-hook 'magit-mode-hook (lambda () (setq-local olivetti-body-width 90))))
 
-(defcustom cr/olivetti-width-factor 1.8
+(defcustom cr/olivetti-width-factor 1.85
   "Factor to calculate Olivetti body width."
   :type 'float
   :group 'olivetti)
@@ -26,7 +24,7 @@
   :group 'olivetti)
 
 (defcustom cr/olivetti-target-modes '(prog-mode dired-mode conf-mode)
-  "Major to activate cr/olivetti-on-single-prog-window-mode"
+  "Major to activate cr/olivetti-on-large-prog-window-mode"
   :type 'list
   :group 'olivetti)
 
@@ -41,29 +39,37 @@
 (defun cr/refresh-olivetti-body-width ()
   "Refresh Olivetti body width and toggle mode if necessary."
   (when (derived-mode-p cr/olivetti-target-modes)
-    (setq olivetti-body-width (cr/--olivetti-body-width))
-    (cr/olivetti-on-single-prog-window)))
+    (cr/set-olivetti-body-width)
+    (cr/olivetti-on-large-prog-window)))
 
-(defun cr/olivetti-on-single-prog-window ()
+(defun cr/set-olivetti-body-width ()
+  (when olivetti-mode
+    (olivetti-mode 0))
+  (let ((new-width (cr/--olivetti-body-width)))
+    (setq-default olivetti-body-width new-width)))
+
+(defun cr/olivetti-on-large-prog-window ()
   "Toggle Olivetti mode in specific buffers based on window configuration."
   (when (derived-mode-p cr/olivetti-target-modes)
-    (olivetti-mode 0)
+    (when olivetti-mode
+      (olivetti-mode 0))
     (when (cr/window--olivetti-condition)
       (olivetti-mode 1))))
 
-(define-minor-mode cr/olivetti-on-single-prog-window-mode
-  "Toggle Olivetti mode for single programming or directory buffers."
+(define-minor-mode cr/olivetti-on-large-prog-window-mode
+  "Toggle Olivetti mode for large programming or directory buffers."
   :lighter " CROlivettiSPW"
   :global t
-  (if cr/olivetti-on-single-prog-window-mode
+  (if cr/olivetti-on-large-prog-window-mode
       (progn
-	;; (setq olivetti-body-width (cr/--olivetti-body-width))
+	(cr/set-olivetti-body-width)
+        (cr/olivetti-on-large-prog-window)
         (add-hook 'window-configuration-change-hook #'cr/refresh-olivetti-body-width)
-        (add-hook 'prog-mode-hook #'cr/olivetti-on-single-prog-window)
-        (add-hook 'dired-mode-hook #'cr/olivetti-on-single-prog-window))
+        (add-hook 'prog-mode-hook #'cr/olivetti-on-large-prog-window)
+        (add-hook 'dired-mode-hook #'cr/olivetti-on-large-prog-window))
     (olivetti-mode 0)
     (remove-hook 'window-configuration-change-hook #'cr/refresh-olivetti-body-width)
-    (remove-hook 'prog-mode-hook #'cr/olivetti-on-single-prog-window)
-    (remove-hook 'dired-mode-hook #'cr/olivetti-on-single-prog-window)))
+    (remove-hook 'prog-mode-hook #'cr/olivetti-on-large-prog-window)
+    (remove-hook 'dired-mode-hook #'cr/olivetti-on-large-prog-window)))
 
 (provide 'cr-olivetti)
