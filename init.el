@@ -7,6 +7,20 @@
 
 ;; Load the package manager and initialize MELPA
 
+(use-package olivetti
+  :ensure t
+  :bind ("C-c o" . olivetti-mode)
+  :hook (text-mode magit-mode)
+  :custom
+  (olivetti-body-width 110)
+  :init
+  (add-hook 'magit-mode-hook (lambda () (setq-local olivetti-body-width 100))))
+
+(use-package cr-olivetti
+  :ensure nil
+  :after olivetti
+  :config
+  (cr-olivetti-on-large-prog-window-mode t))
 
 (use-package which-key
   :ensure nil

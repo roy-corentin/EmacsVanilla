@@ -53,8 +53,6 @@
   ;; Enable use-package :ensure support for Elpaca.
   (elpaca-use-package-mode))
 
-(require 'cr-olivetti)
-
 (use-package emacs
   :ensure nil
   :config
@@ -68,7 +66,6 @@
   (set-default 'truncate-lines t)
   (pixel-scroll-mode t)
   (pixel-scroll-precision-mode t)
-  (cr/olivetti-on-single-prog-window-mode t)
   (electric-pair-mode t)
   (defalias 'yes-or-no-p 'y-or-n-p)
   (add-hook 'prog-mode-hook 'display-line-numbers-mode)
