@@ -148,8 +148,7 @@
                    (org-agenda-start-day "-8d")
                    (org-agenda-span 8)
                    (org-agenda-start-with-log-mode nil)
-                   (org-agenda-overriding-header "Week Done")))
-       (alltodo "")))
+                   (org-agenda-overriding-header "Week Done")))))
      ("d" "Done of the month"
       ((agenda "" ((org-agenda-prefix-format "%-15:T\t%t [X] ")
                    (org-agenda-todo-keyword-format "")
