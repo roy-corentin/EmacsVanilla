@@ -241,6 +241,10 @@
    "TAB" 'dirvish-subtree-toggle
    "s" 'dirvish-layout-switch
    "q" 'dirvish-quit)
+  (general-define-key
+   :keymaps 'minibuffer-mode-map
+   "C-p" 'previous-history-element
+   "C-n" 'next-history-element)
   )
 
 (use-package drag-stuff
