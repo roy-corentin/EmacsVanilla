@@ -6,7 +6,7 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: Juin 20, 2024
 
-(defcustom cr-olivetti-width-factor 1.85
+(defcustom cr-olivetti-width-factor 2
   "Factor to calculate Olivetti body width."
   :type 'float
   :group 'olivetti)
