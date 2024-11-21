@@ -42,7 +42,7 @@
 
 (use-package dirvish
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "hlissner/dirvish" :files (:defaults "extensions/*"))
-  :after dired
+  :after dired evil
   :custom
   ;; (dirvish-reuse-session nil) ; kill all session buffers on quit
   (dirvish-use-mode-line nil)

@@ -131,7 +131,7 @@
     "s c" '(evil-avy-goto-char-2 :which-key "Goto char2")
     "s w" '(evil-avy-goto-word-1 :which-key "Goto word")
     "d" '(:ignore t :which-key "Dired")
-    "d d" '(dired-jump :which-key "Dired here")
+    "d d" '(dirvish-dwim :which-key "Dired here")
     "i" '(:ignore t :which-key "Insert")
     "i y" '(consult-yank-pop :which-key "Yanks")
     "D" '(:ignore t :which-key "Dape")
