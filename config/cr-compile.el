@@ -25,7 +25,8 @@
   :custom
   (compilation-scroll-output t)
   :config
-  (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
+  (add-hook 'compilation-filter-hook #'ansi-color-compilation-filter)
+  (add-hook 'compilation-start-hook (lambda (rest) (visual-line-mode)))
   (advice-add #'project-switch-project :after #'cr/set-compile-command)
   (push 'bun-test compilation-error-regexp-alist)
   (push '(bun-test "\sat\s\\([a-zA-Z0-9/\\._-]+\\):\\([0-9]+\\):\\([0-9]+\\)" 1 2 3)
