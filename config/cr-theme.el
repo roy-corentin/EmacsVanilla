@@ -18,7 +18,9 @@
   ;; (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
   ;; (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
+  (doom-themes-org-config)
+  :init
+  (load-theme 'doom-zenburn t))
 
 (use-package ewal
   :ensure t
@@ -27,10 +29,7 @@
 
 (use-package ewal-doom-themes
   :ensure t
-  :after ewal
-  :init
-  ;;(load-theme 'doom-molokai t)
-  )
+  :after ewal)
 
 (use-package solaire-mode
   :ensure t
@@ -166,6 +165,6 @@
 (use-package nerd-icons
   :ensure t)
 
-(load-theme 'modus-operandi-tinted t)
+;; (load-theme `doom-zenburn t)
 
 (provide 'cr-theme)
