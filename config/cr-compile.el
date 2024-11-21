@@ -29,6 +29,9 @@
   (advice-add #'project-switch-project :after #'cr/set-compile-command)
   (push 'bun-test compilation-error-regexp-alist)
   (push '(bun-test "\sat\s\\([a-zA-Z0-9/\\._-]+\\):\\([0-9]+\\):\\([0-9]+\\)" 1 2 3)
+        compilation-error-regexp-alist-alist)
+  (push 'rspec compilation-error-regexp-alist)
+  (push '(rspec "rspec\s\\([a-zA-Z0-9/\\._-]+\\):\\([0-9]+\\)" 1 2)
         compilation-error-regexp-alist-alist))
 
 (provide 'cr-compile)
