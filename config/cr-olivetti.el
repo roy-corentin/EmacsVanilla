@@ -48,7 +48,7 @@
       (olivetti-mode 0))
     (when (cr--window--olivetti-condition)
       (olivetti-mode 1)
-      (visual-line-mode nil))))
+      (visual-line-mode 0))))
 
 (define-minor-mode cr-olivetti-on-large-prog-window-mode
   "Toggle Olivetti mode for large programming or directory buffers."
