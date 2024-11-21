@@ -152,4 +152,11 @@ If prefix ARG is set, prompt for a directory to search from."
   (interactive)
   (consult-ripgrep nil (evil-find-thing t 'symbol)))
 
+(defun cr/switch-theme (theme)
+  "Switch to new theme and disable previous"
+  (interactive)
+  (let ((current-theme (car custom-enabled-themes)))
+    (when (load-theme theme t)
+      (disable-theme current-theme))))
+
 (provide 'cr-methods)
