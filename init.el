@@ -7,6 +7,13 @@
 
 ;; Load the package manager and initialize MELPA
 
+(use-package savehist
+  :ensure nil
+  :config
+  (add-to-list 'savehist-additional-variables 'emacs-theme)
+  :init
+  (savehist-mode))
+
 (use-package olivetti
   :ensure t
   :bind ("C-c o" . olivetti-mode)

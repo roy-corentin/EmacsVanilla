@@ -157,6 +157,7 @@ If prefix ARG is set, prompt for a directory to search from."
   (interactive)
   (let ((current-theme (car custom-enabled-themes)))
     (when (load-theme theme t)
-      (disable-theme current-theme))))
+      (disable-theme current-theme)
+      (setq emacs-theme theme))))
 
 (provide 'cr-methods)
