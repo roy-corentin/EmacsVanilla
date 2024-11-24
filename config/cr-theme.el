@@ -126,8 +126,9 @@
 
 (use-package vim-tab-bar
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "jamescherti/vim-tab-bar.el" :files (:defaults))
-  :commands vim-tab-bar-mode
-  :hook (after-init-hook . vim-tab-bar-mode))
+  :after evil
+  :init
+  (vim-tab-bar-mode))
 
 (use-package indent-bars
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "https://github.com/jdtsmith/indent-bars" :files (:defaults))
