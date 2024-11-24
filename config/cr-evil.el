@@ -46,6 +46,8 @@
 (use-package evil-collection
   :ensure t
   :after evil
+  :custom
+  (evil-collection-magit-want-horizontal-movement t)
   :config
   (evil-collection-init))
 
