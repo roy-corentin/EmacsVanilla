@@ -151,7 +151,8 @@
     "q f" '(delete-frame :which-key "Delete Frame")
     "e" '(:ignore t :which-key "Eval")
     "e r" '(eval-region :which-key "Eval Region")
-    "m" '(:ignore t :which-key "Local"))
+    "m" '(:ignore t :which-key "Local")
+    "*" '(cr/search-symbol-at-point-in-project :which-key "Search symbol at point in project"))
   (general-define-key
    :states '(visual normal)
    :keymaps 'ruby-ts-mode-map
@@ -225,8 +226,7 @@
    :keymaps 'override
    "g" '(:ignore t)
    "g =" '(org-increase-number-at-point :which-key "Increase at point")
-   "g -" '(org-decrease-number-at-point :which-key "Decrease at point")
-   "µ" '(cr/search-symbol-at-point-in-project :which-key "Search symbol at point in project"))
+   "g -" '(org-decrease-number-at-point :which-key "Decrease at point"))
   (general-define-key
    :states '(normal visual)
    :keymaps 'dired-mode-map
