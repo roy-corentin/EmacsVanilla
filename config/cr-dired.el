@@ -6,10 +6,6 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 11, 2024
 
-(with-eval-after-load 'dired
-  (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
-  (evil-define-key 'normal dired-mode-map (kbd "l") 'dired-find-file)) ; use dired-open-file or dired-find-file instead if not using dired-open package
-
 ;; Use monospaced font faces in current buffer
 (defun my-buffer-face-mode-fixed ()
   "Sets a fixed width (monospace) font in current buffer"
@@ -23,6 +19,9 @@
   :custom
   (dired-mouse-drag-files t)
   (mouse-drag-and-drop-region-cross-program t)
+  :config
+  (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
+  (evil-define-key 'normal dired-mode-map (kbd "l") 'dired-find-file) ; use dired-open-file or dired-find-file instead if not using dired-open package
   :init
   (add-hook 'dired-mode-hook #'my-buffer-face-mode-fixed))
 
