@@ -110,6 +110,7 @@
   :init
   (ws-butler-global-mode))
 
+(require 'cr-org)
 (require 'cr-term)
 (require 'cr-global-keybindings)
 (require 'cr-buffer)
@@ -122,7 +123,6 @@
 (require 'cr-completion)
 (require 'cr-undo)
 (require 'cr-treesit)
-(require 'cr-org)
 (require 'cr-treemacs)
 (require 'cr-meow)
 (require 'cr-evil)
