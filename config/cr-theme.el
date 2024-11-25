@@ -36,7 +36,6 @@
 
 (use-package doom-modeline
   :ensure t
-  :hook (after-init . doom-modeline-mode)
   :hook (doom-modeline-mode . size-indication-mode) ; filesize in modeline
   :hook (doom-modeline-mode . column-number-mode)   ; cursor column in modeline
   :custom
@@ -50,9 +49,10 @@
   (doom-modeline-workspace-name nil)
   (doom-modeline-buffer-file-name-style 'truncate-with-project)
   (doom-modeline-buffer-encoding 'nondefault)
-  (doom-modeline-mode 1)
   :config
-  (add-hook 'doom-load-theme-hook #'doom-modeline-refresh-bars))
+  (add-hook 'doom-load-theme-hook #'doom-modeline-refresh-bars)
+  :init
+  (doom-modeline-mode 1))
 
 ;; (use-package git-gutter
 ;;   :ensure t
