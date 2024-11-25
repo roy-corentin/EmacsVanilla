@@ -48,7 +48,8 @@
      :foreground "#a60000")
     (((class color) (min-colors 88) (background dark))
      :foreground "#ff8059"))
-  "My bold emphasis for Org.")
+  "My bold emphasis for Org."
+  :group 'org-faces)
 
 (use-package org
   :ensure nil

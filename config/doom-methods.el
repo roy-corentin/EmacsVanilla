@@ -60,7 +60,7 @@ If on a:
                 (toc-org-insert-toc)
                 (message "Updating table of contents"))
                ((string= "ARCHIVE" (car-safe (org-get-tags)))
-                (org-force-cycle-archived))
+                (org-cycle-force-archived))
                ((or (org-element-property :todo-type context)
                     (org-element-property :scheduled context))
                 (org-todo
@@ -135,7 +135,7 @@ If on a:
          (let* ((lineage (org-element-lineage context '(link) t))
                 (path (org-element-property :path lineage)))
            (if (or (equal (org-element-property :type lineage) "img")
-                   (and path (image-type-from-file-name path)))
+                   (and path (image-supported-file-p path)))
                (+org--toggle-inline-images-in-subtree
                 (org-element-property :begin lineage)
                 (org-element-property :end lineage))
@@ -269,7 +269,7 @@ If on a:
                   ('todo)))))))
 
     (when (org-invisible-p)
-      (org-show-hidden-entry))
+      (org-fold-show-hidden-entry))
     (when (and (bound-and-true-p evil-local-mode)
                (not (evil-emacs-state-p)))
       (evil-insert 1))))

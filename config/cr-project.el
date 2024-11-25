@@ -11,7 +11,7 @@
 (defun cr/magit-in-project ()
   (interactive)
   (let ((default-directory (project-root (project-current))))
-    (magit-status)
+    (magit-status-setup-buffer)
     (delete-other-windows)))
 
 (use-package project

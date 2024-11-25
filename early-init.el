@@ -5,6 +5,12 @@
 ;; Author: Corentin Roy <corentin.roy02@laposte.net>
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 
+;; Ensure Emacs loads the most recent byte-compiled files.
+(setq load-prefer-newer t)
+;; Ensure JIT compilation is enabled for improved performance by
+;; native-compiling loaded .elc files asynchronously
+(setq native-comp-jit-compilation t)
+
 (setq package-enable-at-startup nil)
 ;; Initialize load path for loading configuration files
 (add-to-list 'load-path (concat user-emacs-directory "config/"))

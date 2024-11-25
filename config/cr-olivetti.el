@@ -18,7 +18,7 @@
 
 (defcustom cr-olivetti-target-modes '(prog-mode dired-mode conf-mode)
   "Major to activate cr-olivetti-on-large-prog-window-mode"
-  :type 'list
+  :type '(list symbol)
   :group 'olivetti)
 
 (defun cr---olivetti-body-width ()
