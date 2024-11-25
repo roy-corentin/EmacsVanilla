@@ -7,6 +7,15 @@
 
 ;; Load the package manager and initialize MELPA
 
+(use-package compile-angel
+  :ensure (:protocol https :depth 1 :inherit t  :fetcher github :repo "jamescherti/compile-angel.el" :files (:defaults))
+  :demand t
+  :custom
+  (compile-angel-verbose nil)
+  :config
+  (compile-angel-on-load-mode)
+  (add-hook 'emacs-lisp-mode-hook #'compile-angel-on-save-local-mode))
+
 (use-package savehist
   :ensure nil
   :config
