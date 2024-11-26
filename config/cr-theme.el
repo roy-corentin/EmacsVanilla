@@ -31,11 +31,12 @@
 
 (use-package solaire-mode
   :ensure t
-  :init
+  :config
   (solaire-global-mode t))
 
 (use-package doom-modeline
   :ensure t
+  :demand t
   :hook (doom-modeline-mode . size-indication-mode) ; filesize in modeline
   :hook (doom-modeline-mode . column-number-mode)   ; cursor column in modeline
   :custom
@@ -113,16 +114,19 @@
 
 (use-package catppuccin-theme
   :ensure t
+  :demand t
   :custom
   (catppuccin-flavor 'mocha))
 
 (use-package rainbow-delimiters
   :ensure t
-  :defer t
-  :hook (prog-mode))
+  :demand t
+  :init
+  (add-hook 'prog-mode #'rainbow-delimiters-mode))
 
 (use-package rainbow-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package vim-tab-bar
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "jamescherti/vim-tab-bar.el" :files (:defaults))
@@ -160,9 +164,6 @@
   :custom
   (tab-line-new-button-show nil)
   (tab-line-close-button-show nil))
-
-(use-package nerd-icons
-  :ensure t)
 
 (with-eval-after-load 'doom-themes
   (load-theme (or emacs-theme 'doom-zenburn) t))

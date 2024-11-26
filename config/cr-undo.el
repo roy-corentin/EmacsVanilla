@@ -16,6 +16,7 @@
 
 (use-package vundo
   :ensure t
+  :demand t
   :config
   (vundo-mode))
 

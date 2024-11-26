@@ -13,11 +13,11 @@
 (use-package yasnippet
   :ensure t
   :defer t
+  :custom
+  (setq yas-snippet-dirs '((concat user-emacs-directory "elpaca/repos/snippets/"))(concat user-emacs-directory "snippets/"))
+  (yas-global-mode 1)
   :init
-  (defvar yas-verbosity 3)
-  :config
-  (add-to-list 'yas-snippet-dirs (concat user-emacs-directory "elpaca/repos/snippets/"))
-  (yas-global-mode 1))
+  (defvar yas-verbosity 3))
 
 (use-package auto-yasnippet
   :ensure t

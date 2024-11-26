@@ -11,6 +11,7 @@
 ;; Use evil mode for vim-like keybindings
 (use-package evil
   :ensure t
+  :demand t
   :custom
   (evil-want-integration t)
   (evil-want-keybinding nil)
@@ -52,7 +53,7 @@
   (evil-collection-init))
 
 (use-package evil-collection-magit
-  :defer t
+  :after evil-collection
   :init (defvar evil-collection-magit-use-z-for-folds t)
   :config
   ;; Some extra vim-isms I thought were missing from upstream

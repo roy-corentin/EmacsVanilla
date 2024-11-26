@@ -16,6 +16,9 @@
   (compile-angel-on-load-mode)
   (add-hook 'emacs-lisp-mode-hook #'compile-angel-on-save-local-mode))
 
+(use-package nerd-icons
+  :ensure t)
+
 (use-package savehist
   :ensure nil
   :config
@@ -124,7 +127,7 @@
 (require 'cr-undo)
 (require 'cr-treesit)
 (require 'cr-treemacs)
-(require 'cr-meow)
+;;(require 'cr-meow)
 (require 'cr-evil)
 (require 'cr-dired)
 (require 'cr-language)

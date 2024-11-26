@@ -8,10 +8,12 @@
 ;; Configure gnuplot packages
 
 (use-package gnuplot
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package gnuplot-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (provide 'cr-gnuplot)
 ;;; cr-gnuplot.el ends here

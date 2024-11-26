@@ -13,7 +13,9 @@
 
 (use-package mixed-pitch
   :ensure t
-  :hook (org-mode . mixed-pitch-mode))
+  :demand t
+  :hook
+  (text-mode . mixed-pitch-mode))
 
 (defun cr/org-font-setup ()
   (setq-local display-line-numbers-type 'visual)
@@ -53,7 +55,7 @@
 
 (use-package org
   :ensure nil
-  :after org-roam
+  :after org-roam mixed-picth
   :custom
   (org-capture-templates '(("t" "Todo" entry (file+headline "~/org/todos.org" "Tasks")
                             "* TODO %?\n  %i\n  %a")
@@ -210,6 +212,7 @@
 
 (use-package org-clock
   :ensure nil
+  :after org
   :custom
   (org-clock-persist 'history)
   ;; Resume when clocking into task with open clock
