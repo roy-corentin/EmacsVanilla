@@ -8,15 +8,9 @@
 
 ;; use-package with package.el:
 
-(defun my-dashboard-setup-startup-hook ()
-  (add-hook 'window-size-change-functions #'dashboard-resize-on-hook 100)
-  (add-hook 'window-setup-hook #'dashboard-resize-on-hook)
-  (add-hook 'after-init-hook #'dashboard-insert-startupify-lists)
-  (add-hook 'emacs-startup-hook #'dashboard-initialize))
-
 (use-package dashboard
   :ensure t
-  :requires nerd-icons
+  :after nerd-icons
   :custom
   (dashboard-display-icons-p t)     ; display icons on both GUI and terminal
   (dashboard-icon-type 'nerd-icons) ; use `nerd-icons' package
@@ -29,7 +23,9 @@
                      (bookmarks . 5)
                      (registers . 5)))
   :config
-  (my-dashboard-setup-startup-hook))
+  (add-hook 'elpaca-after-init-hook #'dashboard-insert-startupify-lists)
+  (add-hook 'elpaca-after-init-hook #'dashboard-initialize)
+  (dashboard-setup-startup-hook))
 
 (provide 'cr-dashboard)
 ;;; cr-dashboard.el ends here
