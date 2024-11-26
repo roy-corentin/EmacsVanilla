@@ -6,6 +6,8 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 13, 2024
 
+(require 'cr-evil)
+
 (defun cr/vterm--configure-in-project-root (arg display-fn)
   "Open a terminal buffer in the current window at project root.
 If prefix ARG is non-nil, cd into `default-directory' instead of project root.
@@ -37,7 +39,7 @@ Returns the vterm buffer."
 (defun cr/smart-vterm-buffer (arg)
   (interactive "P")
   (when (one-window-p)
-    (let ((split-width-threshold 130))
+    (let ((split-width-threshold 115))
       (let ((new-window (split-window-sensibly)))
         (select-window new-window))))
   (cr/vterm-buffer arg))
