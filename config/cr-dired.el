@@ -33,15 +33,17 @@
 
 (use-package diredfl
   :ensure t
-  :init
+  :after dired
+  :config
   (diredfl-global-mode))
 
 (use-package dired-open-with
-  :ensure t)
+  :ensure t
+  :after dired)
 
 (use-package dirvish
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "hlissner/dirvish" :files (:defaults "extensions/*"))
-  :after dired evil
+  :after dired
   :custom
   ;; (dirvish-reuse-session nil) ; kill all session buffers on quit
   (dirvish-use-mode-line nil)
@@ -69,7 +71,7 @@
 
 (use-package dired-preview
   :ensure t
-  :hook (after-init . dired-preview-global-mode)
+  :defer t
   :config
   (defun my-dired-preview-to-the-right ()
     "My preferred `dired-preview-display-action-alist-function'."
