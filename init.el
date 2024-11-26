@@ -23,7 +23,6 @@
   :ensure nil
   :config
   (add-to-list 'savehist-additional-variables 'emacs-theme)
-  :init
   (savehist-mode))
 
 (use-package olivetti
