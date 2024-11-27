@@ -27,6 +27,7 @@
 
 (use-package olivetti
   :ensure t
+  :demand t
   :bind ("C-c o" . olivetti-mode)
   :preface
   (defun force-medium-olivetti-body ()
@@ -83,6 +84,7 @@
   (global-set-key [remap other-window] #'ace-window))
 
 (use-package pdf-tools
+  :ensure t
   :magic ("%PDF" . pdf-view-mode)
   :config
   (pdf-tools-install :no-query))

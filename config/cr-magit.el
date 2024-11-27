@@ -17,6 +17,7 @@
 
 (use-package magit
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "magit/magit" :files (:defaults) :branch "main")
+  :demand t
   :bind ("C-x g" . magit-status)
   :custom
   (magit-blame-echo-style 'headings)
