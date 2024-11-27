@@ -8,23 +8,17 @@
 
 (use-package dired
   :ensure nil
-  :after evil
   :demand t
   :preface
   (defun my-buffer-face-mode-fixed ()
     "Sets a fixed width (monospace) font in current buffer"
-    (interactive)
     (setq buffer-face-mode-face '(:family "Iosevka Nerd Font Mono" :height 115))
     (buffer-face-mode))
   :hook (dired-mode . my-buffer-face-mode-fixed)
   :hook (dired-mode . dired-omit-mode)
   :custom
   (dired-mouse-drag-files t)
-  (mouse-drag-and-drop-region-cross-program t)
-  :config
-  ;; use dired-open-file or dired-find-file instead if not using dired-open package
-  (evil-define-key 'normal dired-mode-map (kbd "l") 'dired-find-file)
-  (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory))
+  (mouse-drag-and-drop-region-cross-program t))
 
 ;; Enable again is use of dired without dirvish
 ;; (use-package nerd-icons-dired

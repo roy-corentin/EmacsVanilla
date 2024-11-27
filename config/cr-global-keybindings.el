@@ -231,6 +231,8 @@
   (general-define-key
    :states '(normal visual)
    :keymaps 'dired-mode-map
+   "l" '(dired-find-file :which-key "Open file")
+   "h" '(dired-up-directory :which-key "Go up in directory")
    "o" '(dired-find-file-other-window :which-key "Find file other window")
    "F" '(dired-create-empty-file :which-key "Create empty file")
    "q" 'nil
