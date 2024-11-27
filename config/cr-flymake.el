@@ -6,15 +6,14 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: Novembre 14, 2024
 
-(defun cr/set-flymake-indicator-type ()
-  (setq-local flymake-indicator-type (if olivetti-mode 'fringes 'margins)))
-
 (use-package flymake
   :ensure nil
+  :preface
+  (defun cr/set-flymake-indicator-type ()
+    (setq-local flymake-indicator-type (if olivetti-mode 'fringes 'margins)))
+  :hook (olivetti-mode . cr/set-flymake-indicator-type)
   :custom
   (flymake-show-diagnostics-at-end-of-line 'short)
-  (flymake-indicator-type 'margins)
-  :init
-  (add-hook 'olivetti-mode-hook #'cr/set-flymake-indicator-type))
+  (flymake-indicator-type 'margins))
 
 (provide 'cr-flymake)

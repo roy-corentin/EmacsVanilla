@@ -11,9 +11,10 @@
 
 (use-package general
   :ensure t
+  :demand t
+  :hook  (org-agenda-mode . general-override-local-mode)
   :config
   (general-evil-setup)
-  (add-hook 'org-agenda-mode-hook #'general-override-local-mode)
   ;; set up 'SPC' as the global leader key
   (general-create-definer cr/leader-keys
     :states '(normal insert visual motion emacs)
@@ -249,7 +250,6 @@
 
 (use-package drag-stuff
   :ensure t
-  :defer t
   :bind (("C-M-k" . drag-stuff-up)
          ("C-M-j" . drag-stuff-down)))
 

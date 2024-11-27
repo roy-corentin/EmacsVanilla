@@ -10,7 +10,9 @@
 
 (use-package dashboard
   :ensure t
-  :after nerd-icons
+  :hook (elpaca-after-init . dashboard-insert-startupify-lists)
+  :hook (elpaca-after-init . dashboard-initialize)
+  :requires nerd-icons
   :custom
   (dashboard-display-icons-p t)     ; display icons on both GUI and terminal
   (dashboard-icon-type 'nerd-icons) ; use `nerd-icons' package
@@ -23,8 +25,6 @@
                      (bookmarks . 5)
                      (registers . 5)))
   :config
-  (add-hook 'elpaca-after-init-hook #'dashboard-insert-startupify-lists)
-  (add-hook 'elpaca-after-init-hook #'dashboard-initialize)
   (dashboard-setup-startup-hook))
 
 (provide 'cr-dashboard)

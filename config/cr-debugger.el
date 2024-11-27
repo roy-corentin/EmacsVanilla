@@ -11,7 +11,7 @@
 
 (use-package dape
   :ensure t
-  :preface
+  ;;:preface
   ;; By default dape shares the same keybinding prefix as `gud'
   ;; If you do not want to use any prefix, set it to nil.
   ;; (setq dape-key-prefix "\C-x\C-a")
@@ -20,6 +20,7 @@
   ;; ((kill-emacs . dape-breakpoint-save)
   ;; Load breakpoints on startup
   ;;  (after-init . dape-breakpoint-load))
+  :hook (dape-compile . kill-buffer) ;;Kill compile buffer on build success
   :custom
   ;; Info buffers to the right
   (dape-buffer-window-arrangement 'right)
@@ -45,8 +46,6 @@
   ;; To display info and/or repl buffers on stopped
   ;; (add-hook 'dape-on-stopped-hooks 'dape-info)
   ;; (add-hook 'dape-on-stopped-hooks 'dape-repl)
-  ;;Kill compile buffer on build success
-  (add-hook 'dape-compile-hook 'kill-buffer)
   ;; Save buffers on startup, useful for interpreted languages
   ;; (add-hook 'dape-on-start-hooks (lambda () (save-some-buffers t t)))
   )

@@ -1,9 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 
-;; To prevent "Defining as dynamic an already lexical var" from +vertico/embark-preview
-;;;###autoload
-(defvar embark-quit-after-action)
-
 ;; From Doom
 ;;;###autoload
 (defun +vertico/embark-preview ()
@@ -20,7 +16,6 @@
 (with-eval-after-load 'evil
   (defun +org/dwim-at-point (&optional arg)
     "Do-what-I-mean at point.
-
 If on a:
 - checkbox list item or todo heading: toggle it.
 - citation: follow it

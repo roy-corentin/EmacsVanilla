@@ -11,7 +11,6 @@
 ;; Use evil mode for vim-like keybindings
 (use-package evil
   :ensure t
-  :demand t
   :custom
   (evil-want-integration t)
   (evil-want-keybinding nil)
@@ -53,8 +52,9 @@
   (evil-collection-init))
 
 (use-package evil-collection-magit
-  :after evil-collection
-  :init (defvar evil-collection-magit-use-z-for-folds t)
+  :after evil-collection magit
+  :custom
+  (evil-collection-magit-use-z-for-folds t)
   :config
   ;; Some extra vim-isms I thought were missing from upstream
   (evil-define-key* '(normal visual) magit-mode-map
@@ -74,27 +74,32 @@
 
 (use-package evil-escape
   :ensure t
+  :after evil
+  :custom
+  (evil-escape-excluded-states '(normal visual multiedit emacs motion))
+  (evil-escape-excluded-major-modes '(magit-mode treemacs-mode))
+  (evil-escape-key-sequence "jk")
+  (evil-escape-delay 0.15)
   :init
-  (setq evil-escape-excluded-states '(normal visual multiedit emacs motion)
-        evil-escape-excluded-major-modes '(magit-mode treemacs-mode)
-        evil-escape-key-sequence "jk"
-        evil-escape-delay 0.15)
   (evil-define-key* '(insert replace visual operator) 'global "\C-g" #'evil-escape)
+  :config
   (evil-escape-mode 1))
 
 (use-package evil-lion
   :ensure t
+  :after evil
   :config
   (evil-lion-mode))
 
 (use-package evil-org
   :ensure t
-  :hook (org-mode . evil-org-mode)
-  :hook (org-capture-mode . evil-insert-state)
-  :init
-  (defvar evil-org-retain-visual-state-on-shift t)
-  (defvar evil-org-special-o/O '(table-row))
-  (defvar evil-org-use-additional-insert t)
+  :demand t
+  :hook ((org-mode . evil-org-mode)
+         (org-capture-mode . evil-insert-state))
+  :custom
+  (evil-org-retain-visual-state-on-shift t)
+  (evil-org-special-o/O '(table-row))
+  (evil-org-use-additional-insert t)
   :config
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys)
@@ -107,6 +112,7 @@
 
 (use-package evil-goggles
   :ensure t
+  :after evil
   :custom
   (evil-goggles-duration 0.100)
   :config
@@ -117,10 +123,12 @@
   ;; other faces such as `diff-added` will be used for other actions
   (evil-goggles-use-diff-faces))
 
-(use-package evil-multiedit :ensure t)
+(use-package evil-multiedit
+  :ensure t)
 
 (use-package evil-mc
   :ensure t
+  :after evil
   :config
   (global-evil-mc-mode 1))
 
@@ -131,7 +139,8 @@
 (use-package evil-anzu
   :after evil
   :ensure t
-  :config (global-anzu-mode +1))
+  :config
+  (global-anzu-mode +1))
 
 (use-package evil-textobj-tree-sitter
   :ensure t

@@ -28,11 +28,13 @@
 (use-package olivetti
   :ensure t
   :bind ("C-c o" . olivetti-mode)
+  :preface
+  (defun force-medium-olivetti-body ()
+    (setq-local olivetti-body-width 100))
   :hook (text-mode magit-mode)
+  :hook (magit-mode . force-medium-olivetti-body)
   :custom
-  (olivetti-body-width 110)
-  :init
-  (add-hook 'magit-mode-hook (lambda () (setq-local olivetti-body-width 100))))
+  (olivetti-body-width 110))
 
 (use-package cr-olivetti
   :ensure nil
@@ -59,31 +61,31 @@
 
 (use-package elec-pair
   :ensure nil
-  :init
-  (add-hook 'org-mode-hook
-            (lambda ()
-              (setq-local electric-pair-inhibit-predicate
-                          `(lambda (c)
-                             (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))))
-  (add-hook 'minibuffer-mode-hook
-            (lambda ()
-              (setq-local electric-pair-inhibit-predicate
-                          `(lambda (c)
-                             (if (char-equal c ?\() t (,electric-pair-inhibit-predicate c)))))))
+  :preface
+  (defun disable-arrow-pair ()
+    (setq-local electric-pair-inhibit-predicate
+                `(lambda (c)
+                   (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c)))))
+  (defun disable-parenthesis-pair ()
+    (setq-local electric-pair-inhibit-predicate
+                `(lambda (c)
+                   (if (char-equal c ?\() t (,electric-pair-inhibit-predicate c)))))
+  :hook (org-mode . disable-arrow-pair)
+  :hook (minibuffer-mode . disable-parenthesis-pair))
 
 (use-package ace-window
   :ensure t
   :defer t
-  :init
-  (global-set-key [remap other-window] #'ace-window)
   :custom
   (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-  (aw-scope 'global
-            aw-background t))
+  (aw-scope 'global aw-background t)
+  :init
+  (global-set-key [remap other-window] #'ace-window))
 
 (use-package pdf-tools
-  :after evil
-  :ensure t)
+  :magic ("%PDF" . pdf-view-mode)
+  :config
+  (pdf-tools-install :no-query))
 
 (use-package copilot
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "copilot-emacs/copilot.el" :files (:defaults))
@@ -109,8 +111,16 @@
 
 (use-package ws-butler
   :ensure t
-  :init
+  :config
   (ws-butler-global-mode))
+
+(use-package tab-bar
+  :ensure nil
+  :after dashboard
+  :custom
+  (tab-bar-show t)
+  :init
+  (advice-add #'tab-new :after #'dashboard-open))
 
 (require 'cr-org)
 (require 'cr-term)

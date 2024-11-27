@@ -13,49 +13,47 @@
 
 (use-package mixed-pitch
   :ensure t
-  :demand t
   :hook
   (text-mode . mixed-pitch-mode))
 
-(defun cr/org-font-setup ()
-  (setq-local display-line-numbers-type 'visual)
-  ;; Set faces for heading levels
-  (dolist (face '((org-level-1 . 1.3)
-                  (org-level-2 . 1.2)
-                  (org-level-3 . 1.1)
-                  (org-level-4 . 1.1)
-                  (org-level-5 . 1.0)
-                  (org-level-6 . 1.0)
-                  (org-level-7 . 1.0)
-                  (org-level-8 . 1.0)))
-    (set-face-attribute (car face) nil :font variable-pitch-font :weight 'medium :height (cdr face)))
-  ;; Make the document title bigger
-  (set-face-attribute 'org-document-title nil :family variable-pitch-font :weight 'bold :height 2.1)
-  ;; Ensure that anything that should be fixed-pitch in Org files appears that way
-  (set-face-attribute 'org-block nil :foreground 'unspecified :inherit 'fixed-pitch)
-  (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-formula nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-code nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
-  (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
-  (set-face-attribute 'org-todo nil :family fixed-pitch-font)
-  (set-face-attribute 'org-done nil :family fixed-pitch-font)
-  (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-checkbox-statistics-todo nil :family fixed-pitch-font)
-  (set-face-attribute 'org-checkbox-statistics-done nil :family fixed-pitch-font))
-
-(defface my-org-emphasis-bold
-  '((default :inherit bold)
-    (((class color) (min-colors 88) (background light))
-     :foreground "#a60000")
-    (((class color) (min-colors 88) (background dark))
-     :foreground "#ff8059"))
-  "My bold emphasis for Org."
-  :group 'org-faces)
 
 (use-package org
   :ensure nil
-  :after org-roam mixed-picth
+  :preface
+  (defun cr/org-font-setup ()
+    (setq-local display-line-numbers-type 'visual)
+    ;; Set faces for heading levels
+    (dolist (face '((org-level-1 . 1.3)
+                    (org-level-2 . 1.2)
+                    (org-level-3 . 1.1)
+                    (org-level-4 . 1.1)
+                    (org-level-5 . 1.0)
+                    (org-level-6 . 1.0)
+                    (org-level-7 . 1.0)
+                    (org-level-8 . 1.0)))
+      (set-face-attribute (car face) nil :font variable-pitch-font :weight 'medium :height (cdr face)))
+    ;; Make the document title bigger
+    (set-face-attribute 'org-document-title nil :family variable-pitch-font :weight 'bold :height 2.1)
+    ;; Ensure that anything that should be fixed-pitch in Org files appears that way
+    (set-face-attribute 'org-block nil :foreground 'unspecified :inherit 'fixed-pitch)
+    (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
+    (set-face-attribute 'org-formula nil :inherit 'fixed-pitch)
+    (set-face-attribute 'org-code nil :inherit 'fixed-pitch)
+    (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+    (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+    (set-face-attribute 'org-todo nil :family fixed-pitch-font)
+    (set-face-attribute 'org-done nil :family fixed-pitch-font)
+    (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
+    (set-face-attribute 'org-checkbox-statistics-todo nil :family fixed-pitch-font)
+    (set-face-attribute 'org-checkbox-statistics-done nil :family fixed-pitch-font))
+  (defface my-org-emphasis-bold
+    '((default :inherit bold)
+      (((class color) (min-colors 88) (background light))
+       :foreground "#a60000")
+      (((class color) (min-colors 88) (background dark))
+       :foreground "#ff8059"))
+    "My bold emphasis for Org."
+    :group 'org-faces)
   :custom
   (org-capture-templates '(("t" "Todo" entry (file+headline "~/org/todos.org" "Tasks")
                             "* TODO %?\n  %i\n  %a")
@@ -207,12 +205,13 @@
 
 (use-package toc-org
   :ensure t
-  :after org
   :hook (org-mode . toc-org-enable))
 
 (use-package org-clock
   :ensure nil
   :after org
+  :demand t
+  :hook (kill-emacs . org-clock-save)
   :custom
   (org-clock-persist 'history)
   ;; Resume when clocking into task with open clock
@@ -220,9 +219,7 @@
   ;; Remove log if task was clocked for 0:00 (accidental clocking)
   (org-clock-out-remove-zero-time-clocks t)
   ;; The default value (5) is too conservative.
-  (org-clock-history-length 20)
-  :config
-  (add-hook 'kill-emacs-hook #'org-clock-save))
+  (org-clock-history-length 20))
 
 (use-package org-contacts
   :ensure t
@@ -232,7 +229,6 @@
 
 (use-package org-bullets
   :ensure t
-  :after org
   :hook (org-mode . org-bullets-mode)
   :custom
   (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
@@ -278,85 +274,80 @@
   (org-roam-ui-update-on-save t)
   (org-roam-ui-open-on-start nil))
 
-(defun svg-progress-percent (value)
-  (let* ((count (string-to-number value))
-         (font (if (or (zerop count) (eql 100 count)) 'org-done 'org-todo)))
-    (svg-image (svg-lib-concat
-                (svg-lib-progress-bar (/ count 100.0)
-                                      font :margin 0 :stroke 2 :radius 3 :padding 2 :width 11)
-                (svg-lib-tag (concat value "%")
-                             font :stroke 0 :margin 0))
-               :ascent 'center)))
-
-(defun svg-progress-count (value)
-  (let* ((seq (mapcar #'string-to-number (split-string value "/")))
-         (count (float (car seq)))
-         (total (float (cadr seq)))
-         (font (if (eql count total) 'org-done 'org-todo)))
-    (if (zerop total)
-        (svg-lib-tag value 'org-done :stroke 0 :margin 0)
-      (svg-image (svg-lib-concat (svg-lib-progress-bar (/ count total)
-                                                       font :margin 0 :stroke 2 :radius 3 :padding 2 :width 11)
-                                 (svg-lib-tag value
-                                              font :stroke 0 :margin 0))
-                 :ascent 'center))))
-
 (use-package svg-tag-mode
   :ensure t
   :hook org-mode
-  :config
-  (setq svg-tag-tags
-        '(
-          ;; Org tags
-          ("\\(:[A-Z_]+:\\)" . ((lambda (tag)
-                                  (svg-tag-make tag :beg 1 :end -1 :margin 1.5))))
-          ("\\(:[A-Z_]+:\\)$" . ((lambda (tag)
-                                   (svg-tag-make tag :beg 1 :end -1 :margin 1.5))))
-          ;; TODOS/DONES
-          ("\\(TODO\\)" . ((lambda (tag)
-                             (svg-tag-make tag :inverse t :face 'org-todo))))
-          ("\\(DONE\\)" . ((lambda (tag)
-                             (svg-tag-make tag :inverse t :face 'org-done))))
-          ("\\(WIP\\)" . ((lambda (tag)
-                            (svg-tag-make tag :inverse t :face 'org-tag))))
-          ("\\(HOLD\\)" . ((lambda (tag)
-                             (svg-tag-make tag :inverse t :face 'org-default))))
-          ("\\(CANCELED\\)" . ((lambda (tag)
-                                 (svg-tag-make tag :inverse t :face 'org-date))))
-          ;; Progress
-          ("\\(\\[[0-9]\\{1,3\\}%\\]\\)" . ((lambda (tag)
-                                              (svg-progress-percent (substring tag 1 -2)))))
-          ("\\(\\[[0-9]+/[0-9]+\\]\\)" . ((lambda (tag)
-                                            (svg-progress-count (substring tag 1 -1)))))
-          ;; Active date (with or without day name, with or without time)
-          ("\\(<[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}>\\)"
-           . ((lambda (tag)
-                (svg-tag-make tag :beg 1 :end -1 :margin 0))))
-          ("\\(<[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\} \\)\\([A-Za-z]\\{3\\}\\.?\\)? ?\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)?>"
-           . ((lambda (tag)
-                (svg-tag-make tag :beg 1 :inverse nil :crop-right t :margin 0))))
-          ("<[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\} \\(\\([A-Za-z]\\{3\\}\\.?\\)? ?\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)?>\\)"
-           . ((lambda (tag)
-                (svg-tag-make tag :end -1 :inverse t :crop-left t :margin 0))))
-          ;; Inactive date  (with or without day name, with or without time)
-          ("\\(\\[[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}\\]\\)"
-           . ((lambda (tag)
-                (svg-tag-make tag :beg 1 :end -1 :margin 0 :face 'org-date))))
-          ("\\(\\[[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\} \\)\\([A-Za-z]\\{3\\}\\.?\\)? ?\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)?\\]"
-           . ((lambda (tag)
-                (svg-tag-make tag :beg 1 :inverse nil :crop-right t :margin 0 :face 'org-date))))
-          ("\\[[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\} \\(\\([A-Za-z]\\{3\\}\\.?\\)? ?\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)?\\]\\)"
-           . ((lambda               (tag)
-                (svg-tag-make tag :end -1 :inverse t :crop-left t :margin 0 :face 'org-date))))
-          )))
+  :preface
+  (defun svg-progress-percent (value)
+    (let* ((count (string-to-number value))
+           (font (if (or (zerop count) (eql 100 count)) 'org-done 'org-todo)))
+      (svg-image (svg-lib-concat
+                  (svg-lib-progress-bar (/ count 100.0)
+                                        font :margin 0 :stroke 2 :radius 3 :padding 2 :width 11)
+                  (svg-lib-tag (concat value "%")
+                               font :stroke 0 :margin 0))
+                 :ascent 'center)))
+  (defun svg-progress-count (value)
+    (let* ((seq (mapcar #'string-to-number (split-string value "/")))
+           (count (float (car seq)))
+           (total (float (cadr seq)))
+           (font (if (eql count total) 'org-done 'org-todo)))
+      (if (zerop total)
+          (svg-lib-tag value 'org-done :stroke 0 :margin 0)
+        (svg-image (svg-lib-concat (svg-lib-progress-bar (/ count total)
+                                                         font :margin 0 :stroke 2 :radius 3 :padding 2 :width 11)
+                                   (svg-lib-tag value
+                                                font :stroke 0 :margin 0))
+                   :ascent 'center))))
+  :custom
+  (svg-tag-tags
+   '(
+     ;; Org tags
+     ("\\(:[A-Z_]+:\\)" . ((lambda (tag)
+                             (svg-tag-make tag :beg 1 :end -1 :margin 1.5))))
+     ("\\(:[A-Z_]+:\\)$" . ((lambda (tag)
+                              (svg-tag-make tag :beg 1 :end -1 :margin 1.5))))
+     ;; TODOS/DONES
+     ("\\(TODO\\)" . ((lambda (tag)
+                        (svg-tag-make tag :inverse t :face 'org-todo))))
+     ("\\(DONE\\)" . ((lambda (tag)
+                        (svg-tag-make tag :inverse t :face 'org-done))))
+     ("\\(WIP\\)" . ((lambda (tag)
+                       (svg-tag-make tag :inverse t :face 'org-tag))))
+     ("\\(HOLD\\)" . ((lambda (tag)
+                        (svg-tag-make tag :inverse t :face 'org-default))))
+     ("\\(CANCELED\\)" . ((lambda (tag)
+                            (svg-tag-make tag :inverse t :face 'org-date))))
+     ;; Progress
+     ("\\(\\[[0-9]\\{1,3\\}%\\]\\)" . ((lambda (tag)
+                                         (svg-progress-percent (substring tag 1 -2)))))
+     ("\\(\\[[0-9]+/[0-9]+\\]\\)" . ((lambda (tag)
+                                       (svg-progress-count (substring tag 1 -1)))))
+     ;; Active date (with or without day name, with or without time)
+     ("\\(<[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}>\\)"
+      . ((lambda (tag)
+           (svg-tag-make tag :beg 1 :end -1 :margin 0))))
+     ("\\(<[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\} \\)\\([A-Za-z]\\{3\\}\\.?\\)? ?\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)?>"
+      . ((lambda (tag)
+           (svg-tag-make tag :beg 1 :inverse nil :crop-right t :margin 0))))
+     ("<[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\} \\(\\([A-Za-z]\\{3\\}\\.?\\)? ?\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)?>\\)"
+      . ((lambda (tag)
+           (svg-tag-make tag :end -1 :inverse t :crop-left t :margin 0))))
+     ;; Inactive date  (with or without day name, with or without time)
+     ("\\(\\[[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}\\]\\)"
+      . ((lambda (tag)
+           (svg-tag-make tag :beg 1 :end -1 :margin 0 :face 'org-date))))
+     ("\\(\\[[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\} \\)\\([A-Za-z]\\{3\\}\\.?\\)? ?\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)?\\]"
+      . ((lambda (tag)
+           (svg-tag-make tag :beg 1 :inverse nil :crop-right t :margin 0 :face 'org-date))))
+     ("\\[[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\} \\(\\([A-Za-z]\\{3\\}\\.?\\)? ?\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)?\\]\\)"
+      . ((lambda               (tag)
+           (svg-tag-make tag :end -1 :inverse t :crop-left t :margin 0 :face 'org-date))))
+     )))
 
 (use-package consult-org-roam
   :ensure t
-  :after org-roam
-  :init
-  (require 'consult-org-roam)
-  ;; Activate the minor mode
-  (consult-org-roam-mode 1)
+  :after org-roam consult-org-roam
   :custom
   ;; Use `ripgrep' for searching with `consult-org-roam-search'
   (consult-org-roam-grep-func #'consult-ripgrep)
@@ -366,6 +357,8 @@
   ;; in consult-buffer (and not down at the bottom)
   (consult-org-roam-buffer-after-buffers t)
   :config
+  ;; Activate the minor mode
+  (consult-org-roam-mode 1)
   ;; Eventually suppress previewing for certain functions
   (consult-customize
    consult-org-roam-forward-links

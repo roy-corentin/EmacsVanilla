@@ -8,6 +8,7 @@
 
 (use-package vertico
   :ensure t
+  :demand t
   :bind (:map vertico-map
               ("C-j" . vertico-next)
               ("C-k" . vertico-previous)
@@ -18,12 +19,12 @@
   :custom
   (vertico-cycle t)
   (vertico-count 20)
-  :init
+  :config
   (vertico-mode))
 
 (use-package vertico-posframe
   :ensure t
-  :after vertico posframe
+  :after (vertico posframe)
   :custom
   (vertico-posframe-poshandler #'posframe-poshandler-frame-center)
   (vertico-posframe-height 20)
@@ -52,21 +53,23 @@
 
 (use-package nerd-icons-completion
   :ensure t
-  :after marginalia
+  :demand t
+  :hook (marginalia-mode . nerd-icons-completion-marginalia-setup)
   :config
-  (nerd-icons-completion-mode)
-  (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup))
-
-(defun corfu-enable-in-minibuffer ()
-  "Enable Corfu in the minibuffer."
-  (when (local-variable-p 'completion-at-point-functions)
-    ;; (setq-local corfu-auto nil) ;; Enable/disable auto completion
-    (setq-local corfu-echo-delay nil ;; Disable automatic echo and popup
-                corfu-popupinfo-delay nil)
-    (corfu-mode 1)))
+  (nerd-icons-completion-mode))
 
 (use-package corfu
   :ensure t
+  :preface
+  (defun corfu-enable-in-minibuffer ()
+    "Enable Corfu in the minibuffer."
+    (when (local-variable-p 'completion-at-point-functions)
+      ;; (setq-local corfu-auto nil) ;; Enable/disable auto completion
+      (setq-local corfu-echo-delay nil ;; Disable automatic echo and popup
+                  corfu-popupinfo-delay nil)
+      (corfu-mode 1)))
+  :hook eshell-mode
+  :hook (minibuffer-setup . corfu-enable-in-minibuffer)
   ;; Optional customizations
   :bind (:map corfu-map
               ("C-SPC" . corfu-insert-separator)
@@ -85,16 +88,14 @@
   (corfu-preselect 'prompt)    ;; Preselect the prompt
   (corfu-on-exact-match 'show) ;; Configure handling of exact matches
   ;; (corfu-scroll-margin 5)     ;; Use scroll margin
-  :init
-  (add-hook 'eshell-mode-hook (lambda () (corfu-mode)))
-  (add-hook 'minibuffer-setup-hook #'corfu-enable-in-minibuffer)
+  :config
   (corfu-echo-mode)
   (corfu-popupinfo-mode)
   (global-corfu-mode))
 
 (use-package corfu-terminal
   :ensure t
-  :init
+  :config
   (unless (display-graphic-p)
     (corfu-terminal-mode +1)))
 
@@ -103,7 +104,7 @@
 (use-package nerd-icons-corfu
   :ensure t
   :after corfu
-  :config
+  :init
   (add-to-list 'corfu-margin-formatters 'nerd-icons-corfu-formatter)
   (setq nerd-icons-corfu-mapping my-corfu-icons))
 
@@ -120,7 +121,7 @@
 (use-package yasnippet-capf
   :ensure t
   :after cape
-  :config
+  :init
   (add-to-list 'completion-at-point-functions #'yasnippet-capf))
 
 (use-package orderless
@@ -148,6 +149,7 @@
   :custom
   ;; Optionally replace the key help with a completing-read interface
   (prefix-help-command #'embark-prefix-help-command)
+  (embark-quit-after-action t)
   :init
   ;; Show the Embark target at point via Eldoc. You may adjust the
   ;; Eldoc strategy, if you want to see the documentation from
@@ -156,7 +158,6 @@
   ;; than one line, causing the modeline to move up and down:
   ;; (add-hook 'eldoc-documentation-functions #'embark-eldoc-first-target)
   ;; (setq eldoc-documentation-strategy #'eldoc-documentation-compose-eagerly)
-  :config
   ;; Hide the mode line of the Embark live/completions buffers
   (add-to-list 'display-buffer-alist
                '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
@@ -170,9 +171,9 @@
   (embark-collect-mode . consult-preview-at-point-mode))
 
 (use-package wgrep
+  :ensure t
   :custom
-  (wgrep-auto-save-buffer t)
-  :ensure t)
+  (wgrep-auto-save-buffer t))
 
 (provide 'cr-completion)
 ;;; cr-completion.el ends here

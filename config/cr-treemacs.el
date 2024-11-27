@@ -9,23 +9,22 @@
 
 (use-package treemacs
   :ensure t
-  :defer t
-  :init
-  (setq treemacs-follow-after-init t
-        treemacs-is-never-other-window nil
-        treemacs-sorting 'alphabetic-case-insensitive-asc)
-  :config
-  ;; Add ignored files and file extensions
-  (setq treemacs-file-ignore-extensions '("o" "gcna" "gcdo" "vscode" "idea")
-        treemacs-file-ignore-globs nil)
+  :after doom-themes
+  :preface
   (defun my-treemacs-ignore-filter (file full-path)
     "Ignore files specified by `treemacs-file-ignore-extensions' and globs."
     (or (member (file-name-extension file) treemacs-file-ignore-extensions)
         (cl-loop for glob in treemacs-file-ignore-globs
                  thereis (file-name-match-glob glob full-path))))
-  (add-to-list 'treemacs-ignored-file-predicates #'my-treemacs-ignore-filter)
-  ;; Set treemacs theme
-  (setq doom-themes-treemacs-theme "doom-colors"))
+  :custom
+  (treemacs-follow-after-init t)
+  (treemacs-is-never-other-window nil)
+  (treemacs-sorting 'alphabetic-case-insensitive-asc)
+  (treemacs-file-ignore-extensions '("o" "gcna" "gcdo" "vscode" "idea"))
+  (treemacs-file-ignore-globs nil)
+  (doom-themes-treemacs-theme "doom-colors")
+  :config
+  (add-to-list 'treemacs-ignored-file-predicates #'my-treemacs-ignore-filter))
 
 (use-package treemacs-nerd-icons
   :ensure t
@@ -34,10 +33,10 @@
 
 (use-package treemacs-evil
   :ensure t
-  :after treemacs)
+  :after (treemacs evil))
 
 (use-package treemacs-magit
   :ensure t
-  :after treemacs magit)
+  :after (treemacs magit))
 
 (provide 'cr-treemacs)

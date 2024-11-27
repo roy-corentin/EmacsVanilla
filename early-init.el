@@ -80,7 +80,6 @@
   (add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
   (set-fringe-mode '(4 . 4))
   :custom
-  (tab-bar-show nil)
   (native-comp-async-report-warnings-errors nil)
   (make-backup-files nil)
   (auto-save-default nil)

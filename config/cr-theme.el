@@ -8,10 +8,11 @@
 
 (use-package doom-themes
   :ensure t
-  :config
+  :custom
   ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (doom-themes-enable-bold t)    ; if nil, bold is universally disabled
+  (doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  :config
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
   ;; or for treemacs users
@@ -29,6 +30,12 @@
   :ensure t
   :after ewal)
 
+(use-package evangelion-theme
+  :ensure (:protocol https :depth 1 :inherit t  :fetcher github :repo "crmsnbleyd/evangelion-theme" :files (:defaults))
+  :custom
+  ;; `nil' to disable background for comments
+  (evangelion-comment-background-enabled nil))
+
 (use-package solaire-mode
   :ensure t
   :config
@@ -39,6 +46,7 @@
   :demand t
   :hook (doom-modeline-mode . size-indication-mode) ; filesize in modeline
   :hook (doom-modeline-mode . column-number-mode)   ; cursor column in modeline
+  :hook (doom-load-theme . doom-modeline-refresh-bars)
   :custom
   (doom-modeline-bar-width 3)
   (doom-modeline-github nil)
@@ -51,8 +59,6 @@
   (doom-modeline-buffer-file-name-style 'truncate-with-project)
   (doom-modeline-buffer-encoding 'nondefault)
   :config
-  (add-hook 'doom-load-theme-hook #'doom-modeline-refresh-bars)
-  :init
   (doom-modeline-mode 1))
 
 ;; (use-package git-gutter
@@ -67,8 +73,14 @@
 
 (use-package diff-hl
   :ensure t
-  :after evil
+  :demand t
+  :preface
+  (defun enable-diff-hl-margin-in-gui ()
+    (unless (display-graphic-p) (diff-hl-margin-local-mode)))
   ;; :hook (dired-mode . diff-hl-dired-mode) ;; HACK uncomment if you don't use dirvish
+  :hook (magit-pre-refresh . diff-hl-magit-pre-refresh)
+  :hook (magit-post-refresh . diff-hl-magit-post-refresh)
+  :hook (diff-hl-mode-on . enable-diff-hl-margin-in-gui)
   :custom
   (diff-hl-disable-on-remote t)
   (vc-git-diff-switches '("--histogram"))
@@ -78,60 +90,52 @@
   (diff-hl-update-async t)
   ;; UX: get realtime feedback in diffs after staging/unstaging hunks.
   (diff-hl-show-staged-changes nil)
-  :init
-  (global-diff-hl-mode t)
   :config
-  (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
-  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
-  (add-hook 'diff-hl-mode-on-hook (lambda () (unless (display-graphic-p) (diff-hl-margin-local-mode)))))
+  (global-diff-hl-mode t))
 
 (use-package hl-todo
   :ensure (:protocol https :depth 1 :inherit t  :fetcher github :repo "tarsius/hl-todo" :version (lambda (_) "3.8.1" ) :files (:defaults))
   :hook (prog-mode yaml-mode)
-  :config
-  (setq hl-todo-highlight-punctuation ":"
-        hl-todo-keyword-faces
-        '(;; For reminders to change or add something at a later date.
-          ("TODO" warning bold)
-          ;; For code (or code paths) that are broken, unimplemented, or slow,
-          ;; and may become bigger problems later.
-          ("FIXME" error bold)
-          ;; For code that needs to be revisited later, either to upstream it,
-          ;; improve it, or address non-critical issues.
-          ("REVIEW" font-lock-keyword-face bold)
-          ;; For code smells where questionable practices are used
-          ;; intentionally, and/or is likely to break in a future update.
-          ("HACK" font-lock-constant-face bold)
-          ;; For sections of code that just gotta go, and will be gone soon.
-          ;; Specifically, this means the code is deprecated, not necessarily
-          ;; the feature it enables.
-          ("DEPRECATED" font-lock-doc-face bold)
-          ;; Extra keywords commonly found in the wild, whose meaning may vary
-          ;; from project to project.
-          ("NOTE" success bold)
-          ("BUG" error bold)
-          ("XXX" font-lock-constant-face bold))))
+  :custom
+  (hl-todo-highlight-punctuation ":")
+  (hl-todo-keyword-faces
+   '(;; For reminders to change or add something at a later date.
+     ("TODO" warning bold)
+     ;; For code (or code paths) that are broken, unimplemented, or slow,
+     ;; and may become bigger problems later.
+     ("FIXME" error bold)
+     ;; For code that needs to be revisited later, either to upstream it,
+     ;; improve it, or address non-critical issues.
+     ("REVIEW" font-lock-keyword-face bold)
+     ;; For code smells where questionable practices are used
+     ;; intentionally, and/or is likely to break in a future update.
+     ("HACK" font-lock-constant-face bold)
+     ;; For sections of code that just gotta go, and will be gone soon.
+     ;; Specifically, this means the code is deprecated, not necessarily
+     ;; the feature it enables.
+     ("DEPRECATED" font-lock-doc-face bold)
+     ;; Extra keywords commonly found in the wild, whose meaning may vary
+     ;; from project to project.
+     ("NOTE" success bold)
+     ("BUG" error bold)
+     ("XXX" font-lock-constant-face bold))))
 
 (use-package catppuccin-theme
   :ensure t
-  :demand t
   :custom
   (catppuccin-flavor 'mocha))
 
 (use-package rainbow-delimiters
   :ensure t
-  :demand t
-  :init
-  (add-hook 'prog-mode #'rainbow-delimiters-mode))
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package rainbow-mode
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package vim-tab-bar
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "jamescherti/vim-tab-bar.el" :files (:defaults))
   :after evil
-  :init
+  :config
   (vim-tab-bar-mode))
 
 (use-package indent-bars
@@ -160,7 +164,7 @@
   :hook ((python-base-mode yaml-mode ruby-base-mode typescript-ts-base-mode c-ts-mode) . indent-bars-mode))
 
 (use-package tab-line
-  :demand t
+  :ensure nil
   :custom
   (tab-line-new-button-show nil)
   (tab-line-close-button-show nil))
