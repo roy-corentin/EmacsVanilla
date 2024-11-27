@@ -48,9 +48,9 @@
   (magit-todos-mode 1))
 
 (use-package magit-file-icons
-  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "gekoke/magit-file-icons" :files (:defaults))
-  :after (evil magit)
+  :ensure t
   :demand t
+  :after magit
   :custom
   ;; These are the default values:
   (magit-file-icons-enable-diff-file-section-icons t)
