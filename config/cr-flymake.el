@@ -8,6 +8,7 @@
 
 (use-package flymake
   :ensure nil
+  :after olivetti
   :preface
   (defun cr/set-flymake-indicator-type ()
     (setq-local flymake-indicator-type (if olivetti-mode 'fringes 'margins)))

@@ -8,8 +8,7 @@
   (unless (bound-and-true-p consult--preview-function)
     (if (fboundp 'embark-dwim)
         (save-selected-window
-          (let (embark-quit-after-action)
-            (embark-dwim)))
+          (embark-dwim))
       (user-error "Embark not installed, aborting..."))))
 
 ;;;###autoload
@@ -50,7 +49,9 @@ If on a:
           (`headline
            (cond ((memq (bound-and-true-p org-goto-map)
                         (current-active-maps))
-                  (org-goto-ret))
+                  ;; TODO import this method
+                  ;;(org-goto-ret)
+                  )
                  ((and (fboundp 'toc-org-insert-toc)
                        (member "TOC" (org-get-tags)))
                   (toc-org-insert-toc)
@@ -186,7 +187,7 @@ If on a:
       (org-display-inline-images t t beg end)
       t)))
 
-(with-eval-after-load 'evil
+(with-eval-after-load 'evil-states
   (defun +org--insert-item (direction)
     (let ((context (org-element-lineage
                     (org-element-context)
@@ -235,7 +236,9 @@ If on a:
            ('below (save-excursion (org-table-insert-row t))
                    (org-table-next-row))
            ('above (save-excursion (org-shiftmetadown))
-                   (+org/table-previous-row))))
+                   ;; TODO import this method
+                   ;;(+org/table-previous-row)
+                   )))
 
         ;; Otherwise, add a new heading, carrying over any todo state, if
         ;; necessary.

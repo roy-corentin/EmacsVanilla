@@ -52,7 +52,7 @@
   (evil-collection-init))
 
 (use-package evil-collection-magit
-  :after evil-collection magit
+  :after (evil-collection magit forge)
   :custom
   (evil-collection-magit-use-z-for-folds t)
   :config
@@ -62,9 +62,9 @@
     "zt" #'evil-scroll-line-to-top
     "zz" #'evil-scroll-line-to-center
     "zb" #'evil-scroll-line-to-bottom
-    "g=" #'magit-diff-default-context
-    "gi" #'forge-jump-to-issues
-    "gm" #'forge-jump-to-pullreqs)
+    "g=" #'magit-diff
+    "gi" #'forge-browse-issues
+    "gm" #'forge-browse-pullreqs)
   )
 
 (use-package evil-surround
