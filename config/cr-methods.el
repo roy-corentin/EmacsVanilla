@@ -151,7 +151,7 @@ If prefix ARG is set, prompt for a directory to search from."
     (when (member todo-state org-todo-keywords-1)
       (org-todo (if (= n-not-done 0) "DONE" "TODO")))))
 
-(with-eval-after-load 'evil
+(with-eval-after-load 'evil-search
   (defun cr/search-symbol-at-point-in-project ()
     "Search in project symbol at point"
     (interactive)
