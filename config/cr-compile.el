@@ -11,6 +11,7 @@
   :preface
   (defun cr/set-compile-command (&rest args)
     "Set the default compil-command to run the current project"
+    (ignore args)
     (setq compile-command
           (cond ((file-exists-p (concat (project-root(project-current)) "Gemfile")) "ruby ")
                 ((file-exists-p (concat (project-root(project-current)) "platformio.ini")) "platformio run -t upload")
@@ -23,6 +24,7 @@
                 ((file-exists-p (concat (project-root(project-current)) "pnpm-lock.yaml")) "pnpm tsc")
                 ((file-exists-p (concat (project-root(project-current)) "package-lock.json")) "npm run tsc"))))
   (defun enable-visual-line (rest)
+    (ignore rest)
     (visual-line-mode))
   :hook (compilation-filter . ansi-color-compilation-filter)
   :hook (compilation-start . enable-visual-line)

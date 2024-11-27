@@ -133,6 +133,7 @@ If prefix ARG is set, prompt for a directory to search from."
              (switch-to-buffer buffer-to-swap)))))
 
 (defun cr/try-kill-project-buffers (&rest args)
+  (ignore args)
   (when (project-current)
     (project-kill-buffers)))
 (advice-add #'tab-close :before #'cr/try-kill-project-buffers)
@@ -145,6 +146,7 @@ If prefix ARG is set, prompt for a directory to search from."
 
 (defun cr/org-summary-todo (n-done n-not-done)
   "Switch entry to DONE when all subentries of a TODO are done, to TODO otherwise."
+  (ignore n-done)
   (let ((todo-state (org-get-todo-state)))
     (when (member todo-state org-todo-keywords-1)
       (org-todo (if (= n-not-done 0) "DONE" "TODO")))))
