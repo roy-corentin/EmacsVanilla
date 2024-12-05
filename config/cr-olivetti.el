@@ -21,7 +21,7 @@
   :type '(list symbol)
   :group 'olivetti)
 
-(defun cr---olivetti-body-width ()
+(defun cr--olivetti-body-width ()
   "Calculate the optimal Olivetti body width based on frame width."
   (max (floor (/ (frame-width) cr-olivetti-width-factor)) cr-olivetti-min-width))
 
@@ -38,7 +38,7 @@
 (defun cr--set-olivetti-body-width ()
   (when olivetti-mode
     (olivetti-mode 0))
-  (let ((new-width (cr---olivetti-body-width)))
+  (let ((new-width (cr--olivetti-body-width)))
     (setq-default olivetti-body-width new-width)))
 
 (defun cr-olivetti-on-large-prog-window ()
