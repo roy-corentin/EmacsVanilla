@@ -137,6 +137,8 @@
 
 (use-package consult
   :ensure t
+  :custom
+  (consult-async-min-input 1)
   :after orderless)
 
 (use-package embark
