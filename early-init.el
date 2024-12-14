@@ -111,6 +111,8 @@
   :bind
   ("C-=" . text-scale-increase)
   ("C--" . text-scale-decrease)
+  ("C-," . previous-buffer)
+  ("C-;" . next-buffer)
   ("C-+" . (lambda () (interactive) (text-scale-set 0)))
   ("C-M-=" . global-text-scale-adjust))
 

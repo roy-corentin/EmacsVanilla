@@ -147,9 +147,6 @@
 (require 'cr-compile)
 (require 'cr-flymake)
 
-;; Key set at the end to avoid conflicts with iedit
-(global-set-key (kbd "C-,") 'previous-buffer)
-(global-set-key (kbd "C-;") 'next-buffer)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
