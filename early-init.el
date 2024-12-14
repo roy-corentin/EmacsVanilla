@@ -95,6 +95,7 @@
   (enable-recursive-minibuffers t)
   (tab-always-indent 'complete)
   (grep-use-headings t)
+  (completion-eager-display nil)
   (vc-follow-symlinks nil)
   ;; Emacs 30 and newer: Disable Ispell completion function. As an alternative,
   ;; try `cape-dict'.
