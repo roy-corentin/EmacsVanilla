@@ -25,7 +25,7 @@
     "." '(find-file :which-key "Find file")
     "SPC" '(project-find-file :which-key "Find file in project")
     "b" '(:ignore t :which-key "Buffer")
-    "b b" '(consult-project-buffer :which-key "Switch project buffer")
+    "b b" '(cr/project-buffer-dwim :which-key "Switch project buffer")
     "b B" '(consult-buffer :which-key "Switch all buffer")
     "b i" '(ibuffer :which-key "Ibuffer")
     "b k" '(kill-current-buffer :which-key "Kill current buffer")

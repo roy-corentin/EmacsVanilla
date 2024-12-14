@@ -165,4 +165,11 @@ If prefix ARG is set, prompt for a directory to search from."
       (disable-theme current-theme)
       (setq emacs-theme theme))))
 
+(defun cr/project-buffer-dwim ()
+  "Switch to buffer in project or all buffer"
+  (interactive)
+  (if (project-current nil)
+      (consult-project-buffer)
+    (consult-buffer)))
+
 (provide 'cr-methods)
