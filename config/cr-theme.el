@@ -56,8 +56,9 @@
   (doom-modeline-minor-modes nil)
   (doom-modeline-major-mode-icon nil)
   (doom-modeline-workspace-name nil)
-  (doom-modeline-buffer-file-name-style 'truncate-with-project)
+  (doom-modeline-buffer-file-name-style 'relative-to-project)
   (doom-modeline-buffer-encoding 'nondefault)
+  (doom-modeline-project-name t)
   :config
   (doom-modeline-mode 1))
 
