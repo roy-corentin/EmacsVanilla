@@ -83,6 +83,7 @@
   (pixel-scroll-precision-mode t)
   (electric-pair-mode t)
   (set-fringe-mode '(4 . 4))
+  (global-auto-revert-mode t)
   :custom
   (native-comp-async-report-warnings-errors nil)
   (make-backup-files nil)
