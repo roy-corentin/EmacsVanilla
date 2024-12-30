@@ -93,14 +93,15 @@
   (corfu-popupinfo-mode)
   (global-corfu-mode))
 
-(load (concat user-emacs-directory "config/corfu-icons.el"))
-
 (use-package nerd-icons-corfu
   :ensure t
   :after corfu
+  :preface
+  (load (concat user-emacs-directory "config/corfu-icons.el"))
+  :custom
+  (nerd-icons-corfu-mapping my-corfu-icons)
   :init
-  (add-to-list 'corfu-margin-formatters 'nerd-icons-corfu-formatter)
-  (setq nerd-icons-corfu-mapping my-corfu-icons))
+  (add-to-list 'corfu-margin-formatters 'nerd-icons-corfu-formatter))
 
 (use-package cape
   :ensure t

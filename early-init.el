@@ -61,6 +61,15 @@
 
 (use-package emacs
   :ensure nil
+  :preface
+  (defalias 'yes-or-no-p 'y-or-n-p)
+  (defun enable-show-trailing-whitespace ()
+    (setq show-trailing-whitespace t))
+  :hook
+  (prog-mode . display-line-numbers-mode)
+  (yaml-ts-mode . display-line-numbers-mode)
+  (org-mode . display-line-numbers-mode)
+  (prog-mode . enable-show-trailing-whitespace)
   :config
   (menu-bar-mode -1)
   (tool-bar-mode -1)
@@ -73,11 +82,6 @@
   (pixel-scroll-mode t)
   (pixel-scroll-precision-mode t)
   (electric-pair-mode t)
-  (defalias 'yes-or-no-p 'y-or-n-p)
-  (add-hook 'prog-mode-hook 'display-line-numbers-mode)
-  (add-hook 'yaml-ts-mode-hook 'display-line-numbers-mode)
-  (add-hook 'org-mode-hook 'display-line-numbers-mode)
-  (add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
   (set-fringe-mode '(4 . 4))
   :custom
   (native-comp-async-report-warnings-errors nil)
