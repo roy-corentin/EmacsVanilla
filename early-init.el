@@ -109,9 +109,9 @@
   ;; setting is useful beyond Corfu.
   (read-extended-command-predicate #'command-completion-default-include-p)
   :custom-face
-  (default ((t :family "Iosevka Nerd Font" :height 115)))
-  (fixed-pitch ((t :family "Iosevka Nerd Font" :height 115)))
-  (variable-pitch ((t :family "Iosevka Nerd Font" :height 115)))
+  (default ((t :family "Iosevka Nerd Font" :weight medium :height 120)))
+  (fixed-pitch ((t :family "Iosevka Nerd Font" :weight bold :height 120)))
+  (variable-pitch ((t :family "Iosevka Nerd Font" :weight bold :height 120)))
   :bind
   ("C-=" . text-scale-increase)
   ("C--" . text-scale-decrease)
