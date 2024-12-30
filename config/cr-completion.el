@@ -93,12 +93,6 @@
   (corfu-popupinfo-mode)
   (global-corfu-mode))
 
-(use-package corfu-terminal
-  :ensure t
-  :config
-  (unless (display-graphic-p)
-    (corfu-terminal-mode +1)))
-
 (load (concat user-emacs-directory "config/corfu-icons.el"))
 
 (use-package nerd-icons-corfu
