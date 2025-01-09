@@ -16,7 +16,6 @@
   :hook
   (text-mode . mixed-pitch-mode))
 
-
 (use-package org
   :ensure nil
   :preface
