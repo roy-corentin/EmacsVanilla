@@ -124,6 +124,14 @@
   :init
   (advice-add #'tab-new :after #'dashboard-open))
 
+(use-package ultra-scroll
+  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "jdsmith/ultra-scroll" :files (:defaults))
+  :custom
+  (scroll-conservatively 101) ; important !
+  (scroll-margin 0)
+  :config
+  (ultra-scroll-mode 1))
+
 (require 'cr-org)
 (require 'cr-term)
 (require 'cr-global-keybindings)
