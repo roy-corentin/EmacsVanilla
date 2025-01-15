@@ -16,6 +16,8 @@
 
 (use-package vundo
   :ensure t
+  :custom
+  (undo-limit 320000)
   :config
   (vundo-mode))
 
