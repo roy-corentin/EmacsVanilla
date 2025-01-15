@@ -65,6 +65,8 @@
   (defalias 'yes-or-no-p 'y-or-n-p)
   (defun enable-show-trailing-whitespace ()
     (setq show-trailing-whitespace t))
+  (defun get-or-create-dashboard-buffer ()
+    (get-buffer-create dashboard-buffer-name))
   :hook
   (prog-mode . display-line-numbers-mode)
   (yaml-ts-mode . display-line-numbers-mode)
@@ -91,7 +93,7 @@
   (create-lockfiles nil)
   (fill-column 80)
   (inhibit-startup-screen t)
-  (initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
+  (initial-buffer-choice #'get-or-create-dashboard-buffer)
   (column-number-mode t)
   (display-line-numbers-type 'relative)
   (display-line-numbers-width 3)
