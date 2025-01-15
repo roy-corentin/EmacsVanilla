@@ -72,6 +72,7 @@
       (direction . right)
       (window . main)))
   :custom
+  (dired-preview-delay 0.2)
   (dired-preview-display-action-alist #'my-dired-preview-to-the-right))
 
 (provide 'cr-dired)
