@@ -37,7 +37,7 @@
   :after dired)
 
 (use-package dirvish
-  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "hlissner/dirvish" :files (:defaults "extensions/*"))
+  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "alexluigit/dirvish" :files (:defaults "extensions/*"))
   :after dired
   :requires nerd-icons
   :custom
