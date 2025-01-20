@@ -306,7 +306,7 @@
                              (svg-tag-make tag :beg 1 :end -1 :margin 1.5))))
      ("\\(:[A-Z_]+:\\)$" . ((lambda (tag)
                               (svg-tag-make tag :beg 1 :end -1 :margin 1.5))))
-     ;; TODOS/DONES
+     ;; todos/dones
      ("\\(TODO\\)" . ((lambda (tag)
                         (svg-tag-make tag :inverse t :face 'org-todo))))
      ("\\(DONE\\)" . ((lambda (tag)

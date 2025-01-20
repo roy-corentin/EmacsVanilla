@@ -145,7 +145,7 @@ If prefix ARG is set, prompt for a directory to search from."
   (project-find-file args))
 
 (defun cr/org-summary-todo (n-done n-not-done)
-  "Switch entry to DONE when all subentries of a TODO are done, to TODO otherwise."
+  "Switch entry to done when all subentries of a todo are done, to todo otherwise."
   (ignore n-done)
   (let ((todo-state (org-get-todo-state)))
     (when (member todo-state org-todo-keywords-1)
