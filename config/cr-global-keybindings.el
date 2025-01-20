@@ -252,6 +252,16 @@
    :keymaps 'minibuffer-mode-map
    "C-p" 'previous-history-element
    "C-n" 'next-history-element)
+  (general-define-key
+   :states '(normal visual)
+   :keymaps 'magit-mode-map
+   "*"  'magit-worktree
+   "zt" 'evil-scroll-line-to-top
+   "zz" 'evil-scroll-line-to-center
+   "zb" 'evil-scroll-line-to-bottom
+   "g=" 'magit-diff)
+  ;; "gi" #'forge-browse-issues
+  ;; "gm" #'forge-browse-pullreqs
   )
 
 (use-package drag-stuff

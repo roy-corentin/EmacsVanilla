@@ -54,17 +54,7 @@
 (use-package evil-collection-magit
   :after (evil-collection magit forge)
   :custom
-  (evil-collection-magit-use-z-for-folds nil)
-  :config
-  ;; Some extra vim-isms I thought were missing from upstream
-  (evil-define-key* '(normal visual) magit-mode-map
-    "*"  #'magit-worktree
-    "zt" #'evil-scroll-line-to-top
-    "zz" #'evil-scroll-line-to-center
-    "zb" #'evil-scroll-line-to-bottom
-    "g=" #'magit-diff
-    "gi" #'forge-browse-issues
-    "gm" #'forge-browse-pullreqs))
+  (evil-collection-magit-use-z-for-folds t))
 
 (use-package evil-surround
   :ensure t
