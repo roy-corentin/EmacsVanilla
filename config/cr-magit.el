@@ -60,10 +60,10 @@
   :config
   (magit-file-icons-mode 1))
 
-(use-package forge
-  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "magit/forge" :files (:defaults) :branch "main")
-  :after magit
-  :custom
-  (forge-add-default-bindings nil))
+;; (use-package forge
+;;   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "magit/forge" :files (:defaults) :branch "main")
+;;   :after magit
+;;   :custom
+;;   (forge-add-default-bindings nil))
 
 (provide 'cr-magit)
