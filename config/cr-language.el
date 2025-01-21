@@ -6,8 +6,17 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: mai 01, 2024
 
+(use-package zig-ts-mode
+  :ensure (:type git :host codeberg :repo "meow_king/zig-ts-mode"))
+
 (use-package zig-mode
   :ensure t)
+
+(use-package c3-ts-mode
+  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "c3lang/c3-ts-mode" :files (:defaults))
+  :custom
+  (c3-ts-mode-indent-offset 2)
+  (treesit-font-lock-level 4))
 
 (use-package crystal-mode
   :ensure t)

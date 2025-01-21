@@ -13,6 +13,7 @@
   :hook (c++-ts-mode . eglot-ensure)
   :hook (python-ts-mode . eglot-ensure)
   :hook (zig-mode . eglot-ensure)
+  :hook (zig-ts-mode . eglot-ensure)
   :hook (rust-ts-mode . eglot-ensure)
   :hook (typescript-ts-mode . eglot-ensure)
   :hook (tsx-ts-mode . eglot-ensure)
