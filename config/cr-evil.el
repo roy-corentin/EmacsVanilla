@@ -48,13 +48,9 @@
   :after evil
   :custom
   (evil-collection-magit-want-horizontal-movement t)
+  (evil-collection-magit-use-z-for-folds t)
   :config
   (evil-collection-init))
-
-(use-package evil-collection-magit
-  :after (evil-collection magit forge)
-  :custom
-  (evil-collection-magit-use-z-for-folds t))
 
 (use-package evil-surround
   :ensure t
@@ -65,7 +61,7 @@
   :ensure t
   :after evil
   :custom
-  (evil-escape-excluded-states '(normal visual multiedit emacs motion))
+  (evil-escape-excluded-states '(normal visual emacs motion))
   (evil-escape-excluded-major-modes '(magit-mode treemacs-mode))
   (evil-escape-key-sequence "jk")
   (evil-escape-delay 0.15)
