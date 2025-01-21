@@ -172,4 +172,11 @@ If prefix ARG is set, prompt for a directory to search from."
       (consult-project-buffer)
     (consult-buffer)))
 
+(defun cr/find-file-dwim ()
+  "Find file in project or all buffer"
+  (interactive)
+  (if (project-current nil)
+      (project-find-file)
+    (consult-buffer)))
+
 (provide 'cr-methods)

@@ -23,7 +23,7 @@
     :global-prefix "M-SPC") ;; access leader in insert mode
   (cr/leader-keys
     "." '(find-file :which-key "Find file")
-    "SPC" '(project-find-file :which-key "Find file in project")
+    "SPC" '(cr/find-file-dwim :which-key "Find file in project")
     "b" '(:ignore t :which-key "Buffer")
     "b b" '(cr/project-buffer-dwim :which-key "Switch project buffer")
     "b B" '(consult-buffer :which-key "Switch all buffer")
