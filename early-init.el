@@ -105,6 +105,8 @@
   (completion-eager-display nil)
   (vc-follow-symlinks nil)
   (kill-buffer-quit-windows t)
+  (mouse-autoselect-window t)
+  (focus-follow-mouse t)
   ;; Emacs 30 and newer: Disable Ispell completion function. As an alternative,
   ;; try `cape-dict'.
   (text-mode-ispell-word-completion nil)
