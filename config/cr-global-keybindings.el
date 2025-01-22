@@ -12,6 +12,7 @@
 (use-package general
   :ensure t
   :demand t
+  :after evil
   :hook  (org-agenda-mode . general-override-local-mode)
   :config
   (general-evil-setup)
@@ -252,6 +253,10 @@
    :keymaps 'minibuffer-mode-map
    "C-p" 'previous-history-element
    "C-n" 'next-history-element)
+  (general-define-key
+   :states '(normal visual)
+   :keymaps 'prog-mode-map
+   "TAB" 'evil-jump-item)
   (general-define-key
    :states '(normal visual)
    :keymaps 'magit-mode-map
