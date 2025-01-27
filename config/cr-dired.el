@@ -68,7 +68,7 @@
   :preface
   (defun my-dired-preview-buffer ()
     "My preferred `dired-preview-display-action-alist-function'."
-    '((display-buffer-in-previous-window)
+    '((display-buffer-reuse-window)
       (window . main)))
   :custom
   (dired-preview-delay 0.2)
