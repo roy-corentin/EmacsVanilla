@@ -11,6 +11,7 @@
 ;; Use evil mode for vim-like keybindings
 (use-package evil
   :ensure t
+  :demand t
   :custom
   (evil-want-integration t)
   (evil-want-keybinding nil)
@@ -58,7 +59,7 @@
   :ensure t
   :after evil
   :custom
-  (evil-escape-excluded-states '(normal visual emacs motion))
+  (evil-escape-excluded-states '(normal visual multiedit emacs motion))
   (evil-escape-excluded-major-modes '(magit-mode treemacs-mode))
   (evil-escape-key-sequence "jk")
   (evil-escape-delay 0.15)
