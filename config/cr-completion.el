@@ -36,6 +36,19 @@
   (vertico-multiform-mode 1)
   (vertico-posframe-mode t))
 
+(use-package nova
+  :disabled t
+  :after (vertico-posframe corfu orderless)
+  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "thisisran/nova" :files (:defaults))
+  :custom
+  (nova-vertico-depth-2-max-width 150)
+  (nova-vertico-deep-depth-max-width 150)
+  :config
+  (nova-corfu-mode nil)
+  (nova-corfu-popupinfo-mode nil)
+  (nova-eldoc-mode nil)
+  (nova-vertico-mode nil))
+
 ;; Enable rich annotations using the Marginalia package
 (use-package marginalia
   :ensure t
