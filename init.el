@@ -133,6 +133,10 @@
   :config
   (ultra-scroll-mode 1))
 
+(use-package pgmacs
+  :after pg
+  :ensure (:protocols https :inherit t :depth 1 :fetcher github :repo "emarsden/pgmacs", :files (:defaults)))
+
 (require 'cr-org)
 (require 'cr-term)
 (require 'cr-global-keybindings)
