@@ -18,7 +18,44 @@
 
 (use-package org
   :ensure nil
+  :demand t
   :preface
+  (defun cr/set-pretty-symbol ()
+    "Beautify Org Checkbox Symbol"
+    (push '("[ ]" .  "☐") prettify-symbols-alist)
+    (push '("[X]" . "☑" ) prettify-symbols-alist)
+    (push '("[-]" . "❍" ) prettify-symbols-alist)
+    (push '("[C]" . "󰅘" ) prettify-symbols-alist)
+    (push '("#+BEGIN_SRC" . "↦" ) prettify-symbols-alist)
+    (push '("#+END_SRC" . "⇤" ) prettify-symbols-alist)
+    (push '("#+begin_src" . "↦" ) prettify-symbols-alist)
+    (push '("#+end_src" . "⇤" ) prettify-symbols-alist)
+    (push '("#+BEGIN_EXAMPLE" . "↦" ) prettify-symbols-alist)
+    (push '("#+END_EXAMPLE" . "⇤" ) prettify-symbols-alist)
+    (push '("#+begin_example" . "↦" ) prettify-symbols-alist)
+    (push '("#+end_example" . "⇤" ) prettify-symbols-alist)
+    (push '("#+BEGIN_QUOTE" . "↦" ) prettify-symbols-alist)
+    (push '("#+END_QUOTE" . "⇤" ) prettify-symbols-alist)
+    (push '("#+begin_quote" . "󱆧" ) prettify-symbols-alist)
+    (push '("#+end_quote" . "󱆨⇤" ) prettify-symbols-alist)
+    (push '("#+TITLE:" . "") prettify-symbols-alist)
+    (push '("#+title:" . "") prettify-symbols-alist)
+    (push '("#+DESCRIPTION:" . "󰦨") prettify-symbols-alist)
+    (push '("#+ID:" . "") prettify-symbols-alist)
+    (push '("#+FILETAGS:" . "") prettify-symbols-alist)
+    (push '("#+filetags:" . "") prettify-symbols-alist)
+    (push '("#+STARTUP:" . "󰈈") prettify-symbols-alist)
+    (push '("#+startup:" . "󰈈") prettify-symbols-alist)
+    (push '("#+ACTIVE:" . "") prettify-symbols-alist)
+    (push '("#+START_SPOILER" . "") prettify-symbols-alist)
+    (push '("#+CLOSE_SPOILER" . "") prettify-symbols-alist)
+    (push '("#+BEGIN_HIDDEN" . "󰘓") prettify-symbols-alist)
+    (push '("#+END_HIDDEN" . "󰘓") prettify-symbols-alist)
+    (push '("#+author" . "") prettify-symbols-alist)
+    (push '("#+AUTHOR" . "") prettify-symbols-alist)
+    (push '("#+property:" . "") prettify-symbols-alist)
+    (push '("#+PROPERTY:" . "") prettify-symbols-alist)
+    (prettify-symbols-mode t))
   (defun cr/org-font-setup ()
     (setq-local display-line-numbers-type 'visual)
     ;; Set faces for heading levels
@@ -53,6 +90,9 @@
        :foreground "#ff8059"))
     "My bold emphasis for Org."
     :group 'org-faces)
+  :hook (org-mode . cr/org-font-setup)
+  :hook (org-after-todo-statistics . cr/org-summary-todo)
+  :hook (org-mode . cr/set-pretty-symbol)
   :custom
   (org-capture-templates '(("t" "Todo" entry (file+headline "~/org/todos.org" "Tasks")
                             "* TODO %?\n  %i\n  %a")
@@ -120,8 +160,6 @@
    '(("c" "Simple agenda view"
       ((tags-todo "+PRIORITY=\"A\""
                   ((org-agenda-overriding-header "High-priority unfinished tasks:")))
-       (tags-todo "+PRIORITY=\"B\""
-                  ((org-agenda-overriding-header "Priority unfinished tasks:")))
        (agenda "" ((org-agenda-prefix-format "%-15T\t%s [ ] ")
                    (org-agenda-todo-keyword-format "")
                    (org-agenda-start-on-weekday nil)
@@ -161,46 +199,7 @@
                    (org-agenda-archives-mode t)
                    (org-agenda-start-on-weekday nil)))))))
   :init
-  (add-hook 'org-mode-hook #'cr/org-font-setup)
-  (add-hook 'org-after-todo-statistics-hook #'cr/org-summary-todo)
-  (org-babel-do-load-languages 'org-babel-load-languages '((C . t) (ruby . t) (python . t) (shell . t)))
-  (add-hook 'org-mode-hook
-            (lambda ()
-              "Beautify Org Checkbox Symbol"
-              (push '("[ ]" .  "☐") prettify-symbols-alist)
-              (push '("[X]" . "☑" ) prettify-symbols-alist)
-              (push '("[-]" . "❍" ) prettify-symbols-alist)
-              (push '("[C]" . "󰅘" ) prettify-symbols-alist)
-              (push '("#+BEGIN_SRC" . "↦" ) prettify-symbols-alist)
-              (push '("#+END_SRC" . "⇤" ) prettify-symbols-alist)
-              (push '("#+begin_src" . "↦" ) prettify-symbols-alist)
-              (push '("#+end_src" . "⇤" ) prettify-symbols-alist)
-              (push '("#+BEGIN_EXAMPLE" . "↦" ) prettify-symbols-alist)
-              (push '("#+END_EXAMPLE" . "⇤" ) prettify-symbols-alist)
-              (push '("#+begin_example" . "↦" ) prettify-symbols-alist)
-              (push '("#+end_example" . "⇤" ) prettify-symbols-alist)
-              (push '("#+BEGIN_QUOTE" . "↦" ) prettify-symbols-alist)
-              (push '("#+END_QUOTE" . "⇤" ) prettify-symbols-alist)
-              (push '("#+begin_quote" . "󱆧" ) prettify-symbols-alist)
-              (push '("#+end_quote" . "󱆨⇤" ) prettify-symbols-alist)
-              (push '("#+TITLE:" . "") prettify-symbols-alist)
-              (push '("#+title:" . "") prettify-symbols-alist)
-              (push '("#+DESCRIPTION:" . "󰦨") prettify-symbols-alist)
-              (push '("#+ID:" . "") prettify-symbols-alist)
-              (push '("#+FILETAGS:" . "") prettify-symbols-alist)
-              (push '("#+filetags:" . "") prettify-symbols-alist)
-              (push '("#+STARTUP:" . "󰈈") prettify-symbols-alist)
-              (push '("#+startup:" . "󰈈") prettify-symbols-alist)
-              (push '("#+ACTIVE:" . "") prettify-symbols-alist)
-              (push '("#+START_SPOILER" . "") prettify-symbols-alist)
-              (push '("#+CLOSE_SPOILER" . "") prettify-symbols-alist)
-              (push '("#+BEGIN_HIDDEN" . "󰘓") prettify-symbols-alist)
-              (push '("#+END_HIDDEN" . "󰘓") prettify-symbols-alist)
-              (push '("#+author" . "") prettify-symbols-alist)
-              (push '("#+AUTHOR" . "") prettify-symbols-alist)
-              (push '("#+property:" . "") prettify-symbols-alist)
-              (push '("#+PROPERTY:" . "") prettify-symbols-alist)
-              (prettify-symbols-mode))))
+  (org-babel-do-load-languages 'org-babel-load-languages '((C . t) (ruby . t) (python . t) (shell . t))))
 
 (use-package toc-org
   :ensure t
