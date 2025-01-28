@@ -96,6 +96,7 @@
   (kill-buffer-quit-windows t)
   (mouse-autoselect-window t)
   (focus-follow-mouse t)
+  (ibuffer-use-header-line 'title)
   ;; Emacs 30 and newer: Disable Ispell completion function. As an alternative,
   ;; try `cape-dict'.
   (text-mode-ispell-word-completion nil)
