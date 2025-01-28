@@ -63,6 +63,7 @@
   (evil-escape-excluded-major-modes '(magit-mode treemacs-mode))
   (evil-escape-key-sequence "jk")
   (evil-escape-delay 0.15)
+  (evil-escape-case-insensitive-key-sequence 'case-insensitive)
   :init
   (evil-define-key* '(insert replace visual operator) 'global "\C-g" #'evil-escape)
   :config
