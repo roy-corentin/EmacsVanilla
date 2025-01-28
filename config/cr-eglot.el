@@ -27,6 +27,7 @@
   :custom
   (eglot-events-buffer-size 0)
   (eglot-connect-timeout 60)
+  (eglot-advertise-cancellation t)
   :custom-face
   (eglot-highlight-symbol-face ((t (:inherit highlight :weight bold))))
   (eglot-diagnostic-tag-unnecessary-face ((t (:foreground "grey"))))
