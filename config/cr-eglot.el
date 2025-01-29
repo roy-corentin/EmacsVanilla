@@ -28,9 +28,9 @@
   (eglot-events-buffer-size 0)
   (eglot-connect-timeout 60)
   (eglot-advertise-cancellation t)
+  (eglot-autoshutdown t)
   :custom-face
   (eglot-highlight-symbol-face ((t (:inherit highlight :weight bold))))
-  (eglot-diagnostic-tag-unnecessary-face ((t (:foreground "grey"))))
   :config
   (add-to-list 'eglot-server-programs '(elixir-ts-mode "elixir-ls"))
   (add-to-list 'eglot-server-programs '((ruby-mode ruby-ts-mode) "ruby-lsp"))
