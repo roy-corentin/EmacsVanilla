@@ -36,9 +36,12 @@
   (vertico-multiform-mode 1)
   (vertico-posframe-mode t))
 
+(use-package eldoc-box
+  :ensure t)
+
 (use-package nova
   :disabled t
-  :after (vertico-posframe corfu orderless)
+  :after (vertico-posframe corfu orderless eldoc-box)
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "thisisran/nova" :files (:defaults))
   :custom
   (nova-vertico-depth-2-max-width 150)
