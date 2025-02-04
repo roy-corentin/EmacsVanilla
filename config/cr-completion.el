@@ -131,7 +131,8 @@
 
 (use-package yasnippet-capf
   :ensure t
-  :after cape
+  :after cape yasnippet
+  :bind (("C-c p y" . yasnippet-capf))
   :init
   (add-to-list 'completion-at-point-functions #'yasnippet-capf))
 
