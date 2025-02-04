@@ -12,7 +12,7 @@
 (use-package general
   :ensure t
   :demand t
-  :after evil
+  :after evil magit
   :hook  (org-agenda-mode . general-override-local-mode)
   :config
   (general-evil-setup)
