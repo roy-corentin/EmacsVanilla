@@ -125,6 +125,9 @@
   :init
   (advice-add #'tab-new :after #'dashboard-open))
 
+(use-package helpful
+  :ensure t)
+
 (use-package ultra-scroll
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "jdsmith/ultra-scroll" :files (:defaults))
   :custom
