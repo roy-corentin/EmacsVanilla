@@ -8,11 +8,12 @@
 (use-package kubernetes
   :ensure t
   :commands (kubernetes-overview)
-  :config
+  :init
   (fset 'k8s 'kubernetes-overview))
 
 (use-package kubernetes-evil
   :ensure t
+  :demand t
   :after (kubernetes evil))
 
 (provide 'cr-kubernetes)
