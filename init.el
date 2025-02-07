@@ -142,7 +142,6 @@
 
 (require 'cr-org)
 (require 'cr-term)
-(require 'cr-global-keybindings)
 (require 'cr-buffer)
 (require 'cr-magit)
 (require 'cr-theme)
@@ -163,3 +162,4 @@
 (require 'cr-compile)
 (require 'cr-flymake)
 (require 'cr-kubernetes)
+(require 'cr-global-keybindings)
