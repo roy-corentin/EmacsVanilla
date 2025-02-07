@@ -30,7 +30,7 @@
   :hook (compilation-start . enable-visual-line)
   :custom
   (compilation-scroll-output t)
-  :config
+  :init
   (advice-add #'project-switch-project :after #'cr/set-compile-command)
   (push 'bun-test compilation-error-regexp-alist)
   (push '(bun-test "\sat\s\\([a-zA-Z0-9/\\._-]+\\):\\([0-9]+\\):\\([0-9]+\\)" 1 2 3)
