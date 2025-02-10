@@ -18,6 +18,7 @@
 (use-package magit
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "magit/magit" :files (:defaults) :branch "main")
   :demand t
+  :after nerd-icons
   :bind ("C-x g" . magit-status)
   :custom
   (magit-blame-echo-style 'headings)
@@ -32,6 +33,7 @@
   ;; Don't display parent/related refs in commit buffers; they are rarely
   ;; helpful and only add to runtime costs.
   (magit-revision-insert-related-refs nil)
+  (magit-format-file-function #'magit-format-file-nerd-icons)
   :config
   ;; Add additional switches that seem common enough
   (transient-append-suffix 'magit-fetch "-p"
@@ -47,18 +49,6 @@
   :config
   (define-key magit-todos-section-map "j" nil)
   (magit-todos-mode 1))
-
-(use-package magit-file-icons
-  :ensure t
-  :demand t
-  :after magit
-  :custom
-  ;; These are the default values:
-  (magit-file-icons-enable-diff-file-section-icons t)
-  (magit-file-icons-enable-untracked-icons t)
-  (magit-file-icons-enable-diffstat-icons t)
-  :config
-  (magit-file-icons-mode 1))
 
 ;; (use-package forge
 ;;   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "magit/forge" :files (:defaults) :branch "main")
