@@ -16,6 +16,11 @@
 ;;   :config
 ;;   (compile-angel-on-load-mode))
 
+(use-package load-env-vars
+  :ensure t
+  :config
+  (load-env-vars (concat user-emacs-directory ".env")))
+
 (use-package nerd-icons
   :ensure t)
 
@@ -88,11 +93,6 @@
 
 (use-package verb
   :ensure t)
-
-(use-package load-env-vars
-  :ensure t
-  :config
-  (load-env-vars (concat user-emacs-directory ".env")))
 
 (use-package posframe
   :ensure t)
