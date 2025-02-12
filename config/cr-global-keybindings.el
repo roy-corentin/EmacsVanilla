@@ -94,6 +94,7 @@
     "t O" '(cr-olivetti-on-large-prog-window-mode :which-key "CR Olivetti")
     "t g" '(global-copilot-mode :which-key "Global Copilot")
     "t r" '(read-only-mode :which-key "ReadOnly mode")
+    "t h" '(global-hl-line-mode :which-key "Global Highlight line mode")
     "o" '(:ignore t :which-key "Open")
     "o p" '(dirvish-side :which-key "Dirvish side")
     "o A" '(org-agenda :which-key "Org-Agenda")
