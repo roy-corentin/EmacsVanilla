@@ -99,15 +99,6 @@
     "o A" '(org-agenda :which-key "Org-Agenda")
     "o t" '(cr/toggle-vterm-popup :which-key "Open Vterm in popup")
     "o T" '(cr/smart-vterm-buffer :which-key "Open Vterm in buffer")
-    "TAB" '(:ignore t :which-key "Tab")
-    "TAB TAB" '(tab-list :which-key "List tabs")
-    "TAB n" '(tab-new :which-key "New tab")
-    "TAB l" '(tab-next :which-key "Next tab")
-    "TAB h" '(tab-previous :which-key "Previous tab")
-    "TAB d" '(tab-close :which-key "Close tab")
-    "TAB D" '(tab-close-other :which-key "Close other tabs")
-    "TAB r" '(tab-rename :which-key "Rename tab")
-    "TAB s" '(tab-switch :which-key "Switch tab")
     "<tab>" '(:ignore t :which-key "Tab")
     "<tab> <tab>" '(tab-list :which-key "List tabs")
     "<tab> n" '(tab-new :which-key "New tab")
@@ -246,7 +237,7 @@
   (general-define-key
    :states '(normal visual)
    :keymaps 'dirvish-mode-map
-   "TAB" 'dirvish-subtree-toggle
+   "<tab>" 'dirvish-subtree-toggle
    "s" 'dirvish-layout-switch
    "q" 'dirvish-quit)
   (general-define-key
