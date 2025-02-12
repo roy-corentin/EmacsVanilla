@@ -95,7 +95,7 @@
     "t g" '(global-copilot-mode :which-key "Global Copilot")
     "t r" '(read-only-mode :which-key "ReadOnly mode")
     "o" '(:ignore t :which-key "Open")
-    "o p" '(treemacs :which-key "Treemacs")
+    "o p" '(dirvish-side :which-key "Dirvish side")
     "o A" '(org-agenda :which-key "Org-Agenda")
     "o t" '(cr/toggle-vterm-popup :which-key "Open Vterm in popup")
     "o T" '(cr/smart-vterm-buffer :which-key "Open Vterm in buffer")

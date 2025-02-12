@@ -152,7 +152,6 @@
 (require 'cr-completion)
 (require 'cr-undo)
 (require 'cr-treesit)
-(require 'cr-treemacs)
 ;;(require 'cr-meow)
 (require 'cr-evil)
 (require 'cr-dired)
