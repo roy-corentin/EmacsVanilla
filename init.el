@@ -120,6 +120,9 @@
   :after pg
   :ensure (:protocols https :inherit t :depth 1 :fetcher github :repo "emarsden/pgmacs", :files (:defaults)))
 
+(use-package casual
+  :ensure t)
+
 (require 'cr-org)
 (require 'cr-term)
 (require 'cr-buffer)
