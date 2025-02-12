@@ -53,13 +53,6 @@
   (push '(("" ."\\`+?evil[-:]?\\(?:a-\\)?\\(.*\\)") . (nil .  "◂\\1")) which-key-replacement-alist)
   (which-key-mode))
 
-(use-package apheleia
-  :ensure t
-  :config
-  (add-to-list 'apheleia-mode-alist '(python-mode . ruff))
-  (add-to-list 'apheleia-mode-alist '(python-ts-mode . ruff))
-  (apheleia-global-mode +1))
-
 (use-package elec-pair
   :ensure nil
   :preface
@@ -104,11 +97,6 @@
 (use-package posframe
   :ensure t)
 
-(use-package ws-butler
-  :ensure t
-  :config
-  (ws-butler-global-mode))
-
 (use-package tab-bar
   :ensure nil
   :after dashboard
@@ -144,6 +132,7 @@
 (require 'cr-completion)
 (require 'cr-undo)
 (require 'cr-treesit)
+(require 'cr-formatter)
 ;;(require 'cr-meow)
 (require 'cr-evil)
 (require 'cr-dired)
