@@ -89,14 +89,6 @@
   :config
   (pdf-tools-install :no-query))
 
-(use-package copilot
-  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "copilot-emacs/copilot.el" :files (:defaults))
-  :defer t
-  :bind (:map copilot-completion-map
-              ("C-f" . 'copilot-accept-completion)
-              ("C-<tab>" . 'copilot-accept-completion)
-              ("C-TAB" . 'copilot-accept-completion)))
-
 (use-package keycast
   :ensure t
   :defer t)
