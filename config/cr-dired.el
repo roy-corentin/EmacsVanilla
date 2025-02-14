@@ -51,6 +51,7 @@
                             (format "  %s " (nerd-icons-codicon "nf-cod-root_folder"))
                             (format " %s " (nerd-icons-faicon "nf-fa-angle_right"))))
   (dired-listing-switches "-l --almost-all --human-readable --group-directories-first --no-group")
+  (dirvish-hide-details '(dirvish-side))
   :config
   (dirvish-define-preview eza (file)
     "Use `eza' to generate directory preview."
