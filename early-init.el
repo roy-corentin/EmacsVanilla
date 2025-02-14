@@ -107,7 +107,7 @@
   (default ((t :family "Iosevka Nerd Font" :weight medium :height 120)))
   (fixed-pitch ((t :family "Iosevka Nerd Font" :weight bold :height 120)))
   (variable-pitch ((t :family "Iosevka Nerd Font" :weight bold :height 120)))
-  :config
+  :init
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
