@@ -199,7 +199,8 @@
                    (org-agenda-archives-mode t)
                    (org-agenda-start-on-weekday nil)))))))
   :init
-  (org-babel-do-load-languages 'org-babel-load-languages '((C . t) (ruby . t) (python . t) (shell . t))))
+  (org-babel-do-load-languages 'org-babel-load-languages '((C . t) (ruby . t) (python . t) (shell . t) (js . t))))
+
 
 (use-package toc-org
   :ensure t
