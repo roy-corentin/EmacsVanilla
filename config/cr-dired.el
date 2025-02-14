@@ -20,12 +20,6 @@
   (dired-mouse-drag-files t)
   (mouse-drag-and-drop-region-cross-program t))
 
-;; Enable again is use of dired without dirvish
-;; (use-package nerd-icons-dired
-;;   :ensure t
-;;   :hook
-;;   (dired-mode . nerd-icons-dired-mode))
-
 (use-package diredfl
   :ensure t
   :after dired
@@ -62,6 +56,12 @@
   (add-to-list 'dirvish-preview-dispatchers 'eza)
   (dirvish-side-follow-mode)
   (dirvish-override-dired-mode))
+
+(use-package nerd-icons-dired
+  :ensure t
+  :if (eq (fboundp 'dirvish) nil)
+  :hook
+  (dired-mode . nerd-icons-dired-mode))
 
 (use-package dired-preview
   :ensure t
