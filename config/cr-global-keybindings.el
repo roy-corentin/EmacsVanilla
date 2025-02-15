@@ -234,7 +234,10 @@
    "F" '(dired-create-empty-file :which-key "Create empty file")
    "q" 'nil
    "E" '(dired-do-open :which-key "External open")
-   "?" 'casual-dired-tmenu)
+   "?" 'casual-dired-tmenu
+   "<mouse-1>" 'dirvish-subtree-toggle-or-open
+   "<mouse-2>" 'dired-mouse-find-file-other-window
+   "<mouse-3>" 'dired-mouse-find-file)
   (general-define-key
    :states '(normal visual)
    :keymaps 'dirvish-mode-map
