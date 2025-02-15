@@ -248,10 +248,11 @@
   (general-define-key
    :states '(normal visual)
    :keymaps 'prog-mode-map
-   "TAB" 'evil-jump-item)
+   "<tab>" 'evil-jump-item)
   (general-define-key
    :states '(normal visual)
    :keymaps 'magit-mode-map
+   "<tab>" 'magit-section-toggle
    "*"  'magit-worktree
    "zt" 'evil-scroll-line-to-top
    "zz" 'evil-scroll-line-to-center
