@@ -11,8 +11,9 @@
   :custom
   (yas-snippet-dirs '("~/.config/emacs/elpaca/repos/snippets/"
                       "~/.config/emacs/snippets/"))
-  (yas-global-mode 1)
-  (yas-verbosity 3))
+  (yas-verbosity 3)
+  :init
+  (yas-global-mode 1))
 
 (use-package doom-snippets
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "doomemacs/snippets" :files (:defaults))
