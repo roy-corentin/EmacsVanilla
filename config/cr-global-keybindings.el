@@ -261,9 +261,16 @@
    "zz" 'evil-scroll-line-to-center
    "zb" 'evil-scroll-line-to-bottom
    "g=" 'magit-diff)
-  ;; "gi" #'forge-browse-issues
-  ;; "gm" #'forge-browse-pullreqs
-  )
+  (general-define-key
+   :states '(insert normal visual)
+   :keymaps 'override
+   "M-j" 'scroll-other-window
+   "M-k" 'scroll-other-window-down
+   "C-i" 'evil-jump-forward)
+  (general-define-key
+   :states '(insert)
+   :keymaps 'corfu-map
+   "<tab>" 'corfu-complete))
 
 (use-package drag-stuff
   :ensure t
