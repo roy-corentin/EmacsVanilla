@@ -7,7 +7,13 @@
 ;; Created: avril 08, 2024
 
 (use-package undo-fu
-  :ensure t)
+  :ensure t
+  :custom
+  (undo-limit 67108864) ; 64mb.
+  (undo-strong-limit 100663296) ; 96mb.
+  (undo-outer-limit 1006632960) ; 960mb.
+  (undo-fu-allow-undo-in-region t)
+  (undo-fu-ignore-keyboard-quit t))
 
 (use-package undo-fu-session
   :ensure t
@@ -16,8 +22,6 @@
 
 (use-package vundo
   :ensure t
-  :custom
-  (undo-limit 320000)
   :config
   (vundo-mode))
 
