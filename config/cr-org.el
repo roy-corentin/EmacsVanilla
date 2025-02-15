@@ -314,7 +314,7 @@
      ("\\(DONE\\)" . ((lambda (tag)
                         (svg-tag-make tag :inverse t :face 'org-done))))
      ("\\(WIP\\)" . ((lambda (tag)
-                       (svg-tag-make tag :inverse t :face 'org-tag))))
+                       (svg-tag-make tag :inverse t :face 'org-formula))))
      ("\\(HOLD\\)" . ((lambda (tag)
                         (svg-tag-make tag :inverse t :face 'org-default))))
      ("\\(CANCELED\\)" . ((lambda (tag)
