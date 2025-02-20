@@ -265,12 +265,7 @@
    :states '(insert normal visual)
    :keymaps 'override
    "M-j" 'scroll-other-window
-   "M-k" 'scroll-other-window-down
-   "C-i" 'evil-jump-forward)
-  (general-define-key
-   :states '(insert)
-   :keymaps 'corfu-map
-   "<tab>" 'corfu-complete))
+   "M-k" 'scroll-other-window-down))
 
 (use-package drag-stuff
   :ensure t
