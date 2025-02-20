@@ -121,9 +121,18 @@
 
 (use-package cape
   :ensure t
+  :preface
+  (defun my/eglot-capf ()
+    (setq-local completion-at-point-functions
+                (list (cape-capf-super
+                       #'eglot-completion-at-point
+                       #'yasnippet-capf
+                       #'cape-file))))
   :bind (("C-c p f" . cape-file)
          ("C-c p t" . complete-tag) ;; etags
          ("C-c p d" . cape-dabbrev))
+  :hook
+  (eglot-managed-mode . my/eglot-capf)
   :init
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-file)
@@ -131,10 +140,8 @@
 
 (use-package yasnippet-capf
   :ensure t
-  :after cape yasnippet
-  :bind (("C-c p y" . yasnippet-capf))
-  :init
-  (add-to-list 'completion-at-point-functions #'yasnippet-capf))
+  :after cape
+  :bind (("C-c p y" . yasnippet-capf)))
 
 (use-package orderless
   :ensure t
