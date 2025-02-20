@@ -88,6 +88,8 @@
   (display-line-numbers-current-absolute t)
   (indent-tabs-mode nil)
   (enable-recursive-minibuffers t)
+  (read-extended-command-predicate #'command-completion-default-include-p)
+  (minibuffer-prompt-properties '(read-only t cursor-intangible t face minibuffer-prompt))
   (tab-always-indent 'complete)
   (grep-use-headings t)
   (completion-eager-display nil)
