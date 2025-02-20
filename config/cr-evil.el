@@ -24,11 +24,17 @@
   (evil-symbol-word-search t)
   (evil-ex-search-vim-style-regexp nil)
   (evil-regexp-search t)
-  :bind
-  (:map evil-normal-state-map
-        ("C-i" . evil-jump-forward))
+  (evil-want-C-i-jump t)
   :config
   (evil-mode 1))
+
+(use-package better-jumper
+  :ensure t
+  :bind (:map evil-motion-state-map
+              ("C-i" . 'better-jumper-jump-forward)
+              ("C-o" . 'better-jumper-jump-backward))
+  :init
+  (better-jumper-mode t))
 
 (use-package evil-indent-plus
   :ensure t
