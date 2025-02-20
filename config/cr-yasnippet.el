@@ -12,7 +12,7 @@
   (yas-snippet-dirs '("~/.config/emacs/elpaca/repos/snippets/"
                       "~/.config/emacs/snippets/"))
   (yas-verbosity 3)
-  :init
+  :config
   (yas-global-mode 1))
 
 (use-package doom-snippets
