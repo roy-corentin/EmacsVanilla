@@ -82,7 +82,7 @@
     "n" '(:ignore t :which-key "Note")
     "n f" '(cr/find-note :which-key "Find note")
     "n r" '(:ignore t :which-key "Roam")
-    "n r f" '(org-roam-node-find :which-key "Find roam note")
+    "n r f" '(consult-org-roam-file-find :which-key "Find roam note")
     "n r i" '(org-roam-node-insert :which-key "Insert roam note")
     "t" '(:ignore t :which-key "Toggle")
     "t a" '(apheleia-mode :which-key "Apheleia")
@@ -265,7 +265,13 @@
    :states '(insert normal visual)
    :keymaps 'override
    "M-j" 'scroll-other-window
-   "M-k" 'scroll-other-window-down))
+   "M-k" 'scroll-other-window-down)
+  (general-define-key
+   :states '(normal)
+   :keymaps 'kubernetes-mode-map
+   "u" 'kubernetes-overview-set-sections
+   "RET" 'kubernetes-logs-follow
+   "l" 'kubernetes-logs-follow))
 
 (use-package drag-stuff
   :ensure t
