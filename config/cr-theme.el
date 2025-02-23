@@ -147,7 +147,7 @@
   (indent-bars-treesit-support t)
   (indent-bars-treesit-ignore-blank-lines-types '("module"))
   (indent-bars-treesit-scope '((python function_definition class_definition for_statement
-	                               if_statement with_statement while_statement)
+                                       if_statement with_statement while_statement)
                                (ruby module class method call if)
                                (tsx export_statement interface_declaration class_declaration
                                     method_definition function_declaration for_statement
