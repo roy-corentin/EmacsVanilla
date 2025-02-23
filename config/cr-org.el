@@ -365,5 +365,39 @@
    consult-org-roam-forward-links
    :preview-key "M-."))
 
+(use-package ox-latex
+  :ensure nil
+  :config
+  (add-to-list 'org-latex-classes
+               '("epitech"
+                 "\\documentclass[a4paper,12pt]{report}
+  \\renewcommand{\\chaptername}{Lab}
+  \\makeatletter
+  \\renewcommand{\\maketitle}{
+    \\begin{titlepage}
+      \\begin{center}
+        \\vspace*{2em}
+        \\Huge \\textbf{EPITECH} \\\\
+        \\vspace{4em}
+        \\Huge \\textbf{\\@title} \\\\
+        \\vspace{4em}
+        \\Large \\textbf{\\@date} \\\\
+        \\bigskip
+        \\Large \\textbf{\\@author} \\\\
+        \\bigskip
+        \\includegraphics[width=16em]{~/Pictures/Epitech.png} \\\\
+        \\bigskip
+      \\end{center}
+    \\end{titlepage}
+  }
+  \\makeatother
+  \\usepackage[margin=0.7in]{geometry}"
+                 ("\\chapter{%s}" . "\\chapter*{%s}")
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+
 (provide 'cr-org)
 ;;; cr-org.el ends here
