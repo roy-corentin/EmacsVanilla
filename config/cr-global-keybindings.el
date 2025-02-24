@@ -75,6 +75,7 @@
     "p c" '(project-compile :which-key "Compile project")
     "p r" '(project-recompile :which-key "Recompile project")
     "p s" '(project-async-shell-command :which-key "Async shell command")
+    "p S" '(project-shell-command :which-key "Shell command")
     "f" '(:ignore t :which-key "Find")
     "f r" '(recentf :which-key "Recent files")
     "f p" '(cr/find-config-file :which-key "Recent files")
