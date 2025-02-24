@@ -269,7 +269,7 @@
   (general-define-key
    :states '(normal)
    :keymaps 'kubernetes-mode-map
-   "u" 'kubernetes-overview-set-sections
+   "v" 'kubernetes-overview-set-sections
    "RET" 'kubernetes-logs-follow
    "l" 'kubernetes-logs-follow))
 
