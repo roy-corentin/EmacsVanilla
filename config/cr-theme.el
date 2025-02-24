@@ -144,8 +144,6 @@
 
 (use-package indent-bars
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "https://github.com/jdtsmith/indent-bars" :files (:defaults))
-  :config
-  (require 'indent-bars-ts) ; not needed with straight
   :custom
   (indent-bars-treesit-support t)
   (indent-bars-treesit-ignore-blank-lines-types '("module"))
