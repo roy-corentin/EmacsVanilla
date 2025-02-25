@@ -47,12 +47,7 @@ If on a:
            (org-cite-follow context arg))
 
           (`headline
-           (cond ((memq (bound-and-true-p org-goto-map)
-                        (current-active-maps))
-                  ;; TODO import this method
-                  ;;(org-goto-ret)
-                  )
-                 ((and (fboundp 'toc-org-insert-toc)
+           (cond ((and (fboundp 'toc-org-insert-toc)
                        (member "TOC" (org-get-tags)))
                   (toc-org-insert-toc)
                   (message "Updating table of contents"))
@@ -187,6 +182,27 @@ If on a:
       (org-display-inline-images t t beg end)
       t)))
 
+
+;;;###autoload
+(defun +org/table-previous-row ()
+  "Go to the previous row (same column) in the current table. Before doing so,
+re-align the table if necessary. (Necessary because org-mode has a
+`org-table-next-row', but not `org-table-previous-row')"
+  (interactive)
+  (org-table-maybe-eval-formula)
+  (org-table-maybe-recalculate-line)
+  (if (and org-table-automatic-realign
+           org-table-may-need-update)
+      (org-table-align))
+  (let ((col (org-table-current-column)))
+    (beginning-of-line 0)
+    (when (or (not (org-at-table-p)) (org-at-table-hline-p))
+      (beginning-of-line))
+    (org-table-goto-column col)
+    (skip-chars-backward "^|\n\r")
+    (when (org-looking-at-p " ")
+      (forward-char))))
+
 (defun +org--insert-item (direction)
   (let ((context (org-element-lineage
                   (org-element-context)
@@ -235,9 +251,7 @@ If on a:
          ('below (save-excursion (org-table-insert-row t))
                  (org-table-next-row))
          ('above (save-excursion (org-shiftmetadown))
-                 ;; TODO import this method
-                 ;;(+org/table-previous-row)
-                 )))
+                 (+org/table-previous-row))))
 
       ;; Otherwise, add a new heading, carrying over any todo state, if
       ;; necessary.
