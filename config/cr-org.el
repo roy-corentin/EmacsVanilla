@@ -251,6 +251,11 @@
       :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
                          "#+title: ${title}\n#+filetags: :DATASTRUCTURE:\n")
       :unnarrowed t)))
+  (org-roam-node-display-template
+   (format "${title}\t%s"
+           (propertize "${tags}" 'face '(:inherit org-tag :box nil))))
+  (org-roam-completion-everywhere t)
+  (org-roam-list-files-commands '(fd fdfind rg find))
   :config
   (org-roam-db-autosync-enable))
 
