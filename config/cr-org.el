@@ -6,11 +6,6 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 10, 2024
 
-(defvar custom-org-roam-daily-directory "~/Dropbox/RoamNotes/daily")
-
-(defvar variable-pitch-font "Iosevka Nerd Font")
-(defvar fixed-pitch-font "Iosevka Nerd Font")
-
 (use-package mixed-pitch
   :ensure t
   :hook
@@ -20,6 +15,9 @@
   :ensure nil
   :demand t
   :preface
+  (defvar custom-org-roam-daily-directory "~/Dropbox/RoamNotes/daily")
+  (defvar variable-pitch-font "Iosevka Nerd Font")
+  (defvar fixed-pitch-font "Iosevka Nerd Font")
   (defun cr/set-pretty-symbol ()
     "Beautify Org Checkbox Symbol"
     (push '("[ ]" .  "☐") prettify-symbols-alist)
