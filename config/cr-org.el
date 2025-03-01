@@ -402,5 +402,16 @@
                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
 
+(use-package org-ai
+  :ensure t
+  :commands (org-ai-mode
+             org-ai-global-mode)
+  :custom
+  (org-ai-default-chat-model "gpt-4")
+  :init
+  (org-ai-global-mode)
+  :config
+  (org-ai-install-yasnippets))
+
 (provide 'cr-org)
 ;;; cr-org.el ends here
