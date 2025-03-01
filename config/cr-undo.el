@@ -6,6 +6,12 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 08, 2024
 
+(use-package undo-tree
+  :disabled t
+  :ensure t
+  :init
+  (global-undo-tree-mode))
+
 (use-package undo-fu
   :ensure t
   :custom
