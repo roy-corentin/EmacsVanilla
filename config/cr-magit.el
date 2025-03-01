@@ -41,19 +41,10 @@
   (transient-append-suffix 'magit-pull "-r"
     '("-a" "Autostash" "--autostash")))
 
-(use-package magit-todos
+(use-package forge
   :ensure t
   :after magit
   :custom
-  (magit-todos-keyword-suffix "\\(?:([^)]+)\\)?:?") ; make colon optional
-  :config
-  (define-key magit-todos-section-map "j" nil)
-  (magit-todos-mode 1))
-
-;; (use-package forge
-;;   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "magit/forge" :files (:defaults) :branch "main")
-;;   :after magit
-;;   :custom
-;;   (forge-add-default-bindings nil))
+  (forge-add-default-bindings nil))
 
 (provide 'cr-magit)
