@@ -179,4 +179,11 @@ If prefix ARG is set, prompt for a directory to search from."
       (project-find-file)
     (consult-buffer)))
 
+(defun cr/reload-theme ()
+  "Reload current theme"
+  (interactive)
+  (message (concat "Reload theme: "emacs-theme))
+  (disable-theme (intern emacs-theme))
+  (load-theme (intern emacs-theme) t))
+
 (provide 'cr-methods)
