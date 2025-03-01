@@ -272,7 +272,14 @@
    :keymaps 'kubernetes-mode-map
    "v" 'kubernetes-overview-set-sections
    "RET" 'kubernetes-logs-follow
-   "l" 'kubernetes-logs-follow))
+   "l" 'kubernetes-logs-follow)
+  (general-define-key
+   :keymaps 'vertico-map
+   "C-SPC" '+vertico/embark-preview
+   "C-M-j" #'vertico-next-group
+   "C-M-k" #'vertico-previous-group
+   "<wheel-down>" #'vertico-next
+   "<wheel-up>" #'vertico-previous))
 
 (use-package drag-stuff
   :ensure t
