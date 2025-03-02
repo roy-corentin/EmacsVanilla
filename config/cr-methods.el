@@ -186,4 +186,19 @@ If prefix ARG is set, prompt for a directory to search from."
   (disable-theme (intern emacs-theme))
   (load-theme (intern emacs-theme) t))
 
+(defun cr/comment-line (n)
+  "Comment as I want (Do What I Mean).
+If the region is active call `comment-or-uncomment-region'
+Otherwise use line positions as range to call `comment-or-uncomment-region'"
+  (interactive "*P")
+  (if (use-region-p)
+      (comment-or-uncomment-region (region-beginning) (region-end) n)
+    (let ((range
+           (list (line-beginning-position)
+                 (line-end-position n))))
+      (comment-or-uncomment-region
+       (apply #'min range)
+       (apply #'max range)))
+    (back-to-indentation)))
+
 (provide 'cr-methods)

@@ -267,7 +267,8 @@
    :states '(insert normal visual)
    :keymaps 'override
    "M-j" 'scroll-other-window
-   "M-k" 'scroll-other-window-down)
+   "M-k" 'scroll-other-window-down
+   "C-x C-;" 'cr/comment-line)
   (general-define-key
    :states '(normal)
    :keymaps 'kubernetes-mode-map
