@@ -182,9 +182,9 @@ If prefix ARG is set, prompt for a directory to search from."
 (defun cr/reload-theme ()
   "Reload current theme"
   (interactive)
-  (message (concat "Reload theme: "emacs-theme))
-  (disable-theme (intern emacs-theme))
-  (load-theme (intern emacs-theme) t))
+  (disable-theme emacs-theme)
+  (load-theme emacs-theme t)
+  (message "Theme reloaded"))
 
 (defun cr/comment-line (n)
   "Comment as I want (Do What I Mean).
