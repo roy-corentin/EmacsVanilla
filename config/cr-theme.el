@@ -127,6 +127,8 @@
   (catppuccin-flavor 'mocha))
 
 (use-package kaolin-themes
+  :custom
+  (kaolin-themes-hl-line-colored t)
   :ensure t)
 
 (use-package rainbow-delimiters
