@@ -227,7 +227,17 @@
    :keymaps 'override
    "g" '(:ignore t)
    "g =" '(org-increase-number-at-point :which-key "Increase at point")
-   "g -" '(org-decrease-number-at-point :which-key "Decrease at point"))
+   "g -" '(org-decrease-number-at-point :which-key "Decrease at point")
+   "g z" '(:ignore t :which-key "Evil Multiple-Cursors")
+   "g z j" '(evil-mc-make-cursor-move-next-line :which-key "Make cursor next line")
+   "g z k" '(evil-mc-make-cursor-move-prev-line :which-key "Make cursor previous line")
+   "g z n" '(evil-mc-make-and-goto-next-match :which-key "Make cursor next match")
+   "g z S-n" '(evil-mc-make-and-goto-prev-match :which-key "Make cursor previous match")
+   "g z a" '(evil-mc-make-all-cursors :which-key "Make cursor all match")
+   "g z z" '(evil-mc-make-cursor-here :which-key "Make cursors here")
+   "g z q" '(evil-mc-undo-all-cursors :which-key "Undo all cursor")
+   "g z p" '(evil-mc-pause-cursors :which-key "Pause cursors")
+   "g z r" '(evil-mc-resume-cursors :which-key "Resume cursors"))
   (general-define-key
    :states '(normal visual)
    :keymaps 'dired-mode-map
