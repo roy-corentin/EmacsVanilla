@@ -279,6 +279,7 @@
    :keymaps 'override
    "M-j" 'scroll-other-window
    "M-k" 'scroll-other-window-down
+   "C-," 'previous-buffer
    "C-x C-;" 'cr/comment-line)
   (general-define-key
    :states '(normal)
