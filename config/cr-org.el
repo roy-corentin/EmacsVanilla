@@ -413,5 +413,35 @@
   :config
   (org-ai-install-yasnippets))
 
+(use-package visual-fill-column
+  :ensure t)
+
+(use-package org-present
+  :ensure t
+  :preface
+  (defun my/org-present-start (&rest args)
+    (visual-line-mode 1)
+    (org-display-inline-images)
+    (org-present-hide-cursor)
+    (org-present-read-only)
+    (setq header-line-format " "))
+  (defun my/org-present-end (&rest args)
+    (visual-line-mode 0)
+    (org-remove-inline-images)
+    (org-present-show-cursor)
+    (org-present-read-write)
+    (setq header-line-format nil))
+  (defun my/org-present-prepare-slide (buffer-name heading)
+    ;; Show only top-level headlines
+    (org-overview)
+    ;; Unfold the current entry
+    (org-show-entry)
+    ;; Show only direct subheadings of the slide but don't expand them
+    (org-show-children))
+  :hook (org-present-mode . my/org-present-start)
+  :hook (org-present-mode-quit . my/org-present-end)
+  :custom
+  (org-present-after-navigate-functions  #'my/org-present-end))
+
 (provide 'cr-org)
 ;;; cr-org.el ends here
