@@ -25,7 +25,6 @@
   :hook (javascript-ts-mode . eglot-ensure)
   :hook (json-ts-mode . eglot-ensure)
   :custom
-  (eglot-events-buffer-size 0)
   (eglot-connect-timeout 60)
   (eglot-advertise-cancellation t)
   (eglot-autoshutdown t)
@@ -42,7 +41,7 @@
   :after eglot
   :custom
   (eglot-booster-no-remote-boost t)
-  (eglot-booster-io-only t)
+  (eglot-booster-io-only nil)
   :config
   (eglot-booster-mode))
 
