@@ -57,6 +57,7 @@
   (setq dirvish-preview-dispatchers
         (cl-substitute 'eza 'dired dirvish-preview-dispatchers))
   (dirvish-side-follow-mode)
+  (dirvish-peek-mode)
   :init
   (dirvish-override-dired-mode))
 
