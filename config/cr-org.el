@@ -57,9 +57,9 @@
   (defun cr/org-font-setup ()
     (setq-local display-line-numbers-type 'visual)
     ;; Set faces for heading levels
-    (dolist (face '((org-level-1 . 1.25)
-                    (org-level-2 . 1.1)
-                    (org-level-3 . 1.0)
+    (dolist (face '((org-level-1 . 1.3)
+                    (org-level-2 . 1.2)
+                    (org-level-3 . 1.1)
                     (org-level-4 . 1.0)
                     (org-level-5 . 1.0)
                     (org-level-6 . 1.0)
@@ -67,7 +67,7 @@
                     (org-level-8 . 1.0)))
       (set-face-attribute (car face) nil :font variable-pitch-font :weight 'medium :height (cdr face)))
     ;; Make the document title bigger
-    (set-face-attribute 'org-document-title nil :family variable-pitch-font :weight 'bold :height 2.1)
+    (set-face-attribute 'org-document-title nil :font variable-pitch-font :weight 'bold :height 2.1)
     ;; Ensure that anything that should be fixed-pitch in Org files appears that way
     (set-face-attribute 'org-block nil :foreground 'unspecified :inherit 'fixed-pitch)
     (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
