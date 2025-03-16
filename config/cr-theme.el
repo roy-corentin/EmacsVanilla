@@ -9,16 +9,10 @@
 (use-package doom-themes
   :ensure t
   :custom
-  ;; Global settings (defaults)
-  (doom-themes-enable-bold t)    ; if nil, bold is universally disabled
+  (doom-themes-enable-bold t) ; if nil, bold is universally disabled
   (doom-themes-enable-italic t) ; if nil, italics is universally disabled
   :config
-  ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
-  ;; or for treemacs users
-  ;; (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
-  ;; (doom-themes-treemacs-config)
-  ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
 (use-package ewal
@@ -29,12 +23,6 @@
 (use-package ewal-doom-themes
   :ensure t
   :after ewal)
-
-(use-package evangelion-theme
-  :ensure (:protocol https :depth 1 :inherit t  :fetcher github :repo "crmsnbleyd/evangelion-theme" :files (:defaults))
-  :custom
-  ;; `nil' to disable background for comments
-  (evangelion-comment-background-enabled nil))
 
 (use-package solaire-mode
   :ensure t
@@ -83,11 +71,10 @@
   :hook (magit-post-refresh . diff-hl-magit-post-refresh)
   :hook (diff-hl-mode-on . enable-diff-hl-margin-in-gui)
   :custom
+  (diff-hl-bmp-max-width 4)
   (diff-hl-disable-on-remote t)
   (vc-git-diff-switches '("--histogram"))
-  ;; PERF: Slightly more conservative delay before updating the diff
-  (diff-hl-flydiff-delay 0.5)  ; default: 0.3
-  ;; PERF: don't block Emacs when updating vc gutter
+  (diff-hl-flydiff-delay 0.5)
   (diff-hl-update-async t)
   ;; UX: get realtime feedback in diffs after staging/unstaging hunks.
   (diff-hl-show-staged-changes nil)
@@ -149,6 +136,7 @@
   :custom
   (indent-bars-treesit-support t)
   (indent-bars-treesit-ignore-blank-lines-types '("module"))
+  (indent-bars-starting-column 1)
   (indent-bars-treesit-scope '((python function_definition class_definition for_statement
                                        if_statement with_statement while_statement)
                                (ruby module class method call if)
@@ -160,12 +148,8 @@
                                            method_definition function_declaration for_statement
                                            if_statement while_statement try_statement type_alias_declaration
                                            lexical_declaration pair call_expression)))
-  ;; wrap may not be needed if no-descend-list is enough
-  ;;(indent-bars-treesit-wrap '((python argument_list parameters ; for python, as an example
-  ;;				      list list_comprehension
-  ;;				      dictionary dictionary_comprehension
-  ;;				      parenthesized_expression subscript)))
-  :hook ((python-base-mode yaml-mode ruby-base-mode typescript-ts-base-mode c-ts-mode) . indent-bars-mode))
+  :hook ((python-base-mode yaml-mode ruby-base-mode typescript-ts-base-mode c-ts-mode zig-ts-mode) . indent-bars-mode)
+  )
 
 (use-package tab-line
   :ensure nil
