@@ -64,12 +64,12 @@
   :ensure t
   :demand t
   :preface
-  (defun enable-diff-hl-margin-in-gui ()
+  (defun enable-diff-hl-margin-in-tui ()
     (unless (display-graphic-p) (diff-hl-margin-local-mode)))
-  ;; :hook (dired-mode . diff-hl-dired-mode) ;; HACK uncomment if you don't use dirvish
+  ;; :hook (dired-mode . diff-hl-dired-mode) ; HACK uncomment if you don't use dirvish
   :hook (magit-pre-refresh . diff-hl-magit-pre-refresh)
   :hook (magit-post-refresh . diff-hl-magit-post-refresh)
-  :hook (diff-hl-mode-on . enable-diff-hl-margin-in-gui)
+  :hook (diff-hl-mode-on . enable-diff-hl-margin-in-tui)
   :custom
   (diff-hl-bmp-max-width 4)
   (diff-hl-disable-on-remote t)
