@@ -178,10 +178,16 @@
    "c i" '(org-clock-in :which-key "Clock in")
    "c o" '(org-clock-out :which-key "Clock out")
    "c g" '(org-clock-goto :which-key "Clock goto")
+   "d" '(org-deadline :which-key "Deadline")
+   "s" '(org-schedule :which-key "Schedule")
    "t" '(org-todo :which-key "Org todo")
    "l" '(:ignore t :which-key "Org link")
    "l l" '(org-insert-link :which-key "Insert link")
-   "s" '(svg-tag-mode :which-key "Toggle svg-tag-mode"))
+   "S" '(svg-tag-mode :which-key "Toggle svg-tag-mode")
+   "p"  '(:ignore t :which-key "priority")
+   "p p" '(org-priority :which-key "priority")
+   "p d" '(org-priority-down :which-key "priority down")
+   "p u" '(org-priority-up :which-key "priority up"))
   (general-define-key
    :states 'normal
    :keymaps 'csv-mode-map
@@ -285,6 +291,7 @@
    :states '(normal)
    :keymaps 'kubernetes-mode-map
    "v" 'kubernetes-overview-set-sections
+   "c" 'kubernetes-contexts-use-context
    "RET" 'kubernetes-logs-follow
    "l" 'kubernetes-logs-follow)
   (general-define-key
