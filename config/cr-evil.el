@@ -94,9 +94,22 @@
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys)
   (evil-define-key 'normal 'evil-org-mode
-    (kbd "C-<return>") '+org/insert-item-below
-    (kbd "<return>") '+org/dwim-at-point
-    (kbd "zi") 'org-toggle-inline-images)
+    (kbd "C-<return>") #'+org/insert-item-below
+    (kbd "C-S-<return>") #'+org/insert-item-above
+    (kbd "C-M-<return>")  #'org-insert-subheading
+    (kbd "<return>") #'+org/dwim-at-point
+    (kbd "zi") #'org-toggle-inline-images
+    (kbd "C-S-l") #'org-shiftright
+    (kbd "C-S-h") #'org-shiftleft
+    (kbd "C-S-k") #'org-shiftup
+    (kbd "C-S-j") #'org-shiftdown
+    (kbd "]h") #'org-forward-heading-same-level
+    (kbd "[h") #'org-backward-heading-same-level
+    (kbd "]l") #'org-next-link
+    (kbd "[l") #'org-previous-link
+    (kbd "]c") #'org-babel-next-src-block
+    (kbd "[c") #'org-babel-previous-src-block
+    )
   (evil-define-key 'insert 'evil-org-mode
     (kbd "C-<return>") '+org/insert-item-below))
 
