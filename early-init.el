@@ -61,7 +61,6 @@
 (use-package emacs
   :ensure nil
   :preface
-  (defalias 'yes-or-no-p 'y-or-n-p)
   (defun enable-show-trailing-whitespace ()
     (setq show-trailing-whitespace t))
   (defun get-or-create-dashboard-buffer ()
@@ -75,6 +74,7 @@
   (org-mode . display-line-numbers-mode)
   (prog-mode . enable-show-trailing-whitespace)
   :custom
+  (use-short-answers t)
   (native-comp-async-report-warnings-errors nil)
   (make-backup-files nil)
   (auto-save-default nil)
