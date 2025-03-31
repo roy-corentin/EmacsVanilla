@@ -123,6 +123,7 @@
   (electric-pair-mode t)
   (set-fringe-mode '(4 . 4))
   (global-auto-revert-mode t)
+  (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
   :bind
   ("C-=" . text-scale-increase)
   ("C--" . text-scale-decrease)
