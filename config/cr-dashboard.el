@@ -14,11 +14,13 @@
   :hook (elpaca-after-init . dashboard-initialize)
   :requires nerd-icons
   :custom
+  (dashboard-startup-banner 'logo)
   (dashboard-display-icons-p t)     ; display icons on both GUI and terminal
   (dashboard-icon-type 'nerd-icons) ; use `nerd-icons' package
   (dashboard-set-heading-icons t)
   (dashboard-set-file-icons t)
   (dashboard-center-content t)
+  (dashboard-icon-type 'nerd-icons)
   (dashboard-items '((recents   . 5)
                      (projects  . 5)
                      (agenda    . 5)
