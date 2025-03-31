@@ -13,7 +13,7 @@
 
 (use-package org
   :ensure nil
-  :demand t
+  :defer t
   :preface
   (defvar custom-org-roam-daily-directory "~/Dropbox/RoamNotes/daily")
   (defvar variable-pitch-font "Iosevka Nerd Font")
@@ -101,6 +101,8 @@
   (org-directory "~/Dropbox/Org/")
   (org-agenda-files (list org-directory custom-org-roam-daily-directory))
   (org-agenda-start-with-log-mode t)
+  (org-fontify-done-headline t)
+  (org-hide-leading-stars t)
   (org-log-done 'time)
   (org-ellipsis " ▼ ")
   (org-log-into-drawer t)
