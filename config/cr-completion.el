@@ -19,7 +19,7 @@
   :custom
   (vertico-cycle t)
   (vertico-count 20)
-  :config
+  :init
   (vertico-mode))
 
 (use-package vertico-posframe
@@ -80,8 +80,8 @@
   (defun corfu-enable-in-minibuffer ()
     "Enable Corfu in the minibuffer."
     (when (local-variable-p 'completion-at-point-functions)
-      ;; (setq-local corfu-auto nil) ;; Enable/disable auto completion
-      (setq-local corfu-echo-delay nil ;; Disable automatic echo and popup
+      ;; (setq-local corfu-auto nil) ; Enable/disable auto completion
+      (setq-local corfu-echo-delay nil ; Disable automatic echo and popup
                   corfu-popupinfo-delay nil)
       (corfu-mode 1)))
   :hook eshell-mode
@@ -92,18 +92,20 @@
               ("C-j" . corfu-next)
               ("C-k" . corfu-previous))
   :custom
-  (corfu-auto t)               ;; Enable auto completion
-  (corfu-cycle t)              ;; Enable cycling for `corfu-next/previous'
+  (corfu-auto t)               ; Enable auto completion
+  (corfu-cycle t)              ; Enable cycling for `corfu-next/previous'
   (corfu-auto-prefix 2)
-  (corfu-auto-delay 0.18)
+  (corfu-auto-delay 0.05)
   (corfu-popupinfo-delay '(1.0 . 1.0))
-  ;;(corfu-quit-at-boundary nil) ;; Never quit at completion boundary
-  (corfu-separator ?\s)        ;; Orderless field separator
+  ;;(corfu-quit-at-boundary nil) ; Never quit at completion boundary
+  (corfu-separator ?\s)        ; Orderless field separator
   (corfu-quit-no-match 'separator)
-  ;; (corfu-preview-current nil) ;; Disable current candidate preview
-  (corfu-preselect 'prompt)    ;; Preselect the prompt
-  (corfu-on-exact-match 'show) ;; Configure handling of exact matches
-  ;; (corfu-scroll-margin 5)     ;; Use scroll margin
+  ;; (corfu-preview-current nil) ; Disable current candidate preview
+  (corfu-preselect 'prompt)    ; Preselect the prompt
+  (corfu-on-exact-match 'show) ; Configure handling of exact matches
+  ;; (corfu-scroll-margin 5)     ; Use scroll margin
+  (corfu-preview-current 'insert)
+  (corfu-preselect 'first)
   :config
   (corfu-echo-mode)
   (corfu-popupinfo-mode)
@@ -146,13 +148,15 @@
 (use-package orderless
   :ensure t
   :demand t
+  :after vertico
   :custom
   ;; Configure a custom style dispatcher (see the Consult wiki)
   ;; (orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch))
   ;; (orderless-component-separator #'orderless-escapable-split-on-space)
-  (completion-styles '(orderless basic))
+  (completion-styles '(orderless partial-completion))
+  ;; (completion-styles '(orderless basic))
   (completion-category-defaults nil)
-  (completion-category-overrides '((file (styles partial-completion)))))
+  (completion-category-overrides '((file (styles . (partial-completion))))))
 
 (use-package consult
   :ensure t
