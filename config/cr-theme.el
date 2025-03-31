@@ -50,16 +50,6 @@
   :config
   (doom-modeline-mode 1))
 
-;; (use-package git-gutter
-;;   :ensure t
-;;   :hook (prog-mode text-mode)
-;;   :custom
-;;   (fringes-outside-margins t)
-;;   :init
-;;   (global-git-gutter-mode t)
-;;   :config
-;;   (fringe-mode '8))
-
 (use-package diff-hl
   :ensure t
   :demand t
@@ -78,8 +68,20 @@
   (diff-hl-update-async t)
   ;; UX: get realtime feedback in diffs after staging/unstaging hunks.
   (diff-hl-show-staged-changes nil)
+  (diff-hl-draw-borders t)
   :config
   (global-diff-hl-mode t))
+
+(use-package git-gutter
+  :ensure t
+  :disabled (package-installed-p 'diff-hl)
+  :hook (prog-mode text-mode)
+  :custom
+  (fringes-outside-margins t)
+  :init
+  (global-git-gutter-mode t)
+  :config
+  (fringe-mode '8))
 
 (use-package hl-todo
   :ensure (:protocol https :depth 1 :inherit t  :fetcher github :repo "tarsius/hl-todo" :version (lambda (_) "3.8.1" ) :files (:defaults))
