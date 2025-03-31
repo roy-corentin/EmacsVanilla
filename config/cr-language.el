@@ -39,7 +39,6 @@
   :hook
   (tsx-ts-mode . disable-rainbow-delimiter-mode))
 
-
 (use-package outline-yaml
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "jamescherti/outline-yaml.el" :files (:defaults))
   :preface
@@ -53,5 +52,8 @@
    (yaml-ts-mode . outline-yaml-minor-mode))
   :init
   (my-outline-set-global-ellipsis " ▼ "))
+
+(use-package rbs-mode
+  :ensure t)
 
 (provide 'cr-language)
