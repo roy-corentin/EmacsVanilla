@@ -136,6 +136,7 @@ If prefix ARG is set, prompt for a directory to search from."
   (ignore args)
   (when (project-current)
     (project-kill-buffers)))
+
 (advice-add #'tab-close :before #'cr/try-kill-project-buffers)
 (advice-add #'tab-switcher-execute :before #'cr/try-kill-project-buffers)
 
@@ -200,5 +201,20 @@ Otherwise use line positions as range to call `comment-or-uncomment-region'"
        (apply #'min range)
        (apply #'max range)))
     (back-to-indentation)))
+
+(defun cr/ruby-navigate-file ()
+  (interactive)
+  (let ((file-path (buffer-file-name (current-buffer))))
+    (if (s-contains-p "/spec/" file-path)
+        (cr/ruby-navigate-source-file file-path)
+      (cr/ruby-navigate-spec-file file-path))))
+
+(defun cr/ruby-navigate-source-file (file-path)
+  (interactive "bFile to search source file")
+  (find-file (s-replace "_spec.rb" ".rb" (s-replace "/spec/" "/app/" file-path))))
+
+(defun cr/ruby-navigate-spec-file (file-path)
+  (interactive "bFile to search spec file")
+  (find-file (s-replace ".rb" "_spec.rb" (s-replace "/app/" "/spec/" file-path))))
 
 (provide 'cr-methods)

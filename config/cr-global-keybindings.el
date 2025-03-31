@@ -126,6 +126,7 @@
     "s s" '(consult-line :which-key "Search in file")
     "s i" '(consult-imenu :which-key "IMenu")
     "s p" '(consult-ripgrep :wich "Search in Project")
+    "s g" '(consult-git-grep :wich "Search in Git Project")
     "s e" '(consult-flymake :which-key "Search Erros")
     "s d" '(+default/search-cwd :which-key "Search in current dir")
     "s u" '(vundo :which-key "Vundo")
@@ -166,7 +167,8 @@
    "b e" '(ruby-end-of-block :which-key "End of block")
    "f" '(:ignore t :which-key "Function")
    "f b" '(ruby-beginning-of-defun :which-key "Beginning of function")
-   "f e" '(ruby-end-of-defun :which-key "End of function"))
+   "f e" '(ruby-end-of-defun :which-key "End of function")
+   "s" '(cr/ruby-navigate-file :which-key "Navigate between spec/source file"))
   (general-define-key
    :states '(visual normal)
    :keymaps 'org-mode-map
