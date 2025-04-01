@@ -28,6 +28,7 @@
   (eglot-connect-timeout 60)
   (eglot-advertise-cancellation t)
   (eglot-autoshutdown t)
+  (eglot-code-action-indications '(eldoc-hint mode-line))
   :custom-face
   (eglot-highlight-symbol-face ((t (:inherit highlight :weight bold))))
   :config
