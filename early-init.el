@@ -136,6 +136,7 @@
 
 (use-package gcmh
   :ensure t
+  :if (not (fboundp 'igc-stats)) ; Disabled gcmh if emacs compiled with igc
   :config
   (gcmh-mode 1))
 
