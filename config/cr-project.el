@@ -19,7 +19,6 @@
   :custom
   (project-vc-ignores '("target/" "obj/" "node_modules/" "_build/"))
   (project-vc-extra-root-markers '(".project"))
-  (project-known-project-roots)
   (project-switch-commands '((project-find-file "Find file" ?f)
                              (project-find-regexp "Find regexp" ?r)
                              (project-find-dir "Find directory" ?d)
