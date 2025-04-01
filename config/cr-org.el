@@ -284,7 +284,7 @@
   :preface
   (defun svg-progress-percent (value)
     (let* ((count (string-to-number value))
-           (font (if (eql 100 count) 'org-done 'org-todo)))
+           (font (if (eql 100 count) 'org-checkbox-statistics-done 'org-checkbox-statistics-todo)))
       (if (zerop count)
           (svg-lib-tag (concat value "%") 'org-done :stroke 0 :margin 0)
         (svg-image (svg-lib-concat
@@ -297,7 +297,7 @@
     (let* ((seq (mapcar #'string-to-number (split-string value "/")))
            (count (float (car seq)))
            (total (float (cadr seq)))
-           (font (if (eql count total) 'org-done 'org-todo)))
+           (font (if (eql count total) 'org-checkbox-statistics-done 'org-checkbox-statistics-todo)))
       (if (zerop total)
           (svg-lib-tag value 'org-done :stroke 0 :margin 0)
         (svg-image (svg-lib-concat (svg-lib-progress-bar (/ count total)
