@@ -46,4 +46,8 @@
   :config
   (eglot-booster-mode))
 
+(use-package xref
+  :custom
+  (xref-auto-jump-to-first-definition t))
+
 (provide 'cr-eglot)
