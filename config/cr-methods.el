@@ -217,4 +217,7 @@ Otherwise use line positions as range to call `comment-or-uncomment-region'"
   (interactive "bFile to search spec file")
   (find-file (s-replace ".rb" "_spec.rb" (s-replace "/app/" "/spec/" file-path))))
 
+(defun disable-rainbow-delimiter-mode ()
+  (rainbow-delimiters-mode -1))
+
 (provide 'cr-methods)

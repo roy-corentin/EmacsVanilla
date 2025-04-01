@@ -31,13 +31,12 @@
   :ensure t)
 
 (use-package typescript-ts-mode
-  :ensure nil
-  :demand t
-  :preface
-  (defun disable-rainbow-delimiter-mode ()
-    (rainbow-delimiters-mode -1))
   :hook
   (tsx-ts-mode . disable-rainbow-delimiter-mode))
+
+(use-package mhtml-ts-mode
+  :hook
+  (mhtml-ts-mode . disable-rainbow-delimiter-mode))
 
 (use-package outline-yaml
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "jamescherti/outline-yaml.el" :files (:defaults))
