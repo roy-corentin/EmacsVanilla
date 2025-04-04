@@ -220,4 +220,12 @@ Otherwise use line positions as range to call `comment-or-uncomment-region'"
 (defun disable-rainbow-delimiter-mode ()
   (rainbow-delimiters-mode -1))
 
+(defun cr/vterm-insert-up ()
+  (interactive)
+  (vterm-send-key "<up>"))
+
+(defun cr/vterm-insert-down ()
+  (interactive)
+  (vterm-send-key "<down>"))
+
 (provide 'cr-methods)

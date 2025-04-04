@@ -302,7 +302,12 @@
    "C-M-j" #'vertico-next-group
    "C-M-k" #'vertico-previous-group
    "<wheel-down>" #'vertico-next
-   "<wheel-up>" #'vertico-previous))
+   "<wheel-up>" #'vertico-previous)
+  (general-define-key
+   :states '(insert)
+   :keymaps 'vterm-mode-map
+   "C-p" 'cr/vterm-insert-up
+   "C-n" 'cr/vterm-insert-down))
 
 (use-package drag-stuff
   :ensure t
