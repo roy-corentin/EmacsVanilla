@@ -105,6 +105,9 @@
   ;; mode.  Corfu commands are hidden, since they are not used via M-x. This
   ;; setting is useful beyond Corfu.
   (read-extended-command-predicate #'command-completion-default-include-p)
+  (fringes-outside-margins t)
+  (show-paren-delay 0.01)
+  (inhibit-quit t)
   :custom-face
   (default ((t :family "Iosevka Nerd Font" :weight medium :height 120)))
   (fixed-pitch ((t :family "Iosevka Nerd Font" :weight bold :height 120)))
