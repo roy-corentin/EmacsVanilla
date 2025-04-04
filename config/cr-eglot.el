@@ -29,6 +29,7 @@
   (eglot-advertise-cancellation t)
   (eglot-autoshutdown t)
   (eglot-code-action-indications '(eldoc-hint mode-line))
+  (eglot-send-changes-idle-time 0.2)
   :custom-face
   (eglot-highlight-symbol-face ((t (:inherit highlight :weight bold))))
   :config
