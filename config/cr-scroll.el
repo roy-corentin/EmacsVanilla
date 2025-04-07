@@ -58,6 +58,8 @@
               mwheel-scroll-down-function #'scroll-down)))
   :hook
   (good-scroll-mode . smooth-scroll-coexist-with-ultra-scroll-h)
+  :custom
+  (good-scroll-render-rate 0.05)
   :config
   (good-scroll-mode 1)
   (advice-add #'scroll-up :around #'good-scroll--scroll-up)
