@@ -15,15 +15,6 @@
   (doom-themes-visual-bell-config)
   (doom-themes-org-config))
 
-(use-package ewal
-  :ensure t
-  :custom
-  (ewal-use-built-in-on-failure-p t))
-
-(use-package ewal-doom-themes
-  :ensure t
-  :after ewal)
-
 (use-package solaire-mode
   :ensure t
   :config
