@@ -20,7 +20,6 @@
 
 ;;; Code:
 
-
 (use-package ultra-scroll
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "jdsmith/ultra-scroll" :files (:defaults))
   :hook
@@ -58,7 +57,7 @@
         (setq mwheel-scroll-up-function #'scroll-up
               mwheel-scroll-down-function #'scroll-down)))
   :hook
-  (good-scroll-mode-hook . smooth-scroll-coexist-with-ultra-scroll-h)
+  (good-scroll-mode . smooth-scroll-coexist-with-ultra-scroll-h)
   :config
   (good-scroll-mode 1)
   (advice-add #'scroll-up :around #'good-scroll--scroll-up)
