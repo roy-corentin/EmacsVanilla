@@ -39,5 +39,8 @@
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
+(use-package treesitter-context
+  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "zbelial/treesitter-context.el" :files (:defaults)))
+
 (provide 'cr-treesit)
 ;;; cr-treesit.el ends here
