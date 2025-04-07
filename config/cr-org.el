@@ -100,6 +100,7 @@
                             "* %(org-contacts-template-name)\n:PROPERTIES:\n:EMAIL: %(org-contacts-template-email)\n:END:")))
   (org-directory "~/Dropbox/Org/")
   (org-agenda-files (list org-directory custom-org-roam-daily-directory))
+  (org-agenda-file-regexp "\\`[^.].*todo\\.org\\'")
   (org-agenda-start-with-log-mode t)
   (org-fontify-done-headline t)
   (org-hide-leading-stars t)
