@@ -128,10 +128,6 @@
   (tramp-chunksize 2000)
   (tramp-use-ssh-controlmaster-options nil))
 
-(use-package mhtml-ts-mode
-  :ensure nil
-  :mode ("\\.vue\\'" . mhtml-ts-mode))
-
 (require 'cr-theme)
 (require 'cr-org)
 (require 'cr-term)

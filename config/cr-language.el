@@ -55,4 +55,7 @@
 (use-package rbs-mode
   :ensure t)
 
+(use-package vue-ts-mode
+  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "8uff3r/vue-ts-mode" :files (:defaults)))
+
 (provide 'cr-language)
