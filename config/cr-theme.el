@@ -29,19 +29,8 @@
   :config
   (solaire-global-mode t))
 
-(use-package mood-line
-  :ensure t
-  :disabled t
-  :hook (after-init . mood-line-mode)
-  :custom
-  (mood-line-format mood-line-format-default)
-  (mood-line-glyph-alist mood-line-glyphs-fira-code)
-  :config
-  (mood-line-mode))
-
 (use-package doom-modeline
   :ensure t
-  :if (not (locate-library "mood-line.el"))
   :demand t
   :hook (doom-modeline-mode . size-indication-mode) ; filesize in modeline
   :hook (doom-modeline-mode . column-number-mode)   ; cursor column in modeline
