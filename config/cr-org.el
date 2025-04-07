@@ -311,10 +311,12 @@
   (svg-tag-tags
    '(
      ;; Org tags
-     ("\\(:[A-Z_]+:\\)" . ((lambda (tag)
-                             (svg-tag-make tag :beg 1 :end -1 :margin 1.5))))
-     ("\\(:[A-Z_]+:\\)$" . ((lambda (tag)
-                              (svg-tag-make tag :beg 1 :end -1 :margin 1.5))))
+     ("^#+.*\\(:[A-Z_]+:\\)" . ((lambda (tag)
+                                  (svg-tag-make tag :beg 1 :end -1 :margin 1.5 :face 'org-meta-line))))
+     ("^#+.*\\(:[A-Z_]+:\\)$" . ((lambda (tag)
+                                   (svg-tag-make tag :beg 1 :end -1 :margin 1.5 :face 'org-meta-line))))
+     ("\*.*\\(:[A-Z_]+:\\)" . ((lambda (tag)
+                                 (svg-tag-make tag :beg 1 :end -1 :margin 1.5 :face 'org-tag))))
      ;; todos/dones
      ("\\(TODO\\)" . ((lambda (tag)
                         (svg-tag-make tag :inverse t :face 'org-todo))))
