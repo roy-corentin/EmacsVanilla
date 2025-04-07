@@ -149,6 +149,15 @@ If on a:
               (org-element-property :end context)))))))))
 
 ;;;###autoload
+(defun +org/shift-return (&optional arg)
+  "Insert a literal newline, or dwim in tables.
+Executes `org-table-copy-down' if in table."
+  (interactive "p")
+  (if (org-at-table-p)
+      (org-table-copy-down arg)
+    (org-return nil arg)))
+
+;;;###autoload
 (defun +org-get-todo-keywords-for (&optional keyword)
   "Returns the list of todo keywords that KEYWORD belongs to."
   (when keyword

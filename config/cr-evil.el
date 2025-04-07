@@ -97,6 +97,7 @@
     (kbd "C-<return>") #'+org/insert-item-below
     (kbd "C-S-<return>") #'+org/insert-item-above
     (kbd "C-M-<return>")  #'org-insert-subheading
+    (kbd "S-<return>") #'+org/shift-return
     (kbd "<return>") #'+org/dwim-at-point
     (kbd "zi") #'org-toggle-inline-images
     (kbd "C-S-l") #'org-shiftright
@@ -111,7 +112,8 @@
     (kbd "[c") #'org-babel-previous-src-block
     )
   (evil-define-key 'insert 'evil-org-mode
-    (kbd "C-<return>") '+org/insert-item-below))
+    (kbd "S-<return>") #'+org/shift-return
+    (kbd "C-<return>") #'+org/insert-item-below))
 
 (use-package evil-goggles
   :ensure t
