@@ -13,10 +13,15 @@
   (add-to-list 'apheleia-mode-alist '(python-ts-mode . ruff))
   (apheleia-global-mode +1))
 
-(use-package ws-butler
+
+(use-package stripspace
   :ensure t
-  :config
-  (ws-butler-global-mode))
+  :hook ((prog-mode . stripspace-local-mode)
+         (text-mode . stripspace-local-mode)
+         (conf-mode . stripspace-local-mode))
+  :custom
+  (stripspace-only-if-initially-clean nil)
+  (stripspace-restore-column t))
 
 (provide 'cr-formatter)
 ;;; cr-formatter.el ends here
