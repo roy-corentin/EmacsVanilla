@@ -135,6 +135,7 @@
      ("[ ]" . (:inherit org-todo :weight bold)) ("[-]" . (:foreground "#b7a1f5"))
      ("[?]" . org-default)
      ("👷🏻WIP" . org-tag) ("🔒HOLD" . org-default)))
+  (org-hide-emphasis-markers t)
   (org-todo-keywords
    '((sequence
       "TODO(t)"       ; A task that is ready to be tackled
@@ -445,6 +446,26 @@
   :hook (org-present-mode-quit . my/org-present-end)
   :custom
   (org-present-after-navigate-functions  #'my/org-present-end))
+
+(use-package org-appear
+  :ensure t
+  :hook org-mode
+  :preface
+  (defun evil-insert-appear ()
+    (add-hook 'evil-insert-state-entry-hook
+              #'org-appear-manual-start
+              nil
+              t)
+    (add-hook 'evil-insert-state-exit-hook
+              #'org-appear-manual-stop
+              nil
+              t))
+  :hook
+  (org-mode . evil-insert-appear)
+  :custom
+  (org-appear-emphasis t)
+  (org-appear-autolinks t)
+  (org-appear-trigger 'manual))
 
 (provide 'cr-org)
 ;;; cr-org.el ends here
