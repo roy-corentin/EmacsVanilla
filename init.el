@@ -108,37 +108,6 @@
 (use-package helpful
   :ensure t)
 
-(use-package ultra-scroll
-  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "jdsmith/ultra-scroll" :files (:defaults))
-  :hook
-  (ultra-scroll-hide-functions . hl-todo-mode)
-  (ultra-scroll-hide-functions . diff-hl-flydiff-mode)
-  (ultra-scroll-hide-functions . jit-lock-mode)
-  :custom
-  ;; (scroll-conservatively 101) ; important !
-  (scroll-conservatively 0)
-  (scroll-margin 0)
-  :config
-  (ultra-scroll-mode 1))
-
-(use-package good-scroll
-  :ensure t
-  :preface
-  (defun good-scroll--convert-line-to-step (line)
-    (cond ((integerp line) (* line (line-pixel-height)))
-          ((or (null line) (memq '- line))
-           (- (good-scroll--window-usable-height)
-              (* next-screen-context-lines (line-pixel-height))))
-          ((line-pixel-height))))
-  (defun good-scroll--scroll-up (&optional arg)
-    (good-scroll-move (good-scroll--convert-line-to-step arg)))
-  (defun good-scroll--scroll-down (&optional arg)
-    (good-scroll-move (- (good-scroll--convert-line-to-step arg))))
-  :config
-  (good-scroll-mode 1)
-  (advice-add #'scroll-up :override #'good-scroll--scroll-up)
-  (advice-add #'scroll-down :override #'good-scroll--scroll-down))
-
 (use-package pgmacs
   :after pg
   :ensure (:protocols https :inherit t :depth 1 :fetcher github :repo "emarsden/pgmacs", :files (:defaults)))
@@ -185,4 +154,5 @@
 (require 'cr-compile)
 (require 'cr-flymake)
 (require 'cr-kubernetes)
+(require 'cr-scroll)
 (require 'cr-global-keybindings)
