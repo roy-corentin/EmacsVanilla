@@ -43,10 +43,9 @@
   (olivetti-body-width 110))
 
 (use-package cr-olivetti
-  :ensure nil
   :after olivetti
   :config
-  (cr-olivetti-on-large-prog-window-mode t))
+  (cr-olivetti-on-large-window-mode t))
 
 (use-package which-key
   :ensure nil
@@ -128,7 +127,6 @@
   (tramp-chunksize 2000)
   (tramp-use-ssh-controlmaster-options nil))
 
-(require 'cr-theme)
 (require 'cr-org)
 (require 'cr-term)
 (require 'cr-buffer)
@@ -151,4 +149,5 @@
 (require 'cr-flymake)
 (require 'cr-kubernetes)
 (require 'cr-scroll)
+(require 'cr-theme)
 (require 'cr-global-keybindings)
