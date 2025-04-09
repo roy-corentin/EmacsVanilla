@@ -151,6 +151,24 @@
   (tab-line-new-button-show nil)
   (tab-line-close-button-show nil))
 
+(use-package spacious-padding
+  :ensure t
+  :defer t
+  :custom
+  (spacious-padding-subtle-mode-line t)
+  ;; Default values
+  (spacious-padding-widths
+   '(
+     :internal-border-width 15
+     :header-line-width 4
+     :mode-line-width 6
+     :tab-width 4
+     :right-divider-width 30
+     :scroll-bar-width 8
+     :fringe-width 8
+     ))
+  )
+
 (with-eval-after-load 'doom-themes
   (load-theme (or emacs-theme 'doom-zenburn) t))
 
