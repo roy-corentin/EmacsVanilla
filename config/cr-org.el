@@ -469,5 +469,9 @@
   (org-appear-autolinks t)
   (org-appear-trigger 'manual))
 
+(use-package org-modern-indent
+  :ensure (:protocols https :inherit t :depth 1 :fetcher github :repo "jdtsmith/org-modern-indent" :files (:defaults))
+  :hook org-mode)
+
 (provide 'cr-org)
 ;;; cr-org.el ends here
