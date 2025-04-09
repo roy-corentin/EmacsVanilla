@@ -71,17 +71,5 @@
   :hook
   (dired-mode . nerd-icons-dired-mode))
 
-(use-package dired-preview
-  :ensure t
-  :defer t
-  :preface
-  (defun my-dired-preview-buffer ()
-    "My preferred `dired-preview-display-action-alist-function'."
-    '((display-buffer-reuse-window)
-      (window . main)))
-  :custom
-  (dired-preview-delay 0.2)
-  (dired-preview-display-action-alist #'my-dired-preview-buffer))
-
 (provide 'cr-dired)
 ;;; cr-dired.el ends here
