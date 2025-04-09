@@ -11,8 +11,8 @@
 
 (use-package general
   :ensure t
-  :demand t
   :after evil magit
+  :demand t
   :hook  (org-agenda-mode . general-override-local-mode)
   :config
   (general-evil-setup)
@@ -294,8 +294,8 @@
    :keymaps 'kubernetes-mode-map
    "v" 'kubernetes-overview-set-sections
    "c" 'kubernetes-contexts-use-context
-   "RET" 'kubernetes-logs-follow
-   "l" 'kubernetes-logs-follow)
+   "RET" 'kubernetes-logs-follow-with-check
+   "l" 'kubernetes-logs-follow-with-check)
   (general-define-key
    :keymaps 'vertico-map
    "C-SPC" '+vertico/embark-preview
