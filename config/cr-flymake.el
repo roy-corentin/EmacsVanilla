@@ -1,10 +1,13 @@
 ;;; cr-olivetti.el --- Custom olivetti-mode setup    -*- lexical-binding: t; -*-
+;;; Commentary:
 
 ;; Copyright (C) 2024 Corentin Roy
 ;;
 ;; Author: Corentin Roy <corentin.roy02@laposte.net>
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: Novembre 14, 2024
+
+;;; Code:
 
 (use-package flymake
   :ensure nil
@@ -18,3 +21,4 @@
   (flymake-indicator-type 'margins))
 
 (provide 'cr-flymake)
+;;; cr-flymake.el ends here
