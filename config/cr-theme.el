@@ -156,7 +156,6 @@
   :defer t
   :custom
   (spacious-padding-subtle-mode-line t)
-  ;; Default values
   (spacious-padding-widths
    '(
      :internal-border-width 15
@@ -165,7 +164,7 @@
      :tab-width 4
      :right-divider-width 30
      :scroll-bar-width 8
-     :fringe-width 8
+     :fringe-width 4
      ))
   )
 
