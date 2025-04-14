@@ -22,16 +22,16 @@
 
 (use-package ultra-scroll
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "jdsmith/ultra-scroll" :files (:defaults))
-  :hook
-  (ultra-scroll-hide-functions . hl-todo-mode)
-  (ultra-scroll-hide-functions . diff-hl-flydiff-mode)
-  (ultra-scroll-hide-functions . jit-lock-mode)
-  (ultra-scroll-hide-functions . good-scroll-mode)
   :custom
   ;; (scroll-conservatively 101) ; important !
   (scroll-conservatively 0)
   (scroll-margin 0)
   :config
+  (add-to-list 'ultra-scroll-hide-functions 'hl-todo-mode)
+  (add-to-list 'ultra-scroll-hide-functions 'diff-hl-flydiff-mode)
+  (add-to-list 'ultra-scroll-hide-functions 'jit-lock-mode)
+  (add-to-list 'ultra-scroll-hide-functions 'good-scroll-mode)
+  (add-to-list 'ultra-scroll-hide-functions 'indent-bars-mode)
   (ultra-scroll-mode 1))
 
 (use-package good-scroll
