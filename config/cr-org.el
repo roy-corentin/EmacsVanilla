@@ -412,6 +412,7 @@
   :ensure t
   :commands (org-ai-mode
              org-ai-global-mode)
+  :hook org-mode
   :custom
   (org-ai-default-chat-model "gpt-4")
   :init
