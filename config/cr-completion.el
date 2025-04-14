@@ -88,6 +88,7 @@
   :hook (minibuffer-setup . corfu-enable-in-minibuffer)
   ;; Optional customizations
   :bind (:map corfu-map
+              ("RET" . nil)
               ("C-SPC" . corfu-insert-separator)
               ("C-j" . corfu-next)
               ("C-k" . corfu-previous))
@@ -97,13 +98,10 @@
   (corfu-auto-prefix 2)
   (corfu-auto-delay 0.05)
   (corfu-popupinfo-delay '(1.0 . 1.0))
-  ;;(corfu-quit-at-boundary nil) ; Never quit at completion boundary
+  (corfu-quit-at-boundary 'separator)
   (corfu-separator ?\s)        ; Orderless field separator
   (corfu-quit-no-match 'separator)
-  ;; (corfu-preview-current nil) ; Disable current candidate preview
-  (corfu-preselect 'prompt)    ; Preselect the prompt
   (corfu-on-exact-match 'show) ; Configure handling of exact matches
-  ;; (corfu-scroll-margin 5)     ; Use scroll margin
   (corfu-preview-current 'insert)
   (corfu-preselect 'first)
   :config
