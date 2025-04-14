@@ -122,7 +122,6 @@
   (desktop-save-mode 1)
   (set-default 'truncate-lines t)
   (pixel-scroll-mode t)
-  (pixel-scroll-precision-mode t)
   (electric-pair-mode t)
   (set-fringe-mode '(4 . 4))
   (global-auto-revert-mode t)
