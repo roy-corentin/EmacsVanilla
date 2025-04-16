@@ -240,7 +240,7 @@
    "g z j" '(evil-mc-make-cursor-move-next-line :which-key "Make cursor next line")
    "g z k" '(evil-mc-make-cursor-move-prev-line :which-key "Make cursor previous line")
    "g z n" '(evil-mc-make-and-goto-next-match :which-key "Make cursor next match")
-   "g z S-n" '(evil-mc-make-and-goto-prev-match :which-key "Make cursor previous match")
+   "g z N" '(evil-mc-make-and-goto-prev-match :which-key "Make cursor previous match")
    "g z a" '(evil-mc-make-all-cursors :which-key "Make cursor all match")
    "g z z" '(evil-mc-make-cursor-here :which-key "Make cursors here")
    "g z q" '(evil-mc-undo-all-cursors :which-key "Undo all cursor")
