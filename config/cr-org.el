@@ -16,8 +16,8 @@
   :defer t
   :preface
   (defvar custom-org-roam-daily-directory "~/Dropbox/RoamNotes/daily")
-  (defvar variable-pitch-font "IosevkaEtoile")
-  (defvar fixed-pitch-font "Iosevka Nerd Font")
+  (defvar variable-pitch-font (face-attribute 'variable-pitch :family))
+  (defvar fixed-pitch-font (face-attribute 'fixed-pitch :family))
   (defun cr/set-pretty-symbol ()
     "Beautify Org Checkbox Symbol"
     (push '("[ ]" .  "☐") prettify-symbols-alist)
