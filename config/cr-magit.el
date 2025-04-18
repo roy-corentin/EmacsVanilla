@@ -45,6 +45,8 @@
   :ensure t
   :after magit
   :custom
-  (forge-add-default-bindings nil))
+  (forge-add-default-bindings nil)
+  :config
+  (add-to-list 'forge-alist '("gitlab.mesvaccins.net" "gitlab.mesvaccins.net/api/v4" "gitlab.mesvaccins.net" forge-gitlab-repository)))
 
 (provide 'cr-magit)
