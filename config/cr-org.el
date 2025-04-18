@@ -8,8 +8,7 @@
 
 (use-package mixed-pitch
   :ensure t
-  :hook
-  (text-mode . mixed-pitch-mode))
+  :hook text-mode)
 
 (use-package org
   :ensure nil
