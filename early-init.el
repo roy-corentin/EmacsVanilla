@@ -79,7 +79,7 @@
   (make-backup-files nil)
   (auto-save-default nil)
   (create-lockfiles nil)
-  (fill-column 80)
+  (fill-column 90)
   (inhibit-startup-screen t)
   (initial-buffer-choice #'get-or-create-dashboard-buffer)
   (column-number-mode t)
