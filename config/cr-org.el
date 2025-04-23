@@ -11,7 +11,7 @@
 
 (use-package mixed-pitch
   :ensure t
-  :hook text-mode)
+  :hook org-mode)
 
 (use-package org
   :ensure nil
