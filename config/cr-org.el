@@ -428,12 +428,15 @@
   :ensure t
   :preface
   (defun my/org-present-start (&rest args)
+    (menu-bar--display-line-numbers-mode-none)
     (visual-line-mode 1)
     (org-display-inline-images)
     (org-present-hide-cursor)
     (org-present-read-only)
+    (org-present-big)
     (setq header-line-format " "))
   (defun my/org-present-end (&rest args)
+    (menu-bar--display-line-numbers-mode-visual)
     (visual-line-mode 0)
     (org-remove-inline-images)
     (org-present-show-cursor)
@@ -443,13 +446,13 @@
     ;; Show only top-level headlines
     (org-overview)
     ;; Unfold the current entry
-    (org-show-entry)
+    (org-fold-show-entry)
     ;; Show only direct subheadings of the slide but don't expand them
-    (org-show-children))
+    (org-fold-show-children))
   :hook (org-present-mode . my/org-present-start)
   :hook (org-present-mode-quit . my/org-present-end)
   :custom
-  (org-present-after-navigate-functions  #'my/org-present-end))
+  (org-present-after-navigate-functions  #'my/org-present-prepare-slide))
 
 (use-package org-appear
   :ensure t
