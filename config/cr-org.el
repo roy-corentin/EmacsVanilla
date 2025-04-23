@@ -270,7 +270,7 @@
 
 (use-package org-roam-ui
   :ensure t
-  :after org-roam ;; or :after org
+  :after org-roam ; or :after org
   ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
   ;;         a hookable mode anymore, you're advised to pick something yourself
   ;;         if you don't care about startup time, use
