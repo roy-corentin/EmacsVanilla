@@ -1,4 +1,5 @@
 ;;; init.el --- Description -*- lexical-binding: t; -*-
+;;; Commentary:
 ;;
 ;; Copyright (C) 2024 Corentin Roy
 ;;
@@ -6,6 +7,8 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 
 ;; Load the package manager and initialize MELPA
+
+;;; Code:
 
 ;; (use-package compile-angel
 ;;   :ensure t
@@ -151,3 +154,4 @@
 (require 'cr-scroll)
 (require 'cr-theme)
 (require 'cr-global-keybindings)
+;;; init.el ends here

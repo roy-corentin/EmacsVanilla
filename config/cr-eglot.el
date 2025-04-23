@@ -1,10 +1,13 @@
 ;;; cr-treesit.el --- Description -*- lexical-binding: t; -*-
+;;; Commentary:
 ;;
 ;; Copyright (C) 2024 Corentin Roy
 ;;
 ;; Author: Corentin Roy <corentin.roy02@laposte.net>
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 10, 2024
+
+;;; Code:
 
 (use-package eglot
   :ensure nil
@@ -53,3 +56,4 @@
   (xref-auto-jump-to-first-definition t))
 
 (provide 'cr-eglot)
+;;; cr-eglot.el ends here
