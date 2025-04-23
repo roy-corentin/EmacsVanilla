@@ -153,7 +153,6 @@
 
 (use-package spacious-padding
   :ensure t
-  :defer t
   :custom
   (spacious-padding-subtle-mode-line t)
   (spacious-padding-widths
@@ -166,7 +165,8 @@
      :scroll-bar-width 8
      :fringe-width 4
      ))
-  )
+  :init
+  (spacious-padding-mode 1))
 
 (with-eval-after-load 'doom-themes
   (load-theme (or emacs-theme 'doom-zenburn) t))
