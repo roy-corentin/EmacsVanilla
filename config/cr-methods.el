@@ -185,6 +185,7 @@ If prefix ARG is set, prompt for a directory to search from."
   (interactive)
   (disable-theme emacs-theme)
   (load-theme emacs-theme t)
+  (posframe-delete-all)
   (message "Theme reloaded"))
 
 (defun cr/comment-line (n)
