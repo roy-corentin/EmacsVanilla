@@ -226,7 +226,6 @@
 
 (use-package org-contacts
   :ensure t
-  :after evil
   :custom
   (org-contacts-files '("~/org/contacts.org")))
 
