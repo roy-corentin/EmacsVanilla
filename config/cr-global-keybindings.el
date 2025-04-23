@@ -186,6 +186,7 @@
    "l" '(:ignore t :which-key "Org link")
    "l l" '(org-insert-link :which-key "Insert link")
    "S" '(svg-tag-mode :which-key "Toggle svg-tag-mode")
+   "P"  '(org-present :which-key "Org present")
    "p"  '(:ignore t :which-key "priority")
    "p p" '(org-priority :which-key "priority")
    "p d" '(org-priority-down :which-key "priority down")
