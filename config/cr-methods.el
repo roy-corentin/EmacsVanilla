@@ -203,21 +203,6 @@ Otherwise use line positions as range to call `comment-or-uncomment-region'"
        (apply #'max range)))
     (back-to-indentation)))
 
-(defun cr/ruby-navigate-file ()
-  (interactive)
-  (let ((file-path (buffer-file-name (current-buffer))))
-    (if (s-contains-p "/spec/" file-path)
-        (cr/ruby-navigate-source-file file-path)
-      (cr/ruby-navigate-spec-file file-path))))
-
-(defun cr/ruby-navigate-source-file (file-path)
-  (interactive "bFile to search source file")
-  (find-file (s-replace "_spec.rb" ".rb" (s-replace "/spec/" "/app/" file-path))))
-
-(defun cr/ruby-navigate-spec-file (file-path)
-  (interactive "bFile to search spec file")
-  (find-file (s-replace ".rb" "_spec.rb" (s-replace "/app/" "/spec/" file-path))))
-
 (defun disable-rainbow-delimiter-mode ()
   (rainbow-delimiters-mode -1))
 

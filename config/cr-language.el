@@ -58,4 +58,12 @@
 (use-package vue-ts-mode
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "8uff3r/vue-ts-mode" :files (:defaults)))
 
+(use-package rspec-mode
+  :ensure t
+  :custom
+  (rspec-use-docker-when-possible t)
+  (rspec-docker-container "web")
+  :config
+  (rspec-install-snippets))
+
 (provide 'cr-language)

@@ -167,8 +167,7 @@
    "b e" '(ruby-end-of-block :which-key "End of block")
    "f" '(:ignore t :which-key "Function")
    "f b" '(ruby-beginning-of-defun :which-key "Beginning of function")
-   "f e" '(ruby-end-of-defun :which-key "End of function")
-   "s" '(cr/ruby-navigate-file :which-key "Navigate between spec/source file"))
+   "f e" '(ruby-end-of-defun :which-key "End of function"))
   (general-define-key
    :states '(visual normal)
    :keymaps 'org-mode-map
