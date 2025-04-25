@@ -11,23 +11,10 @@
 
 (use-package eglot
   :ensure nil
-  :hook (c-ts-mode . eglot-ensure)
-  :hook (c3-ts-mode . eglot-ensure)
-  :hook (c++-ts-mode . eglot-ensure)
-  :hook (python-ts-mode . eglot-ensure)
-  :hook (zig-mode . eglot-ensure)
-  :hook (zig-ts-mode . eglot-ensure)
-  :hook (rust-ts-mode . eglot-ensure)
-  :hook (typescript-ts-mode . eglot-ensure)
-  :hook (tsx-ts-mode . eglot-ensure)
-  :hook (ruby-ts-mode . eglot-ensure)
-  :hook (rbs-mode . eglot-ensure)
-  :hook (json-ts-mode . eglot-ensure)
-  :hook (yaml-ts-mode . eglot-ensure)
-  :hook (toml-ts-mode . eglot-ensure)
-  :hook (elixir-ts-mode . eglot-ensure)
-  :hook (javascript-ts-mode . eglot-ensure)
-  :hook (json-ts-mode . eglot-ensure)
+  :hook ((c-ts-mode c3-ts-mode c++-ts-mode python-ts-mode zig-mode zig-ts-mode
+                    rust-ts-mode typescript-ts-mode tsx-ts-mode ruby-ts-mode rbs-mode
+                    json-ts-mode yaml-ts-mode toml-ts-mode elixir-ts-mode javascript-ts-mode
+                    json-ts-mode) . eglot-ensure)
   :custom
   (eglot-connect-timeout 60)
   (eglot-advertise-cancellation t)
