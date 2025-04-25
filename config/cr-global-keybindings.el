@@ -295,8 +295,8 @@
    :keymaps 'kubernetes-mode-map
    "v" 'kubernetes-overview-set-sections
    "c" 'kubernetes-contexts-use-context
-   "RET" 'kubernetes-logs-follow-with-check
-   "l" 'kubernetes-logs-follow-with-check)
+   "RET" 'kubernetes-navigate
+   "l" 'kubernetes-logs)
   (general-define-key
    :keymaps 'vertico-map
    "C-SPC" '+vertico/embark-preview
