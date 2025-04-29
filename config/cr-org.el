@@ -14,74 +14,12 @@
   :hook org-mode)
 
 (use-package org
-  :ensure nil
   :defer t
   :preface
   (defvar custom-org-roam-daily-directory "~/Dropbox/RoamNotes/daily")
-  (defvar variable-pitch-font (face-attribute 'variable-pitch :family))
-  (defvar fixed-pitch-font (face-attribute 'fixed-pitch :family))
-  (defun cr/set-pretty-symbol ()
-    "Beautify Org Checkbox Symbol"
-    (push '("[ ]" .  "☐") prettify-symbols-alist)
-    (push '("[X]" . "☑" ) prettify-symbols-alist)
-    (push '("[-]" . "❍" ) prettify-symbols-alist)
-    (push '("[C]" . "󰅘" ) prettify-symbols-alist)
-    (push '("#+BEGIN_SRC" . "↦" ) prettify-symbols-alist)
-    (push '("#+END_SRC" . "⇤" ) prettify-symbols-alist)
-    (push '("#+begin_src" . "↦" ) prettify-symbols-alist)
-    (push '("#+end_src" . "⇤" ) prettify-symbols-alist)
-    (push '("#+BEGIN_EXAMPLE" . "↦" ) prettify-symbols-alist)
-    (push '("#+END_EXAMPLE" . "⇤" ) prettify-symbols-alist)
-    (push '("#+begin_example" . "↦" ) prettify-symbols-alist)
-    (push '("#+end_example" . "⇤" ) prettify-symbols-alist)
-    (push '("#+BEGIN_QUOTE" . "↦" ) prettify-symbols-alist)
-    (push '("#+END_QUOTE" . "⇤" ) prettify-symbols-alist)
-    (push '("#+begin_quote" . "󱆧" ) prettify-symbols-alist)
-    (push '("#+end_quote" . "󱆨⇤" ) prettify-symbols-alist)
-    (push '("#+TITLE:" . "") prettify-symbols-alist)
-    (push '("#+title:" . "") prettify-symbols-alist)
-    (push '("#+DESCRIPTION:" . "󰦨") prettify-symbols-alist)
-    (push '("#+ID:" . "") prettify-symbols-alist)
-    (push '("#+FILETAGS:" . "") prettify-symbols-alist)
-    (push '("#+filetags:" . "") prettify-symbols-alist)
-    (push '("#+STARTUP:" . "󰈈") prettify-symbols-alist)
-    (push '("#+startup:" . "󰈈") prettify-symbols-alist)
-    (push '("#+ACTIVE:" . "") prettify-symbols-alist)
-    (push '("#+START_SPOILER" . "") prettify-symbols-alist)
-    (push '("#+CLOSE_SPOILER" . "") prettify-symbols-alist)
-    (push '("#+BEGIN_HIDDEN" . "󰘓") prettify-symbols-alist)
-    (push '("#+END_HIDDEN" . "󰘓") prettify-symbols-alist)
-    (push '("#+author:" . "") prettify-symbols-alist)
-    (push '("#+AUTHOR:" . "") prettify-symbols-alist)
-    (push '("#+property:" . "") prettify-symbols-alist)
-    (push '("#+PROPERTY:" . "") prettify-symbols-alist)
-    (prettify-symbols-mode t))
-  (defun cr/org-font-setup ()
+  (defun cr/set-org-style ()
     (setq-local display-line-numbers-type 'visual)
-    ;; Set faces for heading levels
-    (dolist (face '((org-level-1 . 1.3)
-                    (org-level-2 . 1.2)
-                    (org-level-3 . 1.1)
-                    (org-level-4 . 1.0)
-                    (org-level-5 . 1.0)
-                    (org-level-6 . 1.0)
-                    (org-level-7 . 1.0)
-                    (org-level-8 . 1.0)))
-      (set-face-attribute (car face) nil :font variable-pitch-font :weight 'medium :height (cdr face)))
-    ;; Make the document title bigger
-    (set-face-attribute 'org-document-title nil :font variable-pitch-font :weight 'bold :height 2.1)
-    ;; Ensure that anything that should be fixed-pitch in Org files appears that way
-    (set-face-attribute 'org-block nil :foreground 'unspecified :inherit 'fixed-pitch)
-    (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
-    (set-face-attribute 'org-formula nil :inherit 'fixed-pitch)
-    (set-face-attribute 'org-code nil :inherit 'fixed-pitch)
-    (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
-    (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
-    (set-face-attribute 'org-todo nil :family fixed-pitch-font)
-    (set-face-attribute 'org-done nil :family fixed-pitch-font)
-    (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
-    (set-face-attribute 'org-checkbox-statistics-todo nil :family fixed-pitch-font)
-    (set-face-attribute 'org-checkbox-statistics-done nil :family fixed-pitch-font))
+    (prettify-symbols-mode t))
   (defface my-org-emphasis-bold
     '((default :inherit bold)
       (((class color) (min-colors 88) (background light))
@@ -90,10 +28,46 @@
        :foreground "#ff8059"))
     "My bold emphasis for Org."
     :group 'org-faces)
-  :hook (org-mode . cr/org-font-setup)
+  :hook (org-mode . cr/set-org-style)
   :hook (org-after-todo-statistics . cr/org-summary-todo)
-  :hook (org-mode . cr/set-pretty-symbol)
+  :custom-face
+  (org-level-1 ((t (:inherit variable-pitch :weight medium :height 1.3))))
+  (org-level-2 ((t (:inherit variable-pitch :weight medium :height 1.2))))
+  (org-level-3 ((t (:inherit variable-pitch :weight medium :height 1.1))))
+  (org-level-4 ((t (:inherit variable-pitch :weight medium :height 1.0))))
+  (org-level-5 ((t (:inherit variable-pitch :weight medium :height 1.0))))
+  (org-level-6 ((t (:inherit variable-pitch :weight medium :height 1.0))))
+  (org-level-7 ((t (:inherit variable-pitch :weight medium :height 1.0))))
+  (org-level-8 ((t (:inherit variable-pitch :weight medium :height 1.0))))
+  (org-document-title ((t (:inherit variable-pitch :weight bold :height 2.1))))
+  ;; Ensure that anything that should be fixed-pitch in Org files appears that way
+  (org-block ((t (:inherit fixed-pitch))))
+  (org-table ((t (:inherit fixed-pitch))))
+  (org-formula ((t (:inherit fixed-pitch))))
+  (org-code ((t (:inherit fixed-pitch))))
+  (org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+  (org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+  (org-todo ((t (:inherit fixed-pitch))))
+  (org-done ((t (:inherit fixed-pitch))))
+  (org-checkbox ((t (:inherit fixed-pitch))))
+  (org-checkbox-statistics-todo ((t (:inherit fixed-pitch))))
+  (org-checkbox-statistics-done ((t (:inherit fixed-pitch))))
   :custom
+  (prettify-symbols-alist '(("#+PROPERTY:" . "") ("#+property:" . "")
+                            ("#+AUTHOR:" . "") ("#+author:" . "")
+                            ("#+END_HIDDEN" . "󰘓") ("#+BEGIN_HIDDEN" . "󰘓")
+                            ("#+CLOSE_SPOILER" . "") ("#+START_SPOILER" . "")
+                            ("#+ACTIVE:" . "")
+                            ("#+startup:" . "󰈈") ("#+STARTUP:" . "󰈈")
+                            ("#+filetags:" . "") ("#+FILETAGS:" . "")
+                            ("#+ID:" . "")
+                            ("#+DESCRIPTION:" . "󰦨")
+                            ("#+title:" . "") ("#+TITLE:" . "")
+                            ("#+end_quote" . "󱆨⇤") ("#+begin_quote" . "󱆧")
+                            ("#+END_QUOTE" . "⇤") ("#+BEGIN_QUOTE" . "↦")
+                            ("#+end_example" . "⇤") ("#+begin_example" . "↦") ("#+END_EXAMPLE" . "⇤") ("#+BEGIN_EXAMPLE" . "↦")
+                            ("#+end_src" . "⇤") ("#+begin_src" . "↦") ("#+END_SRC" . "⇤") ("#+BEGIN_SRC" . "↦")
+                            ("[C]" . "󰅘") ("[-]" . "❍") ("[X]" . "☑") ("[ ]" . "☐")))
   (org-capture-templates '(("t" "Todo" entry (file+headline "~/org/todos.org" "Tasks")
                             "* TODO %?\n  %i\n  %a")
                            ("j" "Journal" entry (file+olp+datetree "~/org/journal.org")
@@ -129,8 +103,8 @@
   (org-emphasis-alist '(("*" my-org-emphasis-bold)
                         ("/" italic)
                         ("_" underline)
-                        ("=" org-verbatim)
-                        ("~" org-code)
+                        ("=" org-verbatim verbatim)
+                        ("~" org-code verbatim)
                         ("+" (:strike-through t))))
   (org-todo-keyword-faces
    '(("WIP" . (:foreground "#b7a1f5")) ("HOLD" . org-default)
@@ -379,9 +353,11 @@
   :ensure nil
   :config
   (add-to-list 'org-latex-classes
-               '("epitech"
+               '("epitech_report"
                  "\\documentclass[a4paper,12pt]{report}
-  \\renewcommand{\\chaptername}{Lab}
+  \\usepackage[T1]{fontenc}
+  \\usepackage{setspace}
+  \\setstretch{1.5}
   \\makeatletter
   \\renewcommand{\\maketitle}{
     \\begin{titlepage}
@@ -401,6 +377,7 @@
     \\end{titlepage}
   }
   \\makeatother
+  \\pagestyle{plain}
   \\usepackage[margin=0.7in]{geometry}"
                  ("\\chapter{%s}" . "\\chapter*{%s}")
                  ("\\section{%s}" . "\\section*{%s}")
