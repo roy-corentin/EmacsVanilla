@@ -35,15 +35,10 @@
 
 (use-package olivetti
   :ensure t
-  :demand t
-  :bind ("C-c o" . olivetti-mode)
-  :preface
-  (defun force-medium-olivetti-body ()
-    (setq-local olivetti-body-width 100))
   :hook (text-mode magit-mode)
-  :hook (magit-mode . force-medium-olivetti-body)
   :custom
-  (olivetti-body-width 110))
+  (olivetti-mode-on-hook nil)
+  (olivetti-body-width 100))
 
 (use-package cr-olivetti
   :after olivetti
