@@ -1,10 +1,13 @@
 ;;; cr-keybindings.el --- Description -*- lexical-binding: t; -*-
+;;; Commentary:
 ;;
 ;; Copyright (C) 2024 Corentin Roy
 ;;
 ;; Author: Corentin Roy <corentin.roy02@laposte.net>
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 09, 2024
+
+;;; Code:
 
 (use-package doom-themes
   :ensure t
@@ -168,7 +171,17 @@
   :init
   (spacious-padding-mode 1))
 
+(defun cr/theme-init-daemon (frame)
+  "Load theme for daemon.  FRAME not used."
+  (enable-theme (or emacs-theme 'modus-vivendi))
+  ;;(load-theme (or emacs-theme 'modus-vivendi) t)
+  ;; Run this function once
+  (remove-hook 'after-make-frame-functions #'cr/theme-init-daemon))
+
 (with-eval-after-load 'doom-themes
-  (load-theme (or emacs-theme 'modus-vivendi) t))
+  (if (daemonp)
+      (add-hook 'after-make-frame-functions #'cr/theme-init-daemon)
+    (load-theme (or emacs-theme 'modus-vivendi) t)))
 
 (provide 'cr-theme)
+;;; cr-theme.el ends here
