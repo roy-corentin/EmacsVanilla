@@ -17,7 +17,8 @@
     (setq-local flymake-indicator-type (if olivetti-mode 'fringes 'margins)))
   :hook (prog-mode . cr/set-flymake-indicator-type)
   :custom
-  (flymake-show-diagnostics-at-end-of-line 'short)
+  (flymake-no-changes-timeout 0.25)
+  (flymake-show-diagnostics-at-end-of-line 'fancy)
   (flymake-indicator-type 'margins))
 
 (provide 'cr-flymake)
