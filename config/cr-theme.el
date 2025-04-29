@@ -75,7 +75,7 @@
   (fringe-mode '8))
 
 (use-package hl-todo
-  :ensure (:protocol https :depth 1 :inherit t  :fetcher github :repo "tarsius/hl-todo" :version (lambda (_) "3.8.1" ) :files (:defaults))
+  :ensure t
   :hook (prog-mode yaml-mode)
   :custom
   (hl-todo-highlight-punctuation ":")
