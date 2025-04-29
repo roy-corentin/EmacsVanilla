@@ -169,6 +169,6 @@
   (spacious-padding-mode 1))
 
 (with-eval-after-load 'doom-themes
-  (load-theme (or emacs-theme 'doom-zenburn) t))
+  (load-theme (or emacs-theme 'modus-vivendi) t))
 
 (provide 'cr-theme)
