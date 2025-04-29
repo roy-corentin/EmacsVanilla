@@ -1,4 +1,5 @@
 ;;; cr-methods.el --- Description -*- lexical-binding: t; -*-
+;;; Commentary:
 ;;
 ;; Copyright (C) 2024 Corentin Roy
 ;;
@@ -7,6 +8,8 @@
 ;; Created: avril 13, 2024
 
 (require 'cr-evil)
+
+;;; Code:
 
 (defun cr/vterm--configure-in-project-root (arg display-fn)
   "Open a terminal buffer in the current window at project root.
@@ -123,7 +126,7 @@ If prefix ARG is set, prompt for a directory to search from."
              (switch-to-buffer buffer-to-swap)))))
 
 (defun cr/move-window-up ()
-  "Move the current window to the up"
+  "Move the current window to the up."
   (interactive)
   (condition-case nil
       (windmove-swap-states-up)
@@ -133,6 +136,7 @@ If prefix ARG is set, prompt for a directory to search from."
              (switch-to-buffer buffer-to-swap)))))
 
 (defun cr/try-kill-project-buffers (&rest args)
+  "Kill all project buffers if in project.  ARGS optional."
   (ignore args)
   (when (project-current)
     (project-kill-buffers)))
@@ -141,10 +145,12 @@ If prefix ARG is set, prompt for a directory to search from."
 (advice-add #'tab-switcher-execute :before #'cr/try-kill-project-buffers)
 
 (defun cr/project-open-file-other-window (&rest args)
+  "Open project file in other window.  ARGS optional."
   (interactive)
   (other-window-prefix)
   (project-find-file args))
 
+;;;###autoload
 (defun cr/org-summary-todo (n-done n-not-done)
   "Switch entry to done when all subentries of a todo are done, to todo otherwise."
   (ignore n-done)
@@ -191,7 +197,8 @@ If prefix ARG is set, prompt for a directory to search from."
 (defun cr/comment-line (n)
   "Comment as I want (Do What I Mean).
 If the region is active call `comment-or-uncomment-region'
-Otherwise use line positions as range to call `comment-or-uncomment-region'"
+Otherwise use line positions as range to call `comment-or-uncomment-region'.
+If a prefix N is given, it is passed on to the respective function."
   (interactive "*P")
   (if (use-region-p)
       (comment-or-uncomment-region (region-beginning) (region-end) n)
