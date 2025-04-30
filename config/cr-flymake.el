@@ -10,12 +10,8 @@
 ;;; Code:
 
 (use-package flymake
-  :ensure nil
-  :after olivetti
-  :preface
-  (defun cr/set-flymake-indicator-type ()
-    (setq-local flymake-indicator-type (if olivetti-mode 'fringes 'margins)))
-  :hook (prog-mode . cr/set-flymake-indicator-type)
+  :hook (olivetti-mode-on . (lambda () (setq-local flymake-indicator-type 'fringes)))
+  :hook (olivetti-mode-off . (lambda () (setq-local flymake-indicator-type 'margins)))
   :custom
   (flymake-no-changes-timeout 0.25)
   (flymake-show-diagnostics-at-end-of-line 'fancy)
