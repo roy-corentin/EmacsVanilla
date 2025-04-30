@@ -31,6 +31,7 @@
   :hook (org-mode . cr/set-org-style)
   :hook (org-after-todo-statistics . cr/org-summary-todo)
   :custom-face
+  (org-document-title ((t (:weight bold :height 2.1))))
   (org-level-1 ((t (:inherit variable-pitch :weight medium :height 1.3))))
   (org-level-2 ((t (:inherit variable-pitch :weight medium :height 1.2))))
   (org-level-3 ((t (:inherit variable-pitch :weight medium :height 1.1))))
@@ -39,7 +40,6 @@
   (org-level-6 ((t (:inherit variable-pitch :weight medium :height 1.0))))
   (org-level-7 ((t (:inherit variable-pitch :weight medium :height 1.0))))
   (org-level-8 ((t (:inherit variable-pitch :weight medium :height 1.0))))
-  (org-document-title ((t (:inherit variable-pitch :weight bold :height 2.1))))
   ;; Ensure that anything that should be fixed-pitch in Org files appears that way
   (org-block ((t (:inherit fixed-pitch))))
   (org-table ((t (:inherit fixed-pitch))))
@@ -63,10 +63,12 @@
                             ("#+ID:" . "")
                             ("#+DESCRIPTION:" . "󰦨")
                             ("#+title:" . "") ("#+TITLE:" . "")
-                            ("#+end_quote" . "󱆨⇤") ("#+begin_quote" . "󱆧")
-                            ("#+END_QUOTE" . "⇤") ("#+BEGIN_QUOTE" . "↦")
-                            ("#+end_example" . "⇤") ("#+begin_example" . "↦") ("#+END_EXAMPLE" . "⇤") ("#+BEGIN_EXAMPLE" . "↦")
-                            ("#+end_src" . "⇤") ("#+begin_src" . "↦") ("#+END_SRC" . "⇤") ("#+BEGIN_SRC" . "↦")
+                            ("#+begin_quote" . "󱆧") ("#+BEGIN_QUOTE" . "↦")
+                            ("#+end_quote" . "󱆨⇤") ("#+END_QUOTE" . "⇤")
+                            ("#+begin_example" . "↦") ("#+BEGIN_EXAMPLE" . "↦")
+                            ("#+end_example" . "⇤") ("#+END_EXAMPLE" . "⇤")
+                            ("#+begin_src" . "↦") ("#+BEGIN_SRC" . "↦")
+                            ("#+end_src" . "⇤") ("#+END_SRC" . "⇤")
                             ("[C]" . "󰅘") ("[-]" . "❍") ("[X]" . "☑") ("[ ]" . "☐")))
   (org-capture-templates '(("t" "Todo" entry (file+headline "~/org/todos.org" "Tasks")
                             "* TODO %?\n  %i\n  %a")
@@ -178,7 +180,6 @@
                    (org-agenda-start-on-weekday nil)))))))
   :init
   (org-babel-do-load-languages 'org-babel-load-languages '((C . t) (ruby . t) (python . t) (shell . t) (js . t))))
-
 
 (use-package toc-org
   :ensure t
