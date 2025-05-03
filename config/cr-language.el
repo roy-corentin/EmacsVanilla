@@ -15,8 +15,7 @@
 (use-package c3-ts-mode
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "c3lang/c3-ts-mode" :files (:defaults))
   :custom
-  (c3-ts-mode-indent-offset 2)
-  (treesit-font-lock-level 4))
+  (c3-ts-mode-indent-offset 2))
 
 (use-package crystal-mode
   :ensure t)

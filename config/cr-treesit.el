@@ -6,6 +6,10 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 07, 2024
 
+(use-package treesit
+  :custom
+  (treesit-font-lock-level 4))
+
 (use-package treesit-auto
   :ensure t
   :custom
