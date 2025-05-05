@@ -65,4 +65,7 @@
   :config
   (rspec-install-snippets))
 
+(use-package csv-mode
+  :ensure t)
+
 (provide 'cr-language)
