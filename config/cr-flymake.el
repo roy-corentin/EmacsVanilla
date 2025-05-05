@@ -1,4 +1,4 @@
-;;; cr-olivetti.el --- Custom olivetti-mode setup    -*- lexical-binding: t; -*-
+;;; cr-flymake.el --- Flymake setup    -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2024 Corentin Roy
 ;;
