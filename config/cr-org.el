@@ -1,11 +1,12 @@
 ;;; cr-org.el --- Description -*- lexical-binding: t; -*-
-;;; Commentary:
 ;;
 ;; Copyright (C) 2024 Corentin Roy
 ;;
 ;; Author: Corentin Roy <corentin.roy02@laposte.net>
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 10, 2024
+
+;;; Commentary:
 
 ;;; Code:
 
@@ -16,7 +17,6 @@
 (use-package org
   :defer t
   :preface
-  (defvar custom-org-roam-daily-directory "~/Dropbox/RoamNotes/daily")
   (defun cr/set-org-style ()
     (setq-local display-line-numbers-type 'visual)
     (prettify-symbols-mode t))
@@ -77,7 +77,7 @@
                            ("c" "Contacts" entry (file "~/org/contacts.org")
                             "* %(org-contacts-template-name)\n:PROPERTIES:\n:EMAIL: %(org-contacts-template-email)\n:END:")))
   (org-directory "~/Dropbox/Org/")
-  (org-agenda-files (list org-directory custom-org-roam-daily-directory))
+  (org-agenda-files (list org-directory "~/Dropbox/RoamNotes/daily"))
   (org-agenda-file-regexp "\\`[^.].*todo\\.org\\'")
   (org-agenda-start-with-log-mode t)
   (org-fontify-done-headline t)
@@ -178,7 +178,7 @@
                    (org-agenda-start-day "-30d")
                    (org-agenda-archives-mode t)
                    (org-agenda-start-on-weekday nil)))))))
-  :init
+  :config
   (org-babel-do-load-languages 'org-babel-load-languages '((C . t) (ruby . t) (python . t) (shell . t) (js . t))))
 
 (use-package toc-org

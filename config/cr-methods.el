@@ -1,5 +1,4 @@
 ;;; cr-methods.el --- Description -*- lexical-binding: t; -*-
-;;; Commentary:
 ;;
 ;; Copyright (C) 2024 Corentin Roy
 ;;
@@ -7,19 +6,23 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 13, 2024
 
-(require 'cr-evil)
+;;; Commentary:
 
 ;;; Code:
+
+(require 'cr-evil)
+
 
 (defun cr/vterm--configure-in-project-root (arg display-fn)
   "Open a terminal buffer in the current window at project root.
 If prefix ARG is non-nil, cd into `default-directory' instead of project root.
-Returns the vterm buffer."
+Returns the vterm buffer called with DISPLAY-FN."
   (let ((default-directory (if (or arg (not (project-current))) default-directory (project-root (project-current)))))
     (setenv "PROOT" default-directory)
     (funcall display-fn)))
 
 (defun cr/toggle-vterm-popup (arg)
+  "Toggle vterm in a popup.  Use ARG."
   (interactive "P")
   (cr/vterm--configure-in-project-root
    arg
@@ -32,6 +35,7 @@ Returns the vterm buffer."
            (vterm buffer-name)))))))
 
 (defun cr/vterm-buffer (arg)
+  "Open a vterm buffer in new buffer.  Use ARG."
   (interactive "P")
   (cr/vterm--configure-in-project-root
    arg
@@ -40,6 +44,7 @@ Returns the vterm buffer."
        (vterm buffer-name)))))
 
 (defun cr/smart-vterm-buffer (arg)
+  "Open a vterm buffer in another window if there is only one.  Use ARG."
   (interactive "P")
   (when (one-window-p)
     (let ((split-width-threshold 115))
@@ -58,6 +63,7 @@ If prefix ARG is set, prompt for a directory to search from."
     (consult-ripgrep default-directory)))
 
 (defun cr/find-file-in-dir(dir)
+  "Find file in DIR."
   (unless (file-directory-p dir)
     (error "Directory %S does not exist" dir))
   (unless (file-readable-p dir)
@@ -66,17 +72,19 @@ If prefix ARG is set, prompt for a directory to search from."
     (call-interactively #'find-file)))
 
 (defun cr/find-config-file ()
+  "Find config file."
   (interactive)
   (cr/find-file-in-dir (concat user-emacs-directory "config/")))
 
 (defun cr/find-note ()
+  "Find note."
   (interactive)
   (unless(bound-and-true-p org-directory)
     (require 'org))
   (cr/find-file-in-dir org-directory))
 
 (defun cr/switch-project-in-new-tab ()
-  "Create a new tab, switch to the project and rename the tab with project name"
+  "Create a new tab, switch to project and rename the tab with project name."
   (interactive)
   (tab-new)
   (call-interactively #'project-switch-project)
@@ -84,19 +92,19 @@ If prefix ARG is set, prompt for a directory to search from."
 
 
 (defun cr/split-window-right-and-follow ()
-  "Split current window in the right and focus the new window"
+  "Split current window in the right and focus the new window."
   (interactive)
   (let ((new-window (split-window-right)))
     (select-window new-window)))
 
 (defun cr/split-window-below-and-follow ()
-  "Split current window below and focus the new window"
+  "Split current window below and focus the new window."
   (interactive)
   (let ((new-window (split-window-below)))
     (select-window new-window)))
 
 (defun cr/move-window-right ()
-  "Move the current window to the right"
+  "Move the current window to the right."
   (interactive)
   (condition-case nil
       (windmove-swap-states-right)
@@ -106,7 +114,7 @@ If prefix ARG is set, prompt for a directory to search from."
              (switch-to-buffer buffer-to-swap)))))
 
 (defun cr/move-window-left ()
-  "Move the current window to the left"
+  "Move the current window to the left."
   (interactive)
   (condition-case nil
       (windmove-swap-states-left)
@@ -116,7 +124,7 @@ If prefix ARG is set, prompt for a directory to search from."
              (switch-to-buffer buffer-to-swap)))))
 
 (defun cr/move-window-down ()
-  "Move the current window to the down"
+  "Move the current window to the down."
   (interactive)
   (condition-case nil
       (windmove-swap-states-down)
@@ -151,9 +159,8 @@ If prefix ARG is set, prompt for a directory to search from."
   (project-find-file args))
 
 ;;;###autoload
-(defun cr/org-summary-todo (n-done n-not-done)
-  "Switch entry to done when all subentries of a todo are done, to todo otherwise."
-  (ignore n-done)
+(defun cr/org-summary-todo (_n-done n-not-done)
+  "Switch entry to done when all subentries (if N-NOT-DONE is zero) of a todo are done, to todo otherwise."
   (let ((todo-state (org-get-todo-state)))
     (when (member todo-state org-todo-keywords-1)
       (org-todo (if (= n-not-done 0) "DONE" "TODO")))))
@@ -165,7 +172,7 @@ If prefix ARG is set, prompt for a directory to search from."
     (consult-ripgrep nil (evil-find-thing t 'symbol))))
 
 (defun cr/switch-theme (theme)
-  "Switch to new theme and disable previous"
+  "Switch to new THEME and disable previous."
   (interactive)
   (let ((current-theme (car custom-enabled-themes)))
     (when (load-theme theme t)
@@ -173,21 +180,21 @@ If prefix ARG is set, prompt for a directory to search from."
       (setq emacs-theme theme))))
 
 (defun cr/project-buffer-dwim ()
-  "Switch to buffer in project or all buffer"
+  "Switch to buffer in project or all buffer."
   (interactive)
   (if (project-current nil)
       (consult-project-buffer)
     (consult-buffer)))
 
 (defun cr/find-file-dwim ()
-  "Find file in project or all buffer"
+  "Find file in project or all buffer."
   (interactive)
   (if (project-current nil)
       (project-find-file)
     (consult-buffer)))
 
 (defun cr/reload-theme ()
-  "Reload current theme"
+  "Reload current theme."
   (interactive)
   (disable-theme emacs-theme)
   (load-theme emacs-theme t)
@@ -211,14 +218,18 @@ If a prefix N is given, it is passed on to the respective function."
     (back-to-indentation)))
 
 (defun disable-rainbow-delimiter-mode ()
+  "Disable rainbow delimieter mode."
   (rainbow-delimiters-mode -1))
 
 (defun cr/vterm-insert-up ()
+  "Insert key up in vterm."
   (interactive)
   (vterm-send-key "<up>"))
 
 (defun cr/vterm-insert-down ()
+  "Insert key down in vterm."
   (interactive)
   (vterm-send-key "<down>"))
 
 (provide 'cr-methods)
+;;; cr-methods.el ends here

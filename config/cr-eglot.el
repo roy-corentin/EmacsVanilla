@@ -1,11 +1,12 @@
 ;;; cr-treesit.el --- Description -*- lexical-binding: t; -*-
-;;; Commentary:
 ;;
 ;; Copyright (C) 2024 Corentin Roy
 ;;
 ;; Author: Corentin Roy <corentin.roy02@laposte.net>
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 10, 2024
+
+;;; Commentary:
 
 ;;; Code:
 
