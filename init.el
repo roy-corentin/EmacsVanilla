@@ -35,7 +35,7 @@
 
 (use-package olivetti
   :ensure t
-  :hook (text-mode)
+  :hook (text-mode magit-mode)
   :hook (magit-mode . (lambda () (setq-local olivetti-body-width 90)))
   :custom
   (olivetti-mode-on-hook nil))
