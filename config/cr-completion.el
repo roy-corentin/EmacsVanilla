@@ -6,6 +6,11 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 07, 2024
 
+;;; Commentary:
+
+
+;;; Code:
+
 (use-package vertico
   :ensure t
   :demand t
