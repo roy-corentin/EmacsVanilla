@@ -6,9 +6,13 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 07, 2024
 
+;;; Commentary:
+
+
+;;; Code:
+
 (require 'doom-methods)
 
-;; Use evil mode for vim-like keybindings
 (use-package evil
   :ensure t
   :demand t
