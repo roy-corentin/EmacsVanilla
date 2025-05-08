@@ -36,7 +36,7 @@
 (use-package olivetti
   :ensure t
   :hook (text-mode magit-mode)
-  :hook (magit-mode . (lambda () (setq-local olivetti-body-width 90)))
+  :hook (magit-mode . (lambda () (setq-local olivetti-body-width fill-column)))
   :custom
   (olivetti-mode-on-hook nil))
 
