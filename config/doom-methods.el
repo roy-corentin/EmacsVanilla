@@ -1,15 +1,20 @@
-;;; -*- lexical-binding: t -*-
+;;; doom-methods --- Description  -*- lexical-binding: t; -*-
 
-;; From Doom
+;;; Commentary:
+
+;; Methods get from doom
+
+;;; Code:
+
 ;;;###autoload
 (defun +vertico/embark-preview ()
-  "Previews candidate in vertico buffer, unless it's a consult command"
+  "Previews candidate in vertico buffer, unless it's a consult command."
   (interactive)
   (unless (bound-and-true-p consult--preview-function)
     (if (fboundp 'embark-dwim)
         (save-selected-window
           (embark-dwim))
-      (user-error "Embark not installed, aborting..."))))
+      (user-error "Embark not installed, aborting"))))
 
 ;;;###autoload
 (with-eval-after-load 'evil
@@ -151,7 +156,7 @@ If on a:
 ;;;###autoload
 (defun +org/shift-return (&optional arg)
   "Insert a literal newline, or dwim in tables.
-Executes `org-table-copy-down' if in table."
+Executes `org-table-copy-down' if in table.  use ARG"
   (interactive "p")
   (if (org-at-table-p)
       (org-table-copy-down arg)
@@ -173,7 +178,8 @@ Executes `org-table-copy-down' if in table."
              return keywords)))
 
 (defun +org--toggle-inline-images-in-subtree (&optional beg end refresh)
-  "Refresh inline image previews in the current heading/tree."
+  "Refresh inline image previews in the current heading/tree.
+use BEG, END and REFRESH if given"
   (let* ((beg (or beg
                   (if (org-before-first-heading-p)
                       (save-excursion (point-min))
@@ -194,8 +200,8 @@ Executes `org-table-copy-down' if in table."
 
 ;;;###autoload
 (defun +org/table-previous-row ()
-  "Go to the previous row (same column) in the current table. Before doing so,
-re-align the table if necessary. (Necessary because org-mode has a
+  "Go to the previous row (same column) in the current table.
+Before doing so,re-align the table if necessary.  (Necessary because `org-mode' has a
 `org-table-next-row', but not `org-table-previous-row')"
   (interactive)
   (org-table-maybe-eval-formula)
@@ -213,6 +219,7 @@ re-align the table if necessary. (Necessary because org-mode has a
       (forward-char))))
 
 (defun +org--insert-item (direction)
+  "Insert item in DIRECTION."
   (let ((context (org-element-lineage
                   (org-element-context)
                   '(table table-row headline inlinetask item plain-list)
@@ -301,8 +308,9 @@ re-align the table if necessary. (Necessary because org-mode has a
 ;; settings. These commands have a much simpler responsibility.
 ;;;###autoload
 (defun +org/insert-item-below (count)
-  "Inserts a new heading, table cell or item below the current one."
+  "Inserts a new heading, table cell or item below the current one COUNT times."
   (interactive "p")
   (dotimes (_ count) (+org--insert-item 'below)))
 
 (provide 'doom-methods)
+;;; doom-methods.el ends here
