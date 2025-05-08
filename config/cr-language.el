@@ -62,6 +62,7 @@
   :custom
   (rspec-use-docker-when-possible t)
   (rspec-docker-container "web")
+  (rspec-docker-command "docker compose run --remove-orphans")
   :config
   (rspec-install-snippets))
 
