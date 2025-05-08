@@ -6,12 +6,13 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 08, 2024
 
-(require 'doom-methods)
-(require 'cr-methods)
+;;; Commentary:
+
+;;; Code:
 
 (use-package general
   :ensure t
-  :after evil magit
+  :requires (evil magit)
   :demand t
   :hook  (org-agenda-mode . general-override-local-mode)
   :config
@@ -315,4 +316,4 @@
          ("C-M-j" . drag-stuff-down)))
 
 (provide 'cr-global-keybindings)
-;;; cr-keybindings.el ends here
+;;; cr-global-keybindings.el ends here
