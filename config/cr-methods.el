@@ -46,7 +46,7 @@ Returns the vterm buffer called with DISPLAY-FN."
 (defun cr/smart-vterm-buffer (arg)
   "Open a vterm buffer in another window if there is only one.  Use ARG."
   (interactive "P")
-  (when (one-window-p)
+  (when (cr/one-main-window-p)
     (let ((split-width-threshold 115))
       (let ((new-window (split-window-sensibly)))
         (select-window new-window))))
@@ -231,5 +231,10 @@ If a prefix N is given, it is passed on to the respective function."
   (interactive)
   (vterm-send-key "<down>"))
 
+(defun cr/one-main-window-p ()
+  "Like `one-window-p`, but taking into account side windows like treemacs."
+  (let* ((mainwindow (window-main-window))
+         (child-count (window-child-count mainwindow)))
+    (= 0 child-count)))
 (provide 'cr-methods)
 ;;; cr-methods.el ends here
