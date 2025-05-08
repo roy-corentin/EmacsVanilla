@@ -31,7 +31,6 @@
   :hook (org-mode . cr/set-org-style)
   :hook (org-after-todo-statistics . cr/org-summary-todo)
   :custom-face
-  (org-document-title ((t (:weight bold :height 2.1))))
   (org-level-1 ((t (:inherit variable-pitch :weight medium :height 1.3))))
   (org-level-2 ((t (:inherit variable-pitch :weight medium :height 1.2))))
   (org-level-3 ((t (:inherit variable-pitch :weight medium :height 1.1))))
@@ -40,6 +39,7 @@
   (org-level-6 ((t (:inherit variable-pitch :weight medium :height 1.0))))
   (org-level-7 ((t (:inherit variable-pitch :weight medium :height 1.0))))
   (org-level-8 ((t (:inherit variable-pitch :weight medium :height 1.0))))
+  (org-document-title ((t (:weight bold :height 2.1))))
   ;; Ensure that anything that should be fixed-pitch in Org files appears that way
   (org-block ((t (:inherit fixed-pitch))))
   (org-table ((t (:inherit fixed-pitch))))
