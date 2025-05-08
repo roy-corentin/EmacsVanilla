@@ -62,7 +62,6 @@
   (elpaca-use-package-mode))
 
 (use-package emacs
-  :ensure nil
   :preface
   (defun enable-show-trailing-whitespace ()
     (setq show-trailing-whitespace t))

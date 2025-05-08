@@ -29,7 +29,6 @@
   :ensure t)
 
 (use-package savehist
-  :ensure nil
   :config
   (add-to-list 'savehist-additional-variables 'emacs-theme)
   (savehist-mode))
@@ -57,7 +56,6 @@
   (which-key-mode))
 
 (use-package elec-pair
-  :ensure nil
   :preface
   (defun disable-arrow-pair ()
     (setq-local electric-pair-inhibit-predicate
@@ -96,7 +94,6 @@
   :ensure t)
 
 (use-package tab-bar
-  :ensure nil
   :after dashboard
   :custom
   (tab-bar-show t)
