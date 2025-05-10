@@ -122,6 +122,8 @@
   (window-divider-default-right-width 1)
   (window-divider-default-bottom-width 1)
   (kill-buffer-quit-windows t)
+  ;; Scroll
+  (fast-but-imprecise-scrolling t)
   (inhibit-quit t)
   :custom-face
   (default ((t :family "Iosevka Nerd Font" :weight medium :height 120)))
