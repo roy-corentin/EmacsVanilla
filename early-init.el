@@ -96,7 +96,6 @@
   (grep-use-headings t)
   (completion-eager-display nil)
   (vc-follow-symlinks nil)
-  (kill-buffer-quit-windows t)
   ;; Mouse
   (mouse-autoselect-window t)
   (focus-follow-mouse t)
@@ -118,6 +117,11 @@
   (show-paren-when-point-in-periphery t)
   ;; Ring
   (kill-do-not-save-duplicates t)
+  ;; Window
+  (window-divider-default-places t)
+  (window-divider-default-right-width 1)
+  (window-divider-default-bottom-width 1)
+  (kill-buffer-quit-windows t)
   (inhibit-quit t)
   :custom-face
   (default ((t :family "Iosevka Nerd Font" :weight medium :height 120)))
