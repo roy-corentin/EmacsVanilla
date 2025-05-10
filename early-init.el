@@ -83,8 +83,10 @@
   (inhibit-startup-screen t)
   (initial-buffer-choice #'get-or-create-dashboard-buffer)
   (column-number-mode t)
+  ;; Line numbers
   (display-line-numbers-type 'relative)
   (display-line-numbers-width 3)
+  (display-line-numbers-widen t)
   (display-line-numbers-current-absolute t)
   (indent-tabs-mode nil)
   (enable-recursive-minibuffers t)
