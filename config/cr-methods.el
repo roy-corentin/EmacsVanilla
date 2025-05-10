@@ -10,9 +10,6 @@
 
 ;;; Code:
 
-(require 'cr-evil)
-
-
 (defun cr/vterm--configure-in-project-root (arg display-fn)
   "Open a terminal buffer in the current window at project root.
 If prefix ARG is non-nil, cd into `default-directory' instead of project root.
@@ -21,6 +18,7 @@ Returns the vterm buffer called with DISPLAY-FN."
     (setenv "PROOT" default-directory)
     (funcall display-fn)))
 
+;;;###autoload
 (defun cr/toggle-vterm-popup (arg)
   "Toggle vterm in a popup.  Use ARG."
   (interactive "P")
@@ -34,6 +32,7 @@ Returns the vterm buffer called with DISPLAY-FN."
              (kill-buffer buffer)
            (vterm buffer-name)))))))
 
+;;;###autoload
 (defun cr/vterm-buffer (arg)
   "Open a vterm buffer in new buffer.  Use ARG."
   (interactive "P")
@@ -43,6 +42,7 @@ Returns the vterm buffer called with DISPLAY-FN."
      (let ((buffer-name (format "*vterm-%s*" (if (project-current) (project-name (project-current)) "main"))))
        (vterm buffer-name)))))
 
+;;;###autoload
 (defun cr/smart-vterm-buffer (arg)
   "Open a vterm buffer in another window if there is only one.  Use ARG."
   (interactive "P")
@@ -52,6 +52,7 @@ Returns the vterm buffer called with DISPLAY-FN."
         (select-window new-window))))
   (cr/vterm-buffer arg))
 
+;;;###autoload
 (defun +default/search-cwd (&optional arg)
   "Conduct a text search in files under the current folder.
 If prefix ARG is set, prompt for a directory to search from."
@@ -62,6 +63,7 @@ If prefix ARG is set, prompt for a directory to search from."
            default-directory)))
     (consult-ripgrep default-directory)))
 
+;;;###autoload
 (defun cr/find-file-in-dir(dir)
   "Find file in DIR."
   (unless (file-directory-p dir)
@@ -71,11 +73,13 @@ If prefix ARG is set, prompt for a directory to search from."
   (let ((default-directory (file-truename (expand-file-name dir))))
     (call-interactively #'find-file)))
 
+;;;###autoload
 (defun cr/find-config-file ()
   "Find config file."
   (interactive)
   (cr/find-file-in-dir (concat user-emacs-directory "config/")))
 
+;;;###autoload
 (defun cr/find-note ()
   "Find note."
   (interactive)
@@ -83,6 +87,7 @@ If prefix ARG is set, prompt for a directory to search from."
     (require 'org))
   (cr/find-file-in-dir org-directory))
 
+;;;###autoload
 (defun cr/switch-project-in-new-tab ()
   "Create a new tab, switch to project and rename the tab with project name."
   (interactive)
@@ -90,19 +95,21 @@ If prefix ARG is set, prompt for a directory to search from."
   (call-interactively #'project-switch-project)
   (tab-rename (project-name (project-current))))
 
-
+;;;###autoload
 (defun cr/split-window-right-and-follow ()
   "Split current window in the right and focus the new window."
   (interactive)
   (let ((new-window (split-window-right)))
     (select-window new-window)))
 
+;;;###autoload
 (defun cr/split-window-below-and-follow ()
   "Split current window below and focus the new window."
   (interactive)
   (let ((new-window (split-window-below)))
     (select-window new-window)))
 
+;;;###autoload
 (defun cr/move-window-right ()
   "Move the current window to the right."
   (interactive)
@@ -113,6 +120,7 @@ If prefix ARG is set, prompt for a directory to search from."
              (cr/split-window-right-and-follow)
              (switch-to-buffer buffer-to-swap)))))
 
+;;;###autoload
 (defun cr/move-window-left ()
   "Move the current window to the left."
   (interactive)
@@ -123,6 +131,7 @@ If prefix ARG is set, prompt for a directory to search from."
              (split-window-right)
              (switch-to-buffer buffer-to-swap)))))
 
+;;;###autoload
 (defun cr/move-window-down ()
   "Move the current window to the down."
   (interactive)
@@ -133,6 +142,7 @@ If prefix ARG is set, prompt for a directory to search from."
              (cr/split-window-below-and-follow)
              (switch-to-buffer buffer-to-swap)))))
 
+;;;###autoload
 (defun cr/move-window-up ()
   "Move the current window to the up."
   (interactive)
@@ -143,6 +153,7 @@ If prefix ARG is set, prompt for a directory to search from."
              (split-window-below)
              (switch-to-buffer buffer-to-swap)))))
 
+;;;###autoload
 (defun cr/try-kill-project-buffers (&rest args)
   "Kill all project buffers if in project.  ARGS optional."
   (ignore args)
@@ -152,6 +163,7 @@ If prefix ARG is set, prompt for a directory to search from."
 (advice-add #'tab-close :before #'cr/try-kill-project-buffers)
 (advice-add #'tab-switcher-execute :before #'cr/try-kill-project-buffers)
 
+;;;###autoload
 (defun cr/project-open-file-other-window (&rest args)
   "Open project file in other window.  ARGS optional."
   (interactive)
@@ -171,6 +183,7 @@ If prefix ARG is set, prompt for a directory to search from."
     (interactive)
     (consult-ripgrep nil (evil-find-thing t 'symbol))))
 
+;;;###autoload
 (defun cr/switch-theme (theme)
   "Switch to new THEME and disable previous."
   (interactive)
@@ -179,6 +192,7 @@ If prefix ARG is set, prompt for a directory to search from."
       (disable-theme current-theme)
       (setq emacs-theme theme))))
 
+;;;###autoload
 (defun cr/project-buffer-dwim ()
   "Switch to buffer in project or all buffer."
   (interactive)
@@ -186,6 +200,7 @@ If prefix ARG is set, prompt for a directory to search from."
       (consult-project-buffer)
     (consult-buffer)))
 
+;;;###autoload
 (defun cr/find-file-dwim ()
   "Find file in project or all buffer."
   (interactive)
@@ -193,6 +208,7 @@ If prefix ARG is set, prompt for a directory to search from."
       (project-find-file)
     (consult-buffer)))
 
+;;;###autoload
 (defun cr/reload-theme ()
   "Reload current theme."
   (interactive)
@@ -201,6 +217,7 @@ If prefix ARG is set, prompt for a directory to search from."
   (posframe-delete-all)
   (message "Theme reloaded"))
 
+;;;###autoload
 (defun cr/comment-line (n)
   "Comment as I want (Do What I Mean).
 If the region is active call `comment-or-uncomment-region'
@@ -217,15 +234,18 @@ If a prefix N is given, it is passed on to the respective function."
        (apply #'max range)))
     (back-to-indentation)))
 
+;;;###autoload
 (defun disable-rainbow-delimiter-mode ()
   "Disable rainbow delimieter mode."
   (rainbow-delimiters-mode -1))
 
+;;;###autoload
 (defun cr/vterm-insert-up ()
   "Insert key up in vterm."
   (interactive)
   (vterm-send-key "<up>"))
 
+;;;###autoload
 (defun cr/vterm-insert-down ()
   "Insert key down in vterm."
   (interactive)
@@ -236,5 +256,22 @@ If a prefix N is given, it is passed on to the respective function."
   (let* ((mainwindow (window-main-window))
          (child-count (window-child-count mainwindow)))
     (= 0 child-count)))
+
+;;;###autoload
+(defun cr/tabs-next ()
+  "Move to next tab."
+  (interactive)
+  (if (centaur-tabs-mode-on-p)
+      (centaur-tabs-forward-tab)
+    (next-buffer)))
+
+;;;###autoload
+(defun cr/tabs-previous ()
+  "Move to previous tab."
+  (interactive)
+  (if (centaur-tabs-mode-on-p)
+      (centaur-tabs-backward-tab)
+    (previous-buffer)))
+
 (provide 'cr-methods)
 ;;; cr-methods.el ends here
