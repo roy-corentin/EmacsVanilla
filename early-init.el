@@ -100,6 +100,7 @@
   ;; Mouse
   (mouse-autoselect-window t)
   (focus-follow-mouse t)
+  (mouse-yank-at-point nil)
   (ibuffer-use-header-line 'title)
   ;; Corfu
   ;; Emacs 30 and newer: Disable Ispell completion function. As an alternative,
