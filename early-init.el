@@ -124,6 +124,9 @@
   (kill-buffer-quit-windows t)
   ;; Scroll
   (fast-but-imprecise-scrolling t)
+  ;; Hl line
+  (hl-line-sticky-flag nil)
+  (global-hl-line-sticky-flag nil)
   (inhibit-quit t)
   :custom-face
   (default ((t :family "Iosevka Nerd Font" :weight medium :height 120)))
