@@ -13,6 +13,7 @@
 (use-package flymake
   :hook (olivetti-mode-on . (lambda () (setq-local flymake-indicator-type 'fringes)))
   :hook (olivetti-mode-off . (lambda () (setq-local flymake-indicator-type 'margins)))
+  :hook emacs-lisp-mode
   :custom
   (flymake-no-changes-timeout 0.25)
   (flymake-show-diagnostics-at-end-of-line 'fancy)
