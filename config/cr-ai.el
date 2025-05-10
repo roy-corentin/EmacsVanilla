@@ -25,7 +25,9 @@
 ;;; Code:
 
 (use-package gptel
-  :ensure t)
+  :ensure t
+  :custom
+  (gptel-api-key #'cr/gptel-api-key))
 
 (use-package org-ai
   :ensure t

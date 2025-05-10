@@ -273,5 +273,17 @@ If a prefix N is given, it is passed on to the respective function."
       (centaur-tabs-backward-tab)
     (previous-buffer)))
 
+;;;###autoload
+(defun cr/gptel-api-key ()
+  "Fetch api key for gptel."
+  (if-let* ((secret
+             (plist-get
+              (car (auth-source-search :host "api.openai.com" :require '(:secret)))
+              :secret)))
+      (if (functionp secret)
+          (encode-coding-string (funcall secret) 'utf-8)
+        secret)
+    (user-error "No `gptel-api-key' found in the auth source")))
+
 (provide 'cr-methods)
 ;;; cr-methods.el ends here
