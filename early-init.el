@@ -97,9 +97,11 @@
   (completion-eager-display nil)
   (vc-follow-symlinks nil)
   (kill-buffer-quit-windows t)
+  ;; Mouse
   (mouse-autoselect-window t)
   (focus-follow-mouse t)
   (ibuffer-use-header-line 'title)
+  ;; Corfu
   ;; Emacs 30 and newer: Disable Ispell completion function. As an alternative,
   ;; try `cape-dict'.
   (text-mode-ispell-word-completion nil)
