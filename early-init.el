@@ -110,7 +110,11 @@
   ;; setting is useful beyond Corfu.
   (read-extended-command-predicate #'command-completion-default-include-p)
   (fringes-outside-margins t)
+  ;; Show paren
   (show-paren-delay 0.01)
+  (show-paren-highlight-openparen t)
+  (show-paren-when-point-inside-paren t)
+  (show-paren-when-point-in-periphery t)
   (inhibit-quit t)
   :custom-face
   (default ((t :family "Iosevka Nerd Font" :weight medium :height 120)))
