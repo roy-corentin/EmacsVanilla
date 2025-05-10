@@ -6,6 +6,11 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: Juin 20, 2024
 
+;;; Commentary:
+
+
+;;; Code:
+
 (defcustom cr-olivetti-width-factor 2
   "Factor to calculate Olivetti body width."
   :type 'float
@@ -14,11 +19,6 @@
 (defcustom cr-olivetti-min-width 110
   "Minimum Olivetti body width."
   :type 'integer
-  :group 'olivetti)
-
-(defcustom cr-olivetti-target-modes '(prog-mode dired-mode conf-mode)
-  "Major to activate cr-olivetti-on-large-window-mode"
-  :type '(list symbol)
   :group 'olivetti)
 
 (defun cr--olivetti-body-width ()
@@ -36,6 +36,7 @@
     (cr-olivetti-on-large-window)))
 
 (defun cr--set-olivetti-body-width ()
+  "Update value `olivetti-body-width'."
   (when olivetti-mode
     (olivetti-mode 0))
   (let ((new-width (cr--olivetti-body-width)))
@@ -60,10 +61,9 @@
       (progn
 	(cr--set-olivetti-body-width)
         (cr-olivetti-on-large-window)
-        (add-hook 'window-state-change-hook #'cr-refresh-olivetti)
-        (cl-loop for mode in cr-olivetti-target-modes do (add-hook mode #'cr-olivetti-on-large-window)))
+        (add-hook 'window-state-change-hook #'cr-refresh-olivetti))
     (olivetti-mode 0)
-    (remove-hook 'window-state-change-hook #'cr-refresh-olivetti)
-    (cl-loop for mode in cr-olivetti-target-modes do (remove-hook mode #'cr-olivetti-on-large-window))))
+    (remove-hook 'window-state-change-hook #'cr-refresh-olivetti)))
 
 (provide 'cr-olivetti)
+;;; cr-olivetti.el ends here
