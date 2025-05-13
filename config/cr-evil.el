@@ -87,7 +87,6 @@
 
 (use-package evil-org
   :ensure t
-  :demand t
   :hook ((org-mode . evil-org-mode)
          (org-capture-mode . evil-insert-state))
   :custom
