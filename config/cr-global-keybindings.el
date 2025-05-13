@@ -91,6 +91,7 @@
     "t a" '(apheleia-mode :which-key "Apheleia")
     "t d" '(diff-hl-mode :which-key "Diff Highlights")
     "t t" '(global-tab-line-mode :which-key "Tab Line")
+    "t T" '(kb/toggle-window-transparency :which-key "Transparency")
     "t w" '(toggle-frame-tab-bar :which-key "Tab Bar")
     "t v" '(visual-line-mode :which-key "Visual line mode")
     "t o" '(olivetti-mode :which-key "Olivetti")
