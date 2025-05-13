@@ -21,6 +21,11 @@
   :type 'integer
   :group 'olivetti)
 
+(defcustom cr-olivetti-target-modes '(prog-mode dired-mode conf-mode)
+  "Major to activate `cr-olivetti-on-large-window-mode'."
+  :type '(list symbol)
+  :group 'olivetti)
+
 (defun cr--olivetti-body-width ()
   "Calculate the optimal Olivetti body width based on frame width."
   (max (floor (/ (frame-width) cr-olivetti-width-factor)) cr-olivetti-min-width))
