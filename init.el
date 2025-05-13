@@ -123,6 +123,7 @@
   (tramp-chunksize 2000)
   (tramp-use-ssh-controlmaster-options nil))
 
+(require 'cr-methods)
 (require 'cr-org)
 (require 'cr-term)
 (require 'cr-buffer)
