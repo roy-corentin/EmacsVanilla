@@ -29,6 +29,9 @@
   :custom
   (gptel-api-key #'cr/gptel-api-key))
 
+(use-package gptel-quick
+  :ensure (:host github :repo "karthink/gptel-quick"))
+
 (use-package org-ai
   :ensure t
   :defer t
