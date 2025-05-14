@@ -11,8 +11,14 @@
 ;;; Code:
 
 (use-package flymake
-  :hook (olivetti-mode-on . (lambda () (setq-local flymake-indicator-type 'fringes)))
-  :hook (olivetti-mode-off . (lambda () (setq-local flymake-indicator-type 'margins)))
+  :defer t
+  :preface
+  (defun set-flymake-fringes-indicator()
+    (setq-local flymake-indicator-type 'fringes))
+  (defun set-flymake-margins-indicator()
+    (setq-local flymake-indicator-type 'margins))
+  :hook (olivetti-mode-on . set-flymake-fringes-indicator)
+  :hook (olivetti-mode-off . set-flymake-margins-indicator)
   :hook emacs-lisp-mode
   :custom
   (flymake-no-changes-timeout 0.25)
