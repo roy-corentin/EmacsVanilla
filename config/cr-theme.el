@@ -12,6 +12,7 @@
 
 (use-package doom-themes
   :ensure t
+  :demand t
   :custom
   (doom-themes-enable-bold t) ; if nil, bold is universally disabled
   (doom-themes-enable-italic t) ; if nil, italics is universally disabled
@@ -107,13 +108,15 @@
 
 (use-package catppuccin-theme
   :ensure t
+  :demand t
   :custom
   (catppuccin-flavor 'mocha))
 
 (use-package kaolin-themes
+  :ensure t
+  :demand t
   :custom
-  (kaolin-themes-hl-line-colored t)
-  :ensure t)
+  (kaolin-themes-hl-line-colored t))
 
 (use-package rainbow-delimiters
   :ensure t
