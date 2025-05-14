@@ -38,7 +38,6 @@
 
 (use-package good-scroll
   :ensure t
-  :demand t
   :preface
   (defun good-scroll--convert-line-to-step (line)
     (cond ((integerp line) (* line (line-pixel-height)))
@@ -63,7 +62,7 @@
   :custom
   (good-scroll-render-rate 0.05)
   :config
-  (good-scroll-mode 1)
+  ;; (good-scroll-mode 1)
   (advice-add #'scroll-up :around #'good-scroll--scroll-up)
   (advice-add #'scroll-down :around #'good-scroll--scroll-down))
 
