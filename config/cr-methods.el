@@ -288,6 +288,7 @@ If a prefix N is given, it is passed on to the respective function."
 ;;;###autoload
 (defun cr/org-ai-on-current-project ()
   "Use `org-ai-on-project' on current project."
+  (interactive)
   (org-ai-on-project (project-root (project-current))))
 
 (provide 'cr-methods)
