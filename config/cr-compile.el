@@ -6,6 +6,11 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 10, 2024
 
+;;; Commentary:
+
+
+;;; Code:
+
 (use-package compile
   :ensure nil
   :preface
