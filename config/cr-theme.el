@@ -175,17 +175,17 @@
   :init
   (spacious-padding-mode 1))
 
-(defun cr/theme-init-daemon (frame)
-  "Load theme for daemon.  FRAME not used."
-  (enable-theme (or emacs-theme 'modus-vivendi))
-  ;;(load-theme (or emacs-theme 'modus-vivendi) t)
-  ;; Run this function once
-  (remove-hook 'after-make-frame-functions #'cr/theme-init-daemon))
+(defun load-custom-theme ()
+  "Load custom theme."
+  (interactive)
+  (load-theme (or emacs-theme 'modus-vivendi) t))
 
-(with-eval-after-load 'doom-themes
-  (if (daemonp)
-      (add-hook 'after-make-frame-functions #'cr/theme-init-daemon)
-    (load-theme (or emacs-theme 'modus-vivendi) t)))
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (with-selected-frame frame
+                  (load-custom-theme))))
+  (add-hook 'emacs-startup-hook #'load-custom-theme))
 
 (provide 'cr-theme)
 ;;; cr-theme.el ends here
