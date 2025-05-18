@@ -148,7 +148,7 @@
   (setq custom-file (concat user-emacs-directory "custom.el"))
   (load custom-file t)
   (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
-  (add-to-list 'default-frame-alist '(alpha-background . 70))
+  (add-to-list 'initial-frame-alist '(alpha-background . 80))
   :bind
   ("C-=" . text-scale-increase)
   ("C--" . text-scale-decrease)
