@@ -261,6 +261,11 @@
    "g z r" '(evil-mc-resume-cursors :which-key "Resume cursors"))
   (general-define-key
    :states '(normal visual)
+   :keymaps 'org-mode-map
+   "z" '(:ignore t)
+   "z i" '(org-toggle-inline-images :which-key "Toggle inline image"))
+  (general-define-key
+   :states '(normal visual)
    :keymaps 'dired-mode-map
    "l" '(dired-find-file :which-key "Open file")
    "h" '(dired-up-directory :which-key "Go up in directory")
