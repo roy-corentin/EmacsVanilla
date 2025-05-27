@@ -25,8 +25,8 @@
 (use-package ultra-scroll
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "jdsmith/ultra-scroll" :files (:defaults))
   :custom
-  ;; (scroll-conservatively 101) ; important !
-  (scroll-conservatively 0)
+  (scroll-conservatively 101) ; important !
+  ;; (scroll-conservatively 0)
   (scroll-margin 0)
   :config
   (add-to-list 'ultra-scroll-hide-functions 'hl-todo-mode)
