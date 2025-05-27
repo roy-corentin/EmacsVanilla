@@ -325,7 +325,18 @@
    :states '(insert)
    :keymaps 'vterm-mode-map
    "C-p" 'cr/vterm-insert-up
-   "C-n" 'cr/vterm-insert-down))
+   "C-n" 'cr/vterm-insert-down)
+  (general-define-key
+   :states '(normal visual)
+   :keymaps 'reader-mode-map
+   "j" 'reader-next-page
+   "k" 'reader-previous-page
+   "gg" 'reader-first-page
+   "G" 'reader-last-page
+   "W" 'reader-fit-to-width
+   "H" 'reader-fit-to-height
+   "-" 'reader-shrink-size
+   "=" 'reader-enlarge-size))
 
 (use-package drag-stuff
   :ensure t

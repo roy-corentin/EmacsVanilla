@@ -123,6 +123,9 @@
   (tramp-chunksize 2000)
   (tramp-use-ssh-controlmaster-options nil))
 
+(use-package reader
+  :ensure (:host "codeberg" :repo "divyaranjan/emacs-reader" :files ("reader.el" "render-core.so") :pre-build ("make" "all")))
+
 (require 'cr-methods)
 (require 'cr-org)
 (require 'cr-term)
