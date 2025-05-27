@@ -147,8 +147,8 @@
   (global-auto-revert-mode t)
   (setq custom-file (concat user-emacs-directory "custom.el"))
   (load custom-file t)
+  (defvar default-transparency 85)
   (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
-  (add-to-list 'initial-frame-alist '(alpha-background . 80))
   :bind
   ("C-=" . text-scale-increase)
   ("C--" . text-scale-decrease)
