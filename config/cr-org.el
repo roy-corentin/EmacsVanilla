@@ -351,8 +351,8 @@
    :preview-key "M-."))
 
 (use-package ox-latex
-  :ensure nil
   :config
+  (add-to-list 'org-latex-packages-alist '("AUTO" "babel" nil))
   (add-to-list 'org-latex-classes
                '("epitech_report"
                  "\\documentclass[a4paper,12pt]{report}
