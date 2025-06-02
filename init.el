@@ -35,6 +35,13 @@
 
 (use-package olivetti
   :ensure t
+  :preface
+  (defun set-flymake-fringes-indicator()
+    (setq-local flymake-indicator-type 'fringes))
+  (defun set-flymake-margins-indicator()
+    (setq-local flymake-indicator-type 'margins))
+  :hook (olivetti-mode-on . set-flymake-fringes-indicator)
+  :hook (olivetti-mode-off . set-flymake-margins-indicator)
   :hook (text-mode magit-mode)
   :hook (magit-mode . (lambda () (setq-local olivetti-body-width fill-column)))
   :custom
