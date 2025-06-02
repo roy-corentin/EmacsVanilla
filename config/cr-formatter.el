@@ -6,6 +6,10 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: février 12, 2025
 
+;;; Commentary:
+
+;;; Code:
+
 (use-package apheleia
   :ensure t
   :config

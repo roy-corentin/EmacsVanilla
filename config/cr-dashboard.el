@@ -8,6 +8,10 @@
 
 ;; use-package with package.el:
 
+;;; Commentary:
+
+;;; Code:
+
 (use-package dashboard
   :ensure t
   :hook (elpaca-after-init . dashboard-insert-startupify-lists)

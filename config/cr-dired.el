@@ -6,6 +6,11 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 11, 2024
 
+;;; Commentary:
+
+
+;;; Code:
+
 (use-package dired
   :ensure nil
   :demand t
@@ -35,7 +40,7 @@
   :after dired)
 
 (use-package dirvish
-  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "alexluigit/dirvish" :files (:defaults "extensions/*"))
+  :ensure t
   :after dired
   :requires nerd-icons
   :custom
