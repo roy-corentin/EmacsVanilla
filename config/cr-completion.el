@@ -42,7 +42,12 @@
   (vertico-posframe-mode t))
 
 (use-package eldoc-box
-  :ensure t)
+  :ensure t
+  :after eglot
+  :hook (prog-mode . eldoc-box-hover-at-point-mode)
+  :init
+  (add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-at-point-mode t)
+  (add-hook 'eldoc-box-buffer-setup-hook #'eldoc-box-prettify-ts-errors 0 t))
 
 (use-package nova
   :disabled t
