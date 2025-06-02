@@ -17,15 +17,10 @@
   (add-to-list 'apheleia-mode-alist '(python-ts-mode . ruff))
   (apheleia-global-mode +1))
 
-
-(use-package stripspace
-  :ensure t
-  :hook ((prog-mode . stripspace-local-mode)
-         (text-mode . stripspace-local-mode)
-         (conf-mode . stripspace-local-mode))
-  :custom
-  (stripspace-only-if-initially-clean nil)
-  (stripspace-restore-column t))
+(use-package delete-trailing-whitespace-mode
+  :hook ((prog-mode . delete-trailing-whitespace-mode)
+         (text-mode . delete-trailing-whitespace-mode)
+         (conf-mode . delete-trailing-whitespace-mode)))
 
 (provide 'cr-formatter)
 ;;; cr-formatter.el ends here
