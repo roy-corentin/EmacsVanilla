@@ -274,6 +274,14 @@ If a prefix N is given, it is passed on to the respective function."
     (previous-buffer)))
 
 ;;;###autoload
+(defun cr/eldoc-doc-buffer ()
+  "Call right eldoc method."
+  (interactive)
+  (if eldoc-box-hover-mode
+      (funcall #'eldoc-box-help-at-point)
+    (call-interactively #'eldoc-doc-buffer)))
+
+;;;###autoload
 (defun cr/gptel-api-key ()
   "Fetch api key for gptel."
   (if-let* ((secret

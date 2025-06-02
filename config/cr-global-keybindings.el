@@ -258,7 +258,8 @@
    "g z z" '(evil-mc-make-cursor-here :which-key "Make cursors here")
    "g z q" '(evil-mc-undo-all-cursors :which-key "Undo all cursor")
    "g z p" '(evil-mc-pause-cursors :which-key "Pause cursors")
-   "g z r" '(evil-mc-resume-cursors :which-key "Resume cursors"))
+   "g z r" '(evil-mc-resume-cursors :which-key "Resume cursors")
+   "K" '(cr/eldoc-doc-buffer :which-key "Help at point"))
   (general-define-key
    :states '(normal visual)
    :keymaps 'org-mode-map
