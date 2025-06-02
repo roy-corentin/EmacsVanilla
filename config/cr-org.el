@@ -357,23 +357,39 @@
                '("epitech_report"
                  "\\documentclass[a4paper,12pt]{report}
   \\usepackage[T1]{fontenc}
+  \\usepackage[scaled]{helvet}
+  \\renewcommand\\familydefault{\\sfdefault}
+  \\usepackage{etoolbox}
+  \\appto\\footnotetext{\\small}
   \\usepackage{setspace}
   \\setstretch{1.5}
   \\makeatletter
   \\renewcommand{\\maketitle}{
     \\begin{titlepage}
       \\begin{center}
-        \\vspace*{2em}
-        \\Huge \\textbf{EPITECH} \\\\
+        \\vspace*{4em}
+        \\Huge \\textbf{\\@title} \\\\ % Title
+        \\Large \\textbf{Développeur FullStack} \\\\ % Role
         \\vspace{4em}
-        \\Huge \\textbf{\\@title} \\\\
-        \\vspace{4em}
-        \\Large \\textbf{\\@date} \\\\
-        \\bigskip
         \\Large \\textbf{\\@author} \\\\
+        \\Large \\textbf{Septembre 2023 à Juillet 2025} \\\\
         \\bigskip
-        \\includegraphics[width=16em]{~/Pictures/Epitech.png} \\\\
-        \\bigskip
+        \\vspace{4em}
+        \\begin{minipage}{.5\\textwidth}
+          \\centering
+          \\includegraphics[width=12em]{~/Pictures/Epitech.png}
+        \\end{minipage}%
+        \\begin{minipage}{.5\\textwidth}
+          \\centering
+          \\includegraphics[width=12em]{~/Pictures/Syadem.png}
+        \\end{minipage}
+        \\vfill
+        \\normalsize \\textbf{Superviseur en entreprise:} Mathieu Laporte \\\\
+        \\vspace{4em}
+        \\
+        \\normalsize \\textbf{École:} Epitech Bordeaux, 16 rue Théodore Blanc, 33520 Bordeaux \\\\
+        \\
+        \\normalsize \\textbf{Entreprise:} Syadem, 48 Cr Georges Clemenceau, 33300 Bordeaux
       \\end{center}
     \\end{titlepage}
   }
