@@ -323,11 +323,6 @@
    "<wheel-down>" #'vertico-next
    "<wheel-up>" #'vertico-previous)
   (general-define-key
-   :states '(insert)
-   :keymaps 'vterm-mode-map
-   "C-p" 'cr/vterm-insert-up
-   "C-n" 'cr/vterm-insert-down)
-  (general-define-key
    :states '(normal visual)
    :keymaps 'reader-mode-map
    "j" 'reader-next-page

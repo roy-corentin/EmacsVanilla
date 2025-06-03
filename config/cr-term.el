@@ -15,6 +15,10 @@
   (defun disable-trailing-whitespace ()
     (setq-local show-trailing-whitespace nil))
   :hook (vterm-mode. disable-trailing-whitespace)
+  :general
+  (:states 'insert :keymaps 'vterm-mode-map
+           "C-p" 'cr/vterm-insert-up
+           "C-n" 'cr/vterm-insert-down)
   :custom
   (vterm-kill-buffer-on-exit t)
   (vterm-max-scrollback 5000))
