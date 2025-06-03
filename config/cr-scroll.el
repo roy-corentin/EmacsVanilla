@@ -39,6 +39,11 @@
 (use-package good-scroll
   :ensure t
   :preface
+  (defun smooth-scroll--fix-out-of-bounds-error-a ()
+    (save-restriction
+      (widen)
+      (<= (line-number-at-pos (max (point) (point-min)) t)
+          (1+ (line-number-at-pos (min (window-start) (point-max)) t)))))
   (defun good-scroll--convert-line-to-step (line)
     (cond ((integerp line) (* line (line-pixel-height)))
           ((or (null line) (memq '- line))
@@ -54,9 +59,9 @@
         (good-scroll-move (- (good-scroll--convert-line-to-step arg)))
       (funcall fn arg)))
   (defun smooth-scroll-coexist-with-ultra-scroll-h ()
-    (if good-scroll-mode
-        (setq mwheel-scroll-up-function #'scroll-up
-              mwheel-scroll-down-function #'scroll-down)))
+    (when good-scroll-mode
+      (setq mwheel-scroll-up-function #'scroll-up
+            mwheel-scroll-down-function #'scroll-down)))
   :hook
   (good-scroll-mode . smooth-scroll-coexist-with-ultra-scroll-h)
   :custom
@@ -64,7 +69,8 @@
   :config
   ;; (good-scroll-mode 1)
   (advice-add #'scroll-up :around #'good-scroll--scroll-up)
-  (advice-add #'scroll-down :around #'good-scroll--scroll-down))
+  (advice-add #'scroll-down :around #'good-scroll--scroll-down)
+  (advice-add #'good-scroll--point-at-top-p :override #'smooth-scroll--fix-out-of-bounds-error-a))
 
 (provide 'cr-scroll)
 ;;; cr-scroll.el ends here
