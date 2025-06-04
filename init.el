@@ -133,6 +133,13 @@
 (use-package reader
   :ensure (:host "codeberg" :repo "divyaranjan/emacs-reader" :files ("reader.el" "render-core.so") :pre-build ("make" "all")))
 
+(use-package dumb-jump
+  :ensure t
+  :hook prog-mode
+  :hook (xref-backend-functions . dumb-jump-xref-activate)
+  :custom
+  (dumb-jump-force-searcher 'ag))
+
 (require 'cr-methods)
 (require 'cr-org)
 (require 'cr-term)
