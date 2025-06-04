@@ -118,6 +118,14 @@
   :custom
   (kaolin-themes-hl-line-colored t))
 
+(use-package lambda-themes
+  :ensure (:host github :repo "lambda-emacs/lambda-themes")
+  :demand t
+  :custom
+  (lambda-themes-set-italic-comments t)
+  (lambda-themes-set-italic-keywords t)
+  (lambda-themes-set-variable-pitch t))
+
 (use-package rainbow-delimiters
   :ensure t
   :hook (prog-mode . rainbow-delimiters-mode))
