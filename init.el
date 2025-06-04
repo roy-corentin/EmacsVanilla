@@ -47,10 +47,10 @@
   :custom
   (olivetti-mode-on-hook nil))
 
-(use-package cr-olivetti
+(use-package cr-kithar
   :after olivetti
   :config
-  (cr-olivetti-on-large-window-mode t))
+  (kithar-mode t))
 
 (use-package which-key
   :ensure nil
