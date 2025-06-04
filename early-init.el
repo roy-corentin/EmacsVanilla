@@ -138,7 +138,7 @@
   (scroll-bar-mode -1)
   (tab-bar-mode 1)
   (delete-selection-mode 1)
-  (global-hl-line-mode 1)
+  (global-hl-line-mode -1)
   (desktop-save-mode 1)
   (set-default 'truncate-lines t)
   (pixel-scroll-mode t)
