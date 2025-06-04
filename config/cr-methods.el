@@ -91,7 +91,7 @@ If prefix ARG is set, prompt for a directory to search from."
 (defun cr/switch-project-in-new-tab ()
   "Create a new tab, switch to project and rename the tab with project name."
   (interactive)
-  (tab-new)
+  (unless yas--direct-dashboard-mode (tab-new))
   (call-interactively #'project-switch-project)
   (tab-rename (project-name (project-current))))
 
