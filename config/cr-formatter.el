@@ -18,6 +18,7 @@
   (apheleia-global-mode +1))
 
 (use-package delete-trailing-whitespace-mode
+  :ensure nil
   :hook ((prog-mode . delete-trailing-whitespace-mode)
          (text-mode . delete-trailing-whitespace-mode)
          (conf-mode . delete-trailing-whitespace-mode)))
