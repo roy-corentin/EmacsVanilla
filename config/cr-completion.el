@@ -111,9 +111,9 @@
   (corfu-quit-at-boundary 'separator)
   (corfu-separator ?\s)        ; Orderless field separator
   (corfu-quit-no-match 'separator)
-  (corfu-on-exact-match 'show) ; Configure handling of exact matches
+  (corfu-on-exact-match nil) ; Configure handling of exact matches
   (corfu-preview-current 'insert)
-  (corfu-preselect 'first)
+  (corfu-preselect 'valid)
   :config
   (corfu-echo-mode)
   (corfu-popupinfo-mode)
