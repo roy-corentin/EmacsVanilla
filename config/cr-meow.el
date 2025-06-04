@@ -6,7 +6,13 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 20, 2024
 
+;;; Commentary:
+
+
+;;; Code:
+
 (defun meow-setup ()
+  "Setup meow keys."
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
   (meow-motion-overwrite-define-key
    '("j" . meow-next)
@@ -101,3 +107,4 @@
   (meow-setup))
 
 (provide 'cr-meow)
+;;; cr-meow.el ends here
