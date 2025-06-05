@@ -129,9 +129,9 @@
   (global-hl-line-sticky-flag nil)
   (inhibit-quit t)
   :custom-face
-  (default ((t :family "Iosevka Nerd Font" :weight medium :height 120)))
+  (default ((t :family "Iosevka Nerd Font" :weight light :height 120)))
   (fixed-pitch ((t :family "Iosevka Nerd Font" :weight bold :height 120)))
-  (variable-pitch ((t :family "Iosevka Etoile" :weight regular :height 120)))
+  (variable-pitch ((t :family "Iosevka Etoile" :weight light :height 120)))
   :init
   (menu-bar-mode -1)
   (tool-bar-mode -1)
