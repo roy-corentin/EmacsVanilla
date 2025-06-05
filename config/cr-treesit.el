@@ -17,24 +17,22 @@
 (use-package treesit-auto
   :ensure t
   :custom
-  (treesit-language-source-alist
-   '((bash "https://github.com/tree-sitter/tree-sitter-bash")
-     (cmake "https://github.com/uyha/tree-sitter-cmake")
-     (css "https://github.com/tree-sitter/tree-sitter-css")
-     (elisp "https://github.com/Wilfred/tree-sitter-elisp")
-     (elixir "https://github.com/elixir-lang/tree-sitter-elixir")
-     (go "https://github.com/tree-sitter/tree-sitter-go")
-     (go-mod "https://github.com/camdencheek/tree-sitter-go-mod")
-     (heex "https://github.com/phoenixframework/tree-sitter-heex")
-     (js . ("https://github.com/tree-sitter/tree-sitter-javascript" "master" "src"))
-     (make "https://github.com/alemuller/tree-sitter-make")
-     (python "https://github.com/tree-sitter/tree-sitter-python")
-     (rust "https://github.com/tree-sitter/tree-sitter-rust")
-     (toml "https://github.com/tree-sitter/tree-sitter-toml")
-     (c3 "https://github.com/c3lang/tree-sitter-c3")
-     (zig "https://github.com/maxxnino/tree-sitter-zig")))
   (treesit-auto-install 'prompt)
   :config
+  (add-to-list 'treesit-language-source-alist '(cmake "https://github.com/uyha/tree-sitter-cmake"))
+  (add-to-list 'treesit-language-source-alist '(css "https://github.com/tree-sitter/tree-sitter-css"))
+  (add-to-list 'treesit-language-source-alist '(elisp "https://github.com/Wilfred/tree-sitter-elisp"))
+  (add-to-list 'treesit-language-source-alist '(elixir "https://github.com/elixir-lang/tree-sitter-elixir"))
+  (add-to-list 'treesit-language-source-alist '(go "https://github.com/tree-sitter/tree-sitter-go"))
+  (add-to-list 'treesit-language-source-alist '(go-mod "https://github.com/camdencheek/tree-sitter-go-mod"))
+  (add-to-list 'treesit-language-source-alist '(heex "https://github.com/phoenixframework/tree-sitter-heex"))
+  (add-to-list 'treesit-language-source-alist '(js . ("https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")))
+  (add-to-list 'treesit-language-source-alist '(make "https://github.com/alemuller/tree-sitter-make"))
+  (add-to-list 'treesit-language-source-alist '(python "https://github.com/tree-sitter/tree-sitter-python"))
+  (add-to-list 'treesit-language-source-alist '(rust "https://github.com/tree-sitter/tree-sitter-rust"))
+  (add-to-list 'treesit-language-source-alist '(toml "https://github.com/tree-sitter/tree-sitter-toml"))
+  (add-to-list 'treesit-language-source-alist '(c3 "https://github.com/c3lang/tree-sitter-c3"))
+  (add-to-list 'treesit-language-source-alist '(zig "https://github.com/maxxnino/tree-sitter-zig"))
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
