@@ -128,6 +128,7 @@
   (hl-line-sticky-flag nil)
   (global-hl-line-sticky-flag nil)
   (inhibit-quit t)
+  (modus-themes-mixed-fonts t)
   :custom-face
   (default ((t :family "Iosevka Nerd Font" :weight light :height 120)))
   (fixed-pitch ((t :family "Iosevka Nerd Font" :weight bold :height 120)))
