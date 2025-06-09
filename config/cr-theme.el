@@ -133,7 +133,6 @@
 
 (use-package vim-tab-bar
   :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "jamescherti/vim-tab-bar.el" :files (:defaults))
-  :after evil
   :config
   (vim-tab-bar-mode))
 
