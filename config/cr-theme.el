@@ -191,9 +191,9 @@
               (lambda (frame)
                 (with-selected-frame frame
                   (load-custom-theme)
-                  (set-frame-parameter frame 'alpha-background default-transparency))))
+                  (set-frame-parameter frame 'alpha-background default-opacity))))
   (add-hook 'emacs-startup-hook #'load-custom-theme)
-  (set-frame-parameter nil 'alpha-background default-transparency))
+  (set-frame-parameter nil 'alpha-background default-opacity))
 
 (provide 'cr-theme)
 ;;; cr-theme.el ends here
