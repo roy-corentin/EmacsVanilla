@@ -33,20 +33,6 @@
   (add-to-list 'savehist-additional-variables 'emacs-theme)
   (savehist-mode))
 
-(use-package olivetti
-  :ensure t
-  :preface
-  (defun set-flymake-fringes-indicator()
-    (setq-local flymake-indicator-type 'fringes))
-  (defun set-flymake-margins-indicator()
-    (setq-local flymake-indicator-type 'margins))
-  :hook (olivetti-mode-on . set-flymake-fringes-indicator)
-  :hook (olivetti-mode-off . set-flymake-margins-indicator)
-  :hook (text-mode magit-mode)
-  :hook (magit-mode . (lambda () (setq-local olivetti-body-width fill-column)))
-  :custom
-  (olivetti-mode-on-hook nil))
-
 (use-package cr-kithar
   :after olivetti
   :config
@@ -147,6 +133,7 @@
 (require 'cr-org)
 (require 'cr-term)
 (require 'cr-buffer)
+(require 'cr-olivetti)
 (require 'cr-magit)
 (require 'cr-yasnippet)
 (require 'cr-eglot)
