@@ -166,6 +166,7 @@
 
 (use-package spacious-padding
   :ensure t
+  :disabled t
   :custom
   (spacious-padding-subtle-mode-line t)
   (spacious-padding-widths
