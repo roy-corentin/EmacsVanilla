@@ -162,5 +162,7 @@
   :config
   (gcmh-mode 1))
 
+(require 'cr-theme)
+
 (provide 'early-init)
 ;;; early-init.el ends here

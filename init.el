@@ -154,7 +154,6 @@
 (require 'cr-kubernetes)
 (require 'cr-scroll)
 (require 'cr-ai)
-(require 'cr-theme)
 (require 'cr-global-keybindings)
 
 ;;; init.el ends here
