@@ -162,6 +162,11 @@
   :config
   (gcmh-mode 1))
 
+(use-package savehist
+  :config
+  (add-to-list 'savehist-additional-variables 'emacs-theme)
+  (savehist-mode))
+
 (require 'cr-theme)
 
 (provide 'early-init)

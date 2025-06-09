@@ -28,11 +28,6 @@
 (use-package nerd-icons
   :ensure t)
 
-(use-package savehist
-  :config
-  (add-to-list 'savehist-additional-variables 'emacs-theme)
-  (savehist-mode))
-
 (use-package cr-kithar
   :after olivetti
   :config
