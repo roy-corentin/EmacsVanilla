@@ -75,9 +75,7 @@
   :custom
   (fringes-outside-margins t)
   :init
-  (global-git-gutter-mode t)
-  :config
-  (fringe-mode '8))
+  (global-git-gutter-mode t))
 
 (use-package hl-todo
   :ensure t
