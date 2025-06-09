@@ -15,10 +15,8 @@
 
 (use-package evil
   :ensure t
-  :demand t
   :custom
   (evil-want-integration t)
-  (evil-want-keybinding nil)
   (evil-want-Y-yank-to-eol t)
   (evil-want-C-u-scroll t)
   (evil-undo-system 'undo-fu)
@@ -30,7 +28,9 @@
   (evil-regexp-search t)
   (evil-want-C-i-jump t)
   :config
-  (evil-mode 1))
+  (evil-mode 1)
+  :init
+  (setq evil-want-keybinding nil))
 
 (use-package better-jumper
   :ensure t
