@@ -140,6 +140,9 @@
   :custom
   (dumb-jump-force-searcher 'ag))
 
+(use-package helix
+  :ensure (:host github :repo "mgmarlow/helix-mode"))
+
 (require 'cr-methods)
 (require 'cr-org)
 (require 'cr-term)
