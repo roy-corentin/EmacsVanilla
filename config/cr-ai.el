@@ -26,6 +26,7 @@
 
 (use-package gptel
   :ensure t
+  :hook (gptel-post-response-functions . gptel-end-of-response)
   :custom
   (gptel-api-key #'cr/gptel-api-key))
 
