@@ -114,6 +114,7 @@
   :ensure t
   :demand t
   :custom
+  (kaolin-themes-distinct-tab-line t)
   (kaolin-themes-hl-line-colored t))
 
 (use-package lambda-themes
