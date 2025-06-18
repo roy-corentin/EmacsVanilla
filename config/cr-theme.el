@@ -79,7 +79,7 @@
 
 (use-package hl-todo
   :ensure t
-  :hook (prog-mode yaml-mode)
+  :hook prog-mode
   :custom
   (hl-todo-highlight-punctuation ":")
   (hl-todo-keyword-faces
