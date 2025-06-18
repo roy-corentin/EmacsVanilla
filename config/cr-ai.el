@@ -28,7 +28,9 @@
   :ensure t
   :hook (gptel-post-response-functions . gptel-end-of-response)
   :custom
-  (gptel-api-key #'cr/gptel-api-key))
+  (gptel-api-key #'cr/gptel-openai-api-key)
+  :config
+  (gptel-make-anthropic "Claude" :stream t :key #'cr/gptel-anthropic-api-key))
 
 (use-package gptel-quick
   :ensure (:host github :repo "karthink/gptel-quick"))

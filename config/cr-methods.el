@@ -282,16 +282,26 @@ If a prefix N is given, it is passed on to the respective function."
     (call-interactively #'eldoc-doc-buffer)))
 
 ;;;###autoload
-(defun cr/gptel-api-key ()
-  "Fetch api key for gptel."
+(defun cr/gptel-api-key (host)
+  "Fetch HOST api key for gptel."
   (if-let* ((secret
              (plist-get
-              (car (auth-source-search :host "api.openai.com" :require '(:secret)))
+              (car (auth-source-search :host host :require '(:secret)))
               :secret)))
       (if (functionp secret)
           (encode-coding-string (funcall secret) 'utf-8)
         secret)
     (user-error "No `gptel-api-key' found in the auth source")))
+
+;;;###autoload
+(defun cr/gptel-openai-api-key ()
+  "Fetch openai api key for gptel."
+  (cr/gptel-api-key "api.openai.com"))
+
+;;;###autoload
+(defun cr/gptel-anthropic-api-key ()
+  "Fetch openai api key for gptel."
+  (cr/gptel-api-key "api.anthropic.com"))
 
 ;;;###autoload
 (defun cr/org-ai-on-current-project ()
