@@ -49,7 +49,6 @@
 
 (use-package diff-hl
   :ensure t
-  :demand t
   :preface
   (defun enable-diff-hl-margin-in-tui ()
     (unless (display-graphic-p) (diff-hl-margin-local-mode)))
