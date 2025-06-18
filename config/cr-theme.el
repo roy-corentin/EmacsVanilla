@@ -145,7 +145,7 @@
   (indent-bars-starting-column 1)
   (indent-bars-treesit-scope '((python function_definition class_definition for_statement
                                        if_statement with_statement while_statement)
-                               (ruby module class method call if)
+                               (ruby module class method)
                                (tsx export_statement interface_declaration class_declaration
                                     method_definition function_declaration for_statement
                                     if_statement while_statement try_statement type_alias_declaration
