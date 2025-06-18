@@ -117,7 +117,8 @@
 (use-package dumb-jump
   :ensure t
   :hook prog-mode
-  :hook (xref-backend-functions . dumb-jump-xref-activate)
+  :config
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
   :custom
   (dumb-jump-force-searcher 'ag))
 
