@@ -148,7 +148,7 @@
   (global-auto-revert-mode t)
   (setq custom-file (concat user-emacs-directory "custom.el"))
   (load custom-file t)
-  (defvar default-opacity 85)
+  (defvar default-opacity 90)
   (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
   (add-to-list 'default-frame-alist '(font . "Iosevka Nerd Font-12:weight=light"))
   :bind
