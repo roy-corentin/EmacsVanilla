@@ -1,5 +1,4 @@
-
-;; cr-keybindings.el --- Description -*- lexical-binding: t; -*-
+;;; cr-keybindings.el --- Description -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2024 Corentin Roy
 ;;
