@@ -17,7 +17,7 @@
   (display-buffer-alist
    '(
      ((or . ((derived-mode . help-mode)
-             "\\*\\(eldoc\\|vterm-popup-.*\\|helpful.*\\)\\*"))
+             "\\*\\(eldoc.*\\|vterm-popup-.*\\|helpful.*\\)\\*"))
       ;; List display function
       (display-buffer-in-side-window)
       ;; Parameter
