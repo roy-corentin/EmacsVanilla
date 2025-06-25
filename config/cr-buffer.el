@@ -6,6 +6,11 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 21, 2024
 
+;;; Commentary:
+
+
+;;; Code:
+
 (use-package window
   :ensure nil
   :custom
@@ -33,3 +38,4 @@
   :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
 
 (provide 'cr-buffer)
+;;; cr-buffer.el ends here
