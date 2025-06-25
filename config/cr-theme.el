@@ -124,6 +124,10 @@
   (lambda-themes-set-italic-keywords t)
   (lambda-themes-set-variable-pitch t))
 
+(use-package doom-two-tone-themes
+  :demand t
+  :ensure (:host github :repo "eliraz-refael/doom-two-tone-themes" :depth 2 :files (:defaults "themes/*el")))
+
 (use-package rainbow-delimiters
   :ensure t
   :hook (prog-mode . rainbow-delimiters-mode))
