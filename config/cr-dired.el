@@ -63,6 +63,7 @@
     (when (file-directory-p file) ; we only interest in directories here
       `(shell . ("eza" "-laS" "--icons=always" "--color=always"
                  "--group-directories-first" ,file))))
+  (push 'eza dirvish-preview-dispatchers)
   (setq dirvish-preview-dispatchers
         (cl-substitute 'eza 'dired dirvish-preview-dispatchers))
   (dirvish-side-follow-mode)
