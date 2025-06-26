@@ -27,10 +27,8 @@
 
 (use-package doom-modeline
   :ensure t
-  :demand t
-  :hook (doom-modeline-mode . size-indication-mode) ; filesize in modeline
-  :hook (doom-modeline-mode . column-number-mode)   ; cursor column in modeline
-  :hook (doom-load-theme . doom-modeline-refresh-bars)
+  :hook (doom-modeline-mode . column-number-mode)
+  :hook (emacs-startup . doom-modeline-refresh-bars)
   :custom
   (doom-modeline-bar-width 3)
   (doom-modeline-github nil)
