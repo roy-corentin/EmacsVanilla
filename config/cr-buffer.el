@@ -31,7 +31,11 @@
       (display-buffer-in-side-window)
       ;; Parameter
       (side . bottom)
-      (dedicated t)))))
+      (dedicated t)
+      (window-height . fit-window-to-buffer))
+     ("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+      nil
+      (window-parameters (mode-line-format . none))))))
 
 (use-package nerd-icons-ibuffer
   :ensure t
