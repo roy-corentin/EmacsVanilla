@@ -181,7 +181,10 @@ If prefix ARG is set, prompt for a directory to search from."
   (defun cr/search-symbol-at-point-in-project ()
     "Search in project symbol at point"
     (interactive)
-    (consult-ripgrep nil (evil-find-thing t 'symbol))))
+    (consult-ripgrep nil
+                     (if (use-region-p)
+                         (buffer-substring (region-beginning) (region-end))
+                       (evil-find-thing t 'symbol)))))
 
 ;;;###autoload
 (defun cr/switch-theme (theme)
