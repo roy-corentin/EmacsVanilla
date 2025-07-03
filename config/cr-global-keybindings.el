@@ -328,8 +328,8 @@
   (general-define-key
    :states '(normal visual)
    :keymaps 'reader-mode-map
-   "j" 'reader-next-page
-   "k" 'reader-previous-page
+   "j" 'reader-scroll-down-or-next-page
+   "k" 'reader-scroll-up-or-prev-page
    "gg" 'reader-first-page
    "G" 'reader-last-page
    "W" 'reader-fit-to-width
