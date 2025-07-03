@@ -6,6 +6,11 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 13, 2024
 
+;;; Commentary:
+
+
+;;; Code:
+
 (use-package yasnippet
   :ensure t
   :custom
@@ -30,3 +35,4 @@
   :hook (find-file . auto-insert))
 
 (provide 'cr-yasnippet)
+;;; cr-yasnippet.el ends here
