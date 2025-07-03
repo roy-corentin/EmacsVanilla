@@ -142,6 +142,7 @@
   (set-fringe-mode 4)
   (delete-selection-mode 1)
   (global-hl-line-mode -1)
+  (blink-cursor-mode -1)
   (desktop-save-mode 1)
   (set-default 'truncate-lines t)
   (pixel-scroll-mode t)
