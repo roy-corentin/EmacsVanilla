@@ -153,6 +153,7 @@
   (defvar default-opacity 90)
   (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
   (add-to-list 'default-frame-alist '(font . "Iosevka Nerd Font-12:weight=light"))
+  (set-face-attribute font-lock-comment-face nil :slant 'italic)
   :bind
   ("C-=" . text-scale-increase)
   ("C--" . text-scale-decrease)
