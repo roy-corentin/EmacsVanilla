@@ -31,5 +31,9 @@
   :config
   (global-kkp-mode +1))
 
+(use-package clipetty
+  :ensure t
+  :hook (before-make-frame . (lambda () (when (display-graphic-p) global-clipetty-mode))))
+
 (provide 'cr-term)
 ;;; cr-term.el ends here
