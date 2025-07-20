@@ -45,6 +45,8 @@
   :ensure t
   :after eglot
   :hook (prog-mode . eldoc-box-hover-at-point-mode)
+  :custom
+  (eldoc-box-max-pixel-height 220)
   :init
   (add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-at-point-mode t)
   (add-hook 'eldoc-box-buffer-setup-hook #'eldoc-box-prettify-ts-errors 0 t))
