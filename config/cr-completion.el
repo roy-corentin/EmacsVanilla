@@ -36,6 +36,7 @@
   (vertico-multiform-commands
    '((consult-ripgrep buffer (:not posframe))
      (cr/search-symbol-at-point-in-project buffer (:not posframe))
+     (cr/find-file-dwim (:not posframe))
      (+default/search-cwd buffer (:not posframe))))
   :config
   (vertico-multiform-mode 1)
