@@ -42,16 +42,6 @@
   (vertico-multiform-mode 1)
   (vertico-posframe-mode t))
 
-(use-package eldoc-box
-  :ensure t
-  :after eglot
-  :hook (prog-mode . eldoc-box-hover-at-point-mode)
-  :custom
-  (eldoc-box-max-pixel-height 220)
-  :init
-  (add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-at-point-mode t)
-  (add-hook 'eldoc-box-buffer-setup-hook #'eldoc-box-prettify-ts-errors 0 t))
-
 (use-package nova
   :disabled t
   :after (vertico-posframe corfu orderless eldoc-box)
@@ -130,7 +120,7 @@
   :custom
   (nerd-icons-corfu-mapping my-corfu-icons)
   :init
-  (add-to-list 'corfu-margin-formatters 'nerd-icons-corfu-formatter))
+  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
 (use-package cape
   :ensure t

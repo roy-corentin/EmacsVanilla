@@ -173,6 +173,27 @@
   (add-to-list 'savehist-additional-variables 'emacs-theme)
   (savehist-mode))
 
+(use-package tab-bar
+  :after dashboard
+  :custom
+  (tab-bar-show t)
+  :init
+  (advice-add #'tab-new :after #'dashboard-open))
+
+(use-package tab-line
+  :custom
+  (tab-line-new-button-show nil)
+  (tab-line-close-button-show nil))
+
+(use-package which-key
+  :custom
+  (which-key-show-early-on-C-h t)
+  (which-key-idle-secondary-delay 0.05)
+  (which-key-popup-type 'side-window)
+  :config
+  (push '(("" ."\\`+?evil[-:]?\\(?:a-\\)?\\(.*\\)") . (nil .  "◂\\1")) which-key-replacement-alist)
+  (which-key-mode))
+
 (require 'cr-theme)
 
 (provide 'early-init)

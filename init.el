@@ -25,36 +25,10 @@
   :config
   (load-env-vars (concat user-emacs-directory ".env")))
 
-(use-package nerd-icons
-  :ensure t)
-
 (use-package cr-kithar
   :after olivetti
   :config
   (kithar-mode t))
-
-(use-package which-key
-  :ensure nil
-  :custom
-  (which-key-show-early-on-C-h t)
-  (which-key-idle-secondary-delay 0.05)
-  (which-key-popup-type 'side-window)
-  :config
-  (push '(("" ."\\`+?evil[-:]?\\(?:a-\\)?\\(.*\\)") . (nil .  "◂\\1")) which-key-replacement-alist)
-  (which-key-mode))
-
-(use-package elec-pair
-  :preface
-  (defun disable-arrow-pair ()
-    (setq-local electric-pair-inhibit-predicate
-                `(lambda (c)
-                   (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c)))))
-  (defun disable-parenthesis-pair ()
-    (setq-local electric-pair-inhibit-predicate
-                `(lambda (c)
-                   (if (char-equal c ?\() t (,electric-pair-inhibit-predicate c)))))
-  :hook (org-mode . disable-arrow-pair)
-  :hook (minibuffer-mode . disable-parenthesis-pair))
 
 (use-package ace-window
   :ensure t
@@ -80,13 +54,6 @@
 
 (use-package posframe
   :ensure t)
-
-(use-package tab-bar
-  :after dashboard
-  :custom
-  (tab-bar-show t)
-  :init
-  (advice-add #'tab-new :after #'dashboard-open))
 
 (use-package helpful
   :ensure t)
@@ -126,8 +93,8 @@
   :ensure (:host github :repo "mgmarlow/helix-mode"))
 
 (require 'cr-methods)
-(require 'cr-org)
 (require 'cr-term)
+(require 'cr-ui)
 (require 'cr-buffer)
 (require 'cr-olivetti)
 (require 'cr-magit)
@@ -136,10 +103,11 @@
 (require 'cr-project)
 (require 'cr-dashboard)
 (require 'cr-completion)
+(require 'cr-eldoc)
 (require 'cr-undo)
 (require 'cr-treesit)
 (require 'cr-formatter)
-;;(require 'cr-meow)
+(require 'cr-meow)
 (require 'cr-evil)
 (require 'cr-dired)
 (require 'cr-language)
@@ -151,5 +119,6 @@
 (require 'cr-scroll)
 (require 'cr-ai)
 (require 'cr-global-keybindings)
+(require 'cr-org)
 
 ;;; init.el ends here

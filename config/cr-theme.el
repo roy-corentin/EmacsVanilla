@@ -44,63 +44,6 @@
   :config
   (doom-modeline-mode 1))
 
-(use-package diff-hl
-  :ensure t
-  :preface
-  (defun enable-diff-hl-margin-in-tui ()
-    (unless (display-graphic-p) (diff-hl-margin-local-mode)))
-  ;; :hook (dired-mode . diff-hl-dired-mode) ; HACK uncomment if you don't use dirvish
-  :hook (magit-pre-refresh . diff-hl-magit-pre-refresh)
-  :hook (magit-post-refresh . diff-hl-magit-post-refresh)
-  :hook (diff-hl-mode-on . enable-diff-hl-margin-in-tui)
-  :custom
-  (diff-hl-bmp-max-width 4)
-  (diff-hl-disable-on-remote t)
-  (vc-git-diff-switches '("--histogram"))
-  (diff-hl-flydiff-delay 0.5)
-  (diff-hl-update-async t)
-  ;; UX: get realtime feedback in diffs after staging/unstaging hunks.
-  (diff-hl-show-staged-changes nil)
-  (diff-hl-draw-borders t)
-  :config
-  (global-diff-hl-mode t))
-
-(use-package git-gutter
-  :ensure t
-  :disabled (package-installed-p 'diff-hl)
-  :hook (prog-mode text-mode)
-  :custom
-  (fringes-outside-margins t)
-  :init
-  (global-git-gutter-mode t))
-
-(use-package hl-todo
-  :ensure t
-  :hook prog-mode
-  :custom
-  (hl-todo-highlight-punctuation ":")
-  (hl-todo-keyword-faces
-   '(;; For reminders to change or add something at a later date.
-     ("TODO" warning bold)
-     ;; For code (or code paths) that are broken, unimplemented, or slow,
-     ;; and may become bigger problems later.
-     ("FIXME" error bold)
-     ;; For code that needs to be revisited later, either to upstream it,
-     ;; improve it, or address non-critical issues.
-     ("REVIEW" font-lock-keyword-face bold)
-     ;; For code smells where questionable practices are used
-     ;; intentionally, and/or is likely to break in a future update.
-     ("HACK" font-lock-constant-face bold)
-     ;; For sections of code that just gotta go, and will be gone soon.
-     ;; Specifically, this means the code is deprecated, not necessarily
-     ;; the feature it enables.
-     ("DEPRECATED" font-lock-doc-face bold)
-     ;; Extra keywords commonly found in the wild, whose meaning may vary
-     ;; from project to project.
-     ("NOTE" success bold)
-     ("BUG" error bold)
-     ("XXX" font-lock-constant-face bold))))
-
 (use-package catppuccin-theme
   :ensure t
   :demand t
@@ -125,62 +68,6 @@
 (use-package doom-two-tone-themes
   :demand t
   :ensure (:host github :repo "eliraz-refael/doom-two-tone-themes" :depth 2 :files (:defaults "themes/*el")))
-
-(use-package rainbow-delimiters
-  :ensure t
-  :hook (prog-mode . rainbow-delimiters-mode))
-
-(use-package rainbow-mode
-  :ensure t)
-
-(use-package vim-tab-bar
-  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "jamescherti/vim-tab-bar.el" :files (:defaults))
-  :config
-  (vim-tab-bar-mode))
-
-(use-package indent-bars
-  :ensure t
-  :custom
-  (indent-bars-treesit-support t)
-  (indent-bars-treesit-ignore-blank-lines-types '("module"))
-  (indent-bars-starting-column 1)
-  (indent-bars-treesit-scope '((python function_definition class_definition for_statement
-                                       if_statement with_statement while_statement)
-                               (ruby module class method)
-                               (tsx export_statement interface_declaration class_declaration
-                                    method_definition function_declaration for_statement
-                                    if_statement while_statement try_statement type_alias_declaration
-                                    lexical_declaration jsx_element pair call_expression)
-                               (typescript export_statement interface_declaration class_declaration
-                                           method_definition function_declaration for_statement
-                                           if_statement while_statement try_statement type_alias_declaration
-                                           lexical_declaration pair call_expression)
-                               (c compound_statement)))
-  :hook ((python-base-mode yaml-mode ruby-base-mode typescript-ts-base-mode c-ts-mode zig-ts-mode) . indent-bars-mode))
-
-(use-package tab-line
-  :ensure nil
-  :custom
-  (tab-line-new-button-show nil)
-  (tab-line-close-button-show nil))
-
-(use-package spacious-padding
-  :ensure t
-  :disabled t
-  :custom
-  (spacious-padding-subtle-mode-line t)
-  (spacious-padding-widths
-   '(
-     :internal-border-width 15
-     :header-line-width 4
-     :mode-line-width 6
-     :tab-width 4
-     :right-divider-width 30
-     :scroll-bar-width 8
-     :fringe-width 4
-     ))
-  :init
-  (spacious-padding-mode 1))
 
 (defun load-custom-theme ()
   "Load custom theme."
