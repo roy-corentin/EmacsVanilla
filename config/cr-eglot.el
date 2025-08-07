@@ -20,6 +20,7 @@
   (eglot-code-action-indications '(eldoc-hint mode-line))
   (eglot-send-changes-idle-time 0.2)
   (eglot-extend-to-xref t)
+  (eglot-report-progress nil)
   :custom-face
   (eglot-highlight-symbol-face ((t (:inherit highlight :weight bold))))
   :config
@@ -31,6 +32,7 @@
 (use-package eglot-booster
   :ensure (:host github :repo "jdtsmith/eglot-booster")
   :after eglot
+  :disabled
   :custom
   (eglot-booster-no-remote-boost t)
   (eglot-booster-io-only nil)
