@@ -23,7 +23,7 @@
 ;;; Code:
 
 (use-package ultra-scroll
-  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "jdsmith/ultra-scroll" :files (:defaults))
+  :ensure (:host github :repo "jdsmith/ultra-scroll" :files (:defaults))
   :custom
   (scroll-conservatively 0)
   (scroll-margin 0)
