@@ -29,9 +29,11 @@ Returns the vterm buffer called with DISPLAY-FN."
            confirm-kill-processes)
        (let ((buffer (get-buffer buffer-name)))
          (if (buffer-live-p buffer)
-             (if (get-buffer-window buffer-name)
-                 (kill-buffer buffer)
-               (display-buffer buffer))
+             (let ((current-buffer (get-buffer-window))
+                   (term-buffer (get-buffer-window buffer-name)))
+               (if (and term-buffer (eql current-buffer term-buffer))
+                   (kill-buffer buffer)
+                 (display-buffer buffer)))
            (vterm buffer-name)))))))
 
 ;;;###autoload
