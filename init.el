@@ -90,7 +90,9 @@
   (dumb-jump-force-searcher 'ag))
 
 (use-package helix
-  :ensure (:host github :repo "mgmarlow/helix-mode"))
+  :ensure (:host github :repo "mgmarlow/helix-mode")
+  :hook ((helix-normal-mode . (lambda () (setq display-line-numbers 'relative)))
+         (helix-insert-mode . (lambda () (setq display-line-numbers t)))))
 
 (require 'cr-methods)
 (require 'cr-term)
