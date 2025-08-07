@@ -48,7 +48,8 @@
   (dirvish-use-mode-line nil)
   (dirvish-subtree-always-show-state t)
   (dirvish-attributes '(file-size collapse nerd-icons vc-state subtree-state))
-  (dirvish-side-attributes '(file-size  collapse nerd-icons vc-state))
+  (dirvish-side-attributes '(file-size collapse nerd-icons vc-state))
+  (dirvish-subtree-state-style 'nerd)
   (delete-by-moving-to-trash t)
   (dirvish-path-separators (list
                             (format "  %s " (nerd-icons-codicon "nf-cod-home"))
