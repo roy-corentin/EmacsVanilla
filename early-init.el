@@ -121,6 +121,8 @@
   (window-divider-default-right-width 1)
   (window-divider-default-bottom-width 1)
   (kill-buffer-quit-windows t)
+  (window-resize-pixelwise t)
+  (frame-inhibit-implied-resize t)
   ;; Scroll
   (fast-but-imprecise-scrolling t)
   ;; Hl line
@@ -130,16 +132,16 @@
   (modus-themes-mixed-fonts t)
   ;; Term
   (comint-terminfo-terminal "dumb-emacs-ansi")
+  (use-package-compute-statistics t)
   :custom-face
-  (default ((t :family "Iosevka Nerd Font" :weight light :height 120)))
+  (default ((t :family "Iosevka Nerd Font" :weight medium :height 120)))
   (fixed-pitch ((t :family "Iosevka Nerd Font" :weight bold :height 120)))
-  (variable-pitch ((t :family "Iosevka Etoile" :weight light :height 120)))
+  (variable-pitch ((t :family "Iosevka Etoile" :weight medium :height 120)))
   :init
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
   (tab-bar-mode 1)
-  (set-fringe-mode 4)
   (delete-selection-mode 1)
   (global-hl-line-mode -1)
   (blink-cursor-mode -1)
@@ -152,8 +154,9 @@
   (load custom-file t)
   (defvar default-opacity 90)
   (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
-  (add-to-list 'default-frame-alist '(font . "Iosevka Nerd Font-12:weight=light"))
+  (add-to-list 'default-frame-alist '(borders-respect-alpha-background . t))
   (set-face-attribute font-lock-comment-face nil :slant 'italic)
+  (set-face-attribute font-lock-keyword-face nil :slant 'italic)
   :bind
   ("C-=" . text-scale-increase)
   ("C--" . text-scale-decrease)
