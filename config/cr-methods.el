@@ -332,5 +332,96 @@ to if called with ARG, or any prefix argument."
                            (t 100))))))
     (set-frame-parameter nil 'alpha-background transparency)))
 
+;;;###autoload
+(defun my-gptel--edit_file (file-path file-edits)
+  "In FILE-PATH, apply FILE-EDITS with pattern matching and replacing."
+  (if (and file-path (not (string= file-path "")) file-edits)
+      (with-current-buffer (get-buffer-create "*edit-file*")
+        (erase-buffer)
+        (insert-file-contents (expand-file-name file-path))
+        (let ((inhibit-read-only t)
+              (case-fold-search nil)
+              (file-name (expand-file-name file-path))
+              (edit-success nil))
+          ;; apply changes
+          (dolist (file-edit (seq-into file-edits 'list))
+            (when-let* ((line-number (plist-get file-edit :line_number))
+                        (old-string (plist-get file-edit :old_string))
+                        (new-string (plist-get file-edit :new_string))
+                        (is-valid-old-string (not (string= old-string ""))))
+              (goto-char (point-min))
+              (forward-line (1- line-number))
+              (when (search-forward old-string nil t)
+                (replace-match new-string t t)
+                (setq edit-success t))))
+          ;; return result to gptel
+          (if edit-success
+              (progn
+                ;; show diffs
+                (ediff-buffers (find-file-noselect file-name) (current-buffer))
+                (format "Successfully edited %s" file-name))
+            (format "Failed to edited %s" file-name))))
+    (format "Failed to edited %s" file-path)))
+
+;;;###autoload
+(defun my-gptel--run-async-command (callback command)
+  "Run COMMAND asynchronously and pass output to CALLBACK."
+  (condition-case error
+      (let ((buffer (generate-new-buffer " *async output*")))
+        (with-temp-message (format "Running async command: %s" command)
+          (async-shell-command command buffer nil))
+        (let ((proc (get-buffer-process buffer)))
+          (when proc
+            (set-process-sentinel
+             proc
+             (lambda (process _event)
+               (unless (process-live-p process)
+                 (with-current-buffer (process-buffer process)
+                   (let ((output (buffer-substring-no-properties (point-min) (point-max))))
+                     (kill-buffer (current-buffer))
+                     (funcall callback output)))))))))
+    (t
+     ;; Handle any kind of error
+     (funcall callback (format "An error occurred: %s" error)))))
+
+;;;###autoload
+(defun my-gptel--read-documentation (symbol)
+  "Read the documentation for SYMBOL, which can be a function or variable."
+  (let ((sym (intern symbol)))
+    (cond
+     ((fboundp sym)
+      (documentation sym))
+     ((boundp sym)
+      (documentation-property sym 'variable-documentation))
+     (t
+      (format "No documentation found for %s" symbol)))))
+
+;;;###autoload
+(defun my-gptel--edit-buffer (buffer-name old-string new-string)
+  "In BUFFER-NAME, replace OLD-STRING with NEW-STRING."
+  (with-current-buffer buffer-name
+    (let ((case-fold-search nil))  ;; Case-sensitive search
+      (save-excursion
+        (goto-char (point-min))
+        (let ((count 0))
+          (while (search-forward old-string nil t)
+            (setq count (1+ count)))
+          (if (= count 0)
+              (format "Error: Could not find text to replace in buffer %s" buffer-name)
+            (if (> count 1)
+                (format "Error: Found %d matches for the text to replace in buffer %s" count buffer-name)
+              (goto-char (point-min))
+              (search-forward old-string)
+              (replace-match new-string t t)
+              (format "Successfully edited buffer %s" buffer-name))))))))
+
+;;;###autoload
+(defun my-gptel--replace-buffer (buffer-name content)
+  "Completely replace contents of BUFFER-NAME with CONTENT."
+  (with-current-buffer buffer-name
+    (erase-buffer)
+    (insert content)
+    (format "Buffer replaced: %s" buffer-name)))
+
 (provide 'cr-methods)
 ;;; cr-methods.el ends here
