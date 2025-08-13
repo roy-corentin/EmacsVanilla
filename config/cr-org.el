@@ -458,7 +458,8 @@
 
 (use-package org-modern-indent
   :ensure (:protocols https :inherit t :depth 1 :fetcher github :repo "jdtsmith/org-modern-indent" :files (:defaults))
-  :hook org-mode)
+  :config
+  (add-hook 'org-mode-hook #'org-modern-indent-mode 90))
 
 (provide 'cr-org)
 ;;; cr-org.el ends here
