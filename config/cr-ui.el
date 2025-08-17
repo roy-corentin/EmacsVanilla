@@ -90,7 +90,7 @@
   (diff-hl-update-async t)
   ;; UX: get realtime feedback in diffs after staging/unstaging hunks.
   (diff-hl-show-staged-changes nil)
-  (diff-hl-draw-borders t)
+  (diff-hl-draw-borders nil)
   :config
   (global-diff-hl-mode t))
 
