@@ -122,5 +122,6 @@
 (require 'cr-ai)
 (require 'cr-global-keybindings)
 (require 'cr-org)
+(require 'cr-elfeed)
 
 ;;; init.el ends here
