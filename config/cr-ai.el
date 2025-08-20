@@ -30,7 +30,8 @@
   :custom
   (gptel-api-key #'cr/gptel-openai-api-key)
   :config
-  (gptel-make-anthropic "Claude" :stream t :key #'cr/gptel-anthropic-api-key))
+  (gptel-make-anthropic "Claude" :stream t :key #'cr/gptel-anthropic-api-key)
+  (gptel-make-gemini "Gemini" :stream t :key #'cr/gptel-gemini-api-key))
 
 (use-package gptel-quick
   :ensure (:host github :repo "karthink/gptel-quick"))
