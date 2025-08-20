@@ -95,12 +95,12 @@
          (helix-insert-mode . (lambda () (setq display-line-numbers t)))))
 
 (require 'cr-methods)
-(require 'cr-dashboard)
 (require 'cr-buffer)
 (require 'cr-project)
 (require 'cr-yasnippet)
 (require 'cr-eglot)
 (require 'cr-ui)
+(require 'cr-dashboard)
 (require 'cr-completion)
 (require 'cr-term)
 (require 'cr-olivetti)
