@@ -65,6 +65,9 @@
   (lambda-themes-set-italic-keywords t)
   (lambda-themes-set-variable-pitch t))
 
+(use-package color-theme-sanityinc-tomorrow
+  :ensure t)
+
 (use-package doom-two-tone-themes
   :demand t
   :ensure (:host github :repo "eliraz-refael/doom-two-tone-themes" :depth 2 :files (:defaults "themes/*el")))
