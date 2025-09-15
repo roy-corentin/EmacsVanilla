@@ -403,9 +403,6 @@
                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
 
-(use-package visual-fill-column
-  :ensure t)
-
 (use-package org-present
   :ensure t
   :preface
