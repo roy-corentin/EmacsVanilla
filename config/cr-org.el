@@ -208,7 +208,7 @@
   :ensure t
   :hook org-mode
   :custom
-  (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
+  (org-bullets-bullet-list '("◉" "○" "◈" "◇" "✳" "●")))
 
 (use-package org-roam
   :ensure t
