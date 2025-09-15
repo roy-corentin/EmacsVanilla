@@ -454,7 +454,7 @@
   (org-appear-trigger 'manual))
 
 (use-package org-modern-indent
-  :ensure (:protocols https :inherit t :depth 1 :fetcher github :repo "jdtsmith/org-modern-indent" :files (:defaults))
+  :ensure (:host github :repo "jdtsmith/org-modern-indent")
   :config
   (add-hook 'org-mode-hook #'org-modern-indent-mode 90))
 
