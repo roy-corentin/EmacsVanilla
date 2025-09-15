@@ -31,21 +31,7 @@
   (gptel-api-key #'cr/gptel-openai-api-key)
   :config
   (gptel-make-anthropic "Claude" :stream t :key #'cr/gptel-anthropic-api-key)
-  (gptel-make-gemini "Gemini" :stream t :key #'cr/gptel-gemini-api-key))
-
-(use-package gptel-quick
-  :ensure (:host github :repo "karthink/gptel-quick"))
-
-(use-package org-ai
-  :ensure t
-  :defer t
-  :commands (org-ai-mode
-             org-ai-global-mode)
-  :hook org-mode
-  :custom
-  (org-ai-default-chat-model "gpt-4")
-  :init
-  (org-ai-global-mode)
+  (gptel-make-gemini "Gemini" :stream t :key #'cr/gptel-gemini-api-key)
   (add-to-list 'gptel-tools
                (gptel-make-tool
                 :name "read_buffer"        ; javascript-style snake_case name
@@ -242,6 +228,21 @@ a old-string and a new-string, new-string will replace the old-string at the spe
                                     :type string
                                     :description "The URL to read"))
                 :category "web"))
+  )
+
+(use-package gptel-quick
+  :ensure (:host github :repo "karthink/gptel-quick"))
+
+(use-package org-ai
+  :ensure t
+  :defer t
+  :commands (org-ai-mode
+             org-ai-global-mode)
+  :hook org-mode
+  :custom
+  (org-ai-default-chat-model "gpt-4")
+  :init
+  (org-ai-global-mode)
   :config
   (org-ai-install-yasnippets))
 
