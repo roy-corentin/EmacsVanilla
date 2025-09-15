@@ -15,7 +15,6 @@
   :hook org-mode)
 
 (use-package org
-  :defer t
   :preface
   (defun cr/set-org-style ()
     (setq-local display-line-numbers-type 'visual)
@@ -188,7 +187,6 @@
 (use-package org-clock
   :ensure nil
   :after org
-  :demand t
   :hook (kill-emacs . org-clock-save)
   :custom
   (org-clock-persist 'history)
