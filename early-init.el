@@ -71,7 +71,7 @@
     (interactive)
     (text-scale-set 0))
   :hook
-  ((prog-mode yaml-mode org-mode) . display-line-numbers-mode)
+  ((prog-mode yaml-ts-mode org-mode) . display-line-numbers-mode)
   (prog-mode . enable-show-trailing-whitespace)
   :custom
   (use-short-answers t)
