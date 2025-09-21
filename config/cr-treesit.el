@@ -12,7 +12,8 @@
 
 (use-package treesit
   :custom
-  (treesit-font-lock-level 4))
+  (treesit-font-lock-level 4)
+  (treesit-enabled-modes t))
 
 (use-package treesit-auto
   :ensure t
