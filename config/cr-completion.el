@@ -23,6 +23,7 @@
               ("C-v" . vertico-scroll-up))
   :custom
   (vertico-cycle t)
+  (vertico-resize t)
   (vertico-count 20)
   :init
   (vertico-mode))
