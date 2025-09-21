@@ -61,7 +61,6 @@
 
 (use-package spacious-padding
   :ensure t
-  :disabled t
   :custom
   (spacious-padding-subtle-mode-line t)
   (spacious-padding-widths
@@ -73,9 +72,7 @@
      :right-divider-width 30
      :scroll-bar-width 8
      :fringe-width 4
-     ))
-  :init
-  (spacious-padding-mode 1))
+     )))
 
 (use-package diff-hl
   :ensure t
@@ -148,6 +145,9 @@
                    (if (char-equal c ?\() t (,electric-pair-inhibit-predicate c)))))
   :hook (org-mode . disable-arrow-pair)
   :hook (minibuffer-mode . disable-parenthesis-pair))
+
+(use-package buffer-box
+  :ensure (:host github :repo "rougier/buffer-box"))
 
 (provide 'cr-ui)
 ;;; cr-ui.el ends here
