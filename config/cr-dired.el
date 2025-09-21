@@ -17,7 +17,7 @@
   :preface
   (defun my-buffer-face-mode-fixed ()
     "Sets a fixed width (monospace) font in current buffer"
-    (setq buffer-face-mode-face '(:family "Iosevka Nerd Font Mono" :height 120))
+    (setq buffer-face-mode-face '(:inherit fixed-pitch))
     (buffer-face-mode))
   :hook (dired-mode . my-buffer-face-mode-fixed)
   :hook (dired-mode . dired-omit-mode)
