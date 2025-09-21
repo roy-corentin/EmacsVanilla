@@ -30,7 +30,7 @@
                      (agenda    . 5)
                      (bookmarks . 5)
                      (registers . 5)))
-  :config
+  :init
   (dashboard-setup-startup-hook))
 
 (provide 'cr-dashboard)
