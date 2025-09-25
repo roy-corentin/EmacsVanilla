@@ -175,6 +175,13 @@ If prefix ARG is set, prompt for a directory to search from."
   (project-find-file args))
 
 ;;;###autoload
+(defun cr/project-open-file-below-window (&rest args)
+  "Open project file in new below window.  ARGS optional."
+  (interactive)
+  (cr/split-window-below-and-follow)
+  (project-find-file args))
+
+;;;###autoload
 (defun cr/org-summary-todo (_n-done n-not-done)
   "Switch entry to done when all subentries (if N-NOT-DONE is zero) of a todo are done, to todo otherwise."
   (let ((todo-state (org-get-todo-state)))
