@@ -348,8 +348,7 @@ to if called with ARG, or any prefix argument."
 (defun my-gptel--edit_file (file-path file-edits)
   "In FILE-PATH, apply FILE-EDITS with pattern matching and replacing."
   (if (and file-path (not (string= file-path "")) file-edits)
-      (with-current-buffer (get-buffer-create "*edit-file*")
-        (erase-buffer)
+      (with-current-buffer (generate-new-buffer "*edit-file*")
         (insert-file-contents (expand-file-name file-path))
         (let ((inhibit-read-only t)
               (case-fold-search nil)
