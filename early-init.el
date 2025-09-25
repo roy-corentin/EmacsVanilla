@@ -138,9 +138,9 @@
   (comint-terminfo-terminal "dumb-emacs-ansi")
   (use-package-compute-statistics t)
   :custom-face
-  (default ((t :family "Iosevka Nerd Font" :weight medium)))
-  (fixed-pitch ((t :family "Iosevka Nerd Font" :weight bold)))
-  (variable-pitch ((t :family "Iosevka Etoile" :weight medium)))
+  (default ((t :family "Iosevka Nerd Font" :weight medium :height 120)))
+  (fixed-pitch ((t :family "Iosevka Nerd Font Mono" :weight bold :height 120)))
+  (variable-pitch ((t :family "Iosevka Etoile" :weight medium :height 120)))
   :init
   (menu-bar-mode -1)
   (tool-bar-mode -1)
@@ -159,8 +159,8 @@
   (defvar default-opacity 90)
   (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
   (add-to-list 'default-frame-alist '(borders-respect-alpha-background . t))
-  (set-face-attribute font-lock-comment-face nil :slant 'italic)
-  (set-face-attribute font-lock-keyword-face nil :slant 'italic)
+  (set-face-attribute font-lock-comment-face t :slant 'italic)
+  (set-face-attribute font-lock-keyword-face t :slant 'italic)
   :bind
   ("C-=" . text-scale-increase)
   ("C--" . text-scale-decrease)
