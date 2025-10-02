@@ -1,4 +1,4 @@
-;;; cr-elfeed.el --- Elfeed setup                    -*- lexical-binding: t; -*-
+;;; cr-help.el --- setup package for help            -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2025  Roy Corentin
 
@@ -24,29 +24,11 @@
 
 ;;; Code:
 
-(use-package elfeed
+(use-package casual
   :ensure t)
 
-(use-package elfeed-org
-  :ensure t
-  :after elfeed
-  :config
-  (elfeed-org))
+(use-package helpful
+  :ensure t)
 
-(use-package elfeed-tube
-  :ensure t
-  :after elfeed
-  :custom
-  (elfeed-tube-auto-save-p nil) ; default value
-  (elfeed-tube-auto-fetch-p t)  ; default value
-  :config
-  (elfeed-tube-setup)
-  :bind (:map elfeed-show-mode-map
-              ("F" . elfeed-tube-fetch)
-              ([remap save-buffer] . elfeed-tube-save)
-              :map elfeed-search-mode-map
-              ("F" . elfeed-tube-fetch)
-              ([remap save-buffer] . elfeed-tube-save)))
-
-(provide 'cr-elfeed)
-;;; cr-elfeed.el ends here
+(provide 'cr-help)
+;;; cr-help.el ends here

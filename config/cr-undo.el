@@ -6,11 +6,10 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 08, 2024
 
-(use-package undo-tree
-  :disabled t
-  :ensure t
-  :init
-  (global-undo-tree-mode))
+;;; Commentary:
+
+
+;;; Code:
 
 (use-package undo-fu
   :ensure t
@@ -23,6 +22,7 @@
 
 (use-package undo-fu-session
   :ensure t
+  :after undo-fu
   :config
   (global-undo-fu-session-mode))
 

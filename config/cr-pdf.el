@@ -1,4 +1,4 @@
-;;; cr-elfeed.el --- Elfeed setup                    -*- lexical-binding: t; -*-
+;;; cr-pdf.el --- pdf package setup                  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2025  Roy Corentin
 
@@ -24,29 +24,14 @@
 
 ;;; Code:
 
-(use-package elfeed
-  :ensure t)
-
-(use-package elfeed-org
+(use-package pdf-tools
   :ensure t
-  :after elfeed
+  :magic ("%PDF" . pdf-view-mode)
   :config
-  (elfeed-org))
+  (pdf-tools-install :no-query))
 
-(use-package elfeed-tube
-  :ensure t
-  :after elfeed
-  :custom
-  (elfeed-tube-auto-save-p nil) ; default value
-  (elfeed-tube-auto-fetch-p t)  ; default value
-  :config
-  (elfeed-tube-setup)
-  :bind (:map elfeed-show-mode-map
-              ("F" . elfeed-tube-fetch)
-              ([remap save-buffer] . elfeed-tube-save)
-              :map elfeed-search-mode-map
-              ("F" . elfeed-tube-fetch)
-              ([remap save-buffer] . elfeed-tube-save)))
+(use-package reader
+  :ensure (:host "codeberg" :repo "divyaranjan/emacs-reader" :files ("reader.el" "render-core.so") :pre-build ("make" "all")))
 
-(provide 'cr-elfeed)
-;;; cr-elfeed.el ends here
+(provide 'cr-pdf)
+;;; cr-pdf.el ends here

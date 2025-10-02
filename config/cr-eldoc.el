@@ -24,7 +24,6 @@
 
 ;;; Code:
 
-
 (use-package eldoc-box
   :ensure t
   :after eglot
@@ -36,7 +35,6 @@
   :init
   (add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-mode t)
   (add-hook 'eldoc-box-buffer-setup-hook #'eldoc-box-prettify-ts-errors 0 t))
-
 
 (provide 'cr-eldoc)
 ;;; cr-eldoc.el ends here

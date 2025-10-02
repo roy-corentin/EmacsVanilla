@@ -6,18 +6,19 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: avril 13, 2024
 
-(use-package with-editor
-  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "magit/with-editor" :files (:defaults) :branch "main"))
+;;; Commentary:
+
+
+;;; Code:
+
+(use-package cond-let
+  :ensure (:host github :repo "tarsius/cond-let"))
 
 (use-package ghub
-  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "magit/ghub" :files (:defaults) :branch "main"))
-
-(use-package transient
-  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "magit/transient" :files (:defaults) :branch "main"))
+  :ensure t)
 
 (use-package magit
-  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "magit/magit" :files (:defaults) :branch "main")
-  :demand t
+  :ensure t
   :after nerd-icons
   :bind ("C-x g" . magit-status)
   :custom
@@ -50,3 +51,4 @@
   (add-to-list 'forge-alist '("gitlab.mesvaccins.net" "gitlab.mesvaccins.net/api/v4" "gitlab.mesvaccins.net" forge-gitlab-repository)))
 
 (provide 'cr-magit)
+;;; cr-magit.el ends here

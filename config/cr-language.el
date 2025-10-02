@@ -6,6 +6,11 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: mai 01, 2024
 
+;;; Commentary:
+
+
+;;; Code:
+
 (use-package zig-ts-mode
   :ensure (:type git :host codeberg :repo "meow_king/zig-ts-mode"))
 
@@ -70,3 +75,4 @@
   :ensure t)
 
 (provide 'cr-language)
+;;; cr-language.el ends here

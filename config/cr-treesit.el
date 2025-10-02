@@ -13,12 +13,7 @@
 (use-package treesit
   :custom
   (treesit-font-lock-level 4)
-  (treesit-enabled-modes t))
-
-(use-package treesit-auto
-  :ensure t
-  :custom
-  (treesit-auto-install 'prompt)
+  (treesit-enabled-modes t)
   :config
   (add-to-list 'treesit-language-source-alist '(cmake "https://github.com/uyha/tree-sitter-cmake"))
   (add-to-list 'treesit-language-source-alist '(css "https://github.com/tree-sitter/tree-sitter-css"))
@@ -33,9 +28,7 @@
   (add-to-list 'treesit-language-source-alist '(rust "https://github.com/tree-sitter/tree-sitter-rust"))
   (add-to-list 'treesit-language-source-alist '(toml "https://github.com/tree-sitter/tree-sitter-toml"))
   (add-to-list 'treesit-language-source-alist '(c3 "https://github.com/c3lang/tree-sitter-c3"))
-  (add-to-list 'treesit-language-source-alist '(zig "https://github.com/maxxnino/tree-sitter-zig"))
-  (treesit-auto-add-to-auto-mode-alist 'all)
-  (global-treesit-auto-mode))
+  (add-to-list 'treesit-language-source-alist '(zig "https://github.com/maxxnino/tree-sitter-zig")))
 
 
 (provide 'cr-treesit)

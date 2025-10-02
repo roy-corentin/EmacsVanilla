@@ -27,7 +27,6 @@
   (dashboard-icon-type 'nerd-icons)
   (dashboard-items '((recents   . 5)
                      (projects  . 5)
-                     (agenda    . 5)
                      (bookmarks . 5)
                      (registers . 5)))
   :init

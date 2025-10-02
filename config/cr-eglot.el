@@ -29,19 +29,5 @@
   (add-to-list 'eglot-server-programs '(c3-ts-mode "c3lsp"))
   (add-to-list 'eglot-server-programs '(crystal-mode "crystalline")))
 
-(use-package eglot-booster
-  :ensure (:host github :repo "jdtsmith/eglot-booster")
-  :after eglot
-  :disabled
-  :custom
-  (eglot-booster-no-remote-boost t)
-  (eglot-booster-io-only nil)
-  :config
-  (eglot-booster-mode))
-
-(use-package xref
-  :custom
-  (xref-auto-jump-to-first-definition t))
-
 (provide 'cr-eglot)
 ;;; cr-eglot.el ends here

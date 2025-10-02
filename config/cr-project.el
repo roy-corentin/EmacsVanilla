@@ -8,14 +8,12 @@
 ;; Modified: avril 07, 2024
 ;;;
 
+;;; Commentary:
+
+;;; Code:
+
 (use-package project
   :ensure nil
-  :preface
-  (defun cr/magit-in-project ()
-    (interactive)
-    (let ((default-directory (project-root (project-current))))
-      (magit-status-setup-buffer)
-      (delete-other-windows)))
   :custom
   (project-vc-ignores '("target/" "obj/" "node_modules/" "_build/"))
   (project-vc-extra-root-markers '(".project"))
@@ -26,3 +24,4 @@
                              (cr/magit-in-project "Magit" ?m))))
 
 (provide 'cr-project)
+;;; cr-project.el ends here

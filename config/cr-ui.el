@@ -29,13 +29,13 @@
 
 (use-package rainbow-delimiters
   :ensure t
-  :hook (prog-mode . rainbow-delimiters-mode))
+  :hook prog-mode)
 
 (use-package rainbow-mode
   :ensure t)
 
 (use-package vim-tab-bar
-  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "jamescherti/vim-tab-bar.el" :files (:defaults))
+  :ensure (:host github :repo "jamescherti/vim-tab-bar.el")
   :config
   (vim-tab-bar-mode))
 
@@ -72,7 +72,9 @@
      :right-divider-width 30
      :scroll-bar-width 8
      :fringe-width 4
-     )))
+     ))
+  :config
+  (spacious-padding-mode 1))
 
 (use-package diff-hl
   :ensure t
@@ -85,20 +87,11 @@
   (vc-git-diff-switches '("--histogram"))
   (diff-hl-flydiff-delay 0.5)
   (diff-hl-update-async t)
+  (diff-hl-draw-borders nil)
   ;; UX: get realtime feedback in diffs after staging/unstaging hunks.
   (diff-hl-show-staged-changes nil)
-  (diff-hl-draw-borders nil)
   :config
   (global-diff-hl-mode t))
-
-(use-package git-gutter
-  :ensure t
-  :disabled (package-installed-p 'diff-hl)
-  :hook (prog-mode text-mode)
-  :custom
-  (fringes-outside-margins t)
-  :init
-  (global-git-gutter-mode t))
 
 (use-package hl-todo
   :ensure t
@@ -129,9 +122,9 @@
 
 (use-package goggles
   :ensure t
-  :hook ((prog-mode text-mode) . goggles-mode)
-  :config
-  (setq-default goggles-pulse t)) ;; set to nil to disable pulsing
+  :hook (prog-mode text-mode)
+  :custom
+  (goggles-pulse t)) ;; set to nil to disable pulsing
 
 (use-package elec-pair
   :preface

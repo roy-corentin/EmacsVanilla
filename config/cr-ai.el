@@ -246,6 +246,5 @@ a old-string and a new-string, new-string will replace the old-string at the spe
   :config
   (org-ai-install-yasnippets))
 
-
 (provide 'cr-ai)
 ;;; cr-ai.el ends here

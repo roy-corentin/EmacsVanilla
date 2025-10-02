@@ -7,6 +7,11 @@
 
 ;; Configure gnuplot packages
 
+;;; Commentary:
+
+
+;;; Code:
+
 (use-package gnuplot
   :ensure t
   :defer t)

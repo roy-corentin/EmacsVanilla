@@ -33,7 +33,7 @@
 
 (use-package clipetty
   :ensure t
-  :hook (before-make-frame . (lambda () (when (display-graphic-p) global-clipetty-mode))))
+  :hook (tty-setup . global-clipetty-mode))
 
 (provide 'cr-term)
 ;;; cr-term.el ends here

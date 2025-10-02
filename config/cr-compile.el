@@ -28,11 +28,8 @@
                 ((file-exists-p (concat (project-root(project-current)) "bun.lockb")) "bun tsc")
                 ((file-exists-p (concat (project-root(project-current)) "pnpm-lock.yaml")) "pnpm tsc")
                 ((file-exists-p (concat (project-root(project-current)) "package-lock.json")) "npm run tsc"))))
-  (defun enable-visual-line (rest)
-    (ignore rest)
-    (visual-line-mode))
   :hook (compilation-filter . ansi-color-compilation-filter)
-  :hook (compilation-start . enable-visual-line)
+  :hook (compilation-start . visual-line-mode)
   :custom
   (compilation-scroll-output t)
   :config

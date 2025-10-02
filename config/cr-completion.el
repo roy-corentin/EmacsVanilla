@@ -43,19 +43,6 @@
   (vertico-multiform-mode 1)
   (vertico-posframe-mode t))
 
-(use-package nova
-  :disabled t
-  :after (vertico-posframe corfu orderless eldoc-box)
-  :ensure (:host github :repo "thisisran/nova")
-  :custom
-  (nova-vertico-depth-2-max-width 150)
-  (nova-vertico-deep-depth-max-width 150)
-  :config
-  (nova-corfu-mode nil)
-  (nova-corfu-popupinfo-mode nil)
-  (nova-eldoc-mode nil)
-  (nova-vertico-mode nil))
-
 ;; Enable rich annotations using the Marginalia package
 (use-package marginalia
   :ensure t
@@ -66,9 +53,6 @@
               ("M-A" . marginalia-cycle))
   ;; The :init section is always executed.
   :init
-  ;; Marginalia must be activated in the :init section of use-package such that
-  ;; the mode gets enabled right away. Note that this forces loading the
-  ;; package.
   (marginalia-mode))
 
 (use-package nerd-icons-completion
@@ -194,7 +178,7 @@
   (wgrep-auto-save-buffer t))
 
 (use-package copilot
-  :ensure (:fetcher github :repo "copilot-emacs/copilot.el" :depth 1 :files (:defaults))
+  :ensure (:host github :repo "copilot-emacs/copilot.el" :depth 1 :files (:defaults))
   :bind (:map copilot-completion-map
               ("C-f" . 'copilot-accept-completion)
               ("C-<tab>" . 'copilot-accept-completion)))

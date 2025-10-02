@@ -21,7 +21,7 @@
   (yas-global-mode))
 
 (use-package doom-snippets
-  :ensure (:protocol https :inherit t :depth 1 :fetcher github :repo "doomemacs/snippets" :files (:defaults))
+  :ensure (:host github :repo "doomemacs/snippets")
   :after yasnippet)
 
 (use-package auto-yasnippet
@@ -34,5 +34,5 @@
   :ensure nil
   :hook (find-file . auto-insert))
 
-(provide 'cr-yasnippet)
+(provide 'cr-snippet)
 ;;; cr-yasnippet.el ends here

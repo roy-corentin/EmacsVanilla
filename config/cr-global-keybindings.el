@@ -12,7 +12,7 @@
 
 (use-package general
   :ensure t
-  :requires (evil magit)
+  :requires evil
   :demand t
   :hook  (org-agenda-mode . general-override-local-mode)
   :config

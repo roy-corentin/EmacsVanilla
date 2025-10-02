@@ -6,6 +6,11 @@
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
 ;; Created: mai 13, 2024
 
+;;; Commentary:
+
+
+;;; Code:
+
 (use-package jsonrpc
   :ensure nil)
 
@@ -51,3 +56,4 @@
   )
 
 (provide 'cr-debugger)
+;;; cr-debugger.el ends here

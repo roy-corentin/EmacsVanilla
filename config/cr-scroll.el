@@ -37,6 +37,7 @@
 
 (use-package good-scroll
   :ensure t
+  :disabled t
   :preface
   (defun smooth-scroll--fix-out-of-bounds-error-a ()
     (save-restriction
@@ -66,7 +67,7 @@
   :custom
   (good-scroll-render-rate 0.05)
   :config
-  ;; (good-scroll-mode 1)
+  (good-scroll-mode 1)
   (advice-add #'scroll-up :around #'good-scroll--scroll-up)
   (advice-add #'scroll-down :around #'good-scroll--scroll-down)
   (advice-add #'good-scroll--point-at-top-p :override #'smooth-scroll--fix-out-of-bounds-error-a))

@@ -1,4 +1,4 @@
-;;; cr-elfeed.el --- Elfeed setup                    -*- lexical-binding: t; -*-
+;;; cr-navigate.el --- Code navigation setup         -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2025  Roy Corentin
 
@@ -24,29 +24,27 @@
 
 ;;; Code:
 
-(use-package elfeed
-  :ensure t)
-
-(use-package elfeed-org
-  :ensure t
-  :after elfeed
-  :config
-  (elfeed-org))
-
-(use-package elfeed-tube
-  :ensure t
-  :after elfeed
+(use-package xref
   :custom
-  (elfeed-tube-auto-save-p nil) ; default value
-  (elfeed-tube-auto-fetch-p t)  ; default value
-  :config
-  (elfeed-tube-setup)
-  :bind (:map elfeed-show-mode-map
-              ("F" . elfeed-tube-fetch)
-              ([remap save-buffer] . elfeed-tube-save)
-              :map elfeed-search-mode-map
-              ("F" . elfeed-tube-fetch)
-              ([remap save-buffer] . elfeed-tube-save)))
+  (xref-auto-jump-to-first-definition t))
 
-(provide 'cr-elfeed)
-;;; cr-elfeed.el ends here
+(use-package dumb-jump
+  :ensure t
+  :hook prog-mode
+  :config
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
+  :custom
+  (dumb-jump-force-searcher 'ag))
+
+(use-package better-jumper
+  :ensure t
+  :after evil
+  :bind (:map evil-motion-state-map
+              ("C-i" . 'better-jumper-jump-forward)
+              ("C-o" . 'better-jumper-jump-backward))
+  :init
+  (better-jumper-mode t))
+
+
+(provide 'cr-navigate)
+;;; cr-navigate.el ends here
