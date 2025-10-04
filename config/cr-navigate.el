@@ -45,6 +45,13 @@
   :init
   (better-jumper-mode t))
 
+(use-package ace-window
+  :ensure t
+  :defer t
+  :custom
+  (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  (aw-scope 'global aw-background t)
+  :bind (([remap other-window] . ace-window)))
 
 (provide 'cr-navigate)
 ;;; cr-navigate.el ends here
