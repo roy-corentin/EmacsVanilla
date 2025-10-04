@@ -72,19 +72,20 @@
   :demand t
   :ensure (:host github :repo "eliraz-refael/doom-two-tone-themes" :depth 2 :files (:defaults "themes/*el")))
 
-(defun load-custom-theme ()
-  "Load custom theme."
-  (interactive)
-  (load-theme (or emacs-theme 'modus-vivendi) t))
+(defun cr/load-theme-and-opacity (&optional frame)
+  "Load theme and set custom opacity to &FRAME."
+  (if frame
+      (with-selected-frame frame
+        (cr/load-custom-theme)
+        (set-frame-parameter frame 'alpha-background default-opacity))
+    (cr/load-custom-theme)
+    (set-frame-parameter frame 'alpha-background default-opacity))
+  )
 
 (if (daemonp)
     (add-hook 'after-make-frame-functions
-              (lambda (frame)
-                (with-selected-frame frame
-                  (load-custom-theme)
-                  (set-frame-parameter frame 'alpha-background default-opacity))))
-  (add-hook 'emacs-startup-hook #'load-custom-theme)
-  (set-frame-parameter nil 'alpha-background default-opacity))
+              #'cr/load-theme-and-opacity)
+  (add-hook 'emacs-startup-hook #'cr/load-theme-and-opacity))
 
 (provide 'cr-theme)
 ;;; cr-theme.el ends here

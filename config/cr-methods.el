@@ -471,5 +471,11 @@ to if called with ARG, or any prefix argument."
                                               font :stroke 0 :margin 0))
                  :ascent 'center))))
 
+;;;###autoload
+(defun cr/load-custom-theme ()
+  "Load custom theme."
+  (interactive)
+  (load-theme (or emacs-theme 'modus-vivendi) t))
+
 (provide 'cr-methods)
 ;;; cr-methods.el ends here
