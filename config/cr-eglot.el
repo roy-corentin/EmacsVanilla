@@ -24,7 +24,7 @@
   :custom-face
   (eglot-highlight-symbol-face ((t (:inherit highlight :weight bold))))
   :config
-  (add-to-list 'eglot-server-programs '(elixir-ts-mode "elixir-ls"))
+  (add-to-list 'eglot-server-programs '((elixir-mode elixir-ts-mode heex-ts-mode) "elixir-ls"))
   (add-to-list 'eglot-server-programs '((ruby-mode ruby-ts-mode rbs-mode) "ruby-lsp"))
   (add-to-list 'eglot-server-programs '(c3-ts-mode "c3lsp"))
   (add-to-list 'eglot-server-programs '(crystal-mode "crystalline")))
