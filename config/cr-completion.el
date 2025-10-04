@@ -57,9 +57,9 @@
 
 (use-package nerd-icons-completion
   :ensure t
-  :demand t
+  :requires nerd-icons
   :hook (marginalia-mode . nerd-icons-completion-marginalia-setup)
-  :config
+  :init
   (nerd-icons-completion-mode))
 
 (use-package corfu
@@ -92,7 +92,7 @@
   (corfu-on-exact-match nil) ; Configure handling of exact matches
   (corfu-preview-current 'insert)
   (corfu-preselect 'valid)
-  :config
+  :init
   (corfu-echo-mode)
   (corfu-popupinfo-mode)
   (global-corfu-mode))
@@ -115,7 +115,8 @@
                 (list (cape-capf-super
                        #'eglot-completion-at-point
                        #'yasnippet-capf
-                       #'cape-file))))
+                       #'cape-file
+                       #'cape-dabbrev))))
   :bind (("C-c p f" . cape-file)
          ("C-c p t" . complete-tag) ;; etags
          ("C-c p d" . cape-dabbrev))
