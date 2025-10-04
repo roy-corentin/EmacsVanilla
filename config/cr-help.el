@@ -25,10 +25,12 @@
 ;;; Code:
 
 (use-package casual
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package helpful
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (provide 'cr-help)
 ;;; cr-help.el ends here
