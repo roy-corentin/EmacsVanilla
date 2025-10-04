@@ -11,6 +11,9 @@
 
 ;;; Code:
 
+;; Initialize load path for loading configuration files
+(add-to-list 'load-path (concat user-emacs-directory "config/"))
+
 ;; (use-package compile-angel
 ;;   :ensure t
 ;;   :demand t
@@ -30,15 +33,6 @@
   :config
   (kithar-mode t))
 
-(use-package ace-window
-  :ensure t
-  :defer t
-  :custom
-  (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-  (aw-scope 'global aw-background t)
-  :init
-  (global-set-key [remap other-window] #'ace-window))
-
 (use-package keycast
   :ensure t
   :defer t)
@@ -54,6 +48,20 @@
   :ensure (:host github :repo "mgmarlow/helix-mode")
   :hook ((helix-normal-mode . (lambda () (setq display-line-numbers 'relative)))
          (helix-insert-mode . (lambda () (setq display-line-numbers t)))))
+
+(use-package elec-pair
+  :preface
+  (defun disable-arrow-pair ()
+    (setq-local electric-pair-inhibit-predicate
+                `(lambda (c)
+                   (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c)))))
+  (defun disable-parenthesis-pair ()
+    (setq-local electric-pair-inhibit-predicate
+                `(lambda (c)
+                   (if (char-equal c ?\() t (,electric-pair-inhibit-predicate c)))))
+  :hook (org-mode . disable-arrow-pair)
+  :hook (minibuffer-mode . disable-parenthesis-pair))
+
 
 (require 'cr-methods)
 (require 'cr-buffer)

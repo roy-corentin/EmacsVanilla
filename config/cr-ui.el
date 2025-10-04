@@ -72,9 +72,7 @@
      :right-divider-width 30
      :scroll-bar-width 8
      :fringe-width 4
-     ))
-  :config
-  (spacious-padding-mode 1))
+     )))
 
 (use-package diff-hl
   :ensure t
@@ -125,19 +123,6 @@
   :hook (prog-mode text-mode)
   :custom
   (goggles-pulse t)) ;; set to nil to disable pulsing
-
-(use-package elec-pair
-  :preface
-  (defun disable-arrow-pair ()
-    (setq-local electric-pair-inhibit-predicate
-                `(lambda (c)
-                   (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c)))))
-  (defun disable-parenthesis-pair ()
-    (setq-local electric-pair-inhibit-predicate
-                `(lambda (c)
-                   (if (char-equal c ?\() t (,electric-pair-inhibit-predicate c)))))
-  :hook (org-mode . disable-arrow-pair)
-  :hook (minibuffer-mode . disable-parenthesis-pair))
 
 (use-package buffer-box
   :ensure (:host github :repo "rougier/buffer-box"))
