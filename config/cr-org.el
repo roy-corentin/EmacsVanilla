@@ -58,7 +58,7 @@
                             ("#+CLOSE_SPOILER" . "") ("#+START_SPOILER" . "")
                             ("#+ACTIVE:" . "󰌬")
                             ("#+filetags:" . "") ("#+FILETAGS:" . "")
-                            ("#+startup:" . "󰈈") ("#+STARTUP:" . "󰈈")
+                            ("#+startup:" . "") ("#+STARTUP:" . "")
                             ("#+ID:" . "")
                             ("#+DESCRIPTION:" . "󰦨")
                             ("#+title:" . "") ("#+TITLE:" . "")
