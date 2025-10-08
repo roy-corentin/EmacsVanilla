@@ -13,7 +13,7 @@
 
 (use-package dired
   :ensure nil
-  :demand t
+  :defer t
   :hook (dired-mode . dired-omit-mode)
   :custom
   (dired-mouse-drag-files t)
@@ -22,18 +22,20 @@
 (use-package diredfl
   :ensure t
   :after dired
+  :defer t
   :hook (dired-mode dirvish-directory-view-mode)
   :config
   (diredfl-global-mode))
 
 (use-package dired-open-with
   :ensure t
-  :after dired)
+  :after dired
+  :defer t)
 
 (use-package dirvish
   :ensure t
-  :after dired
   :requires nerd-icons
+  :after dired
   :custom
   ;; (dirvish-reuse-session nil) ; kill all session buffers on quit
   (dirvish-use-mode-line nil)

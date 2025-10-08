@@ -166,7 +166,7 @@
     "c r" '(eglot-rename :which-key "Eglot rename")
     "c f" '(apheleia-format-buffer :which-key "Apheleia Format Buffer")
     "q" '(:ignore t :which-key "Quit")
-    "q q" '(kill-emacs :which-key "Quit Emacs")
+    "q q" '(kill-emacs :which-key "Kill Emacs")
     "q f" '(delete-frame :which-key "Delete Frame")
     "e" '(:ignore t :which-key "Eval")
     "e r" '(eval-region :which-key "Eval Region")

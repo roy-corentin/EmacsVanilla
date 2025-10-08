@@ -348,8 +348,7 @@ to if called with ARG, or any prefix argument."
                         (_
                          (pcase (frame-parameter nil 'alpha-background)
                            (100 default-opacity)
-                           (default-opacity 100)
-                           (t 100))))))
+                           (default-opacity 100))))))
     (set-frame-parameter nil 'alpha-background transparency)))
 
 ;;;###autoload

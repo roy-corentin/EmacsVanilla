@@ -13,6 +13,7 @@
 
 (use-package undo-fu
   :ensure t
+  :defer t
   :custom
   (undo-limit 67108864) ; 64mb.
   (undo-strong-limit 100663296) ; 96mb.
@@ -23,11 +24,13 @@
 (use-package undo-fu-session
   :ensure t
   :after undo-fu
+  :defer t
   :config
   (global-undo-fu-session-mode))
 
 (use-package vundo
   :ensure t
+  :defer t
   :config
   (vundo-mode))
 

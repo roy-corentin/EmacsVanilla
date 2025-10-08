@@ -8,15 +8,21 @@
 
 ;;; Code:
 
-;; Ensure Emacs loads the most recent byte-compiled files.
+;; Performance optimizations for startup
 (setq load-prefer-newer t)
-;; Ensure JIT compilation is enabled for improved performance by
-;; native-compiling loaded .elc files asynchronously
 (setq native-comp-jit-compilation t)
-
 (setq package-enable-at-startup nil)
 ;; Initialize load path for loading configuration files
 (add-to-list 'load-path (concat user-emacs-directory "config/"))
+
+;; Disable native comp warnings during startup
+(setq native-comp-async-report-warnings-errors 'silent)
+
+;; Faster file loading
+(setq auto-mode-case-fold nil)
+(setq-default bidi-display-reordering 'left-to-right
+              bidi-paragraph-direction 'left-to-right)
+(setq bidi-inhibit-bpa t)
 
 (defvar elpaca-installer-version 0.11)
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))

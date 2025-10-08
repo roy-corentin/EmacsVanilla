@@ -11,9 +11,6 @@
 
 ;;; Code:
 
-(use-package jsonrpc
-  :ensure nil)
-
 (use-package dape
   :ensure t
   ;;:preface

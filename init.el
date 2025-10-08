@@ -93,6 +93,7 @@
 (require 'cr-elfeed)
 (require 'cr-pdf)
 (require 'cr-help)
+(require 'cr-navigate)
 (require 'cr-theme)
 
 ;;; init.el ends here

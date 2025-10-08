@@ -25,17 +25,20 @@
 ;;; Code:
 
 (use-package elfeed
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package elfeed-org
   :ensure t
   :after elfeed
+  :defer t
   :config
   (elfeed-org))
 
 (use-package elfeed-tube
   :ensure t
   :after elfeed
+  :defer t
   :custom
   (elfeed-tube-auto-save-p nil) ; default value
   (elfeed-tube-auto-fetch-p t)  ; default value

@@ -18,8 +18,7 @@
 
 (use-package kubernetes-evil
   :ensure t
-  :demand t
-  :after (kubernetes evil))
+  :after (evil kubernetes))
 
 (provide 'cr-kubernetes)
 ;;; cr-kubernetes.el ends here

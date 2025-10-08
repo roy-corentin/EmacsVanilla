@@ -13,7 +13,6 @@
 
 (use-package vertico
   :ensure t
-  :demand t
   :bind (:map vertico-map
               ("C-j" . vertico-next)
               ("C-k" . vertico-previous)
@@ -31,6 +30,7 @@
 (use-package vertico-posframe
   :ensure t
   :after (vertico posframe)
+  :disabled t
   :custom
   (vertico-posframe-poshandler #'posframe-poshandler-frame-center)
   (vertico-posframe-height 20)
@@ -139,7 +139,7 @@
 
 (use-package orderless
   :ensure t
-  :demand t
+  :defer t
   :after vertico
   :custom
   ;; (completion-styles '(orderless partial-completion))
@@ -153,11 +153,13 @@
 (use-package consult
   :ensure t
   :after orderless
+  :defer t
   :custom
   (consult-async-min-input 1))
 
 (use-package embark
   :ensure t
+  :defer t
   :bind
   (("C-!" . embark-act)         ;; pick some comfortable binding
    ("M-;" . embark-dwim)        ;; good alternative: M-.
@@ -180,6 +182,7 @@
 
 (use-package copilot
   :ensure (:host github :repo "copilot-emacs/copilot.el" :depth 1 :files (:defaults))
+  :defer t
   :bind (:map copilot-completion-map
               ("C-f" . 'copilot-accept-completion)
               ("C-<tab>" . 'copilot-accept-completion)))

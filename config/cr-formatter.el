@@ -12,12 +12,13 @@
 
 (use-package apheleia
   :ensure t
+  :defer t
   :config
   (add-to-list 'apheleia-mode-alist '(python-mode . ruff))
   (add-to-list 'apheleia-mode-alist '(python-ts-mode . ruff))
   (apheleia-global-mode +1))
 
-(use-package delete-trailing-whitespace-mode
+(use-package simple
   :ensure nil
   :hook ((prog-mode . delete-trailing-whitespace-mode)
          (text-mode . delete-trailing-whitespace-mode)

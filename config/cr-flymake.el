@@ -11,19 +11,17 @@
 ;;; Code:
 
 (use-package flymake
-  :preface
-  (defun flymake-setup-show-diagnostis-style ()
-    (setq flymake-show-diagnostics-at-end-of-line (if (display-graphic-p) nil 'fancy)))
+  :ensure nil
   :hook prog-mode
-  ;; :hook (before-make-frame . flymake-setup-show-diagnostis-style)
+  :hook (tty-setup . (lambda () (setq flymake-show-diagnostics-at-end-of-line 'fancy)))
   :custom
-  (flymake-show-diagnostic-at-end-of-line 'fancy)
+  (flymake-show-diagnostics-at-end-of-line 'fancy)
   (flymake-no-changes-timeout 0.25)
-  (flymake-indicator-type 'margins))
+  (flymake-indicator-type 'fringes))
 
 (use-package flyover
-  :ensure (:host github :repo "konrad1977/flyover" :depth 1)
-  :disabled
+  :ensure t
+  :disabled t
   :hook flymake-mode
   :custom
   (flyover-levels '(error warning info))

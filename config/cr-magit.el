@@ -12,14 +12,17 @@
 ;;; Code:
 
 (use-package cond-let
-  :ensure (:host github :repo "tarsius/cond-let"))
+  :ensure (:host github :repo "tarsius/cond-let")
+  :defer t)
 
 (use-package ghub
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package magit
   :ensure t
   :after nerd-icons
+  :defer t
   :bind ("C-x g" . magit-status)
   :custom
   (magit-blame-echo-style 'headings)
@@ -45,6 +48,7 @@
 (use-package forge
   :ensure t
   :after magit
+  :defer t
   :custom
   (forge-add-default-bindings nil)
   :config

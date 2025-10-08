@@ -32,7 +32,8 @@
   :hook prog-mode)
 
 (use-package rainbow-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package vim-tab-bar
   :ensure (:host github :repo "jamescherti/vim-tab-bar.el")

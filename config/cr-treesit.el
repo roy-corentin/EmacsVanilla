@@ -11,6 +11,8 @@
 ;;; Code:
 
 (use-package treesit
+  :ensure nil
+  :defer t
   :custom
   (treesit-font-lock-level 4)
   (treesit-enabled-modes t)
@@ -30,6 +32,9 @@
   (add-to-list 'treesit-language-source-alist '(c3 "https://github.com/c3lang/tree-sitter-c3"))
   (add-to-list 'treesit-language-source-alist '(zig "https://github.com/maxxnino/tree-sitter-zig")))
 
+(use-package combobulate
+  :ensure (:host github :repo "mickeynp/combobulate")
+  :defer t)
 
 (provide 'cr-treesit)
 ;;; cr-treesit.el ends here
