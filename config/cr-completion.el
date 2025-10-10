@@ -16,10 +16,8 @@
   :bind (:map vertico-map
               ("C-j" . vertico-next)
               ("C-k" . vertico-previous)
-              ("C-f" . vertico-exit)
               ("C-d" . vertico-scroll-up)
-              ("C-u" . vertico-scroll-down)
-              ("C-v" . vertico-scroll-up))
+              ("C-u" . vertico-scroll-down))
   :custom
   (vertico-cycle t)
   (vertico-resize t)
