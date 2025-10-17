@@ -210,10 +210,10 @@ If prefix ARG is set, prompt for a directory to search from."
   "Switch to new THEME and disable previous."
   (interactive)
   (let ((current-theme (car custom-enabled-themes)))
-    (disable-theme current-theme)
-    (if (load-theme theme t)
-        (setq emacs-theme theme)
-      (load-theme current-theme))))
+    (when (and (not (eql current-theme theme))
+               (load-theme theme t))
+      (disable-theme current-theme)
+      (setq emacs-theme theme))))
 
 ;;;###autoload
 (defun cr/project-buffer-dwim ()
