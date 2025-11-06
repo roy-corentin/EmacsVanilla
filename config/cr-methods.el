@@ -164,7 +164,6 @@ If prefix ARG is set, prompt for a directory to search from."
   (when (project-current)
     (project-kill-buffers)))
 
-(advice-add #'tab-close :before #'cr/try-kill-project-buffers)
 (advice-add #'tab-switcher-execute :before #'cr/try-kill-project-buffers)
 
 ;;;###autoload
@@ -476,6 +475,15 @@ to if called with ARG, or any prefix argument."
   "Load custom theme."
   (interactive)
   (load-theme (or emacs-theme 'modus-vivendi) t))
+
+;;;###autoload
+(defun cr/tab-close ()
+  "Kill project buffer if there is one and close tab if not already closed."
+  (interactive)
+  (let ((tab-to-close (cdr (assq 'name (tab-bar--current-tab)))))
+    (cr/try-kill-project-buffers)
+    (when (eql tab-to-close (cdr (assq 'name (tab-bar--current-tab))))
+      (tab-close))))
 
 (provide 'cr-methods)
 ;;; cr-methods.el ends here
