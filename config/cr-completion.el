@@ -48,8 +48,7 @@
   ;; available in the *Completions* buffer, add it to the
   ;; `completion-list-mode-map'.
   :bind (:map minibuffer-local-map
-              ("M-A" . marginalia-cycle))
-  ;; The :init section is always executed.
+              ("M-a" . marginalia-cycle))
   :init
   (marginalia-mode))
 
