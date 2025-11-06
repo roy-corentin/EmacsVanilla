@@ -16,8 +16,7 @@
   :hook (tty-setup . (lambda () (setq flymake-show-diagnostics-at-end-of-line 'fancy)))
   :custom
   (flymake-show-diagnostics-at-end-of-line 'fancy)
-  (flymake-no-changes-timeout 0.25)
-  (flymake-indicator-type 'fringes))
+  (flymake-no-changes-timeout 0.25))
 
 (use-package flyover
   :ensure t
