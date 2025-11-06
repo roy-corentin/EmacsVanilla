@@ -207,7 +207,7 @@
   (which-key-idle-secondary-delay 0.05)
   (which-key-popup-type 'side-window)
   :config
-  (push '(("" ."\\`+?evil[-:]?\\(?:a-\\)?\\(.*\\)") . (nil .  "◂\\1")) which-key-replacement-alist)
+  (push '(("" ."\\`+?evil[-:]?\\(?:a-\\)?\\(.*\\)") . (nil .  "é-\\1")) which-key-replacement-alist)
   (which-key-mode))
 
 (use-package tramp
