@@ -80,6 +80,7 @@
   ((prog-mode yaml-ts-mode org-mode) . display-line-numbers-mode)
   (prog-mode . enable-show-trailing-whitespace)
   :custom
+  (elisp-fontify-semantically t)
   (use-short-answers t)
   (native-comp-async-report-warnings-errors nil)
   (make-backup-files nil)
