@@ -62,6 +62,8 @@
   :hook (org-mode . disable-arrow-pair)
   :hook (minibuffer-mode . disable-parenthesis-pair))
 
+(use-package time-zones
+  :ensure (:host github :repo "https://github.com/xenodium/time-zones"))
 
 (require 'cr-methods)
 (require 'cr-buffer)
