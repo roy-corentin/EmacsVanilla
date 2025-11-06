@@ -13,7 +13,6 @@
 
 (use-package dired
   :ensure nil
-  :defer t
   :hook (dired-mode . dired-omit-mode)
   :custom
   (dired-mouse-drag-files t)
@@ -22,7 +21,6 @@
 (use-package diredfl
   :ensure t
   :after dired
-  :defer t
   :hook (dired-mode dirvish-directory-view-mode)
   :config
   (diredfl-global-mode))
