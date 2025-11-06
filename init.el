@@ -79,6 +79,7 @@
 (require 'cr-eldoc)
 (require 'cr-undo)
 (require 'cr-treesit)
+(require 'cr-ediff)
 (require 'cr-formatter)
 (require 'cr-evil)
 (require 'cr-dired)
