@@ -27,13 +27,14 @@
 (use-package eldoc-box
   :ensure t
   :after eglot
-  ;; :hook (prog-mode . eldoc-box-hover-at-point-mode)
-  :hook (eldoc-mode . eldoc-box-hover-mode)
+  :preface
+  (defun cr-eldoc-box ()
+    (if (display-graphic-p) (eldoc-box-hover-mode t) (eldoc-box-hover-at-point-mode t)))
+  :hook (eldoc-mode . cr-eldoc-box)
   :custom
   (eldoc-box-max-pixel-height 220)
   (eldoc-box-doc-separator "\n-------\n")
   :init
-  (add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-mode t)
   (add-hook 'eldoc-box-buffer-setup-hook #'eldoc-box-prettify-ts-errors 0 t))
 
 (provide 'cr-eldoc)
