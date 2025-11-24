@@ -74,7 +74,9 @@
      :right-divider-width 30
      :scroll-bar-width 8
      :fringe-width 4
-     )))
+     ))
+  :config
+  (spacious-padding-mode))
 
 (use-package diff-hl
   :ensure t
