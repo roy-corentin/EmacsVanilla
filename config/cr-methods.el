@@ -342,8 +342,8 @@ to if called with ARG, or any prefix argument."
                         ((pred car) (read-number "Change the transparency to which value (0-100)? "))
                         (_
                          (pcase (frame-parameter nil 'alpha-background)
-                           (100 default-opacity)
-                           (default-opacity 100))))))
+                           (100 90)
+                           (90 100))))))
     (set-frame-parameter nil 'alpha-background transparency)))
 
 ;;;###autoload

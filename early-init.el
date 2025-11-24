@@ -165,7 +165,7 @@
   (set-default 'truncate-lines t)
   (setq custom-file (concat user-emacs-directory "custom.el"))
   (load custom-file t)
-  (defvar default-opacity 90)
+  (defvar default-opacity 100)
   (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
   (add-to-list 'default-frame-alist '(borders-respect-alpha-background . t))
   (set-face-attribute font-lock-comment-face t :slant 'italic)
