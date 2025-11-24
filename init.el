@@ -65,7 +65,12 @@
 (use-package time-zones
   :ensure (:host github :repo "https://github.com/xenodium/time-zones"))
 
+(use-package jinx
+  :ensure t
+  :hook text-mode)
+
 (require 'cr-methods)
+(require 'cr-ai-methods)
 (require 'cr-buffer)
 (require 'cr-project)
 (require 'cr-snippet)
