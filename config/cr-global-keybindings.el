@@ -111,6 +111,7 @@
     "o T" '(cr/smart-vterm-buffer :which-key "Open Vterm in buffer")
     "o l" '(:ignore t :which-key "Llm")
     "o l a" '(gptel-add :which-key "Add text to context")
+    "o l A" '(gptel-agent :which-key "Gptel agent buffer")
     "o l e" '(gptel-quick :which-key "Explain")
     "o l f" '(gptel-add-file :which-key "Add file to context")
     "o l l" '(gptel :which-key "Open gptel")
