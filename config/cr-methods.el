@@ -257,11 +257,6 @@ If a prefix N is given, it is passed on to the respective function."
     (back-to-indentation)))
 
 ;;;###autoload
-(defun disable-rainbow-delimiter-mode ()
-  "Disable rainbow delimieter mode."
-  (rainbow-delimiters-mode -1))
-
-;;;###autoload
 (defun cr/vterm-insert-up ()
   "Insert key up in vterm."
   (interactive)

@@ -41,10 +41,6 @@
   :ensure t
   :defer t)
 
-(use-package typescript-ts-mode
-  :hook
-  (tsx-ts-mode . disable-rainbow-delimiter-mode))
-
 (use-package mhtml-ts-mode
   :hook
   (mhtml-ts-mode . disable-rainbow-delimiter-mode))
