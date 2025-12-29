@@ -41,7 +41,7 @@
   (doom-modeline-buffer-file-name-style 'relative-to-project)
   (doom-modeline-buffer-encoding 'nondefault)
   (doom-modeline-project-name t)
-  :config
+  :init
   (doom-modeline-mode 1))
 
 (use-package catppuccin-theme
@@ -66,11 +66,16 @@
   (lambda-themes-set-variable-pitch t))
 
 (use-package color-theme-sanityinc-tomorrow
-  :ensure t)
+  :ensure t
+  :disabled t)
 
 (use-package doom-two-tone-themes
   :demand t
   :ensure (:host github :repo "eliraz-refael/doom-two-tone-themes" :depth 2 :files (:defaults "themes/*el")))
+
+(use-package modus-themes
+  :ensure t
+  :demand t)
 
 (defun cr/load-theme-and-opacity (&optional frame)
   "Load theme and set custom opacity to &FRAME."
