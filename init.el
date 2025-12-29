@@ -42,7 +42,7 @@
 
 (use-package pgmacs
   :after pg
-  :ensure (:protocols https :inherit t :depth 1 :fetcher github :repo "emarsden/pgmacs", :files (:defaults)))
+  :ensure (:host github :repo "emarsden/pgmacs"))
 
 (use-package helix
   :ensure (:host github :repo "mgmarlow/helix-mode")
