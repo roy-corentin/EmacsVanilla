@@ -38,7 +38,7 @@
   :ensure (:host github :repo "karthink/gptel-quick"))
 
 (use-package gptel-agent
-  :ensure (:host github :repo "karthink/gptel-agent")
+  :ensure t
   :after gptel
   :config (gptel-agent-update))
 
