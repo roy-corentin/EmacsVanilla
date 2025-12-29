@@ -395,7 +395,8 @@
   (org-modern-star 'replace)
   (org-modern-progress nil)
   (org-modern-keyword nil)
-  (org-modern-todo-faces '(("WIP" :inherit 'org-modern-todo :foreground "#b7a1f5"))))
+  (org-modern-todo-faces '(("WIP" :inherit 'org-modern-todo :foreground "#b7a1f5")
+                           ("HOLD" :inherit 'org-default))))
 
 (use-package org-modern-indent
   :ensure (:host github :repo "jdtsmith/org-modern-indent")
