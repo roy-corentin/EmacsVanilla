@@ -26,12 +26,13 @@
 
 (use-package pdf-tools
   :ensure t
-  :magic ("%PDF" . pdf-view-mode)
+  ;; :magic ("%PDF" . pdf-view-mode)
   :config
   (pdf-tools-install :no-query))
 
 (use-package reader
-  :ensure (:host "codeberg" :repo "divyaranjan/emacs-reader" :files ("reader.el" "render-core.so") :pre-build ("make" "all"))
+  :ensure (:host "codeberg" :repo "divyaranjan/emacs-reader" :files ("*.el" "render-core.dylib") :pre-build ("make" "all"))
+  :mode "\\.pdf\\'"
   :defer t)
 
 (provide 'cr-pdf)
