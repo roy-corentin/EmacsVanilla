@@ -13,6 +13,8 @@
 
 (use-package zig-ts-mode
   :ensure (:type git :host codeberg :repo "meow_king/zig-ts-mode")
+  :mode "\\.zig\\'"
+  :interpreter "zig"
   :defer t)
 
 (use-package zig-mode
