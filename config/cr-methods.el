@@ -334,7 +334,7 @@ If a prefix N is given, it is passed on to the respective function."
 ;;;###autoload
 (defun kb/toggle-window-transparency (arg)
   "Toggle the value of `alpha-background'.
-Toggles between 100 and the default one.  Can choose which value to change
+Toggles between 100 and `transparent-background-opacity'.  Can choose which value to change
 to if called with ARG, or any prefix argument."
   (interactive "P")
   (let ((transparency (pcase arg
@@ -342,8 +342,8 @@ to if called with ARG, or any prefix argument."
                         ((pred car) (read-number "Change the transparency to which value (0-100)? "))
                         (_
                          (pcase (frame-parameter nil 'alpha-background)
-                           (100 90)
-                           (90 100))))))
+                           (100 transparent-background-opacity)
+                           (transparent-background-opacity 100))))))
     (set-frame-parameter nil 'alpha-background transparency)))
 
 ;;;###autoload
