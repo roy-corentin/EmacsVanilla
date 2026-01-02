@@ -1,6 +1,10 @@
-;;; corfu-icons.el -*- lexical-binding: t; -*-
+;;; cr-corfu-icons.el --- corfu custom icon setup -*- lexical-binding: t; -*-
+;;; Commentary:
 
-(defvar my-corfu-icons
+
+;;; Code:
+
+(defvar cr/custom-corfu-icons
   '((array :style "cod" :icon "symbol_array" :face font-lock-type-face)
     (boolean :style "cod" :icon "symbol_boolean" :face font-lock-builtin-face)
     (class :style "md" :icon "syllabary_katakana" :face font-lock-type-face)
@@ -37,3 +41,6 @@
     (value :style "cod" :icon "symbol_field" :face font-lock-builtin-face)
     (variable :style "md" :icon "abugida_devanagari" :face font-lock-variable-name-face)
     (t :style "cod" :icon "code" :face font-lock-warning-face)))
+
+(provide 'cr-corfu-icons)
+;;; cr-corfu-icons.el ends here

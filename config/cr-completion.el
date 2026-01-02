@@ -98,9 +98,9 @@
   :ensure t
   :after corfu
   :preface
-  (load (concat user-emacs-directory "config/corfu-icons.el"))
+  (require 'cr-corfu-icons)
   :custom
-  (nerd-icons-corfu-mapping my-corfu-icons)
+  (nerd-icons-corfu-mapping cr/custom-corfu-icons)
   :init
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
