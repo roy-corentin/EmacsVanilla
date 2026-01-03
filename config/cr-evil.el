@@ -27,10 +27,10 @@
   (evil-ex-search-vim-style-regexp nil)
   (evil-regexp-search t)
   (evil-want-C-i-jump t)
-  :config
-  (evil-mode 1)
   :init
-  (setq evil-want-keybinding nil))
+  (setq evil-want-keybinding nil)
+  :config
+  (evil-mode 1))
 
 (use-package evil-collection
   :ensure t
@@ -38,8 +38,16 @@
   :custom
   (evil-collection-magit-want-horizontal-movement t)
   (evil-collection-magit-use-z-for-folds t)
-  :init
-  (evil-collection-init))
+  :config
+  (evil-collection-init)
+  ;; Some extra vim-isms I thought were missing from upstream
+  (evil-define-key* '(normal visual) magit-mode-map
+    "*"  #'magit-worktree
+    "zt" #'evil-scroll-line-to-top
+    "zz" #'evil-scroll-line-to-center
+    "zb" #'evil-scroll-line-to-bottom
+    "gi" #'forge-browse-issues
+    "gm" #'forge-browse-pullreqs))
 
 (use-package evil-surround
   :ensure t
@@ -51,7 +59,7 @@
   :after evil
   :custom
   (evil-escape-excluded-states '(normal visual multiedit emacs motion))
-  (evil-escape-excluded-major-modes '(magit-mode treemacs-mode))
+  (evil-escape-excluded-major-modes '(magit-mode))
   (evil-escape-key-sequence "jk")
   (evil-escape-delay 0.15)
   (evil-escape-case-insensitive-key-sequence 'case-insensitive)
