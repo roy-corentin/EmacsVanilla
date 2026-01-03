@@ -1,6 +1,6 @@
 ;;; cr-scroll.el --- Scroll Config                   -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2025  Corentin ROY
+;; Copyright (C) 2026  Corentin ROY
 
 ;; Author: Corentin ROY <croy@motherbase-xps139340>
 ;; Keywords:

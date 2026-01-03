@@ -1,6 +1,6 @@
 ;;; cr-kubernetes.el --- kubernetes.el configuration  -*- lexical-binding: t; -*-
 ;;
-;; Copyright (C) 2025  Corentin ROY
+;; Copyright (C) 2026  Corentin ROY
 ;;
 ;; Author: Corentin Roy <corentin.roy02@laposte.net>
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>

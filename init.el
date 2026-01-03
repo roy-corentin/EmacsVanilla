@@ -1,6 +1,6 @@
 ;;; init.el --- Description -*- lexical-binding: t; -*-
 ;;
-;; Copyright (C) 2025 Corentin Roy
+;; Copyright (C) 2026 Corentin Roy
 ;;
 ;; Author: Corentin Roy <corentin.roy02@laposte.net>
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>

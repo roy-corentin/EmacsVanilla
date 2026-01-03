@@ -1,6 +1,6 @@
 ;;; cr-help.el --- setup package for help            -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2025  Roy Corentin
+;; Copyright (C) 2026  Roy Corentin
 
 ;; Author: Roy Corentin <croy@motherbase-xps139340>
 ;; Keywords:

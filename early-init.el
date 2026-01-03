@@ -1,7 +1,7 @@
 ;;; early-init.el --- Description -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;
-;; Copyright (C) 2024 Corentin Roy
+;; Copyright (C) 2026 Corentin Roy
 ;;
 ;; Author: Corentin Roy <corentin.roy02@laposte.net>
 ;; Maintainer: Corentin Roy <corentin.roy02@laposte.net>
