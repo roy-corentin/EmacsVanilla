@@ -109,11 +109,11 @@
   :preface
   (defun my/eglot-capf ()
     (setq-local completion-at-point-functions
-                (list (cape-capf-super
-                       #'eglot-completion-at-point
-                       #'yasnippet-capf
-                       #'cape-file
-                       #'cape-dabbrev))))
+                (list (cape-capf-sort
+                       (cape-capf-super#'eglot-completion-at-point
+                        #'yasnippet-capf
+                        #'cape-dabbrev
+                        #'cape-file)))))
   :bind (("C-c p f" . cape-file)
          ("C-c p t" . complete-tag) ;; etags
          ("C-c p d" . cape-dabbrev))
