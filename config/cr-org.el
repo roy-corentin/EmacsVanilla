@@ -251,6 +251,20 @@
   (org-roam-ui-update-on-save t)
   (org-roam-ui-open-on-start nil))
 
+(use-package vui
+  :ensure (:host github :repo "d12frosted/vui.el"))
+
+(use-package vulpea
+  :ensure t
+  :custom
+  (vulpea-db-sync-directories '("~/Dropbox/RoamNotes/"))
+  (vulpea-default-notes-directory "~/Dropbox/RoamNotes/")
+  (vulpea-db-parse-method 'temp-buffer))
+
+(use-package vulpea-ui
+  :ensure t
+  :after vulpea)
+
 (use-package svg-tag-mode
   :ensure t
   :custom
