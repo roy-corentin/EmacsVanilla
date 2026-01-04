@@ -1,4 +1,4 @@
-;;; cr-ui.el --- Ui setup                            -*- lexical-binding: t; -*-
+;;; cr-ui.el --- Ui setup                  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2026  Roy Corentin
 
