@@ -22,8 +22,6 @@
 (use-package magit
   :ensure t
   :after nerd-icons
-  :defer t
-  :bind ("C-x g" . magit-status)
   :custom
   (magit-blame-echo-style 'headings)
   (magit-refresh-status-buffer nil)
