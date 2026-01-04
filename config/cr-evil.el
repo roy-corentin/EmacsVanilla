@@ -34,21 +34,21 @@
 
 (use-package evil-collection
   :ensure t
-  :after evil
+  :after evil magit
   :custom
   (evil-collection-magit-want-horizontal-movement t)
   (evil-collection-magit-use-z-for-folds t)
+  (evil-collection-magit-section-use-z-for-folds t)
   :config
   (evil-collection-init)
   ;; Some extra vim-isms I thought were missing from upstream
-  (eval-after-load 'magit
-    (evil-define-key* '(normal visual) magit-mode-map
-      "*"  #'magit-worktree
-      "zt" #'evil-scroll-line-to-top
-      "zz" #'evil-scroll-line-to-center
-      "zb" #'evil-scroll-line-to-bottom
-      "gi" #'forge-browse-issues
-      "gm" #'forge-browse-pullreqs)))
+  (evil-define-key* '(normal visual) magit-mode-map
+    "*"  #'magit-worktree
+    "zt" #'evil-scroll-line-to-top
+    "zz" #'evil-scroll-line-to-center
+    "zb" #'evil-scroll-line-to-bottom
+    "gi" #'forge-browse-issues
+    "gm" #'forge-browse-pullreqs))
 
 (use-package evil-surround
   :ensure t
