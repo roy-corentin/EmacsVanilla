@@ -12,8 +12,6 @@
 (setq load-prefer-newer t)
 (setq native-comp-jit-compilation t)
 (setq package-enable-at-startup nil)
-;; Initialize load path for loading configuration files
-(add-to-list 'load-path (concat user-emacs-directory "config/"))
 
 ;; Disable native comp warnings during startup
 (setq native-comp-async-report-warnings-errors 'silent)
