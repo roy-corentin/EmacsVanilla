@@ -14,14 +14,6 @@
 ;; Initialize load path for loading configuration files
 (add-to-list 'load-path (concat user-emacs-directory "config/"))
 
-;; (use-package compile-angel
-;;   :ensure t
-;;   :demand t
-;;   :hook (emacs-lisp-mode . compile-angel-on-save-local-mode)
-;;   :custom
-;;   (compile-angel-verbose nil)
-;;   :config
-;;   (compile-angel-on-load-mode))
 
 (use-package load-env-vars
   :ensure t
