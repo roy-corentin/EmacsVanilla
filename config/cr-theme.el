@@ -1,4 +1,4 @@
-;;; cr-keybindings.el --- Description -*- lexical-binding: t; -*-
+;;; cr-them.el --- Theme setup -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2026 Corentin Roy
 ;;
