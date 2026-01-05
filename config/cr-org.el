@@ -202,13 +202,6 @@
   :custom
   (org-contacts-files '("~/org/contacts.org")))
 
-(use-package org-bullets
-  :ensure t
-  :disabled t
-  :hook org-mode
-  :custom
-  (org-bullets-bullet-list '("◉" "○" "◈" "◇" "✳" "●")))
-
 (use-package org-roam
   :ensure t
   :custom
