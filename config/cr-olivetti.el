@@ -35,7 +35,9 @@
   :hook (olivetti-mode-on . set-flymake-fringes-indicator)
   :hook (olivetti-mode-off . set-flymake-margins-indicator)
   :hook (text-mode magit-mode)
-  :hook (magit-mode . (lambda () (setq-local olivetti-body-width fill-column))))
+  :hook (magit-mode . (lambda () (setq-local olivetti-body-width fill-column)))
+  :custom
+  (olivetti-mode-on-hook nil))
 
 (provide 'cr-olivetti)
 ;;; cr-olivetti.el ends here
