@@ -41,19 +41,6 @@
   :hook ((helix-normal-mode . (lambda () (setq display-line-numbers 'relative)))
          (helix-insert-mode . (lambda () (setq display-line-numbers t)))))
 
-(use-package elec-pair
-  :preface
-  (defun disable-arrow-pair ()
-    (setq-local electric-pair-inhibit-predicate
-                `(lambda (c)
-                   (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c)))))
-  (defun disable-parenthesis-pair ()
-    (setq-local electric-pair-inhibit-predicate
-                `(lambda (c)
-                   (if (char-equal c ?\() t (,electric-pair-inhibit-predicate c)))))
-  :hook (org-mode . disable-arrow-pair)
-  :hook (minibuffer-mode . disable-parenthesis-pair))
-
 (use-package time-zones
   :ensure (:host github :repo "https://github.com/xenodium/time-zones"))
 

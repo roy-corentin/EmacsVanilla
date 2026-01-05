@@ -142,8 +142,6 @@
   ;; Term
   (comint-terminfo-terminal "dumb-emacs-ansi")
   (use-package-compute-statistics t)
-  ;; Electric
-  (electric-indent-actions '(yank))
   :custom-face
   (default ((t :family "Iosevka Nerd Font" :weight medium :height 120)))
   (fixed-pitch ((t :family "Iosevka Nerd Font Mono" :weight bold :height 120)))
@@ -208,6 +206,21 @@
   :config
   (push '(("" ."\\`+?evil[-:]?\\(?:a-\\)?\\(.*\\)") . (nil .  "é-\\1")) which-key-replacement-alist)
   (which-key-mode))
+
+(use-package elec-pair
+  :preface
+  (defun disable-arrow-pair ()
+    (setq-local electric-pair-inhibit-predicate
+                `(lambda (c)
+                   (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c)))))
+  (defun disable-parenthesis-pair ()
+    (setq-local electric-pair-inhibit-predicate
+                `(lambda (c)
+                   (if (char-equal c ?\() t (,electric-pair-inhibit-predicate c)))))
+  :hook (org-mode . disable-arrow-pair)
+  :hook (minibuffer-mode . disable-parenthesis-pair)
+  :custom
+  (electric-indent-actions '(yank)))
 
 (use-package tramp
   :config
