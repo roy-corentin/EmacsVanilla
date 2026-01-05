@@ -139,11 +139,9 @@
   :defer t
   :after vertico
   :custom
-  ;; (completion-styles '(orderless partial-completion))
-  (completion-styles '(orderless basic))
+  (completion-styles '(orderless partial-completion))
   ;; (completion-styles '(orderless basic))
   (completion-category-defaults nil)
-  ;; (completion-category-overrides '((file (styles . (partial-completion)))))
   (completion-category-overrides '((file (styles partial-completion))))
   (completion-pcm-leading-wildcard t)) ;; Emacs 31: partial-completion behaves like substring
 
@@ -156,7 +154,6 @@
 
 (use-package embark
   :ensure t
-  :defer t
   :bind
   (("C-!" . embark-act)         ;; pick some comfortable binding
    ("M-;" . embark-dwim)        ;; good alternative: M-.
