@@ -82,6 +82,7 @@
 (use-package diff-hl
   :ensure t
   ;; :hook (dired-mode . diff-hl-dired-mode) ; HACK uncomment if you don't use dirvish
+  :hook prog-mode
   :hook (magit-pre-refresh . diff-hl-magit-pre-refresh)
   :hook (magit-post-refresh . diff-hl-magit-post-refresh)
   :custom
