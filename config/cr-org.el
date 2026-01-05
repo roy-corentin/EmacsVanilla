@@ -195,7 +195,7 @@
   ;; Remove log if task was clocked for 0:00 (accidental clocking)
   (org-clock-out-remove-zero-time-clocks t)
   ;; The default value (5) is too conservative.
-  (org-clock-history-length 20))
+  (org-clock-history-length 10))
 
 (use-package org-contacts
   :ensure t
