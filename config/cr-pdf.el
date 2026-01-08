@@ -31,9 +31,8 @@
   (pdf-tools-install :no-query))
 
 (use-package reader
-  :ensure (:host "codeberg" :repo "divyaranjan/emacs-reader" :files ("*.el" "render-core.dylib") :pre-build ("make" "all"))
-  :mode "\\.pdf\\'"
-  :defer t)
+  :ensure (:type git :host codeberg :repo "divyaranjan/emacs-reader" :files ("*.el" "render-core.so") :pre-build ("make" "all"))
+  :mode "\\.pdf\\'")
 
 (provide 'cr-pdf)
 ;;; cr-pdf.el ends here
