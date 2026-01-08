@@ -40,20 +40,8 @@
 (use-package gptel-agent
   :ensure t
   :after gptel
-  :config (gptel-agent-update))
-
-(use-package org-ai
-  :ensure t
   :defer t
-  :commands (org-ai-mode
-             org-ai-global-mode)
-  :hook org-mode
-  :custom
-  (org-ai-default-chat-model "gpt-4")
-  :init
-  (org-ai-global-mode)
-  :config
-  (org-ai-install-yasnippets))
+  :config (gptel-agent-update))
 
 (provide 'cr-ai)
 ;;; cr-ai.el ends here
