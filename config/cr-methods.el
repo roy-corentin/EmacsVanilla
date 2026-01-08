@@ -51,7 +51,7 @@ Returns the vterm buffer called with DISPLAY-FN."
   "Open a vterm buffer in another window if there is only one.  Use ARG."
   (interactive "P")
   (when (cr/one-main-window-p)
-    (let ((split-width-threshold 115))
+    (let ((split-width-threshold 110))
       (let ((new-window (split-window-sensibly)))
         (select-window new-window))))
   (cr/vterm-buffer arg))
@@ -208,11 +208,10 @@ If prefix ARG is set, prompt for a directory to search from."
 (defun cr/switch-theme (theme)
   "Switch to new THEME and disable previous."
   (interactive)
-  (let ((current-theme (car custom-enabled-themes)))
-    (when (and (not (eql current-theme theme))
+  (let ((previous-theme (car custom-enabled-themes)))
+    (when (and (not (eql previous-theme theme))
                (load-theme theme t))
-      (disable-theme current-theme)
-      (setq emacs-theme theme))))
+      (disable-theme previous-theme))))
 
 ;;;###autoload
 (defun cr/project-buffer-dwim ()
@@ -234,10 +233,11 @@ If prefix ARG is set, prompt for a directory to search from."
 (defun cr/reload-theme ()
   "Reload current theme."
   (interactive)
-  (disable-theme emacs-theme)
-  (load-theme emacs-theme t)
-  (posframe-delete-all)
-  (message "Theme reloaded"))
+  (let ((current-theme (car custom-enabled-themes)))
+    (disable-theme current-theme)
+    (load-theme current-theme t)
+    (posframe-delete-all)
+    (message "Theme reloaded")))
 
 ;;;###autoload
 (defun cr/comment-line (n)
@@ -464,12 +464,6 @@ to if called with ARG, or any prefix argument."
                                  (svg-lib-tag value
                                               font :stroke 0 :margin 0))
                  :ascent 'center))))
-
-;;;###autoload
-(defun cr/load-custom-theme ()
-  "Load custom theme."
-  (interactive)
-  (load-theme (or emacs-theme 'modus-vivendi) t))
 
 ;;;###autoload
 (defun cr/tab-close ()

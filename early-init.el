@@ -183,7 +183,7 @@
 
 (use-package savehist
   :config
-  (add-to-list 'savehist-additional-variables 'emacs-theme)
+  (add-to-list 'savehist-additional-variables 'custom-enabled-themes)
   (savehist-mode))
 
 (use-package tab-bar

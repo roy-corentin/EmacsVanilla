@@ -79,11 +79,10 @@
 
 (defun cr/load-theme-and-opacity (&optional frame)
   "Load theme and set custom opacity to &FRAME."
+  (load-theme (car custom-enabled-themes) t)
   (if frame
       (with-selected-frame frame
-        (cr/load-custom-theme)
         (set-frame-parameter frame 'alpha-background default-opacity))
-    (cr/load-custom-theme)
     (set-frame-parameter frame 'alpha-background default-opacity))
   )
 
