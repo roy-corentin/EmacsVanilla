@@ -236,7 +236,7 @@ If prefix ARG is set, prompt for a directory to search from."
   (let ((current-theme (car custom-enabled-themes)))
     (disable-theme current-theme)
     (load-theme current-theme t)
-    (posframe-delete-all)
+    (when (fboundp 'posframe-delete-all) (posframe-delete-all) )
     (message "Theme reloaded")))
 
 ;;;###autoload
