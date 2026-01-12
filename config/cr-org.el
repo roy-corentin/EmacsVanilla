@@ -353,6 +353,7 @@
   (org-agenda-finalize . org-modern-agenda)
   :custom
   (org-modern-star 'replace)
+  (org-modern-replace-stars "◉○◈◇✳●")
   (org-modern-progress nil)
   (org-modern-keyword nil)
   (org-modern-todo-faces '(("WIP" :inherit 'org-modern-todo :foreground "#b7a1f5")
