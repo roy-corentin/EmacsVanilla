@@ -23,6 +23,8 @@
 (use-package undo-fu-session
   :ensure t
   :after undo-fu
+  :custom
+  (undo-fu-session-compression 'zst)
   :config
   (global-undo-fu-session-mode))
 
