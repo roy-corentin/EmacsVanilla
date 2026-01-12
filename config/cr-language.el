@@ -69,5 +69,14 @@
   :ensure t
   :defer t)
 
+(use-package tsx-ts-mode
+  :ensure nil
+  :custom
+  (sgml-tag-alist '(("Typography") ("Box") ("Grid")))
+  :bind (:map tsx-ts-mode-map
+              ("C-c C-o" . sgml-tag)
+              ("C-c C-e" . sgml-close-tag)
+              ("C-c DEL" . sgml-delete-tag)))
+
 (provide 'cr-language)
 ;;; cr-language.el ends here
