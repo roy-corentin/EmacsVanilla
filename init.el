@@ -85,4 +85,5 @@
 (require 'cr-navigate)
 (require 'cr-theme)
 
+(provide 'init)
 ;;; init.el ends here
