@@ -143,7 +143,7 @@
   (comint-terminfo-terminal "dumb-emacs-ansi")
   (use-package-compute-statistics t)
   :custom-face
-  (default ((t :family "Iosevka Nerd Font" :weight medium :height 120)))
+  (default ((t :family "Iosevka Nerd Font" :weight regular :height 120)))
   (fixed-pitch ((t :family "Iosevka Nerd Font Mono" :weight bold :height 120)))
   (variable-pitch ((t :family "Iosevka Etoile" :weight medium :height 120)))
   :init
