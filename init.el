@@ -30,7 +30,8 @@
   :defer t)
 
 (use-package verb
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package pgmacs
   :after pg
@@ -38,6 +39,7 @@
 
 (use-package helix
   :ensure (:host github :repo "mgmarlow/helix-mode")
+  :defer t
   :hook ((helix-normal-mode . (lambda () (setq display-line-numbers 'relative)))
          (helix-insert-mode . (lambda () (setq display-line-numbers t)))))
 
