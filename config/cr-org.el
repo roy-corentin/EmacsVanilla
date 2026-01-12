@@ -293,59 +293,6 @@
    consult-org-roam-forward-links
    :preview-key "M-."))
 
-(use-package ox-latex
-  :config
-  (add-to-list 'org-latex-packages-alist '("AUTO" "babel" nil))
-  (add-to-list 'org-latex-classes
-               '("epitech_report"
-                 "\\documentclass[a4paper,12pt]{report}
-  \\usepackage[T1]{fontenc}
-  \\usepackage[scaled]{helvet}
-  \\renewcommand\\familydefault{\\sfdefault}
-  \\usepackage{etoolbox}
-  \\appto\\footnotetext{\\small}
-  \\usepackage{setspace}
-  \\setstretch{1.5}
-  \\makeatletter
-  \\renewcommand{\\maketitle}{
-    \\begin{titlepage}
-      \\begin{center}
-        \\vspace*{4em}
-        \\Huge \\textbf{\\@title} \\\\ % Title
-        \\Large \\textbf{Développeur FullStack} \\\\ % Role
-        \\vspace{4em}
-        \\Large \\textbf{\\@author} \\\\
-        \\Large \\textbf{Septembre 2023 à Juillet 2025} \\\\
-        \\bigskip
-        \\vspace{4em}
-        \\begin{minipage}{.5\\textwidth}
-          \\centering
-          \\includegraphics[width=12em]{~/Pictures/Epitech.png}
-        \\end{minipage}%
-        \\begin{minipage}{.5\\textwidth}
-          \\centering
-          \\includegraphics[width=12em]{~/Pictures/Syadem.png}
-        \\end{minipage}
-        \\vfill
-        \\normalsize \\textbf{Superviseur en entreprise:} Mathieu Laporte \\\\
-        \\vspace{4em}
-        \\
-        \\normalsize \\textbf{École:} Epitech Bordeaux, 16 rue Théodore Blanc, 33520 Bordeaux \\\\
-        \\
-        \\normalsize \\textbf{Entreprise:} Syadem, 48 Cr Georges Clemenceau, 33300 Bordeaux
-      \\end{center}
-    \\end{titlepage}
-  }
-  \\makeatother
-  \\pagestyle{plain}
-  \\usepackage[margin=0.7in]{geometry}"
-                 ("\\chapter{%s}" . "\\chapter*{%s}")
-                 ("\\section{%s}" . "\\section*{%s}")
-                 ("\\subsection{%s}" . "\\subsection*{%s}")
-                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
-                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
-
 (use-package org-present
   :ensure t
   :preface
