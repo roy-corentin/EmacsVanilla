@@ -19,8 +19,11 @@
   (compilation-scroll-output t)
   :config
   (advice-add #'project-switch-project :after #'cr/set-compile-command)
+  (push 'bun-vite-test compilation-error-regexp-alist)
+  (push '(bun-vite-test "^\\(.*\\):\n\\([0-9]+\\)" 1 2)
+        compilation-error-regexp-alist-alist)
   (push 'bun-test compilation-error-regexp-alist)
-  (push '(bun-test "^\\(.*\\):\n\\([0-9]+\\)" 1 2)
+  (push '(bun-test "^\s+at\s.*(\\(.+\\):\\([0-9]+\\):\\([0-9]+\\)" 1 2 3)
         compilation-error-regexp-alist-alist)
   (push 'rspec compilation-error-regexp-alist)
   (push '(rspec "rspec\s\\([a-zA-Z0-9/\\._-]+\\):\\([0-9]+\\)" 1 2)
