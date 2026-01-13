@@ -36,6 +36,8 @@
   :hook (olivetti-mode-off . set-flymake-margins-indicator)
   :hook (text-mode magit-mode)
   :hook (magit-mode . (lambda () (setq-local olivetti-body-width fill-column)))
+  :hook (magit-revision-mode . (lambda () (olivetti-mode -1)))
+  :hook (magit-merge-preview-mode . (lambda () (olivetti-mode -1)))
   :custom
   (olivetti-mode-on-hook nil))
 
