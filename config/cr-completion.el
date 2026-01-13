@@ -110,9 +110,9 @@
   :preface
   (defun cape-eglot-dict ()
     (cape-wrap-super #'eglot-completion-at-point
-                                     #'yasnippet-capf
-                                     #'cape-dabbrev
-                                     #'cape-file))
+                     #'yasnippet-capf
+                     #'cape-dabbrev
+                     #'cape-file))
   (defun my/eglot-capf ()
     (setq-local completion-at-point-functions (list (cape-capf-sort #'cape-eglot-dict))))
   :bind (("C-c p f" . cape-file)
