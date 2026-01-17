@@ -1,4 +1,4 @@
-;;; cr-evil.el --- Description -*- lexical-binding: t; -*-
+;;; cr-magit.el --- Description -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2026 Corentin Roy
 ;;
