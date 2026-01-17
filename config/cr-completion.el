@@ -88,7 +88,7 @@
   (corfu-quit-no-match 'separator)
   (corfu-on-exact-match nil) ; Configure handling of exact matches
   (corfu-preview-current 'insert)
-  (corfu-preselect 'valid)
+  (corfu-preselect 'prompt)
   :init
   (corfu-echo-mode)
   (corfu-popupinfo-mode)
