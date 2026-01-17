@@ -325,6 +325,18 @@
   :custom
   (org-present-after-navigate-functions  #'my/org-present-prepare-slide))
 
+(use-package org-tree-slide
+  :ensure t
+  :preface
+  (defun cr/org-tree-slide-start ()
+    (text-scale-increase 2)
+    (display-line-numbers-mode -1))
+  (defun cr/org-tree-slide-stop ()
+    (text-scale-decrease 2)
+    (display-line-numbers-mode t))
+  :hook (org-tree-slide-play . cr/org-tree-slide-start)
+  :hook (org-tree-slide-stop . cr/org-tree-slide-stop))
+
 (use-package org-appear
   :ensure t
   :hook org-mode
