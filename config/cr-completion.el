@@ -153,6 +153,12 @@
   :custom
   (consult-async-min-input 1))
 
+(use-package consult-vulpea
+  :ensure t
+  :after consult
+  :config
+  (consult-vulpea-mode 1))
+
 (use-package embark
   :ensure t
   :bind
