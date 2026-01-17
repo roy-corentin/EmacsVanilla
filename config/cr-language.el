@@ -69,14 +69,12 @@
   :ensure t
   :defer t)
 
-(use-package tsx-ts-mode
-  :ensure nil
+(use-package jtsx-tsx-mode
+  :ensure jtsx
+  :mode "\\.tsx\\'"
   :custom
-  (sgml-tag-alist '(("Typography") ("Box") ("Grid")))
-  :bind (:map tsx-ts-mode-map
-              ("C-c C-o" . sgml-tag)
-              ("C-c C-e" . sgml-close-tag)
-              ("C-c DEL" . sgml-delete-tag)))
+  (jtsx-enable-jsx-element-tags-auto-sync t)
+  (jtsx-enable-electric-open-newline-between-jsx-element-tags t))
 
 (provide 'cr-language)
 ;;; cr-language.el ends here
