@@ -180,7 +180,7 @@
   :defer t
   :bind (:map copilot-completion-map
               ("C-f" . 'copilot-accept-completion)
-              ("C-<tab>" . 'copilot-accept-completion)))
+              ("C-TAB" . 'copilot-accept-completion)))
 
 (provide 'cr-completion)
 ;;; cr-completion.el ends here
