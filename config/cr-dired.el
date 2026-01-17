@@ -65,7 +65,7 @@
 
 (use-package nerd-icons-dired
   :ensure t
-  :if (eq (fboundp 'dirvish) nil)
+  :if (not (fboundp 'dirvish))
   :hook
   (dired-mode . nerd-icons-dired-mode))
 
