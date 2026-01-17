@@ -23,7 +23,7 @@
 ;;; Code:
 
 (use-package ultra-scroll
-  :ensure (:host github :repo "jdsmith/ultra-scroll" :files (:defaults))
+  :ensure (:host github :repo "jdtsmith/ultra-scroll" :files (:defaults))
   :custom
   (scroll-conservatively 0)
   (scroll-margin 0)
