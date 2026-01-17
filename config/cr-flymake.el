@@ -14,9 +14,10 @@
   :ensure nil
   :hook prog-mode
   :hook (tty-setup . (lambda () (setq flymake-show-diagnostics-at-end-of-line 'fancy)))
+  :hook (evil-normal-state-entry . (lambda () (when (fboundp 'flymake-start) (flymake-start))))
   :custom
   (flymake-show-diagnostics-at-end-of-line 'fancy)
-  (flymake-no-changes-timeout 0.25))
+  (flymake-no-changes-timeout 30))
 
 (use-package flyover
   :ensure t
