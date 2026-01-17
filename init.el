@@ -25,14 +25,6 @@
   :config
   (kithar-mode t))
 
-(use-package keycast
-  :ensure t
-  :defer t)
-
-(use-package verb
-  :ensure t
-  :defer t)
-
 (use-package pgmacs
   :after pg
   :ensure (:host github :repo "emarsden/pgmacs"))
@@ -42,9 +34,6 @@
   :defer t
   :hook ((helix-normal-mode . (lambda () (setq display-line-numbers 'relative)))
          (helix-insert-mode . (lambda () (setq display-line-numbers t)))))
-
-(use-package time-zones
-  :ensure (:host github :repo "https://github.com/xenodium/time-zones"))
 
 (use-package jinx
   :ensure t
@@ -62,12 +51,10 @@
 (require 'cr-term)
 (require 'cr-olivetti)
 (require 'cr-magit)
-(require 'cr-eldoc)
 (require 'cr-undo)
 (require 'cr-treesit)
 (require 'cr-ediff)
 (require 'cr-formatter)
-(require 'cr-evil)
 (require 'cr-dired)
 (require 'cr-language)
 (require 'cr-debugger)
@@ -77,7 +64,6 @@
 (require 'cr-kubernetes)
 (require 'cr-scroll)
 (require 'cr-ai)
-(require 'cr-global-keybindings)
 (require 'cr-org)
 (require 'cr-elfeed)
 (require 'cr-pdf)

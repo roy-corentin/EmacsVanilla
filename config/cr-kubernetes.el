@@ -16,9 +16,5 @@
   :init
   (fset 'k8s 'kubernetes-overview))
 
-(use-package kubernetes-evil
-  :ensure t
-  :after (evil kubernetes))
-
 (provide 'cr-kubernetes)
 ;;; cr-kubernetes.el ends here

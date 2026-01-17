@@ -340,18 +340,6 @@
 (use-package org-appear
   :ensure t
   :hook org-mode
-  :preface
-  (defun evil-insert-appear ()
-    (add-hook 'evil-insert-state-entry-hook
-              #'org-appear-manual-start
-              nil
-              t)
-    (add-hook 'evil-insert-state-exit-hook
-              #'org-appear-manual-stop
-              nil
-              t))
-  :hook
-  (org-mode . evil-insert-appear)
   :custom
   (org-appear-emphasis t)
   (org-appear-autolinks t)

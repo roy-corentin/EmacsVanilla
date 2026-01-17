@@ -100,7 +100,6 @@
 
 (use-package meow
   :ensure t
-  :defer t
   :custom
   (meow-use-cursor-position-hack t) ;; Make 'a' as evil
   :config
