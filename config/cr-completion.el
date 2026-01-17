@@ -181,12 +181,5 @@
   :custom
   (wgrep-auto-save-buffer t))
 
-(use-package copilot
-  :ensure (:host github :repo "copilot-emacs/copilot.el" :depth 1 :files (:defaults))
-  :defer t
-  :bind (:map copilot-completion-map
-              ("C-f" . 'copilot-accept-completion)
-              ("C-TAB" . 'copilot-accept-completion)))
-
 (provide 'cr-completion)
 ;;; cr-completion.el ends here
