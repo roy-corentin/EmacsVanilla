@@ -18,7 +18,9 @@
   (doom-themes-enable-italic t) ; if nil, italics is universally disabled
   :config
   (doom-themes-visual-bell-config)
-  (doom-themes-org-config))
+  (doom-themes-org-config)
+  (setcdr (assoc 'gnus-group-news-low-empty doom-themes-base-faces)
+          '(:inherit 'gnus-group-mail-1-empty :weight 'normal)))
 
 (use-package solaire-mode
   :ensure t
