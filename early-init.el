@@ -88,6 +88,7 @@
   (inhibit-startup-screen t)
   (initial-buffer-choice #'get-or-create-dashboard-buffer)
   (column-number-mode t)
+  (next-line-add-newlines t)
   ;; Line numbers
   (display-line-numbers-type 'relative)
   (display-line-numbers-width 3)
@@ -158,6 +159,7 @@
   (pixel-scroll-mode t)
   (electric-pair-mode t)
   (global-auto-revert-mode t)
+  (subword-mode t)
   (set-default 'truncate-lines t)
   (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
   (add-to-list 'default-frame-alist '(borders-respect-alpha-background . t))
@@ -197,7 +199,6 @@
 
 (use-package which-key
   :custom
-  (which-key-idle-secondary-delay 0.05)
   (which-key-popup-type 'side-window)
   :config
   (push '(("" ."\\`+?evil[-:]?\\(?:a-\\)?\\(.*\\)") . (nil .  "é-\\1")) which-key-replacement-alist)
