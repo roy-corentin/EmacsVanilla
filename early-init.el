@@ -218,18 +218,5 @@
   :custom
   (electric-indent-actions '(yank)))
 
-(use-package tramp
-  :config
-  ;; Enable full-featured Dirvish over TRAMP on certain connections
-  ;; https://www.gnu.org/software/tramp/#Improving-performance-of-asynchronous-remote-processes-1.
-  (add-to-list 'tramp-connection-properties
-               (list (regexp-quote "/ssh:YOUR_HOSTNAME:")
-                     "direct-async-process" t))
-  :custom
-  ;; Tips to speed up connections
-  (tramp-verbose 0)
-  (tramp-chunksize 2000)
-  (tramp-use-ssh-controlmaster-options nil))
-
 (provide 'early-init)
 ;;; early-init.el ends here
