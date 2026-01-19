@@ -189,11 +189,8 @@
   (savehist-mode))
 
 (use-package tab-bar
-  :after dashboard
   :custom
-  (tab-bar-show t)
-  :init
-  (advice-add #'tab-new :after #'dashboard-open))
+  (tab-bar-show t))
 
 (use-package tab-line
   :custom

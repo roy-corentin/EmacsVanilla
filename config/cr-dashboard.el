@@ -28,6 +28,7 @@
   (dashboard-items '((recents   . 5)
                      (projects  . 5)))
   :init
+  (advice-add #'tab-new :after #'dashboard-open)
   (dashboard-setup-startup-hook))
 
 (provide 'cr-dashboard)
