@@ -14,7 +14,6 @@
 ;; Initialize load path for loading configuration files
 (add-to-list 'load-path (concat user-emacs-directory "config/"))
 
-
 (use-package load-env-vars
   :ensure t
   :config
@@ -38,6 +37,10 @@
 (use-package jinx
   :ensure t
   :hook text-mode)
+
+(use-package surround
+  :ensure t
+  :bind-keymap ("C-c s" . surround-keymap))
 
 (require 'cr-methods)
 (require 'cr-ai-methods)
@@ -70,6 +73,7 @@
 (require 'cr-help)
 (require 'cr-navigate)
 (require 'cr-theme)
+(require 'cr-keybindings)
 
 (provide 'init)
 ;;; init.el ends here
