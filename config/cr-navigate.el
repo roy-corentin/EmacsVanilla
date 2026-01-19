@@ -38,10 +38,8 @@
 
 (use-package better-jumper
   :ensure t
-  :after evil
-  :bind (:map evil-motion-state-map
-              ("C-i" . 'better-jumper-jump-forward)
-              ("C-o" . 'better-jumper-jump-backward))
+  :bind (("M-o" . 'better-jumper-jump-forward)
+         ("C-o" . 'better-jumper-jump-backward))
   :init
   (better-jumper-mode t))
 
