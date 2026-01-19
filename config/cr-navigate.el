@@ -53,5 +53,9 @@
   (aw-scope 'global aw-background t)
   :bind (([remap other-window] . ace-window)))
 
+(use-package expand-region
+  :ensure t
+  :bind ("C-=" . er/expand-region))
+
 (provide 'cr-navigate)
 ;;; cr-navigate.el ends here
