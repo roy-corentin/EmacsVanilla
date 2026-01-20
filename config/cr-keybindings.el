@@ -24,17 +24,31 @@
 
 ;;; Code:
 
-(bind-key "C-c f n" 'cr/find-note)
-(bind-key "C-x x k" 'kill-current-buffer)
-(bind-key "C-x p s" 'consult-grep)
-(bind-key "C-x b" 'cr/project-buffer-dwim)
-(bind-key "C-c s" 'consult-line)
-(bind-key "C-q" 'kill-emacs)
-(bind-key "C-x p r" 'project-recompile)
+(bind-key "C-c f n" #'cr/find-note)
+(bind-key "C-x b" #'cr/project-buffer-dwim)
+(bind-key "C-x k" #'kill-current-buffer)
+(bind-key "C-c s" #'consult-line)
+(bind-key "C-q" #'kill-emacs)
 
-(bind-key "C-c c r" 'eglot-rename)
+(bind-keys :map 'project-prefix-map
+           ("s" . consult-ripgrep)
+           ("r" . project-recompile)
+           ("e" . consult-flymake)
+           ("V" . cr/project-open-file-other-window)
+           ("S" . cr/project-open-file-below-window))
 
-(bind-key "C-c o l A" 'gptel-agent)
+(bind-key "C-x t 0" #'cr/tab-close)
+
+(bind-key "C-c c r" #'eglot-rename)
+(bind-key "C-c o t" #'cr/toggle-vterm-popup)
+(bind-key "C-c o T" #'cr/vterm-buffer)
+
+(bind-key "C-c o l A" #'gptel-agent)
+
+(use-package drag-stuff
+  :ensure t
+  :bind (("C-M-p" . drag-stuff-up)
+         ("C-M-n" . drag-stuff-down)))
 
 (provide 'cr-keybindings)
 ;;; cr-keybindings.el ends here
