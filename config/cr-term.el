@@ -17,11 +17,7 @@
   :hook (vterm-mode. disable-trailing-whitespace)
   :custom
   (vterm-kill-buffer-on-exit t)
-  (vterm-max-scrollback 5000)
-  :config
-  (evil-define-key 'insert vterm-mode-map
-    (kbd "C-p") 'cr/vterm-insert-up
-    (kbd "C-n") 'cr/vterm-insert-down))
+  (vterm-max-scrollback 5000))
 
 ;; Add support for the Kitty keyboard protocol.
 (use-package kkp
