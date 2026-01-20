@@ -40,9 +40,10 @@
 
 (use-package surround
   :ensure t
-  :bind-keymap ("C-c s" . surround-keymap))
+  :bind-keymap ("C-c S" . surround-keymap))
 
 (require 'cr-methods)
+(require 'doom-methods)
 (require 'cr-ai-methods)
 (require 'cr-buffer)
 (require 'cr-project)
