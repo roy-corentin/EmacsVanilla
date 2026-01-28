@@ -14,11 +14,12 @@
   :ensure nil
   :hook prog-mode
   :custom
-  (flymake-show-diagnostics-at-end-of-line 'fancy)
-  (flymake-no-changes-timeout 30))
+  (flymake-show-diagnostics-at-end-of-line nil)
+  (flymake-no-changes-timeout 3))
 
 (use-package flyover
   :ensure t
+  :disabled (eql nil flymake-show-diagnostics-at-end-of-line)
   :hook flymake-mode
   :custom
   (flyover-levels '(error warning info))
