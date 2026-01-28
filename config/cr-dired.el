@@ -14,6 +14,9 @@
 (use-package dired
   :ensure nil
   :hook (dired-mode . dired-omit-mode)
+  :bind (:map dired-mode-map
+              ("h" . dired-up-directory)
+              ("l" . dired-find-file))
   :custom
   (dired-mouse-drag-files t)
   (mouse-drag-and-drop-region-cross-program t))
