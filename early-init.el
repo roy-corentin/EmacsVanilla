@@ -98,19 +98,10 @@
   ;; Menu
   (context-menu-mode t)
   (enable-recursive-minibuffers t)
-  (read-extended-command-predicate #'command-completion-default-include-p)
   (minibuffer-prompt-properties '(read-only t cursor-intangible t face minibuffer-prompt))
   ;; Completion
   (tab-always-indent 'complete)
   (completion-eager-display nil)
-  ;; UI
-  (grep-use-headings t)
-  (vc-follow-symlinks nil)
-  ;; Mouse
-  (mouse-autoselect-window t)
-  (focus-follow-mouse t)
-  (mouse-yank-at-point nil)
-  (ibuffer-use-header-line 'title)
   ;; Corfu
   ;; Emacs 30 and newer: Disable Ispell completion function. As an alternative,
   ;; try `cape-dict'.
@@ -119,6 +110,14 @@
   ;; mode.  Corfu commands are hidden, since they are not used via M-x. This
   ;; setting is useful beyond Corfu.
   (read-extended-command-predicate #'command-completion-default-include-p)
+  ;; UI
+  (grep-use-headings t)
+  (vc-follow-symlinks nil)
+  ;; Mouse
+  (mouse-autoselect-window t)
+  (focus-follow-mouse t)
+  (mouse-yank-at-point nil)
+  (ibuffer-use-header-line 'title)
   (fringes-outside-margins t)
   ;; Show paren
   (show-paren-delay 0.01)
