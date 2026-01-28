@@ -36,20 +36,14 @@
   :custom
   (dumb-jump-force-searcher 'ag))
 
-(use-package better-jumper
-  :ensure t
-  :bind (("M-o" . 'better-jumper-jump-forward)
-         ("C-o" . 'better-jumper-jump-backward))
-  :init
-  (better-jumper-mode t))
-
 (use-package ace-window
   :ensure t
   :defer t
   :custom
   (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   (aw-scope 'global aw-background t)
-  :bind (([remap other-window] . ace-window)))
+  :bind (([remap other-window] . ace-window)
+         ([remap other-window-backward] . ace-swap-window)))
 
 (use-package expand-region
   :ensure t
