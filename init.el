@@ -43,9 +43,6 @@
   :hook ((helix-normal-mode . (lambda () (setq display-line-numbers 'relative)))
          (helix-insert-mode . (lambda () (setq display-line-numbers t)))))
 
-(use-package time-zones
-  :ensure (:host github :repo "https://github.com/xenodium/time-zones"))
-
 (use-package jinx
   :ensure t
   :hook text-mode)
