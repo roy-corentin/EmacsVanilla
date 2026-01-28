@@ -62,7 +62,6 @@
 (require 'cr-term)
 (require 'cr-olivetti)
 (require 'cr-magit)
-(require 'cr-eldoc)
 (require 'cr-undo)
 (require 'cr-treesit)
 (require 'cr-ediff)
