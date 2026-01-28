@@ -24,18 +24,34 @@
 
 ;;; Code:
 
-(bind-key "C-c f n" #'cr/find-note)
+
+(bind-key "C-x 2" #'cr/split-window-right-and-follow)
+(bind-key "C-x 3" #'cr/split-window-below-and-follow)
 (bind-key "C-x b" #'cr/project-buffer-dwim)
+(bind-key "C-x B" #'consult-buffer)
 (bind-key "C-x k" #'kill-current-buffer)
+(bind-key "C-x m" #'maximize-window)
+(bind-key "C-x =" #'balance-windows)
+
 (bind-key "C-c s" #'consult-line)
+(bind-key "C-c n f" #'cr/find-note)
+(bind-key "C-c f" #'apheleia-format-buffer)
+(bind-key "C-c u" #'vundo)
+
 (bind-key "C-q" #'kill-emacs)
+(bind-key "C-c *" #'cr/search-symbol-at-point-in-project)
 
 (bind-keys :map 'project-prefix-map
            ("s" . consult-ripgrep)
            ("r" . project-recompile)
            ("e" . consult-flymake)
+           ("d" . +default/search-cwd)
            ("V" . cr/project-open-file-other-window)
            ("S" . cr/project-open-file-below-window))
+
+(bind-keys :map 'tab-prefix-map
+           ("d" . tab-duplicate)
+           ("n" . tab-new))
 
 (bind-key "C-x t 0" #'cr/tab-close)
 
@@ -45,10 +61,13 @@
 
 (bind-key "C-c o l A" #'gptel-agent)
 
+(bind-key "M-g i" #'consult-imenu)
+(bind-key "M-g t" #'consult-theme)
+
 (use-package drag-stuff
   :ensure t
-  :bind (("C-M-p" . drag-stuff-up)
-         ("C-M-n" . drag-stuff-down)))
+  :bind (("M-p" . drag-stuff-up)
+         ("M-n" . drag-stuff-down)))
 
 (provide 'cr-keybindings)
 ;;; cr-keybindings.el ends here
