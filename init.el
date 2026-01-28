@@ -42,6 +42,12 @@
   :ensure t
   :bind-keymap ("C-c S" . surround-keymap))
 
+(use-package multiple-cursors
+  :ensure t
+  :bind (("C->" . mc/mark-previous-like-this)
+         ("C-<" . mc/mark-next-like-this)
+         ("C-c C-<" . mc/mark-all-like-this)))
+
 (require 'cr-methods)
 (require 'doom-methods)
 (require 'cr-ai-methods)
