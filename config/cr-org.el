@@ -29,7 +29,9 @@
     :group 'org-faces)
   :hook (org-mode . cr/set-org-style)
   :hook (org-after-todo-statistics . cr/org-summary-todo)
-  :bind (:map org-mode-map ("S-<return>" . +org/dwim-at-point))
+  :bind (:map org-mode-map
+              ("S-<return>" . +org/dwim-at-point)
+              ("C-<return>" . +org/insert-item-below))
   :custom
   (prettify-symbols-alist '(("#+PROPERTY:" . "") ("#+property:" . "")
                             ("#+AUTHOR:" . "") ("#+author:" . "")
