@@ -292,7 +292,6 @@ Before doing so,re-align the table if necessary.  (Necessary because `org-mode' 
                    (car (+org-get-todo-keywords-for todo-keyword)))
                   (todo-keyword)
                   ('todo)))))))
-
     (when (org-invisible-p)
       (org-fold-show-hidden-entry))
     (when (and (bound-and-true-p evil-local-mode)
