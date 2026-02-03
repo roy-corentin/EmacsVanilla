@@ -141,10 +141,10 @@
   :defer t
   :after vertico
   :custom
-  (completion-styles '(orderless partial-completion))
   ;; (completion-styles '(orderless basic))
-  (completion-category-defaults nil)
+  (completion-styles '(orderless partial-completion))
   (completion-category-overrides '((file (styles partial-completion))))
+  (completion-category-defaults nil)
   (completion-pcm-leading-wildcard t)) ;; Emacs 31: partial-completion behaves like substring
 
 (use-package consult
