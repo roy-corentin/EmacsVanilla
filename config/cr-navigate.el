@@ -42,7 +42,8 @@
   (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   (aw-scope 'global aw-background t)
   :bind (([remap other-window] . ace-window)
-         ([remap other-window-backward] . ace-swap-window)))
+         ([remap other-window-backward] . ace-swap-window)
+         ("C-x D" . ace-delete-window)))
 
 (use-package expand-region
   :ensure t
