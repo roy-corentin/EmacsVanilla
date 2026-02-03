@@ -30,11 +30,10 @@
 
 (use-package dumb-jump
   :ensure t
-  :hook prog-mode
-  :config
-  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
   :custom
-  (dumb-jump-force-searcher 'ag))
+  (dumb-jump-force-searcher 'ag)
+  :config
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
 (use-package ace-window
   :ensure t
