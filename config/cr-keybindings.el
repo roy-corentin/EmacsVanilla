@@ -57,12 +57,13 @@
 
 (bind-key "C-c c r" #'eglot-rename)
 (bind-key "C-c o t" #'cr/toggle-vterm-popup)
-(bind-key "C-c o T" #'cr/vterm-buffer)
+(bind-key "C-c o T" #'cr/smart-vterm-buffer)
 
 (bind-key "C-c o l A" #'gptel-agent)
 
 (bind-key "M-g i" #'consult-imenu)
 (bind-key "M-g t" #'consult-theme)
+(bind-key "M-g x" #'browse-url-at-point)
 
 (use-package drag-stuff
   :ensure t
