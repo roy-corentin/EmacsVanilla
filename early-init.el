@@ -157,6 +157,7 @@
   (electric-pair-mode t)
   (global-auto-revert-mode t)
   (subword-mode t)
+  (save-place-mode t)
   (set-default 'truncate-lines t)
   (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
   (add-to-list 'default-frame-alist '(borders-respect-alpha-background . t))
