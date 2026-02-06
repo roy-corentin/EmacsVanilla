@@ -63,6 +63,7 @@
 
 (bind-key "M-g i" #'consult-imenu)
 (bind-key "M-g t" #'consult-theme)
+(bind-key "M-g T" #'kb/toggle-window-transparency)
 (bind-key "M-g x" #'browse-url-at-point)
 
 (use-package drag-stuff
