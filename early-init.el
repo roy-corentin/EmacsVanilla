@@ -168,12 +168,12 @@
   (defvar transparent-background-opacity 75)
   (defvar default-opacity 100)
   :bind
-  ("C-=" . text-scale-increase)
+  ("C-+" . text-scale-increase)
   ("C--" . text-scale-decrease)
   ("C-," . previous-buffer)
   ("C-;" . next-buffer)
-  ("C-+" . reset-text-scale)
-  ("C-M-=" . global-text-scale-adjust))
+  ("C-0" . reset-text-scale)
+  ("C-M-=" . global-text-scale-adjust)
 
 (use-package gcmh
   :ensure t
