@@ -174,6 +174,11 @@
   ("C-;" . next-buffer)
   ("C-0" . reset-text-scale)
   ("C-M-=" . global-text-scale-adjust)
+  ("C-s" . isearch-forward-regexp)
+  ("C-r" . isearch-backward-regexp)
+  ("C-M-s" . isearch-forward)
+  ("C-M-r" . isearch-backward)
+  ("M-z" . zap-up-to-char))
 
 (use-package gcmh
   :ensure t
