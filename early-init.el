@@ -117,12 +117,10 @@
   (mouse-autoselect-window t)
   (focus-follow-mouse t)
   (mouse-yank-at-point nil)
+  ;; ibuffer
   (ibuffer-use-header-line 'title)
+  ;; Fringes
   (fringes-outside-margins t)
-  ;; Show paren
-  (show-paren-delay 0.01)
-  (show-paren-highlight-openparen t)
-  (show-paren-when-point-inside-paren t)
   ;; Ring
   (kill-do-not-save-duplicates t)
   ;; Window
