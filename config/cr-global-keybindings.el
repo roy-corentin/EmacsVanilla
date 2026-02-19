@@ -264,7 +264,7 @@
    "g z q" '(evil-mc-undo-all-cursors :which-key "Undo all cursor")
    "g z p" '(evil-mc-pause-cursors :which-key "Pause cursors")
    "g z r" '(evil-mc-resume-cursors :which-key "Resume cursors")
-   "K" '(cr/eldoc-doc-buffer :which-key "Help at point"))
+   "K" '(eldoc-doc-buffer :which-key "Help at point"))
   (general-define-key
    :states '(normal visual)
    :keymaps 'org-mode-map
@@ -323,10 +323,10 @@
   (general-define-key
    :keymaps 'vertico-map
    "C-SPC" '+vertico/embark-preview
-   "C-M-j" #'vertico-next-group
-   "C-M-k" #'vertico-previous-group
-   "<wheel-down>" #'vertico-next
-   "<wheel-up>" #'vertico-previous)
+   "C-M-j" 'vertico-next-group
+   "C-M-k" 'vertico-previous-group
+   "<wheel-down>" 'vertico-next
+   "<wheel-up>" 'vertico-previous)
   (general-define-key
    :states '(normal visual)
    :keymaps 'reader-mode-map
