@@ -12,7 +12,6 @@
 
 (use-package apheleia
   :ensure t
-  :defer t
   :config
   (add-to-list 'apheleia-mode-alist '(python-mode . ruff))
   (add-to-list 'apheleia-mode-alist '(python-ts-mode . ruff))
@@ -20,9 +19,7 @@
 
 (use-package simple
   :ensure nil
-  :hook ((prog-mode . delete-trailing-whitespace-mode)
-         (text-mode . delete-trailing-whitespace-mode)
-         (conf-mode . delete-trailing-whitespace-mode)))
+  :hook ((prog-mode text-mode conf-mode) . delete-trailing-whitespace-mode))
 
 (provide 'cr-formatter)
 ;;; cr-formatter.el ends here
