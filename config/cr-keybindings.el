@@ -24,7 +24,6 @@
 
 ;;; Code:
 
-
 (bind-key "C-x 2" #'cr/split-window-right-and-follow)
 (bind-key "C-x 3" #'cr/split-window-below-and-follow)
 (bind-key "C-x b" #'cr/project-buffer-dwim)
@@ -32,19 +31,24 @@
 (bind-key "C-x k" #'kill-current-buffer)
 (bind-key "C-x m" #'maximize-window)
 (bind-key "C-x =" #'balance-windows)
+(bind-key "C-x t 0" #'cr/tab-close)
 
 (bind-key "C-c s" #'consult-line)
 (bind-key "C-c n f" #'cr/find-note)
 (bind-key "C-c f" #'apheleia-format-buffer)
 (bind-key "C-c u" #'vundo)
+(bind-key "C-c *" #'cr/search-symbol-at-point-in-project)
+(bind-key "C-c c r" #'eglot-rename)
+(bind-key "C-c c a" #'eglot-code-actions)
+(bind-key "C-c o t" #'cr/toggle-vterm-popup)
+(bind-key "C-c o T" #'cr/smart-vterm-buffer)
+(bind-key "C-c o l A" #'gptel-agent)
 
 (bind-key "C-q" #'kill-emacs)
-(bind-key "C-c *" #'cr/search-symbol-at-point-in-project)
 
 (bind-keys :map 'project-prefix-map
            ("s" . consult-ripgrep)
            ("r" . project-recompile)
-           ("e" . consult-flymake)
            ("d" . +default/search-cwd)
            ("V" . cr/project-open-file-other-window)
            ("S" . cr/project-open-file-below-window))
@@ -53,14 +57,13 @@
            ("d" . tab-duplicate)
            ("n" . tab-new))
 
-(bind-key "C-x t 0" #'cr/tab-close)
+(bind-keys :map 'window-prefix-map
+           ("h" . cr/move-window-left)
+           ("j" . cr/move-window-down)
+           ("k" . cr/move-window-up)
+           ("l" . cr/move-window-right))
 
-(bind-key "C-c c r" #'eglot-rename)
-(bind-key "C-c o t" #'cr/toggle-vterm-popup)
-(bind-key "C-c o T" #'cr/smart-vterm-buffer)
-
-(bind-key "C-c o l A" #'gptel-agent)
-
+(bind-key "M-g e" #'consult-flymake)
 (bind-key "M-g i" #'consult-imenu)
 (bind-key "M-g t" #'consult-theme)
 (bind-key "M-g T" #'kb/toggle-window-transparency)
