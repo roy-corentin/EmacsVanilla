@@ -13,6 +13,7 @@
 (use-package eglot
   :ensure nil
   :hook ((ruby-base-mode tsx-ts-mode typescript-ts-mode python-base-mode zig-ts-mode c-ts-mode c++-ts-mode json-ts-mode js-base-mode html-ts-mode rust-ts-mode) . eglot-ensure)
+  :hook (eglot-managed-mode . (lambda () (eglot-semantic-tokens-mode -1)))
   :custom
   (eglot-connect-timeout 60)
   (eglot-advertise-cancellation t)
