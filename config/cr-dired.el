@@ -18,6 +18,7 @@
          (:map dired-mode-map
                ("b" . dired-up-directory)))
   :custom
+  (dired-auto-revert-buffer t)
   (dired-mouse-drag-files t)
   (mouse-drag-and-drop-region-cross-program t))
 
