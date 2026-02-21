@@ -549,5 +549,27 @@ to if called with ARG, or any prefix argument."
   (interactive)
   (cr/set-compile-command))
 
+(defun cr/setup-default-completion ()
+  "Recommended setup for default emacs completion ui."
+  (interactive)
+  (setq
+   ;; One column view with annotations
+   completions-format 'one-column
+   completions-detailed t
+   completions-group t
+   ;; Sort candidates by history position
+   completions-sort 'historical
+   ;; Allow navigating from the minibuffer
+   minibuffer-visible-completions 'up-down
+   ;; Show completions eagerly and update automatically
+   completion-eager-update t
+   completion-eager-display t
+   completion-auto-help 'always
+   ;; Disable noise (inline help also blocks input)
+   completion-show-help nil
+   completion-show-inline-help nil)
+  ;; Unbind `minibuffer-complete-word'
+  (keymap-unset minibuffer-local-completion-map "SPC"))
+
 (provide 'cr-methods)
 ;;; cr-methods.el ends here
