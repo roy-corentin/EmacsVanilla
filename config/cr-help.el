@@ -26,7 +26,8 @@
 
 (use-package casual
   :ensure t
-  :defer t)
+  :defer t
+  :bind (:map dired-mode-map  ("?" . casual-dired-tmenu)))
 
 (use-package helpful
   :ensure t
