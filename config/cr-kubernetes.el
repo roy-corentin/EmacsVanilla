@@ -11,7 +11,7 @@
 ;;; Code:
 
 (use-package kubernetes
-  :ensure t
+  :ensure nil
   :commands (kubernetes-overview)
   :init
   (fset 'k8s 'kubernetes-overview))
