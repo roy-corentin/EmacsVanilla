@@ -21,7 +21,7 @@
   :type 'integer
   :group 'olivetti)
 
-(defcustom kithar-min-width 110
+(defcustom kithar-min-width 120
   "Minimum Olivetti body width."
   :type 'integer
   :group 'olivetti)
