@@ -30,6 +30,7 @@
   :custom
   (gptel-api-key #'cr/gptel-openai-api-key)
   (gptel-model 'claude-sonnet-4-5-20250929)
+  (gptel-default-mode 'org-mode)
   :config
   (gptel-make-gemini "Gemini" :stream t :key #'cr/gptel-gemini-api-key)
   (setq gptel-backend (gptel-make-anthropic "Claude" :stream t :key #'cr/gptel-anthropic-api-key)))
