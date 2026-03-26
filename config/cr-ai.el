@@ -44,5 +44,9 @@
   :defer t
   :config (gptel-agent-update))
 
+(use-package gptel-magit
+  :ensure t
+  :hook (magit-mode . gptel-magit-install))
+
 (provide 'cr-ai)
 ;;; cr-ai.el ends here
