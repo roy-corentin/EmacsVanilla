@@ -32,6 +32,8 @@
   :ensure t
   :custom
   (dumb-jump-force-searcher 'ag)
+  (xref-show-definitions-function #'consult-xref)
+  (xref-show-xrefs-function #'consult-xref)
   :config
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
@@ -45,9 +47,15 @@
          ([remap other-window-backward] . ace-swap-window)
          ("C-x D" . ace-delete-window)))
 
-(use-package expand-region
+;; (use-package expand-region
+;;   :ensure t
+;;   :bind ("C-=" . er/expand-region))
+
+(use-package expreg
   :ensure t
-  :bind ("C-=" . er/expand-region))
+  :bind (("C-=" . expreg-expand)
+         ("M-=" . expreg-expand)
+         ("M-+" . expreg-contract)))
 
 (provide 'cr-navigate)
 ;;; cr-navigate.el ends here
