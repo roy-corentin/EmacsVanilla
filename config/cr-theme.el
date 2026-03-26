@@ -1,4 +1,4 @@
-;;; cr-them.el --- Theme setup -*- lexical-binding: t; -*-
+;; cr-them.el --- Theme setup -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2026 Corentin Roy
 ;;
@@ -59,13 +59,13 @@
   (kaolin-themes-distinct-tab-line t)
   (kaolin-themes-hl-line-colored t))
 
-(use-package lambda-themes
-  :ensure (:host github :repo "lambda-emacs/lambda-themes")
-  :demand t
-  :custom
-  (lambda-themes-set-italic-comments t)
-  (lambda-themes-set-italic-keywords t)
-  (lambda-themes-set-variable-pitch t))
+;; (use-package lambda-themes
+;;   :ensure (:host github :repo "lambda-emacs/lambda-themes")
+;;   :demand t
+;;   :custom
+;;   (lambda-themes-set-italic-comments t)
+;;   (lambda-themes-set-italic-keywords t)
+;;   (lambda-themes-set-variable-pitch t))
 
 (use-package color-theme-sanityinc-tomorrow
   :ensure t
