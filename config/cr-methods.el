@@ -553,6 +553,13 @@ to if called with ARG, or any prefix argument."
   (interactive)
   (cr/set-compile-command))
 
+(defun cr/new-buffer ()
+  "Create a new empty buffer."
+  (interactive)
+  (let ((buffer (generate-new-buffer "*new*")))
+    (set-buffer-major-mode buffer)
+    (set-window-buffer nil buffer)))
+
 (defun cr/setup-default-completion ()
   "Recommended setup for default emacs completion ui."
   (interactive)
