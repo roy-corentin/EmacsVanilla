@@ -44,8 +44,8 @@
 
 (use-package multiple-cursors
   :ensure t
-  :bind (("C->" . mc/mark-previous-like-this)
-         ("C-<" . mc/mark-next-like-this)
+  :bind (("C-<" . mc/mark-previous-like-this)
+         ("C->" . mc/mark-next-like-this)
          ("C-c C-<" . mc/mark-all-like-this)))
 
 (require 'cr-methods)
