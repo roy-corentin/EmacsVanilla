@@ -29,6 +29,7 @@
     :group 'org-faces)
   :hook (org-mode . cr/set-org-style)
   :hook (org-after-todo-statistics . cr/org-summary-todo)
+  :hook (org-ode . visual-line-mode)
   :bind (:map org-mode-map
               ("S-<return>" . +org/dwim-at-point)
               ("C-<return>" . +org/insert-item-below))
