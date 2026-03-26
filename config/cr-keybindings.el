@@ -40,11 +40,24 @@
 (bind-key "C-c *" #'cr/search-symbol-at-point-in-project)
 (bind-key "C-c c r" #'eglot-rename)
 (bind-key "C-c c a" #'eglot-code-actions)
+
+(bind-key "C-c r n f" #'vulpea-find)
+
 (bind-key "C-c o t" #'cr/toggle-vterm-popup)
 (bind-key "C-c o T" #'cr/smart-vterm-buffer)
-(bind-key "C-c o l A" #'gptel-agent)
+(bind-key "C-c o A" #'org-agenda)
 
-(bind-key "C-q" #'kill-emacs)
+(bind-key "C-c t v" #'visual-line-mode)
+
+(bind-key "C-c o l A" #'gptel-agent)
+(bind-key "C-c o l m" #'gptel-menu)
+
+(bind-key "C-c b n" #'cr/new-buffer)
+
+(bind-key "C-c m c" #'magit-clone)
+(bind-key "C-c m b" #'magit-blame)
+
+(bind-key "C-c C-q" #'kill-emacs)
 
 (bind-keys :map 'project-prefix-map
            ("s" . consult-ripgrep)
@@ -68,6 +81,7 @@
 (bind-key "M-g t" #'consult-theme)
 (bind-key "M-g T" #'kb/toggle-window-transparency)
 (bind-key "M-g x" #'browse-url-at-point)
+(bind-key "M-g I" #'consult-isearch-history)
 
 (use-package drag-stuff
   :ensure t
