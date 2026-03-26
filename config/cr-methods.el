@@ -200,7 +200,11 @@ If prefix ARG is set, prompt for a directory to search from."
   "Search in project symbol at point."
   (interactive)
   (unless (use-region-p)
-    (er/mark-symbol-with-prefix))
+    (let ((pos (cdr (car (expreg--word)))))
+      (goto-char (car pos))
+      (set-mark (car pos))
+      (goto-char (cdr pos))))
+  ;; (er/mark-symbol-with-prefix))
   (consult-ripgrep nil (buffer-substring (region-beginning) (region-end))))
 
 (with-eval-after-load 'evil-search
