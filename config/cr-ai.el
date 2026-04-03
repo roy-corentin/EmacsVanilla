@@ -29,7 +29,8 @@
   :hook (gptel-post-response-functions . gptel-end-of-response)
   :custom
   (gptel-api-key #'cr/gptel-openai-api-key)
-  (gptel-model 'claude-sonnet-4-5-20250929)
+  (gptel-model 'claude-sonnet-4-6)
+  (gptel-default-mode 'org-mode)
   :config
   (gptel-make-gemini "Gemini" :stream t :key #'cr/gptel-gemini-api-key)
   (setq gptel-backend (gptel-make-anthropic "Claude" :stream t :key #'cr/gptel-anthropic-api-key)))
@@ -42,6 +43,10 @@
   :after gptel
   :defer t
   :config (gptel-agent-update))
+
+(use-package gptel-magit
+  :ensure t
+  :hook (magit-mode . gptel-magit-install))
 
 (provide 'cr-ai)
 ;;; cr-ai.el ends here

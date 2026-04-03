@@ -30,11 +30,12 @@
 
 (use-package dumb-jump
   :ensure t
-  :hook prog-mode
-  :config
-  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
   :custom
-  (dumb-jump-force-searcher 'ag))
+  (dumb-jump-force-searcher 'ag)
+  (xref-show-definitions-function #'consult-xref)
+  (xref-show-xrefs-function #'consult-xref)
+  :config
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
 (use-package better-jumper
   :ensure t
@@ -51,7 +52,8 @@
   :custom
   (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   (aw-scope 'global aw-background t)
-  :bind (([remap other-window] . ace-window)))
+  :bind (([remap other-window] . ace-window)
+         ([remap other-window-backward] . ace-swap-window)))
 
 (provide 'cr-navigate)
 ;;; cr-navigate.el ends here

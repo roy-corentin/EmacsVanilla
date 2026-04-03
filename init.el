@@ -29,10 +29,6 @@
   :ensure t
   :defer t)
 
-(use-package verb
-  :ensure t
-  :defer t)
-
 (use-package pgmacs
   :after pg
   :ensure (:host github :repo "emarsden/pgmacs"))

@@ -29,6 +29,7 @@
     :group 'org-faces)
   :hook (org-mode . cr/set-org-style)
   :hook (org-after-todo-statistics . cr/org-summary-todo)
+  :hook (org-mode . visual-line-mode)
   :custom
   (prettify-symbols-alist '(("#+PROPERTY:" . "") ("#+property:" . "")
                             ("#+AUTHOR:" . "") ("#+author:" . "")

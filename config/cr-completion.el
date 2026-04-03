@@ -17,7 +17,9 @@
               ("C-j" . vertico-next)
               ("C-k" . vertico-previous)
               ("C-d" . vertico-scroll-up)
-              ("C-u" . vertico-scroll-down))
+              ("C-u" . vertico-scroll-down)
+              ("M-n" . vertico-next-group)
+              ("M-p" . vertico-previous-group))
   :custom
   (vertico-cycle t)
   (vertico-resize t)
@@ -71,7 +73,6 @@
       (corfu-mode 1)))
   :hook eshell-mode
   :hook (minibuffer-setup . corfu-enable-in-minibuffer)
-  ;; Optional customizations
   :bind (:map corfu-map
               ("RET" . nil)
               ("C-SPC" . corfu-insert-separator)
@@ -140,10 +141,10 @@
   :defer t
   :after vertico
   :custom
-  (completion-styles '(orderless partial-completion))
   ;; (completion-styles '(orderless basic))
-  (completion-category-defaults nil)
+  (completion-styles '(orderless partial-completion))
   (completion-category-overrides '((file (styles partial-completion))))
+  (completion-category-defaults nil)
   (completion-pcm-leading-wildcard t)) ;; Emacs 31: partial-completion behaves like substring
 
 (use-package consult

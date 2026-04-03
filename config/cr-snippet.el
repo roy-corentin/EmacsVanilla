@@ -14,7 +14,7 @@
 (use-package yasnippet
   :ensure t
   :custom
-  (yas-snippet-dirs '("~/.config/emacs/elpaca/repos/snippets/"
+  (yas-snippet-dirs '("~/.config/emacs/elpaca/sources/snippets/"
                       "~/.config/emacs/snippets/"))
   (yas-verbosity 3)
   :init
@@ -35,4 +35,4 @@
   :hook (find-file . auto-insert))
 
 (provide 'cr-snippet)
-;;; cr-yasnippet.el ends here.
+;;; cr-snippet.el ends here.

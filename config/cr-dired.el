@@ -15,6 +15,7 @@
   :ensure nil
   :hook (dired-mode . dired-omit-mode)
   :custom
+  (dired-auto-revert-buffer t)
   (dired-mouse-drag-files t)
   (mouse-drag-and-drop-region-cross-program t))
 
@@ -50,11 +51,11 @@
   (dirvish-hide-details '(dirvish-side))
   :config
   (dirvish-define-preview eza (file)
-    "Use `eza' to generate directory preview."
-    :require ("eza") ; tell Dirvish to check if we have the executable
-    (when (file-directory-p file) ; we only interest in directories here
-      `(shell . ("eza" "-laS" "--icons=always" "--color=always"
-                 "--group-directories-first" ,file))))
+                          "Use `eza' to generate directory preview."
+                          :require ("eza") ; tell Dirvish to check if we have the executable
+                          (when (file-directory-p file) ; we only interest in directories here
+                            `(shell . ("eza" "-laS" "--icons=always" "--color=always"
+                                       "--group-directories-first" ,file))))
   (push 'eza dirvish-preview-dispatchers)
   (setq dirvish-preview-dispatchers
         (cl-substitute 'eza 'dired dirvish-preview-dispatchers))

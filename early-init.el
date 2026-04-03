@@ -122,6 +122,9 @@
   (ibuffer-use-header-line 'title)
   ;; Fringes
   (fringes-outside-margins t)
+  ;; Show paren
+  (show-paren-delay 0.01)
+  (show-paren-highlight-openparen t)
   ;; Ring
   (kill-do-not-save-duplicates t)
   ;; Window
