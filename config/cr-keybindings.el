@@ -57,8 +57,6 @@
 (bind-key "C-c m c" #'magit-clone)
 (bind-key "C-c m b" #'magit-blame)
 
-(bind-key "C-c C-q" #'kill-emacs)
-
 (bind-keys :map 'project-prefix-map
            ("s" . consult-ripgrep)
            ("r" . project-recompile)

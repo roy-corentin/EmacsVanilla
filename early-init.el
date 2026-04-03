@@ -166,7 +166,6 @@
   (load custom-file t)
   (defvar transparent-background-opacity 75)
   (defvar default-opacity 100)
-  :config
   (set-fringe-style 4)
   :bind
   ("C-+" . text-scale-increase)
@@ -181,11 +180,11 @@
   ("C-M-r" . isearch-backward)
   ("M-z" . zap-up-to-char))
 
-; (use-package gcmh
-;   :ensure t
-;   :if (not (fboundp 'igc-stats)) ; Disabled gcmh if emacs compiled with igc
-;   :config
-;   (gcmh-mode 1))
+(use-package gcmh
+  :ensure t
+  :if (not (fboundp 'igc-stats)) ; Disabled gcmh if emacs compiled with igc
+  :config
+  (gcmh-mode 1))
 
 (use-package savehist
   :config

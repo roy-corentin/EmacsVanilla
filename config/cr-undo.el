@@ -24,7 +24,8 @@
   :ensure t
   :after undo-fu
   :custom
-  (undo-fu-session-compression 'zst)
+  (undo-fu-session-compression 'gz)
+  (undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
   :config
   (global-undo-fu-session-mode))
 

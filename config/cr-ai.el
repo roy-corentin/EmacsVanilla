@@ -29,7 +29,7 @@
   :hook (gptel-post-response-functions . gptel-end-of-response)
   :custom
   (gptel-api-key #'cr/gptel-openai-api-key)
-  (gptel-model 'claude-sonnet-4-5-20250929)
+  (gptel-model 'claude-sonnet-4-6)
   (gptel-default-mode 'org-mode)
   :config
   (gptel-make-gemini "Gemini" :stream t :key #'cr/gptel-gemini-api-key)
