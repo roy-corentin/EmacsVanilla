@@ -19,9 +19,13 @@
   :ensure t
   :defer t)
 
+(use-package transient
+  :ensure t)
+
 (use-package magit
   :ensure t
-  :after nerd-icons
+  :after transient
+  :requires nerd-icons
   :custom
   (magit-blame-echo-style 'headings)
   (magit-refresh-status-buffer nil)
