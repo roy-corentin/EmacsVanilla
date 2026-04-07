@@ -27,6 +27,7 @@
 (use-package gptel
   :ensure t
   :hook (gptel-post-response-functions . gptel-end-of-response)
+  :hook (gptel-mode . visual-line-mode)
   :custom
   (gptel-api-key #'cr/gptel-openai-api-key)
   (gptel-model 'claude-sonnet-4-6)
