@@ -34,6 +34,13 @@
   (gptel-default-mode 'org-mode)
   :config
   (gptel-make-gemini "Gemini" :stream t :key #'cr/gptel-gemini-api-key)
+  (gptel-make-openai "MistralLeChat"
+    :host "api.mistral.ai"
+    :endpoint "/v1/chat/completions"
+    :protocol "https"
+    :key #'cr/gptel-mistral-api-key
+    :stream t
+    :models '("mistral-small" "codestral-latest" "devstral-latest" "mistral-medium-latest"))
   (setq gptel-backend (gptel-make-anthropic "Claude" :stream t :key #'cr/gptel-anthropic-api-key)))
 
 (use-package gptel-quick
