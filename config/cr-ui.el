@@ -38,6 +38,7 @@
 
 (use-package indent-bars
   :ensure t
+  ;; :hook ((python-base-mode yaml-mode ruby-base-mode typescript-ts-base-mode c-ts-mode zig-ts-mode) . indent-bars-mode)
   :custom
   (indent-bars-treesit-support t)
   (indent-bars-treesit-ignore-blank-lines-types '("module"))
@@ -53,8 +54,7 @@
                                            method_definition function_declaration for_statement
                                            if_statement while_statement try_statement type_alias_declaration
                                            lexical_declaration pair call_expression)
-                               (c compound_statement)))
-  :hook ((python-base-mode yaml-mode ruby-base-mode typescript-ts-base-mode c-ts-mode zig-ts-mode) . indent-bars-mode))
+                               (c compound_statement))))
 
 (use-package spacious-padding
   :ensure t
