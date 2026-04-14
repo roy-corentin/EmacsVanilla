@@ -16,7 +16,7 @@
 ;; Disable native comp warnings during startup
 (setq native-comp-async-report-warnings-errors 'silent)
 
-;; Faster file loading
+;; Faster file loading, inhibit bidirecitonal text (arabic, hebrew, etc.)
 (setq auto-mode-case-fold nil)
 (setq-default bidi-display-reordering 'left-to-right
               bidi-paragraph-direction 'left-to-right)
@@ -78,6 +78,7 @@
   :hook
   ((prog-mode yaml-ts-mode org-mode) . display-line-numbers-mode)
   (prog-mode . enable-show-trailing-whitespace)
+  (add-save . executable-make-buffer-file-executable-if-script-p)
   :custom
   (elisp-fontify-semantically t)
   (use-short-answers t)
@@ -128,6 +129,7 @@
   (kill-buffer-quit-windows t)
   (window-resize-pixelwise nil)
   (frame-inhibit-implied-resize t)
+  (window-combination-resize t)
   ;; Scroll
   (fast-but-imprecise-scrolling t)
   ;; Hl line
@@ -137,7 +139,19 @@
   (modus-themes-mixed-fonts t)
   ;; Term
   (comint-terminfo-terminal "dumb-emacs-ansi")
+  ;; Use-Package
   (use-package-compute-statistics t)
+  ;; Font
+  (redisplay-skip-fontification-on-input t)
+  ;; Process output buffer
+  (read-process-output-max (* 4 1024 1024)); 4MB
+  ;; Cursor
+  (cursor-in-non-selected-windows nil)
+  (highlight-nonselected-windows nil)
+  ;; Kill-ring
+  (kill-do-not-save-duplicates t)
+  ;; Mark
+  (set-mark-command-repeat-pop t)
   :custom-face
   (default ((t :family "Iosevka Nerd Font" :weight regular :height 120)))
   (fixed-pitch ((t :family "Iosevka Nerd Font Mono" :weight bold :height 120)))
@@ -164,7 +178,7 @@
   (set-face-attribute font-lock-keyword-face t :slant 'italic)
   (setq custom-file (concat user-emacs-directory "custom.el"))
   (load custom-file t)
-  (defvar transparent-background-opacity 75)
+  (defvar transparent-background-opacity 90)
   (defvar default-opacity 100)
   (set-fringe-style 4)
   :bind
