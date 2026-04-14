@@ -27,11 +27,6 @@
 (use-package nerd-icons
   :ensure t)
 
-(use-package rainbow-delimiters
-  :ensure t
-  :disabled t
-  :hook prog-mode)
-
 (use-package rainbow-mode
   :ensure t
   :defer t)
