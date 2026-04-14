@@ -19,7 +19,7 @@
 
 (use-package flyover
   :ensure t
-  :disabled (eql nil flymake-show-diagnostics-at-end-of-line)
+  :after flymake
   :hook flymake-mode
   :custom
   (flyover-levels '(error warning info))
