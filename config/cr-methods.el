@@ -338,6 +338,11 @@ If a prefix N is given, it is passed on to the respective function."
   (cr/gptel-api-key "generativelanguage.googleapis.com"))
 
 ;;;###autoload
+(defun cr/gptel-mistral-api-key ()
+  "Fetch openai api key for gptel."
+  (cr/gptel-api-key "api.mistral.ai"))
+
+;;;###autoload
 (defun cr/org-ai-on-current-project ()
   "Use `org-ai-on-project' on current project."
   (interactive)
