@@ -34,14 +34,17 @@
 (bind-key "C-x t 0" #'cr/tab-close)
 
 (bind-key "C-c s" #'consult-line)
+
 (bind-key "C-c n f" #'cr/find-note)
+(bind-key "C-c n r f" #'vulpea-find)
+
 (bind-key "C-c f" #'apheleia-format-buffer)
+
 (bind-key "C-c u" #'vundo)
+
 (bind-key "C-c *" #'cr/search-symbol-at-point-in-project)
 (bind-key "C-c c r" #'eglot-rename)
 (bind-key "C-c c a" #'eglot-code-actions)
-
-(bind-key "C-c r n f" #'vulpea-find)
 
 (bind-key "C-c o t" #'cr/toggle-vterm-popup)
 (bind-key "C-c o T" #'cr/smart-vterm-buffer)
@@ -62,17 +65,22 @@
            ("r" . project-recompile)
            ("d" . +default/search-cwd)
            ("V" . cr/project-open-file-other-window)
-           ("S" . cr/project-open-file-below-window))
+           ("S" . cr/project-open-file-below-window)
+           ("." . project-root-find-file))
 
 (bind-keys :map 'tab-prefix-map
            ("d" . tab-duplicate)
            ("n" . tab-new))
 
 (bind-keys :map 'window-prefix-map
-           ("h" . cr/move-window-left)
-           ("j" . cr/move-window-down)
-           ("k" . cr/move-window-up)
-           ("l" . cr/move-window-right))
+           ("h" . windmove-left)
+           ("j" . windmove-down)
+           ("k" . windmove-up)
+           ("l" . windmove-right)
+           ("H" . cr/move-window-left)
+           ("J" . cr/move-window-down)
+           ("K" . cr/move-window-up)
+           ("L" . cr/move-window-right))
 
 (bind-key "M-g e" #'consult-flymake)
 (bind-key "M-g i" #'consult-imenu)
