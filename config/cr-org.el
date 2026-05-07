@@ -50,7 +50,7 @@
                             "* TODO %?\n  %i\n  %l")
                            ("v" "Vie" entry (file+headline "~/org/vie_syadem_todo.org" "TASKS")
                             "* TODO %?\n  %i\n  %l")
-                           ("c", "Current clock" plain (clock)
+                           ("c" "Current clock" plain (clock)
                             "%t %?\n %i")
                            ("j" "Journal" entry (file+olp+datetree "~/org/journal.org")
                             "* %?\nEntered on %U\n  %i\n  %a")
