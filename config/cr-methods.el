@@ -587,5 +587,35 @@ to if called with ARG, or any prefix argument."
   ;; Unbind `minibuffer-complete-word'
   (keymap-unset minibuffer-local-completion-map "SPC"))
 
+(defun my/select-todo-headline (file-name)
+  "Interactively select a first-level headline from FILE-NAME.
+Returns the selected headline name as a string."
+  (interactive)
+  (let* ((file-path (expand-file-name file-name))
+         (headlines
+          (with-current-buffer (find-file-noselect file-path)
+            (save-excursion
+              (org-map-entries
+               (lambda ()
+                 (when (= (org-current-level) 1)
+                   (let ((heading (org-get-heading t t t t)))
+                     (when heading
+                       heading))))
+               nil
+               'file)))))
+    (if (null headlines)
+        (user-error "No first-level headlines found in %s" file-path)
+      (completing-read "Select headline: " headlines nil t))))
+
+(defun my/select-vie-todo-healine ()
+  "Interactively select todo headline from VIE todo."
+  (interactive)
+  (my/select-todo-headline "~/org/vie_syadem_todo.org"))
+
+(defun my/select-freelance-todo-healine ()
+  "Interactively select todo headline from freelance todo."
+  (interactive)
+  (my/select-todo-headline "~/org/freelance_syadem_todo.org"))
+
 (provide 'cr-methods)
 ;;; cr-methods.el ends here
