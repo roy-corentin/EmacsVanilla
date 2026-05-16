@@ -35,5 +35,4 @@
   :hook (find-file . auto-insert))
 
 (provide 'cr-snippet)
-
 ;;; cr-snippet.el ends here.

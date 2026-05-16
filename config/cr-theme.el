@@ -1,4 +1,4 @@
-;; cr-them.el --- Theme setup -*- lexical-binding: t; -*-
+;; cr-theme.el --- Theme setup -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2026 Corentin Roy
 ;;
