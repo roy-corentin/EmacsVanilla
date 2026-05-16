@@ -51,6 +51,8 @@
 (bind-key "C-c o A" #'org-agenda)
 
 (bind-key "C-c t v" #'visual-line-mode)
+(bind-key "C-c t o" #'olivetti-mode)
+(bind-key "C-c t O" #'kithar-mode)
 
 (bind-key "C-c o l A" #'gptel-agent)
 (bind-key "C-c o l m" #'gptel-menu)
