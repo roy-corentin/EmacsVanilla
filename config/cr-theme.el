@@ -77,6 +77,8 @@
 
 (use-package modus-themes
   :ensure t
+  :custom
+  (modus-themes-mixed-fonts t)
   :demand t)
 
 (defun cr/load-theme-and-opacity (&optional frame)

@@ -136,7 +136,6 @@
   (hl-line-sticky-flag nil)
   (global-hl-line-sticky-flag nil)
   (inhibit-quit t)
-  (modus-themes-mixed-fonts t)
   ;; Term
   (comint-terminfo-terminal "dumb-emacs-ansi")
   ;; Use-Package
