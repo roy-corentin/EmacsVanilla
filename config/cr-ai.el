@@ -30,18 +30,18 @@
   :hook (gptel-mode . visual-line-mode)
   :custom
   (gptel-api-key #'cr/gptel-openai-api-key)
-  (gptel-model 'claude-sonnet-4-6)
+  (gptel-model 'mistral-medium-latest)
   (gptel-default-mode 'org-mode)
   :config
   (gptel-make-gemini "Gemini" :stream t :key #'cr/gptel-gemini-api-key)
-  (gptel-make-openai "Mistral"
-    :host "api.mistral.ai"
-    :endpoint "/v1/chat/completions"
-    :protocol "https"
-    :key #'cr/gptel-mistral-api-key
-    :stream t
-    :models '("mistral-small" "codestral-latest" "devstral-latest" "mistral-medium-latest"))
-  (setq gptel-backend (gptel-make-anthropic "Claude" :stream t :key #'cr/gptel-anthropic-api-key)))
+  (setq gptel-backend (gptel-make-openai "Mistral"
+                        :host "api.mistral.ai"
+                        :endpoint "/v1/chat/completions"
+                        :protocol "https"
+                        :key #'cr/gptel-mistral-api-key
+                        :stream t
+                        :models '("mistral-small" "codestral-latest" "devstral-latest" "mistral-medium-latest")))
+  (gptel-make-anthropic "Claude" :stream t :key #'cr/gptel-anthropic-api-key))
 
 (use-package gptel-quick
   :ensure (:host github :repo "karthink/gptel-quick"))
