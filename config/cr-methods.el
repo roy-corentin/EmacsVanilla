@@ -506,17 +506,17 @@ to if called with ARG, or any prefix argument."
     (setq-local header-line-format
                 (format " %s to insert text or %s to cancel."
                         (propertize "C-c C-c" 'face 'help-key-binding)
-			(propertize "C-c C-k" 'face 'help-key-binding)))
+			            (propertize "C-c C-k" 'face 'help-key-binding)))
     (local-set-key (kbd "C-c C-k")
-		   (lambda () (interactive)
-		     (kill-new (buffer-string))
-		     (delete-frame)))
+		           (lambda () (interactive)
+		             (kill-new (buffer-string))
+		             (delete-frame)))
     (local-set-key (kbd "C-c C-c")
-		   (lambda () (interactive)
-		     (start-process-shell-command
-		      "wtype" nil
-		      (thanos/wtype-text (buffer-string)))
-		     (delete-frame)))))
+		           (lambda () (interactive)
+		             (start-process-shell-command
+		              "wtype" nil
+		              (thanos/wtype-text (buffer-string)))
+		             (delete-frame)))))
 
 (defun cr/set-compile-command (&rest args)
   "Set the default 'compile-command' to run the current project.  ARGS not used."
@@ -537,6 +537,39 @@ to if called with ARG, or any prefix argument."
   "Reset compile command for current project."
   (interactive)
   (cr/set-compile-command))
+
+;;;###autoload
+(defun cr/select-todo-headline (file-name)
+  "Interactively select a first-level headline from FILE-NAME.
+Returns the selected headline name as a string."
+  (interactive)
+  (let* ((file-path (expand-file-name file-name))
+         (headlines
+          (with-current-buffer (find-file-noselect file-path)
+            (save-excursion
+              (org-map-entries
+               (lambda ()
+                 (when (= (org-current-level) 1)
+                   (let ((heading (org-get-heading t t t t)))
+                     (when heading
+                       heading))))
+               nil
+               'file)))))
+    (if (null headlines)
+        (user-error "No first-level headlines found in %s" file-path)
+      (completing-read "Select headline: " headlines nil t))))
+
+;;;###autoload
+(defun cr/select-vie-todo-healine ()
+  "Interactively select todo headline from VIE todo."
+  (interactive)
+  (cr/select-todo-headline "~/org/vie_syadem_todo.org"))
+
+;;;###autoload
+(defun cr/select-freelance-todo-healine ()
+  "Interactively select todo headline from freelance todo."
+  (interactive)
+  (cr/select-todo-headline "~/org/freelance_syadem_todo.org"))
 
 (provide 'cr-methods)
 ;;; cr-methods.el ends here
