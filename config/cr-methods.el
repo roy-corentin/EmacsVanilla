@@ -526,17 +526,17 @@ to if called with ARG, or any prefix argument."
     (setq-local header-line-format
                 (format " %s to insert text or %s to cancel."
                         (propertize "C-c C-c" 'face 'help-key-binding)
-			(propertize "C-c C-k" 'face 'help-key-binding)))
+			            (propertize "C-c C-k" 'face 'help-key-binding)))
     (local-set-key (kbd "C-c C-k")
-		   (lambda () (interactive)
-		     (kill-new (buffer-string))
-		     (delete-frame)))
+		           (lambda () (interactive)
+		             (kill-new (buffer-string))
+		             (delete-frame)))
     (local-set-key (kbd "C-c C-c")
-		   (lambda () (interactive)
-		     (start-process-shell-command
-		      "wtype" nil
-		      (thanos/wtype-text (buffer-string)))
-		     (delete-frame)))))
+		           (lambda () (interactive)
+		             (start-process-shell-command
+		              "wtype" nil
+		              (thanos/wtype-text (buffer-string)))
+		             (delete-frame)))))
 
 (defun cr/set-compile-command (&rest args)
   "Set the default 'compile-command' to run the current project.  ARGS not used."
@@ -587,7 +587,8 @@ to if called with ARG, or any prefix argument."
   ;; Unbind `minibuffer-complete-word'
   (keymap-unset minibuffer-local-completion-map "SPC"))
 
-(defun my/select-todo-headline (file-name)
+;;;###autoload
+(defun cr/select-todo-headline (file-name)
   "Interactively select a first-level headline from FILE-NAME.
 Returns the selected headline name as a string."
   (interactive)
@@ -607,15 +608,38 @@ Returns the selected headline name as a string."
         (user-error "No first-level headlines found in %s" file-path)
       (completing-read "Select headline: " headlines nil t))))
 
-(defun my/select-vie-todo-healine ()
+;;;###autoload
+(defun cr/select-vie-todo-healine ()
   "Interactively select todo headline from VIE todo."
   (interactive)
-  (my/select-todo-headline "~/org/vie_syadem_todo.org"))
+  (cr/select-todo-headline "~/org/vie_syadem_todo.org"))
 
-(defun my/select-freelance-todo-healine ()
+;;;###autoload
+(defun cr/select-freelance-todo-healine ()
   "Interactively select todo headline from freelance todo."
   (interactive)
-  (my/select-todo-headline "~/org/freelance_syadem_todo.org"))
+  (cr/select-todo-headline "~/org/freelance_syadem_todo.org"))
+
+;;;###autoload
+;; Helper function to decode and display JWT payload
+(defun jwt-payload (token)
+  "Return JWT JSON payload from TOKEN."
+  (json-parse-string
+   (base64-decode-string (cadr (split-string token "\\.")) t)))
+
+;;;###autoload
+(defun jwt-decode (beg end)
+  "Print JWT payload from symbol at point or region (BEG to END)."
+  (interactive
+   (if (or (use-region-p) (not transient-mark-mode))
+       (prog1 (list (region-beginning) (region-end))
+         (deactivate-mark))
+     (if (nth 3 (syntax-ppss))
+         (list (beginning-of-thing 'symbol)
+               (end-of-thing 'symbol))
+       (user-error "No region marked and not inside a string"))))
+  (let ((json-encoding-pretty-print t))
+    (message (json-encode (jwt-payload (buffer-substring beg end))))))
 
 (provide 'cr-methods)
 ;;; cr-methods.el ends here
