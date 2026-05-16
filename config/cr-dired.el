@@ -32,7 +32,7 @@
   :defer t)
 
 (use-package dirvish
-  :ensure t
+  :ensure (:host github :repo "latiagertrutis/dirvish")
   :requires nerd-icons
   :after dired
   :custom
