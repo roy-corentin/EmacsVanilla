@@ -12,16 +12,13 @@
 ;;; Code:
 
 (defun meow-setup ()
-  "Setup meow keys."
+  "Setup meow keybinds."
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
-  (meow-motion-overwrite-define-key
+  (meow-motion-define-key
    '("j" . meow-next)
    '("k" . meow-prev)
    '("<escape>" . ignore))
   (meow-leader-define-key
-   ;; SPC j/k will run the original command in MOTION state.
-   '("j" . "H-j")
-   '("k" . "H-k")
    ;; Use SPC (0-9) for digit arguments.
    '("1" . meow-digit-argument)
    '("2" . meow-digit-argument)
@@ -102,6 +99,7 @@
   :ensure t
   :custom
   (meow-use-cursor-position-hack t) ;; Make 'a' as evil
+  (meow-keypad-leader-dispatch ctl-x-map)
   :config
   (meow-setup))
 

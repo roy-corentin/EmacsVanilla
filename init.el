@@ -81,6 +81,7 @@
 (require 'cr-navigate)
 (require 'cr-theme)
 (require 'cr-keybindings)
+(require 'cr-meow)
 
 (provide 'init)
 ;;; init.el ends here
