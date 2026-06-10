@@ -20,8 +20,8 @@
   (vterm-max-scrollback 5000)
   :config
   (evil-define-key 'insert vterm-mode-map
-    (kbd "C-p") 'cr/vterm-insert-up
-    (kbd "C-n") 'cr/vterm-insert-down))
+                   (kbd "C-p") 'cr/vterm-insert-up
+                   (kbd "C-n") 'cr/vterm-insert-down))
 
 ;; Add support for the Kitty keyboard protocol.
 (use-package kkp
