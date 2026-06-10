@@ -202,12 +202,12 @@
 
 (use-package org-contacts
   :ensure t
+  :defer t
   :custom
   (org-contacts-files '("~/org/contacts.org")))
 
 (use-package org-roam
   :ensure t
-  :defer t
   :custom
   (org-roam-directory  "~/Dropbox/RoamNotes/")
   (org-roam-index-file "~/Dropbox/RoamNotes/index.org")
