@@ -116,15 +116,31 @@
                      #'cape-file))
   (defun my/eglot-capf ()
     (setq-local completion-at-point-functions (list (cape-capf-sort #'cape-eglot-dict))))
+  (defun cape-org-roam-dict ()
+    (cape-wrap-super #'org-roam-roam-complete-everywhere
+                     #'yasnippet-capf
+                     #'cape-dabbrev
+                     #'cape-file))
+  (defun my/org-roam-capf ()
+    (setq-local completion-at-point-functions (list (cape-capf-sort #'cape-org-roam-dict))))
+  (defun cape-git-commit-dict ()
+    (cape-wrap-super #'yasnippet-capf
+                     #'cape-dabbrev
+                     #'cape-file))
+  (defun my/git-commit-capf ()
+    (setq-local completion-at-point-functions (list (cape-capf-sort #'cape-git-commit-dict))))
   :bind (("C-c p f" . cape-file)
          ("C-c p t" . complete-tag) ;; etags
          ("C-c p d" . cape-dabbrev))
   :hook
   (eglot-managed-mode . my/eglot-capf)
+  (org-roam-mode . my/org-capf)
   :init
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-file)
-  (add-to-list 'completion-at-point-functions #'cape-elisp-block))
+  (add-to-list 'completion-at-point-functions #'cape-elisp-block)
+  :config
+  (add-hook 'git-commit-mode-hook #'my/git-commit-capf 90))
 
 (use-package yasnippet-capf
   :ensure t
