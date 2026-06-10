@@ -31,5 +31,8 @@
   :ensure t
   :hook (tty-setup . global-clipetty-mode))
 
+(use-package ghostel
+  :ensure t)
+
 (provide 'cr-term)
 ;;; cr-term.el ends here
