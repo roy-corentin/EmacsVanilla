@@ -76,6 +76,7 @@
 (require 'cr-help)
 (require 'cr-navigate)
 (require 'cr-theme)
+(require 'cr-zen)
 
 (provide 'init)
 ;;; init.el ends here
