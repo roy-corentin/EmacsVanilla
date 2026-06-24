@@ -23,7 +23,7 @@
 ;;; Code:
 
 (use-package ultra-scroll
-  :ensure (:host github :repo "jdtsmith/ultra-scroll" :files (:defaults))
+  :ensure t
   :custom
   (scroll-conservatively 0)
   (scroll-margin 0)
@@ -34,43 +34,6 @@
   (add-to-list 'ultra-scroll-hide-functions 'good-scroll-mode)
   (add-to-list 'ultra-scroll-hide-functions 'indent-bars-mode)
   (ultra-scroll-mode 1))
-
-(use-package good-scroll
-  :ensure t
-  :disabled t
-  :preface
-  (defun smooth-scroll--fix-out-of-bounds-error-a ()
-    (save-restriction
-      (widen)
-      (<= (line-number-at-pos (max (point) (point-min)) t)
-          (1+ (line-number-at-pos (min (window-start) (point-max)) t)))))
-  (defun good-scroll--convert-line-to-step (line)
-    (cond ((integerp line) (* line (line-pixel-height)))
-          ((or (null line) (memq '- line))
-           (- (good-scroll--window-usable-height)
-              (* next-screen-context-lines (line-pixel-height))))
-          ((line-pixel-height))))
-  (defun good-scroll--scroll-up (fn &optional arg)
-    (if good-scroll-mode
-        (good-scroll-move (good-scroll--convert-line-to-step arg))
-      (funcall fn arg)))
-  (defun good-scroll--scroll-down (fn &optional arg)
-    (if good-scroll-mode
-        (good-scroll-move (- (good-scroll--convert-line-to-step arg)))
-      (funcall fn arg)))
-  (defun smooth-scroll-coexist-with-ultra-scroll-h ()
-    (when good-scroll-mode
-      (setq mwheel-scroll-up-function #'scroll-up
-            mwheel-scroll-down-function #'scroll-down)))
-  :hook
-  (good-scroll-mode . smooth-scroll-coexist-with-ultra-scroll-h)
-  :custom
-  (good-scroll-render-rate 0.05)
-  :config
-  (good-scroll-mode 1)
-  (advice-add #'scroll-up :around #'good-scroll--scroll-up)
-  (advice-add #'scroll-down :around #'good-scroll--scroll-down)
-  (advice-add #'good-scroll--point-at-top-p :override #'smooth-scroll--fix-out-of-bounds-error-a))
 
 (provide 'cr-scroll)
 ;;; cr-scroll.el ends here
