@@ -25,13 +25,11 @@
 ;;; Code:
 
 (use-package elfeed
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package elfeed-org
   :ensure t
   :after elfeed
-  :defer t
   :config
   (elfeed-org))
 
