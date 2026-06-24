@@ -27,17 +27,37 @@
   :init
   (vertico-mode))
 
+(use-package vertico-buffer-frame
+  :ensure (:host github :repo "kn66/vertico-buffer-frame")
+  :custom
+  (vertico-buffer-frame-preview t)
+  (vertico-buffer-frame-preview-layout 'side-by-side)
+  (vertico-buffer-frame-preview-delay 0.1)
+  (vertico-buffer-frame-preview-io-timeout 0.1)
+  (vertico-buffer-frame-redraw-after-show nil)
+  (vertico-buffer-frame-golden-ratio-scale 1.00)
+  :config
+  (define-key vertico-map (kbd "C-t")
+              #'vertico-buffer-frame-toggle-preview))
+
+(use-package vertico-posframe-preview
+  :ensure (:host github :repo "kn66/vertico-posframe-preview")
+  :after (vertico-posframe consult)
+  :config
+  (vertico-posframe-preview-mode 1))
+
+(use-package posframe
+  :ensure t)
+
 (use-package vertico-posframe
   :ensure t
-  :after (vertico posframe)
-  :disabled t
+  :after vertico
+  :requires posframe
   :custom
   (vertico-posframe-poshandler #'posframe-poshandler-frame-center)
   (vertico-posframe-height 20)
   (vertico-multiform-commands
-   '((consult-ripgrep buffer (:not posframe))
-     (cr/search-symbol-at-point-in-project buffer (:not posframe))
-     (cr/find-file-dwim (:not posframe))
+   '((cr/find-file-dwim (:not posframe))
      (+default/search-cwd buffer (:not posframe))))
   :config
   (vertico-multiform-mode 1)
