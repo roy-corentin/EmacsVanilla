@@ -44,10 +44,6 @@
   :ensure t
   :defer t)
 
-(use-package mhtml-ts-mode
-  :hook
-  (mhtml-ts-mode . disable-rainbow-delimiter-mode))
-
 (use-package rbs-mode
   :ensure t
   :defer t)
