@@ -26,7 +26,7 @@
   :type 'integer
   :group 'olivetti)
 
-(defcustom kithar-target-modes '(prog-mode dired-mode conf-mode)
+(defcustom kithar-target-modes '(prog-mode dired-mode conf-mode elfeed-search-mode elfeed-show-mode)
   "Major to activate `kithar-mode'."
   :type '(list symbol)
   :group 'olivetti)
