@@ -76,9 +76,9 @@
     (interactive)
     (text-scale-set 0))
   :hook
-  ((prog-mode yaml-ts-mode org-mode) . display-line-numbers-mode)
+  ((prog-mode conf-mode yaml-ts-mode org-mode) . display-line-numbers-mode)
   (prog-mode . enable-show-trailing-whitespace)
-  (add-save . executable-make-buffer-file-executable-if-script-p)
+  (after-save . executable-make-buffer-file-executable-if-script-p)
   :custom
   (elisp-fontify-semantically t)
   (use-short-answers t)
@@ -90,7 +90,7 @@
   (inhibit-startup-screen t)
   (initial-buffer-choice #'get-or-create-dashboard-buffer)
   (column-number-mode t)
-  (next-line-add-newlines t)
+  (next-line-add-newlines nil)
   ;; Line numbers
   (display-line-numbers-type 'relative)
   (display-line-numbers-width 3)
@@ -168,7 +168,6 @@
   (global-hl-line-mode -1)
   (blink-cursor-mode -1)
   (desktop-save-mode 1)
-  (pixel-scroll-mode t)
   (electric-pair-mode t)
   (global-auto-revert-mode t)
   (subword-mode t)
@@ -182,6 +181,7 @@
   (load custom-file t)
   (defvar transparent-background-opacity 90)
   (defvar default-opacity 100)
+  (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
   :bind
   ("C-=" . text-scale-increase)
   ("C--" . text-scale-decrease)
