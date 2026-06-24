@@ -55,5 +55,10 @@
   :bind (([remap other-window] . ace-window)
          ([remap other-window-backward] . ace-swap-window)))
 
+(use-package expreg
+  :ensure t
+  :bind (("M-=" . expreg-expand)
+         ("M-+" . expreg-contract)))
+
 (provide 'cr-navigate)
 ;;; cr-navigate.el ends here
