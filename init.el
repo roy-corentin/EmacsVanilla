@@ -43,6 +43,19 @@
   :ensure t
   :hook text-mode)
 
+(use-package bufferfile
+  :ensure t
+  :commands (bufferfile-copy
+             bufferfile-rename
+             bufferfile-delete)
+  :custom
+  ;; If non-nil, display messages during file renaming operations
+  (bufferfile-verbose nil)
+  ;; If non-nil, enable using version control (VC) when available
+  (bufferfile-use-vc t)
+  ;; Specifies the action taken after deleting a file and killing its buffer.
+  (bufferfile-delete-switch-to 'parent-directory))
+
 (require 'cr-methods)
 (require 'cr-ai-methods)
 (require 'cr-buffer)
