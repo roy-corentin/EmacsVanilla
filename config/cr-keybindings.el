@@ -32,6 +32,9 @@
 (bind-key "C-x m" #'maximize-window)
 (bind-key "C-x =" #'balance-windows)
 (bind-key "C-x t 0" #'cr/tab-close)
+(bind-key "C-x R" #'bufferfile-rename)
+(bind-key "C-x C" #'bufferfile-copy)
+(bind-key "C-x D" #'bufferfile-delete)
 
 (bind-key "C-c s" #'consult-line)
 
