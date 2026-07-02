@@ -20,16 +20,16 @@
   (vterm-max-scrollback 5000)
   :config
   (evil-define-key 'insert vterm-mode-map
-                   (kbd "C-p") 'cr/vterm-insert-up
-                   (kbd "C-n") 'cr/vterm-insert-down))
+    (kbd "C-p") 'cr/vterm-insert-up
+    (kbd "C-n") 'cr/vterm-insert-down))
 
 ;; Add support for the Kitty keyboard protocol.
 (use-package kkp
   :ensure t
+  :hook (tty-setup . global-kkp-mode)
   ;; :custom
   ;; (kkp-alt-modifier 'alt) ;; use this if you want to map the Alt keyboard modifier to Alt in Emacs (and not to Meta)
-  :init
-  (global-kkp-mode +1))
+  )
 
 (use-package clipetty
   :ensure t
