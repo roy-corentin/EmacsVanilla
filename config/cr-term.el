@@ -22,10 +22,10 @@
 ;; Add support for the Kitty keyboard protocol.
 (use-package kkp
   :ensure t
+  :hook (tty-setup . global-kkp-mode)
   ;; :custom
   ;; (kkp-alt-modifier 'alt) ;; use this if you want to map the Alt keyboard modifier to Alt in Emacs (and not to Meta)
-  :init
-  (global-kkp-mode +1))
+  )
 
 (use-package clipetty
   :ensure t
