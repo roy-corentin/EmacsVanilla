@@ -68,7 +68,7 @@
   (org-startup-indented t)
   (org-image-actual-width nil)
   (org-startup-with-inline-images t)
-  (org-startup-with-latex-preview t)
+  (org-startup-with-latex-preview nil)
   (org-enforce-todo-dependencies t)
   (org-fontify-quote-and-verse-blocks t)
   (org-fontify-whole-heading-line t)
