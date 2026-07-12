@@ -59,6 +59,9 @@
   (kaolin-themes-distinct-tab-line t)
   (kaolin-themes-hl-line-colored t))
 
+(use-package kusanagi-theme
+  :ensure (:host github :repo "LionyxML/kusanagi-theme"))
+
 (use-package lambda-themes
   :ensure (:host github :repo "lambda-emacs/lambda-themes")
   :disabled t
