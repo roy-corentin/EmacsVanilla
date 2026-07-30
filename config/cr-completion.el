@@ -123,6 +123,15 @@
                      #'cape-file))
   (defun my/org-roam-capf ()
     (setq-local completion-at-point-functions (list (cape-capf-sort #'cape-org-roam-dict))))
+  (defun cape-org-dict ()
+    (cape-wrap-super #'yasnippet-capf
+                     #'cape-dabbrev
+                     #'cape-file
+                     #'org-contacts-org-complete-function))
+  (defun my/org-capf ()
+    (setq-local completion-at-point-functions (list (cape-capf-sort #'cape-org-dict))))
+  (defun my/gptel-capf ()
+    (setq-local completion-at-point-functions (list #'gptel-preset-capf #'cape-dabbrev #'cape-file)))
   (defun cape-git-commit-dict ()
     (cape-wrap-super #'yasnippet-capf
                      #'cape-dabbrev
@@ -135,6 +144,8 @@
   :hook
   (eglot-managed-mode . my/eglot-capf)
   (org-roam-mode . my/org-capf)
+  (org-mode . my/org-capf)
+  (gptel-mode . my/gptel-capf)
   :init
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-file)
