@@ -41,7 +41,9 @@
 
 (use-package jinx
   :ensure t
-  :hook text-mode)
+  :hook text-mode
+  :custom
+  (jinx-languages "fr_FR en_US"))
 
 (use-package bufferfile
   :ensure t
