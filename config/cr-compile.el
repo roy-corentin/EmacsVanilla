@@ -18,7 +18,6 @@
   :custom
   (compilation-scroll-output t)
   :config
-  (advice-add #'project-switch-project :after #'cr/set-compile-command)
   (push 'bun-vite-test compilation-error-regexp-alist)
   (push '(bun-vite-test "^\\(.*\\):\n\\([0-9]+\\)" 1 2)
         compilation-error-regexp-alist-alist)

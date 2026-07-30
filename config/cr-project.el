@@ -23,5 +23,11 @@
                              (cr/vterm-buffer "Vterm" ?v)
                              (cr/magit-in-project "Magit" ?m))))
 
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-mode +1)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+
 (provide 'cr-project)
 ;;; cr-project.el ends here
