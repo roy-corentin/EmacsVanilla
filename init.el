@@ -45,6 +45,10 @@
   :custom
   (jinx-languages "fr_FR en_US"))
 
+(use-package tramp-rpc
+  :ensure (:host github :repo "ArthurHeymans/emacs-tramp-rpc" :files ("lisp/*.el"))
+  :after tramp)
+
 (use-package bufferfile
   :ensure t
   :commands (bufferfile-copy
