@@ -24,6 +24,17 @@
 
 ;;; Code:
 
+(use-package mcp
+  :ensure t
+  :after gptel
+  :custom (mcp-hub-servers
+           `(("nuva" . (
+                        :command "bundle"
+                        :args ("exec" "ruby" "server.rb")
+                        :roots ("/home/croy/delivery_syadem/nuva-mcp/")))))
+  :config
+  (require 'gptel-integrations))
+
 (use-package gptel
   :ensure t
   :hook (gptel-post-response-functions . gptel-end-of-response)
@@ -34,7 +45,6 @@
   (gptel-default-mode 'org-mode)
   (gptel-stream t)
   :config
-  (add-to-list 'warning-suppress-types '(gptel-openai-oauth))
   (gptel-make-gemini "Gemini" :stream t :key #'cr/gptel-gemini-api-key)
   (gptel-make-openai "Mistral"
     :host "api.mistral.ai"
@@ -45,7 +55,7 @@
     :models '("mistral-small" "codestral-latest" "devstral-latest" "mistral-medium-latest"))
   (gptel-make-anthropic "Claude" :stream t :key #'cr/gptel-anthropic-api-key)
   (gptel-make-openai-oauth "OpenAI-sub")
-  (setq gptel-model 'gpt-5.5
+  (setq gptel-model 'gpt-5.6-sol
         gptel-backend (gptel-make-openai-oauth "OpenAI-sub")))
 
 (use-package gptel-quick
