@@ -15,7 +15,7 @@
   :hook prog-mode
   :hook (evil-normal-state-entry . (lambda () (when (fboundp 'flymake-start) (flymake-start))))
   :custom
-  (flymake-show-diagnostics-at-end-of-line nil)
+  (flymake-inline-diagnostics nil)
   (flymake-no-changes-timeout 3))
 
 (use-package flyover
