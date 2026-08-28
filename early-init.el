@@ -196,7 +196,7 @@
   ;; Mail
   (user-mail-address "corentin.roy02@laposte.net")
   ;; Query replace
-  (query-replace-show-preview t)
+  (query-replace-show-preview 'both)
   ;; VC
   (vc-handled-backends '(Git))
   :custom-face
