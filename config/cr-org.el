@@ -56,8 +56,8 @@
                             "* %?\nEntered on %U\n  %i\n  %a")
                            ("C" "Contacts" entry (file "~/org/contacts.org")
                             "* %(org-contacts-template-name)\n:PROPERTIES:\n:EMAIL: %(org-contacts-template-email)\n:END:")))
-  (org-directory "~/Dropbox/Org/")
-  (org-agenda-files (list org-directory "~/Dropbox/RoamNotes/daily"))
+  (org-directory "~/Org/")
+  (org-agenda-files (list org-directory "~/RoamNotes/daily"))
   (org-agenda-file-regexp "\\`[^.].*todo\\.org\\'")
   (org-agenda-start-with-log-mode t)
   (org-fontify-done-headline t)
@@ -206,8 +206,8 @@
 (use-package org-roam
   :ensure t
   :custom
-  (org-roam-directory  "~/Dropbox/RoamNotes/")
-  (org-roam-index-file "~/Dropbox/RoamNotes/index.org")
+  (org-roam-directory  "~/RoamNotes/")
+  (org-roam-index-file "~/RoamNotes/index.org")
   (org-roam-capture-templates
    `(("d" " Default" plain
       "%?"
@@ -256,8 +256,8 @@
 (use-package vulpea
   :ensure t
   :custom
-  (vulpea-db-sync-directories '("~/Dropbox/RoamNotes/"))
-  (vulpea-default-notes-directory "~/Dropbox/RoamNotes/")
+  (vulpea-db-sync-directories '("~/RoamNotes/"))
+  (vulpea-default-notes-directory "~/RoamNotes/")
   (vulpea-db-parse-method 'temp-buffer))
 
 (use-package vulpea-ui
