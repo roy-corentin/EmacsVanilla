@@ -54,7 +54,6 @@
     :stream t
     :models '("mistral-small" "codestral-latest" "devstral-latest" "mistral-medium-latest"))
   (gptel-make-anthropic "Claude" :stream t :key #'cr/gptel-anthropic-api-key)
-  (gptel-make-openai-oauth "OpenAI-sub")
   (setq gptel-model 'gpt-5.6-sol
         gptel-backend (gptel-make-openai-oauth "OpenAI-sub")))
 
