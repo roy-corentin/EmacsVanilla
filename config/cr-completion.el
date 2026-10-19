@@ -126,8 +126,7 @@
   (defun cape-org-dict ()
     (cape-wrap-super #'yasnippet-capf
                      #'cape-dabbrev
-                     #'cape-file
-                     #'org-contacts-org-complete-function))
+                     #'cape-file))
   (defun my/org-capf ()
     (setq-local completion-at-point-functions (list (cape-capf-sort #'cape-org-dict))))
   (defun my/gptel-capf ()

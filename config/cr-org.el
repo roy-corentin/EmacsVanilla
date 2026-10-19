@@ -53,9 +53,7 @@
                            ("c" "Current clock" plain (clock)
                             "%t %?\n %i")
                            ("j" "Journal" entry (file+olp+datetree "~/org/journal.org")
-                            "* %?\nEntered on %U\n  %i\n  %a")
-                           ("C" "Contacts" entry (file "~/org/contacts.org")
-                            "* %(org-contacts-template-name)\n:PROPERTIES:\n:EMAIL: %(org-contacts-template-email)\n:END:")))
+                            "* %?\nEntered on %U\n  %i\n  %a")))
   (org-directory "~/Org/")
   (org-agenda-files (list org-directory "~/RoamNotes/daily"))
   (org-agenda-file-regexp "\\`[^.].*todo\\.org\\'")
@@ -196,12 +194,6 @@
   (org-clock-out-remove-zero-time-clocks t)
   ;; The default value (5) is too conservative.
   (org-clock-history-length 10))
-
-(use-package org-contacts
-  :ensure t
-  :defer t
-  :custom
-  (org-contacts-files '("~/org/contacts.org")))
 
 (use-package org-roam
   :ensure t
