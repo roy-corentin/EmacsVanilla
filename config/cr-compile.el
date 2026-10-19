@@ -17,6 +17,7 @@
   :hook (compilation-start . visual-line-mode)
   :custom
   (compilation-scroll-output t)
+  (compilation-max-output-line-length nil)
   :config
   (push 'bun-vite-test compilation-error-regexp-alist)
   (push '(bun-vite-test "^\\(.*\\):\n\\([0-9]+\\)" 1 2)
