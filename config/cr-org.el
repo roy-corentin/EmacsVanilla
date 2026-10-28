@@ -368,5 +368,21 @@
   :config
   (add-hook 'org-mode-hook #'org-modern-indent-mode 90))
 
+(use-package org-timegrid
+  :ensure (:host github :repo "Gleek/org-timegrid")
+  :commands (org-timegrid-week)
+  :custom
+  (org-timegrid-org-files 'agenda)
+  (org-timegrid-default-zoom 0.7) ;; Recommended compact scale; use 1.0 to match Emacs's default font.
+  (org-timegrid-org-capture-file
+   (expand-file-name "calendar.org" org-directory))
+  (org-timegrid-org-capture-template
+   '(:target file
+             :template "* %{title}\n%{time-range}\n%?"))
+  (org-timegrid-org-auto-save t) ;; Save Org buffers immediately after edits made in the calendar.
+  (org-timegrid-org-show-repeaters t) ;; Set this to nil if repeating entries should be hidden.
+  :bind (:map org-mode-map
+              ("C-c c" . org-timegrid-week)))
+
 (provide 'cr-org)
 ;;; cr-org.el ends here
