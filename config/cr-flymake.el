@@ -16,7 +16,7 @@
   :hook (evil-normal-state-entry . (lambda () (when (fboundp 'flymake-start) (flymake-start))))
   :custom
   (flymake-inline-diagnostics nil)
-  (flymake-no-changes-timeout 3))
+  (flymake-no-changes-timeout 1.5))
 
 (use-package flyover
   :ensure t
