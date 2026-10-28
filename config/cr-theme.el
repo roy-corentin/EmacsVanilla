@@ -43,6 +43,7 @@
   (doom-modeline-buffer-file-name-style 'relative-to-project)
   (doom-modeline-buffer-encoding 'nondefault)
   (doom-modeline-project-name t)
+  (doom-modeline-env-version nil)
   :init
   (doom-modeline-mode 1))
 
