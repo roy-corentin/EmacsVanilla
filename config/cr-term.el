@@ -36,7 +36,21 @@
   :hook (tty-setup . global-clipetty-mode))
 
 (use-package ghostel
-  :ensure t)
+  :ensure t
+  :bind (("C-x m" . ghostel)
+         :map ghostel-semi-char-mode-map
+         ;; I'm used to go up/down the shell history with M-n/p from eshell
+         ;; Simulate this behavior in ghostel by sending C-p and C-n
+         ("M-p" . (lambda () (interactive) (ghostel-send-key "p" "ctrl")))
+         ("M-n" . (lambda () (interactive) (ghostel-send-key "n" "ctrl")))
+         :map project-prefix-map
+         ("m" . ghostel-project)
+         ("M" . ghostel-project-list-buffers)))
+
+(use-package evil-ghostel
+  :ensure t
+  :after (ghostel evil)
+  :hook (ghostel-mode . evil-ghostel-mode))
 
 (provide 'cr-term)
 ;;; cr-term.el ends here
