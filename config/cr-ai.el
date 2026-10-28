@@ -41,7 +41,6 @@
   :hook (gptel-mode . visual-line-mode)
   :custom
   (gptel-api-key #'cr/gptel-openai-api-key)
-  (gptel-model 'mistral-medium-latest)
   (gptel-default-mode 'org-mode)
   (gptel-stream t)
   :config
@@ -52,7 +51,7 @@
     :protocol "https"
     :key #'cr/gptel-mistral-api-key
     :stream t
-    :models '("mistral-small" "codestral-latest" "devstral-latest" "mistral-medium-latest"))
+    :models '("mistral-medium-latest" "zai-glm-5-3" "mistral-large-4"))
   (gptel-make-anthropic "Claude" :stream t :key #'cr/gptel-anthropic-api-key)
   (setq gptel-model 'gpt-5.6-sol
         gptel-backend (gptel-make-openai-oauth "OpenAI-sub")))
